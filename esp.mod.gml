@@ -2456,14 +2456,14 @@ if(opt.fix_venus_car == true){
 if(opt.popups == true){
 	if(instance_exists(Player)){
 		if(GameCont.area == 3 && GameCont.subarea == 1 && global.popup_shown._oasis == false && opt.cursed_floor == true){
-			with instance_create(Player.x,Player.y,PopupText) text = "CHECKOUT SPAWN"
+			with instance_create(Player.x,Player.y,PopupText) text = "CHECK OUT SPAWN"
 			global.popup_shown._oasis = true;
 		}
 	}
 	
 	if(instance_exists(Player)){
 		if(GameCont.area == 5 && GameCont.subarea == 1 && global.popup_shown._jungle == false && opt.cursed_floor == true){
-			with instance_create(Player.x,Player.y,PopupText) text = "CHECKOUT SPAWN"
+			with instance_create(Player.x,Player.y,PopupText) text = "CHECK OUT SPAWN"
 			global.popup_shown._jungle = true;
 		}
 	}

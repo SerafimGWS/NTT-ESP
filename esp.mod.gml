@@ -249,6 +249,12 @@ global._x = 0;
 
 global._y = 0;
 
+global.last_vault = false;
+
+global.rest_room = false;
+
+global.wind_left = false;
+
 global.popup_shown = {
 	"_salamander": false,
 	"_rat": false,
@@ -305,6 +311,8 @@ global.CobWeb107 = sprite_add("sprCobWeb107.png", 1,0,0);
 global.IcePizza = sprite_add("sprPizzaEntranceIce_strip2.png", 2,0,0);
 
 global.sprRadFalke = sprite_add("sprRadFlake_strip3.png",3,0,0);
+
+global.sprSandFX = sprite_add("sprSandFX.png",1,0,0);
 
 global.sprJungleCarIdle = sprite_add("sprJungleCarIdle.png",1,0,0);
 global.sprJungleCarHurt = sprite_add("sprJungleCarHurt.png",3,0,0);
@@ -698,6 +706,15 @@ opt.l3bouncers = global.options.l3bouncers;
 opt.crown_guardian_help = global.options.crown_guardian_help;
 opt.popups = global.options.popups;
 
+if(GameCont.area == 107){
+	global.rest_room = true;
+	}
+	
+if(GameCont.area == 100){
+	global.last_vault = true;
+	}
+
+
 if(opt.popups == true){
 
 	if(instance_exists(Salamander) && instance_exists(Player)){
@@ -1087,7 +1104,7 @@ with instances_matching(CustomHitme,"oasis_enter_scrapyard",1){
 	speed = 0;
 	}
 
-if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont.area == 3 && GameCont.subarea == 1){
+if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont.area == 3 && GameCont.subarea == 1 && global.rest_room == false){
 	global.jungle_enabler_spawned = true;
 	wait 20;
 	with(instance_create(10016,10016,CustomHitme)){
@@ -1121,8 +1138,53 @@ if(GameCont.area == 105 && instance_exists(Car)){
 			}
 		}
 	}
+
+if(GameCont.area == 1 && opt.no_new_parcticles == false && opt.mode != 2 && global.last_vault == false){
+	if(global.snowspawn_controller_created == false){
+		with(instance_create(10016,10016,CustomObject)){
+			SC = 1;
+			}
+		global.snowspawn_controller_created = true;
+		}
+		
+	with instances_matching(CustomObject,"SC",1){
+	//Time untile spawn snow flake
+	if("tussf" not in self){
+				tussf = irandom(100);
+				}
+					tussf -= current_time_scale;
+					if(tussf <= 0){
+						if(instance_exists(Player)){
+							if(global.wind_left = true){
+								with(instance_create(Player.x + 350,Player.y + random_range(50, 750),SnowFlake)){
+									wave = random_range(-25,25);
+									}
+								}
+							else{
+								with(instance_create(Player.x - 350,Player.y + random_range(50, 750),SnowFlake)){
+									wave = random_range(-25,25);
+									}
+								}
+							}
+						tussf = irandom(100);
+					}
+	}
+		
+	with(SnowFlake){
+		if(global.wind_left = true){
+			sprite_index = global.sprSandFX;
+			y -= 1;
+			x -= 3;
+		}
+		else{
+			sprite_index = global.sprSandFX;
+			y -= 1;
+			x += 3;
+		}
+	}
+}
 	
-if(GameCont.area == 7 && opt.no_new_parcticles == false){
+if(GameCont.area == 7 && opt.no_new_parcticles == false && global.last_vault == false){
 	if(global.snowspawn_controller_created == false){
 		with(instance_create(10016,10016,CustomObject)){
 			RSC = 1;
@@ -1152,7 +1214,7 @@ if(GameCont.area == 7 && opt.no_new_parcticles == false){
 	}
 }
 	
-if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont.area == 5 && GameCont.subarea == 1){
+if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont.area == 5 && GameCont.subarea == 1 && global.rest_room == false){
 	global.jungle_enabler_spawned = true;
 	wait 20;
 	with(instance_create(10016,10016,CustomObject)){
@@ -1175,7 +1237,7 @@ if(GameCont.area == 5 && opt.no_guards == true){
 	instance_delete(Guardian);
 }
 
-if(GameCont.loops == 1 && opt.mode < 1){
+if(GameCont.loops == 1 && opt.mode == 0){
 	if(GameCont.area == 1 || GameCont.area == 7){
 		instance_delete(Sniper);
 		}
@@ -1268,7 +1330,7 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 		global.tip_shown = true;
 	}
 	
-	if(r4 == 14 && global.tip_shown == false && GameCont.vaults > 2 && opt.crown_guardian_on_max == true){
+	if(global.last_vault == true && global.tip_shown == false && GameCont.vaults > 2 && opt.crown_guardian_on_max == true){
 		GenCont.tip = "@gproto guardians@s are now homeless";
 		global.tip_shown = true;
 	}
@@ -1320,6 +1382,11 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 	
 	if(r4 == 24 && global.tip_shown == false && Player.race == "skeleton"){
 		GenCont.tip = "call an ambulance... but not for me!";
+		global.tip_shown = true;
+	}
+	
+	if(r4 == 14 && global.tip_shown == false && Player.wep == wep_ultra_shovel && GameCont.loops > 2){
+		GenCont.tip = "swing like belmont";
 		global.tip_shown = true;
 	}
 	
@@ -1884,7 +1951,7 @@ if(GameCont.loops > 2 && opt.l3bouncers == true){
 
 var r3 = irandom(100);
 
-if(r3 < 26 && global.iattbd == false && opt.add_dark == true && (GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5 || GameCont.area == 101 || GameCont == 103 || GameCont.area == 106)){
+if(r3 < 26 && global.iattbd == false && opt.add_dark == true && (GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5 || GameCont.area == 101 || GameCont == 103)){
 	global.iattbd = true;
 	TopCont.darkness = 1;
 	if(GameCont.area == 1){
@@ -2696,6 +2763,21 @@ global.abd = false;
 global.jungle_enabler_spawned = false;
 global.snowspawn_controller_created = false;
 
+if(random(2) < 1){
+	global.wind_left = true;
+	}
+else{
+	global.wind_left = false;
+	}
+
+if(GameCont.area != 107){
+	global.rest_room = false;
+	}
+
+if(GameCont.area != 100){
+	global.last_vault = false;
+	}
+	
 if(opt.popups == true){
 	if(instance_exists(Player)){
 		if(GameCont.area == 104 && global.popup_shown._ccc == false && opt.cursed_floor == true){
@@ -3793,7 +3875,7 @@ with Salamander{
 	draw_circle(x, y, 30+random(3), false)
 	}
 
-if(GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5){	
+if((GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5) && global.last_vault == false){	
 with Player{
 	draw_circle(x, y, 200+random(3), false)
 	}

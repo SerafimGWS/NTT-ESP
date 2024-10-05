@@ -179,12 +179,13 @@ if ("esp_mod_opt" in GameCont) {
 	l3bouncers: true,
 	//Crown guardian help
 	crown_guardian_help: true,
-	popups: true
+	popups: true,
+	hammerhead_time: 0
 };
 
 // -----Commands zone------- //
 trace("Thanks for installing the Extended Spawn Pools 1.7 mod!");
-trace("Also look in the options and make your game as comfortabel as possible!");
+trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
 // THIS IS NOT GAMERULES DONT TOUCH IT! GAME RULES IS "opt"
@@ -244,10 +245,6 @@ global.jungle_enabler_spawned = false;
 global.snowspawn_controller_created = false;
 
 global.cap_dead = false;
-
-global._x = 0;
-
-global._y = 0;
 
 global.last_vault = false;
 
@@ -311,8 +308,8 @@ global.CobWeb107 = sprite_add("sprCobWeb107.png", 1,0,0);
 global.IcePizza = sprite_add("sprPizzaEntranceIce_strip2.png", 2,0,0);
 
 global.sprRadFalke = sprite_add("sprRadFlake_strip3.png",3,0,0);
-
 global.sprSandFX = sprite_add("sprSandFX.png",1,0,0);
+global.sprSandFXnight = sprite_add("sprSandFXnight.png",1,0,0);
 
 global.sprJungleCarIdle = sprite_add("sprJungleCarIdle.png",1,0,0);
 global.sprJungleCarHurt = sprite_add("sprJungleCarHurt.png",3,0,0);
@@ -357,6 +354,7 @@ global.options = {
 	"no_jocks": false, 
 	"l5cap": false, 
 	"mode": 0, 
+	"hammerhead_time": 0,
 	"death_effects": true, 
 	"no_new_tips": false, 
 	"no_new_parcticles": false, 
@@ -606,6 +604,18 @@ if fork() {
 				}
 			},
 			{
+				"option": "hammerhead_time",
+				"kind": "choice",
+				"name": {
+					"text": "hammerhead time"
+				},
+				"desc": {
+					"text": "When @wYes@s#@wremoves hammerhead@s from @wavailble@s @gmutations pool@s#gives @whammerhead@s after @wreaching L1@s#when@wmore@s#@wgives more hammerheads with each loop@s"
+				},
+				"values": [0, 1, 2],
+				"display": ["No", "Yes", "More"]
+			},
+			{
 				"option": "mode",
 				"kind": "choice",
 				"name": {
@@ -705,6 +715,14 @@ opt.cursed_floor = global.options.cursed_floor;
 opt.l3bouncers = global.options.l3bouncers;
 opt.crown_guardian_help = global.options.crown_guardian_help;
 opt.popups = global.options.popups;
+opt.hammerhead_time = global.options.hammerhead_time;
+
+if(opt.hammerhead_time > 0){
+	skill_set_active(26, 0);
+	if(GameCont.loops > 0){
+		skill_set(26, 1);
+	}
+}
 
 if(GameCont.area == 107){
 	global.rest_room = true;
@@ -722,7 +740,7 @@ if(opt.popups == true){
 			with(Salamander){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._salamander = true;
@@ -734,7 +752,7 @@ if(opt.popups == true){
 			with(Rat){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._rat = true;
@@ -746,7 +764,7 @@ if(opt.popups == true){
 			with(Molefish){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._molefish = true;
@@ -758,7 +776,7 @@ if(opt.popups == true){
 			with(BuffGator){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._buffgator = true;
@@ -770,7 +788,7 @@ if(opt.popups == true){
 			with(JungleFly){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._junglefly = true;
@@ -782,7 +800,7 @@ if(opt.popups == true){
 			with(Jock){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._jock = true;
@@ -794,7 +812,7 @@ if(opt.popups == true){
 			with(Last){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._last = true;
@@ -806,7 +824,7 @@ if(opt.popups == true){
 			with(Bandit){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._bandit = true;
@@ -818,7 +836,7 @@ if(opt.popups == true){
 			with(Molesarge){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._molesarge = true;
@@ -830,7 +848,7 @@ if(opt.popups == true){
 			with(Van){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._van = true;
@@ -842,7 +860,7 @@ if(opt.popups == true){
 			with(Grunt){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._grunt = true;
@@ -854,7 +872,7 @@ if(opt.popups == true){
 			with(Inspector){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._inspector = true;
@@ -878,7 +896,7 @@ if(opt.popups == true){
 			with(CrownGuardian){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._crownguardian = true;
@@ -890,7 +908,7 @@ if(opt.popups == true){
 			with(Wolf){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._wolf = true;
@@ -902,7 +920,7 @@ if(opt.popups == true){
 			with(OasisBoss){	
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._oasisboss = true;
@@ -914,7 +932,7 @@ if(opt.popups == true){
 			with(ExploGuardian){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._exploguardian = true;
@@ -926,7 +944,7 @@ if(opt.popups == true){
 			with(DogGuardian){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._dogguardian = true;
@@ -938,7 +956,7 @@ if(opt.popups == true){
 			with(LightningCrystal){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._lightningcrystal = true;
@@ -950,7 +968,7 @@ if(opt.popups == true){
 			with(JungleBandit){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._junglebandit = true;
@@ -962,7 +980,7 @@ if(opt.popups == true){
 			with(JungleAssassin){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._jungleassasin = true;
@@ -974,7 +992,7 @@ if(opt.popups == true){
 			with(BanditBoss){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._junglebanditboss = true;
@@ -986,7 +1004,7 @@ if(opt.popups == true){
 			with(EliteGrunt){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._elitegrunt = true;
@@ -998,7 +1016,7 @@ if(opt.popups == true){
 			with(Sniper){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._sniper = true;
@@ -1010,7 +1028,7 @@ if(opt.popups == true){
 			with(SnowTank){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._snowtank = true;
@@ -1023,7 +1041,7 @@ if(opt.popups == true){
 				if("police" not in self){
 					leveluped = 1;
 					with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-					with instance_create(x,y,LevelUp) leveluped_ = 1;
+					instance_create(x,y,LevelUp);
 					sound_play(sndLevelUltra);
 					global.popup_shown._goldsnowtank = true;
 				}
@@ -1036,25 +1054,13 @@ if(opt.popups == true){
 			with(Necromancer){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				with instance_create(x,y,LevelUp) leveluped_ = 1;
+				instance_create(x,y,LevelUp);
 			}
 			sound_play(sndLevelUltra);
 			global.popup_shown._necromancer = true;
 		}
 	}
 }	
-
-if(instance_exists(Player)){
-with instances_matching(instance_nearest(Player.x,Player.y,enemy),"leveluped",1){
-	global._x = x;
-	global._y = y;
-	}
-}	
-	
-with instances_matching(LevelUp,"leveluped_",1){
-	x = global._x;
-	y = global._y;
-	}
 
 if(GameCont.area == 5){
 	with(BanditBoss){
@@ -1171,13 +1177,18 @@ if(GameCont.area == 1 && opt.no_new_parcticles == false && opt.mode != 2 && glob
 	}
 		
 	with(SnowFlake){
-		if(global.wind_left = true){
+		if(global.abd == true){
+			sprite_index = global.sprSandFXnight;
+		}
+		else{
 			sprite_index = global.sprSandFX;
+		}
+		
+		if(global.wind_left = true){
 			y -= 1;
 			x -= 3;
 		}
 		else{
-			sprite_index = global.sprSandFX;
 			y -= 1;
 			x += 3;
 		}
@@ -2763,6 +2774,10 @@ global.abd = false;
 global.jungle_enabler_spawned = false;
 global.snowspawn_controller_created = false;
 
+if(opt.hammerhead_time == 2 && GameCont.loops > 0){
+	Player.hammerhead = 20 * GameCont.loops;
+	}
+
 if(random(2) < 1){
 	global.wind_left = true;
 	}
@@ -2966,9 +2981,13 @@ if(opt.chest_replacments == true){
 }
 
 //Adding darknes to palace, jungles and night desert
-if((GameCont.area == 7 || GameCont.area == 105 || GameCont.area == 0) && opt.add_dark == true){
+if((GameCont.area == 7 || GameCont.area == 105 || GameCont.area == 0 || (GameCont.area == 106 && GameCont.subarea == 2)) && opt.add_dark == true){
 	TopCont.darkness = 1;
 }
+
+if(GameCont.area == 106 && GameCont.subarea == 2){
+	sound_play_music(mus106b);
+	}
 
 if (instance_exists(CarVenus) && opt.fix_venus_car)
     fix_car_venus();

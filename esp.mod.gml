@@ -252,6 +252,8 @@ global.rest_room = false;
 
 global.wind_left = false;
 
+global.amount_of_crown_guardians = 0;
+
 global.popup_shown = {
 	"_salamander": false,
 	"_rat": false,
@@ -425,7 +427,7 @@ if fork() {
 					"text": "Crown Guardians on max"
 				},
 				"desc": {
-					"text": "When @rON@s#and after you visited @w3rd@s @gVault@s#on each @wn-2@s stage#will spawn @g2 crown guardians@s#and if @wloop@s is higher than 2#it will spawn @r4 big bandits@s#(except for @ydesert@s)"
+					"text": "When @rON@s#and after you visited @w3rd@s @gVault@s#on each @wn-2@s stage#will spawn @g2 crown guardians@s#and if @wloop@s is higher than 2#it will spawn @r4 big bandits@s#(except for @ydesert@s)#if you skipped n-2 area#on n-2 will spawn 2 more guardians"
 				}
 			},
 			{
@@ -610,7 +612,7 @@ if fork() {
 					"text": "hammerhead time"
 				},
 				"desc": {
-					"text": "When @wYes@s#@wremoves hammerhead@s from @wavailble@s @gmutations pool@s#gives @whammerhead@s after @wreaching L1@s#when@wmore@s#@wgives more hammerheads with each loop@s"
+					"text": "When @wYes@s#@wremoves hammerhead@s from#@wavailble@s @gmutations pool@s#gives @whammerhead@s after#@wreaching L1@s#when@wmore@s#@wgives more hammerheads#with each loop@s"
 				},
 				"values": [0, 1, 2],
 				"display": ["No", "Yes", "More"]
@@ -657,6 +659,9 @@ global.JungleSniperHitid = [global.sprJungleSniperIdle, "Jungle Sniper"];
 global.IDPDTankHitid = [global.sprIDPDTankIdle,"IDPD Tank"];
 // -----Tick------ //
 #define game_start
+
+global.amount_of_crown_guardians = 0;
+
 global.popup_shown = {
 	"_salamander": false,
 	"_rat": false,
@@ -689,6 +694,7 @@ global.popup_shown = {
 	"_oasis": false,
 	"_jungle": false,
 };
+
 #define step
 
 //Sync options and opts
@@ -1156,7 +1162,7 @@ if(GameCont.area == 1 && opt.no_new_parcticles == false && opt.mode != 2 && glob
 	with instances_matching(CustomObject,"SC",1){
 	//Time untile spawn snow flake
 	if("tussf" not in self){
-				tussf = irandom(100);
+				tussf = irandom(50);
 				}
 					tussf -= current_time_scale;
 					if(tussf <= 0){
@@ -1172,11 +1178,13 @@ if(GameCont.area == 1 && opt.no_new_parcticles == false && opt.mode != 2 && glob
 									}
 								}
 							}
-						tussf = irandom(100);
+						tussf = irandom(50);
 					}
 	}
 		
 	with(SnowFlake){
+		y -= 1;
+		
 		if(global.abd == true){
 			sprite_index = global.sprSandFXnight;
 		}
@@ -1185,11 +1193,9 @@ if(GameCont.area == 1 && opt.no_new_parcticles == false && opt.mode != 2 && glob
 		}
 		
 		if(global.wind_left = true){
-			y -= 1;
 			x -= 3;
 		}
 		else{
-			y -= 1;
 			x += 3;
 		}
 	}
@@ -1748,7 +1754,7 @@ if(opt.mode == 1){
 	}
 
 	
-if(global.abd == true && GameCont.area == 1 && global.sprites_swapped == false){
+if(global.abd == true && GameCont.area == 1 && global.sprites_swapped == false && instance_exists(BackCont)){
 	sprite_replace(sprBigSkull,"sprBigSkull_strip1.png",1);
 	sprite_replace(sprBigSkullOpen,"sprBigSkullOpen_strip1.png",1);
 	sprite_replace(sprBigSkullHurt,"sprBigSkullHurt_strip3.png",3);
@@ -1830,6 +1836,44 @@ if(global.abd == true && GameCont.area == 3 && global.sprites_swapped == false &
 	sprite_replace(sprScrapDecal,"sprScrapDecal.png",2);
 	sprite_replace(sprWind,"sprWind_strip9.png",9);
 	background_color = make_color_rgb(40, 43, 83);
+	BackCont.shadcol = c_black;
+	TopCont.fog = sprFog2;
+	global.sprites_swapped = true;
+	}
+	
+if(global.abd == true && GameCont.area == 5 && global.sprites_swapped == false && instance_exists(BackCont)){
+	sprite_replace(sprSodaMachine,"sprSodaMachine.png",1);
+	sprite_replace(sprStreetLight,"sprStreetLight.png",1);
+	sprite_replace(sprIcicle,"sprIcicle.png",1);
+	sprite_replace(sprWall5Trans,"sprWall5Trans.png",1);
+	sprite_replace(sprTopDecalCity,"sprTopDecalCity.png",3);
+	sprite_replace(sprIceDecal,"sprIceDecal.png",2);
+	sprite_replace(sprIcicleDead,"sprIcicleDead.png",4);
+	sprite_replace(sprIcicleHurt,"sprIcicleHurt.png",3);
+	sprite_replace(sprSodaMachineDead,"sprSodaMachineDead.png",3);
+	sprite_replace(sprSodaCan,"sprSodaCan.png",3);
+	sprite_replace(sprStreetLightDead,"sprStreetLightDead.png",3);
+	sprite_replace(sprFloor5B,"sprFloor5B.png",8);
+	sprite_replace(sprFloor5Explo,"sprFloor5Explo.png",4);
+	sprite_replace(sprFloor5,"sprFloor5.png",8);
+	sprite_replace(sprWall5Out,"sprWall5Out.png",2);
+	sprite_replace(sprWall5Top,"sprWall5Top.png",4);
+	sprite_replace(sprDebris5,"sprDebris5.png",4);
+	sprite_replace(sprDetail5,"sprDetail5.png",3);
+	sprite_replace(sprWall5Bot,"sprWall5Bot.png",3);
+	sprite_replace(sprSodaMachineHurt,"sprSodaMachineHurt.png",3);
+	sprite_replace(sprStreetLightHurt,"sprStreetLightHurt.png",3);
+	sprite_replace(sprSnowBotCarLift,"sprSnowBotCarLift.png",4);
+	sprite_replace(sprFrozenCar,"sprFrozenCar.png",1);
+	sprite_replace(sprSnowBotCarIdle,"sprSnowBotCarIdle.png",6);
+	sprite_replace(sprSnowBotCarWalk,"sprSnowBotCarWalk.png",8);
+	sprite_replace(sprSnowBotCarHurt,"sprSnowBotCarHurt.png",3);
+	sprite_replace(sprSnowBotCarThrow,"sprSnowBotCarThrow.png",5);
+	sprite_replace(sprFrozenCarThrown,"sprFrozenCarThrown.png",6);
+	sprite_replace(sprFrozenCarHurt,"sprFrozenCarHurt.png",3);
+	sprite_replace(sprSnowFlake,"sprSnowFlake.png",3);
+	sprite_replace(sprWind,"sprWind_strip9.png",9);
+	background_color = make_color_rgb(50, 54, 152);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
 	global.sprites_swapped = true;
@@ -2774,6 +2818,10 @@ global.abd = false;
 global.jungle_enabler_spawned = false;
 global.snowspawn_controller_created = false;
 
+if(GameCont.vaults > 2 && (GameCont.area == 105 || GameCont.area == 103 || GameCont.area == 101 || (GameCont.area == global.crown_guardian_locations && GameCont.subarea == 2))){
+	global.amount_of_crown_guardians += 2;
+	}
+
 if(opt.hammerhead_time == 2 && GameCont.loops > 0){
 	Player.hammerhead = 20 * GameCont.loops;
 	}
@@ -2822,7 +2870,7 @@ if(opt.chest_replacments == true){
 	}
 }
 
-if(GameCont.area == 0 && GameCont.loops < 4){
+if((GameCont.area == 0 || GameCont.area = 7 && GameCont.subarea = 3) && GameCont.loops < 4){
 	GameCont.seenhq = 0;
 }
 
@@ -3148,16 +3196,13 @@ with(Floor){
         }
 
         if(can_spawn == true){
-			instance_create(x,y,CrownGuardian);
-			instance_create(x,y,CrownGuardian);
+			repeat(global.amount_of_crown_guardians * 2) instance_create(x,y,CrownGuardian);
 			sound_play(sndStatueDead);
 			if (GameCont.area != 1 && GameCont.loops > 3){
-				instance_create(x,y,BanditBoss);
-				instance_create(x,y,BanditBoss);
-				instance_create(x,y,BanditBoss);
-				instance_create(x,y,BanditBoss);
+				repeat(4) instance_create(x,y,BanditBoss);
 				}
 			}
+			global.amount_of_crown_guardians = 0;
         global.crown_guardian_spawned = true;
     }
 
@@ -3891,6 +3936,10 @@ with Rocket{
 	}
 	
 with Salamander{
+	draw_circle(x, y, 30+random(3), false)
+	}
+
+with StreetLight{
 	draw_circle(x, y, 30+random(3), false)
 	}
 

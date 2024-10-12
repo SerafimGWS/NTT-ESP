@@ -180,7 +180,8 @@ if ("esp_mod_opt" in GameCont) {
 	//Crown guardian help
 	crown_guardian_help: true,
 	popups: true,
-	hammerhead_time: 0
+	hammerhead_time: 0,
+	fire_explosions: true
 };
 
 // -----Commands zone------- //
@@ -253,6 +254,8 @@ global.rest_room = false;
 global.wind_left = false;
 
 global.amount_of_crown_guardians = 0;
+
+//global.explosive_projectiles = [BloodGrenade, Grenade, ToxicGrenade, UltraGrenade, ClusterNade, HeavyNade, MiniNade, PopoNade, JockRocket, Rocket, PopoRocket, Nuke];
 
 global.popup_shown = {
 	"_salamander": false,
@@ -354,7 +357,8 @@ global.options = {
 	"add_dark": true, 
 	"idpd_mashup": true, 
 	"no_jocks": false, 
-	"l5cap": false, 
+	"l5cap": false,
+	"fire_explosions": true,	
 	"mode": 0, 
 	"hammerhead_time": 0,
 	"death_effects": true, 
@@ -500,6 +504,16 @@ if fork() {
 					"text": "When @rON@s#apllies @pdarkness@s on #@wPalace, Jungles and Night Desert@s#+ @y25% Chance for night version of area@s"
 				}
 			}
+			{
+				"option": "fire_explosions",
+				"kind": "bool",
+				"name": {
+					"text": "fire explosions"
+				},
+				"desc": {
+					"text": "When @rON@s#@rfire@s when @wcontacts@s with#@wany@s @rexplosive projectile@s#destroys the projectile"
+				}
+			},
 		]
 	});
 	
@@ -722,6 +736,17 @@ opt.l3bouncers = global.options.l3bouncers;
 opt.crown_guardian_help = global.options.crown_guardian_help;
 opt.popups = global.options.popups;
 opt.hammerhead_time = global.options.hammerhead_time;
+opt.fire_explosions = global.options.fire_explosions;
+
+/*[BloodGrenade, Grenade, ToxicGrenade, UltraGrenade, ClusterNade, HeavyNade, MiniNade, PopoNade, JockRocket, Rocket, PopoRocket, Nuke];
+
+if(opt.fire_explosions == true && (instance_exists(BloodGrenade) || instance_exists(Grenade) || instance_exists(ToxicGrenade) || instance_exists(UltraGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade)){
+	with(global.explosive_projectiles){
+		if(place_meeting(x,y,Flame)){
+			instance_destroy();
+		}	
+	}
+}*/
 
 if(opt.hammerhead_time > 0){
 	skill_set_active(26, 0);
@@ -1872,6 +1897,9 @@ if(global.abd == true && GameCont.area == 5 && global.sprites_swapped == false &
 	sprite_replace(sprFrozenCarThrown,"sprFrozenCarThrown.png",6);
 	sprite_replace(sprFrozenCarHurt,"sprFrozenCarHurt.png",3);
 	sprite_replace(sprSnowFlake,"sprSnowFlake.png",3);
+	sprite_replace(sprHydrant,"sprHydrant.png",1);
+	sprite_replace(sprHydrantHurt,"sprHydrantHurt.png",3);
+	sprite_replace(sprHydrantDead,"sprHydrantDead.png",3);
 	sprite_replace(sprWind,"sprWind_strip9.png",9);
 	background_color = make_color_rgb(50, 54, 152);
 	BackCont.shadcol = c_black;
@@ -2960,6 +2988,39 @@ if(global.abd == false){
 		sprite_restore(sprRainDropSlowmo);
 		sprite_restore(sprRainSplash);
 		sprite_restore(sprScrapDecal);
+		sprite_restore(sprSodaMachine);
+		sprite_restore(sprStreetLight);
+		sprite_restore(sprIcicle);
+		sprite_restore(sprWall5Trans);
+		sprite_restore(sprTopDecalCity);
+		sprite_restore(sprIceDecal);
+		sprite_restore(sprIcicleDead);
+		sprite_restore(sprIcicleHurt);
+		sprite_restore(sprSodaMachineDead);
+		sprite_restore(sprSodaCan);
+		sprite_restore(sprStreetLightDead);
+		sprite_restore(sprFloor5B);
+		sprite_restore(sprFloor5Explo);
+		sprite_restore(sprFloor5);
+		sprite_restore(sprWall5Out);
+		sprite_restore(sprWall5Top);
+		sprite_restore(sprDebris5);
+		sprite_restore(sprDetail5);
+		sprite_restore(sprWall5Bot);
+		sprite_restore(sprSodaMachineHurt);
+		sprite_restore(sprStreetLightHurt);
+		sprite_restore(sprSnowBotCarLift);
+		sprite_restore(sprFrozenCar);
+		sprite_restore(sprSnowBotCarIdle);
+		sprite_restore(sprSnowBotCarWalk);
+		sprite_restore(sprSnowBotCarHurt);
+		sprite_restore(sprSnowBotCarThrow);
+		sprite_restore(sprFrozenCarThrown);
+		sprite_restore(sprFrozenCarHurt);
+		sprite_restore(sprSnowFlake);
+		sprite_restore(sprHydrant);
+		sprite_restore(sprHydrantHurt);
+		sprite_restore(sprHydrantDead);
 		}
 
 

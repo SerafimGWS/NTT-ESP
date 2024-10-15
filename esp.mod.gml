@@ -441,7 +441,7 @@ if fork() {
 					"text": "Crown Guardians Help"
 				},
 				"desc": {
-					"text": "When @rON@s# when you activate @gcrown ped@s#or brake @gcrown guardian statue@s#in 1st vault#@gguardians@s will replace @wall torches@s#in 2nd vault#@wturrets@s will come out# and in 3rd one#each @gtorch@s will summon @bIDPD@s"
+					"text": "When @rON@s# when you activate @gcrown ped@s#or break @gcrown guardian statue@s#in 1st vault#@gguardians@s will replace @wall torches@s#in 2nd vault#@wturrets@s will come out# and in 3rd one#each @gtorch@s will summon @bIDPD@s"
 				}
 			},
 			{
@@ -626,7 +626,7 @@ if fork() {
 					"text": "hammerhead time"
 				},
 				"desc": {
-					"text": "When @wYes@s#@wremoves hammerhead@s from#@wavailble@s @gmutations pool@s#gives @whammerhead@s after#@wreaching L1@s#when@wmore@s#@wgives more hammerheads#with each loop@s"
+					"text": "When @wYes@s#@wremoves hammerhead@s from#@wavaible@s @gmutations pool@s#gives @whammerhead@s after#@wreaching L1@s#when@wmore@s#@wgives more hammerheads#with each loop@s"
 				},
 				"values": [0, 1, 2],
 				"display": ["No", "Yes", "More"]
@@ -738,15 +738,50 @@ opt.popups = global.options.popups;
 opt.hammerhead_time = global.options.hammerhead_time;
 opt.fire_explosions = global.options.fire_explosions;
 
-/*[BloodGrenade, Grenade, ToxicGrenade, UltraGrenade, ClusterNade, HeavyNade, MiniNade, PopoNade, JockRocket, Rocket, PopoRocket, Nuke];
-
-if(opt.fire_explosions == true && (instance_exists(BloodGrenade) || instance_exists(Grenade) || instance_exists(ToxicGrenade) || instance_exists(UltraGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade) || instance_exists(BloodGrenade)){
-	with(global.explosive_projectiles){
-		if(place_meeting(x,y,Flame)){
-			instance_destroy();
-		}	
+if(opt.fire_explosions == true){
+	if(instance_exists(Grenade)){
+		with instances_matching(Grenade,"sprite_index",!sprFlare){
+			if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
+				instance_destroy();
+			}	
+		}
 	}
-}*/
+	if(instance_exists(Rocket)){
+		with(Rocket){
+			if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
+				instance_destroy();
+			}	
+		}
+	}
+	if(instance_exists(JockRocket)){
+		with(JockRocket){
+			if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
+				instance_destroy();
+			}	
+		}
+	}
+	if(instance_exists(PopoFreak)){
+		with(PopoRocket){
+			if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
+				instance_destroy();
+			}	
+		}
+	}
+	if(instance_exists(Nuke)){
+		with(Nuke){
+			if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
+				instance_destroy();
+			}	
+		}
+	}
+	if(instance_exists(FireBall)){
+		with(FireBall){
+			if(place_meeting(x,y,Explosion) || place_meeting(x,y,GreenExplosion) || place_meeting(x,y,SmallExplosion) || place_meeting(x,y,PopoExplosion)){
+				instance_destroy();
+			}
+		}
+	}
+}
 
 if(opt.hammerhead_time > 0){
 	skill_set_active(26, 0);

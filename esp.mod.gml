@@ -174,9 +174,9 @@ if ("esp_mod_opt" in GameCont) {
 	//Chest replacments
 	chest_replacments: true,
 	//Curses all weapons on floor in Cursed Crystal Caves
-	cursed_floor: true,
+	cursed_caves_rework: true,
 	//L3 Bouncers
-	l3bouncers: true,
+	enemies_mutations: true,
 	//Crown guardian help
 	crown_guardian_help: true,
 	popups: true,
@@ -255,7 +255,7 @@ global.wind_left = false;
 
 global.amount_of_crown_guardians = 0;
 
-//global.explosive_projectiles = [BloodGrenade, Grenade, ToxicGrenade, UltraGrenade, ClusterNade, HeavyNade, MiniNade, PopoNade, JockRocket, Rocket, PopoRocket, Nuke];
+global.ccc = false;
 
 global.popup_shown = {
 	"_salamander": false,
@@ -324,6 +324,8 @@ global.sprOasisEnterHurt = sprite_add("sprOasisScrapyardEnterHurt.png",3,16,16);
 global.sprOasisEnterDead = sprite_add("sprOasisScrapyardEnterDeadpng.png",1,16,16);
 global.sndOasisEnterAppears = sound_add("sndWaterMineLand.ogg");
 
+global.sndGatorTeleport = sound_add("teleport.ogg");
+
 global.sprVacuumCleanerIdle = sprite_add("sprInspectorTankIdle.png",16,12,12);
 global.sprVacuumCleanerHurt = sprite_add("sprInspectorTankHurt.png",3,12,12);
 global.sprVacuumCleanerDead = sprite_add("sprInspectorTankDead.png",6,12,12);
@@ -366,8 +368,8 @@ global.options = {
 	"no_new_parcticles": false, 
 	"no_guards": false,
 	"chest_replacments": true,
-	"cursed_floor": true,
-	"l3bouncers": true,
+	"cursed_caves_rework": true,
+	"enemies_mutations": true,
 	"crown_guardian_help": true,
 	"popups": true,
 	"idpd_seek": 1, // cycles can have anything as long as it's an item in their array	
@@ -455,13 +457,13 @@ if fork() {
 				}
 			},
 			{
-				"option": "cursed_floor",
+				"option": "cursed_caves_rework",
 				"kind": "bool",
 				"name": {
-					"text": "Cursed floor"
+					"text": "Cursed caves rework"
 				},
 				"desc": {
-					"text": "When @rON@s#@wall weapons@s in @p4-?@s will be @pcursed@s#except of which you holding right now"
+					"text": "When @rON@s#@wall weapons@s in @p4-?@s will be @pcursed@s#except of which you holding right now#after leaving @yl1+@s @pcursed crystal caves@s#all of your weapons will be @yuncursed@s"
 				}
 			},
 			{
@@ -550,16 +552,6 @@ if fork() {
 				}
 			},
 			{
-				"option": "l3bouncers",
-				"kind": "bool",
-				"name": {
-					"text": "L3 Bouncers"
-				},
-				"desc": {
-					"text": "When @rON@s#starting from @gL3@s#it will @wreplace@s#@wsniper and snow tank bullets@s# with @wbouncers@s#@ygolden tank rockets@s replaced#with @ygolden discs@s"
-				}
-			},
-			{
 				"option": "l5cap",
 				"kind": "bool",
 				"name": {
@@ -567,6 +559,16 @@ if fork() {
 				},
 				"desc": {
 					"text": "When @rON@s#you will @rfight@s the @bCaptain@s#before @gThorne 2@s on @w0-1 L5@s"
+				}
+			},
+			{
+				"option": "enemies_mutations",
+				"kind": "bool",
+				"name": {
+					"text": "Enemies Mutations"
+				},
+				"desc": {
+					"text": "When @rON@s#starting from @gL1@s#it will #give on @rhit@s @pteleports@s to all @ggators@s#from @bL3@s#@wreplace@s @wsniper and snow tank bullets@s# with @wbouncers@s#@ygolden tank rockets@s replaced#with @ygolden discs@s"
 				}
 			},
 			{
@@ -626,7 +628,7 @@ if fork() {
 					"text": "hammerhead time"
 				},
 				"desc": {
-					"text": "When @wYes@s#@wremoves hammerhead@s from#@wavaible@s @gmutations pool@s#gives @whammerhead@s after#@wreaching L1@s#when@wmore@s#@wgives more hammerheads#with each loop@s"
+					"text": "When @wYes@s#@wremoves hammerhead@s from#@wavailable@s @gmutations pool@s#gives @whammerhead@s after#@wreaching L1@s#when@wmore@s#@wgives more hammerheads#with each loop@s"
 				},
 				"values": [0, 1, 2],
 				"display": ["No", "Yes", "More"]
@@ -731,12 +733,18 @@ opt.no_new_parcticles = global.options.no_new_parcticles;
 opt.no_guards = global.options.no_guards;
 opt.IDPD_seek = global.options.idpd_seek;
 opt.chest_replacments = global.options.chest_replacments;
-opt.cursed_floor = global.options.cursed_floor;
-opt.l3bouncers = global.options.l3bouncers;
+opt.cursed_caves_rework = global.options.cursed_caves_rework;
+opt.enemies_mutations = global.options.enemies_mutations;
 opt.crown_guardian_help = global.options.crown_guardian_help;
 opt.popups = global.options.popups;
 opt.hammerhead_time = global.options.hammerhead_time;
 opt.fire_explosions = global.options.fire_explosions;
+
+with (Flame){
+	if(team = 1){
+		damage = 1;
+	}
+}
 
 if(opt.fire_explosions == true){
 	if(instance_exists(Grenade)){
@@ -838,8 +846,20 @@ if(opt.popups == true){
 	}
 	
 	if(instance_exists(BuffGator) && instance_exists(Player)){
-		if(point_in_circle(BuffGator.x,BuffGator.y,Player.x,Player.y,180) && global.popup_shown._buffgator == false && opt.death_effects == true && GameCont.loops > 0){
+		if(point_in_circle(BuffGator.x,BuffGator.y,Player.x,Player.y,180) && global.popup_shown._buffgator == false && opt.enemies_mutations == true && GameCont.loops > 0){
 			with(BuffGator){
+				leveluped = 1;
+				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
+				instance_create(x,y,LevelUp);
+			}
+			sound_play(sndLevelUltra);
+			global.popup_shown._buffgator = true;
+		}
+	}
+	
+	if(instance_exists(Gator) && instance_exists(Player)){
+		if(point_in_circle(Gator.x,Gator.y,Player.x,Player.y,180) && global.popup_shown._buffgator == false && opt.enemies_mutations == true && GameCont.loops > 0){
+			with(Gator){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
@@ -1078,7 +1098,7 @@ if(opt.popups == true){
 	}
 	
 	if(instance_exists(Sniper) && instance_exists(Player)){
-		if(point_in_circle(Sniper.x,Sniper.y,Player.x,Player.y,180) && global.popup_shown._sniper == false && opt.l3bouncers == true && GameCont.loops > 2){
+		if(point_in_circle(Sniper.x,Sniper.y,Player.x,Player.y,180) && global.popup_shown._sniper == false && opt.enemies_mutations == true && GameCont.loops > 2){
 			with(Sniper){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
@@ -1090,7 +1110,7 @@ if(opt.popups == true){
 	}
 	
 	if(instance_exists(SnowTank) && instance_exists(Player)){
-		if(point_in_circle(SnowTank.x,SnowTank.y,Player.x,Player.y,180) && global.popup_shown._snowtank == false && opt.l3bouncers == true && GameCont.loops > 2){
+		if(point_in_circle(SnowTank.x,SnowTank.y,Player.x,Player.y,180) && global.popup_shown._snowtank == false && opt.enemies_mutations == true && GameCont.loops > 2){
 			with(SnowTank){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
@@ -1102,7 +1122,7 @@ if(opt.popups == true){
 	}
 	
 	if(instance_exists(GoldSnowTank) && instance_exists(Player)){
-		if(point_in_circle(GoldSnowTank.x,GoldSnowTank.y,Player.x,Player.y,180) && global.popup_shown._goldsnowtank == false && opt.l3bouncers == true && GameCont.loops > 2){
+		if(point_in_circle(GoldSnowTank.x,GoldSnowTank.y,Player.x,Player.y,180) && global.popup_shown._goldsnowtank == false && opt.enemies_mutations == true && GameCont.loops > 2){
 			with(GoldSnowTank){
 				if("police" not in self){
 					leveluped = 1;
@@ -1139,7 +1159,17 @@ if(GameCont.area == 105){
 		hitid = [sprBanditBossIdle,"Jungle Big Bandit"];
 		}
 	}
-	
+
+if(skill_get(11)){
+	with instances_matching(Inspector,"IDPDTurret",1){
+		if("scared" not in self){
+			scared = true;
+			my_health -= my_health * 0.2;
+			maxhealth -= maxhealth * 0.2;
+		}
+	}
+}
+
 with instances_matching(instances_matching_le(Inspector, "my_health", 0), "IDPDTurret", 1){
 	instance_create(x,y,Explosion);
 	}
@@ -1149,6 +1179,7 @@ with instances_matching(Inspector,"IDPDTurret",1){
 	walk = 0;
 	}
 
+//Just in case, i don't know any mods which gives you the possibility to escape the captain office legally (like it's supposed to be escapable) before L3 and which gaves you possibility to eneter HQ on later loops
 if(global.cap_spawned == true && GameCont.area == 106 && GameCont.subarea == 3 && instance_exists(Player) && GameCont.loops == 3 && global.cap_dead == false){
 	wait 5;
 	with(LastIntro){
@@ -1353,12 +1384,12 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 	}
 	
 	if(r4 == 3 && global.tip_shown == false){
-		GenCont.tip = "life is always getting harder...";
+		GenCont.tip = "life is always getting @rharder...@s";
 		global.tip_shown = true;
 	}
 	
 	if(r4 == 4 && global.tip_shown == false){
-		GenCont.tip = "make sure the risk is worth it";
+		GenCont.tip = "make sure the @rrisk@s is worth it";
 		global.tip_shown = true;
 	}
 	
@@ -1393,7 +1424,7 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 	}
 	
 	if(r4 == 11 && global.tip_shown == false){
-		GenCont.tip = "high voltage will kill you";
+		GenCont.tip = "high @bvoltage@s will kill you";
 		global.tip_shown = true;
 	}
 	
@@ -1403,7 +1434,12 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 	}
 	
 	if(r4 == 13 && global.tip_shown == false && GameCont.loops > 2 && opt.death_effects == true){
-		GenCont.tip = "these flowers cause ibs";
+		GenCont.tip = "these @rflowers@s cause @gibs@s";
+		global.tip_shown = true;
+	}
+	
+	if(r4 == 14 && global.tip_shown == false && Player.wep == wep_ultra_shovel && GameCont.loops > 2){
+		GenCont.tip = "swing like belmont";
 		global.tip_shown = true;
 	}
 	
@@ -1453,21 +1489,41 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 	}
 	
 	if(r4 == 23 && global.tip_shown == false && Player.wep == wep_laser_cannon && skill_get(mut_laser_brain) == 1){
-		GenCont.tip = "ama firin' mah lasor. blaaarg!";
+		GenCont.tip = "ama firin' mah @glasor@s. @qblaaarg!@s";
 		global.tip_shown = true;
 	}
 	
 	if(r4 == 24 && global.tip_shown == false && Player.race == "skeleton"){
-		GenCont.tip = "call an ambulance... but not for me!";
+		GenCont.tip = "call an @rambulance@s... but not for me!";
 		global.tip_shown = true;
 	}
 	
-	if(r4 == 14 && global.tip_shown == false && Player.wep == wep_ultra_shovel && GameCont.loops > 2){
-		GenCont.tip = "swing like belmont";
+	if(r4 == 25 && global.tip_shown == false && GameCont.loops > 0){
+		GenCont.tip = "amphibian @oheartburn@s";
 		global.tip_shown = true;
 	}
 	
-	if(r4 > 24 && r4 < 49 && global.tip_shown == false){
+	if(r4 == 26 && global.tip_shown == false && GameCont.loops > 0){
+		GenCont.tip = "a @wbig surprise@s awaits in the @wsnow@s";
+		global.tip_shown = true;
+	}
+	
+	if(r4 == 27 && global.tip_shown == false && GameCont.loops > 0){
+		GenCont.tip = "the @wrats@s are @gmolting@s";
+		global.tip_shown = true;
+	}
+	
+	if(r4 == 28 && global.tip_shown == false && GameCont.loops > 1){
+		GenCont.tip = "emerjency @wcluster@s ejection";
+		global.tip_shown = true;
+	}
+	
+	if(r4 == 29 && global.tip_shown == false && GameCont.loops > 1){
+		GenCont.tip = "spawning season";
+		global.tip_shown = true;
+	}
+	
+	if(r4 > 29 && r4 < 49 && global.tip_shown == false){
 		global.tip_shown = true;
 	}
 	
@@ -1486,7 +1542,7 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 1 && global.tip_shown == false && GameCont.area == 104 && opt.cursed_floor == true){
+	if(r4 > 49 && r5 == 1 && global.tip_shown == false && GameCont.area == 104 && opt.cursed_caves_rework == true){
 		GenCont.tip = "floor here is made out of @p@qc @qu @qr @qs @qe @qs@s";
 		global.tip_shown = true;
 	}
@@ -1531,12 +1587,12 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 1 && global.tip_shown == false && GameCont.area == 103 && GameCont.loops < 3 && GameCont.loops > 0 && opt.l3bouncers == true){
+	if(r4 > 49 && r5 == 1 && global.tip_shown == false && GameCont.area == 103 && GameCont.loops < 3 && GameCont.loops > 0 && opt.enemies_mutations == true){
 		GenCont.tip = "even @wrockets@s are @ygold!@s";
 		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 103 && GameCont.loops > 2 && opt.l3bouncers == true){
+	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 103 && GameCont.loops > 2 && opt.enemies_mutations == true){
 		GenCont.tip = "even @wdisks@s are @ygold?!@s";
 		global.tip_shown = true;
 	}
@@ -1568,6 +1624,11 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 	
 	if(global.tip_shown == false && GameCont.area == 106 && GameCont.subarea == 3 && GameCont.loops < 2){
 		GenCont.tip = "one way ticket";
+		global.tip_shown = true;
+	}
+	
+	if(global.tip_shown == false && global.cap_dead == false && ((GameCont.area == 106 && GameCont.subarea == 3 && GameCont.loops > 1) || (GameCont.area == 0 && GameCont.subarea == 1 && GameCont.loops > 4))){
+		GenCont.tip = "last remote";
 		global.tip_shown = true;
 	}
 }
@@ -1935,6 +1996,9 @@ if(global.abd == true && GameCont.area == 5 && global.sprites_swapped == false &
 	sprite_replace(sprHydrant,"sprHydrant.png",1);
 	sprite_replace(sprHydrantHurt,"sprHydrantHurt.png",3);
 	sprite_replace(sprHydrantDead,"sprHydrantDead.png",3);
+	sprite_replace(sprSnowMan,"sprSnowMan.png",1);
+	sprite_replace(sprSnowManHurt,"sprSnowManHurt.png",3);
+	sprite_replace(sprSnowManDead,"sprSnowManDead.png",3);
 	sprite_replace(sprWind,"sprWind_strip9.png",9);
 	background_color = make_color_rgb(50, 54, 152);
 	BackCont.shadcol = c_black;
@@ -2019,7 +2083,20 @@ if(GameCont.loops > 2 && opt.idpd_mashup == true){
 	}
 }
 
-if(GameCont.loops > 2 && opt.l3bouncers == true){	
+if(GameCont.loops > 0 && opt.enemies_mutations == true){
+
+	if(instance_exists(Gator) || instance_exists(BuffGator)){
+		with (Gator) {
+			gator_tp()
+		}
+		with (BuffGator) {
+			gator_tp()
+		}
+	}
+
+}
+	
+if(GameCont.loops > 2 && opt.enemies_mutations == true){	
 	with instances_matching(JockRocket,"hitid",98){
 		instance_change(Wind,false);
 		with(instance_create(x,y,Disc)){
@@ -2069,7 +2146,7 @@ if(GameCont.loops > 2 && opt.l3bouncers == true){
 
 var r3 = irandom(100);
 
-if(r3 < 26 && global.iattbd == false && opt.add_dark == true && (GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5 || GameCont.area == 101 || GameCont == 103)){
+if(r3 < 26 && global.iattbd == false && opt.add_dark == true && (GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5 || GameCont == 103)){
 	global.iattbd = true;
 	TopCont.darkness = 1;
 	if(GameCont.area == 1){
@@ -2111,10 +2188,20 @@ with (Player){
 	}	
 
 //Makes weapons cursed in cursed crystal caves
-if(GameCont.area == 104 && opt.cursed_floor == true){
+if(GameCont.area == 104 && opt.cursed_caves_rework == true){
 	with(WepPickup){
 		curse = 1;
 	}
+	if(global.ccc == false && GameCont.loops > 0){
+	global.ccc = true;
+	}
+}
+
+if(GameCont.area != 104 && global.ccc == true && (Player.curse > 0 || Player.bcurse > 0 || Player.curse > 0 && Player.bcurse > 0)){
+	global.ccc = false;
+	Player.curse = 0;
+	Player.bcurse = 0;
+	sound_play(sndUncurse);
 }
 				
 with instances_matching(CustomObject,"IDPDRocketCreator",1){
@@ -2155,11 +2242,6 @@ with instances_matching(Inspector,"IDPDTurret",1){
 		
 //Death effects
 if (opt.death_effects == true && GameCont.loops > 0) {
-
-		with instances_matching_le(BuffGator, "my_health", 0) {
-			buff_gator_death();
-			repeat (6) instance_create(x + irandom(20),y + irandom(20),Rad);
-		}
 		
 		with instances_matching_le(JungleFly, "my_health", 0) {
 			instance_create(x,y,MaggotExplosion);
@@ -2555,6 +2637,77 @@ CustomOptions_save();
 // a script that runs when Custom Options detects the menu closing
 // you can save your options file here or in `#define cleanup`
 
+#define gator_tp()
+  if("tele_health" not in self){
+    tele_health = my_health
+  }
+  // check if health becomes lower:
+  if(my_health < tele_health){
+
+    // choose floor:
+    var next_x      = x + random_range(-500, 500),
+        next_y      = y + random_range(-500, 500),
+        next_floor  = instance_nearest(next_x, next_y, Floor);
+		
+    // teleport to floor:
+	repeat(5) with instance_create(x + random_range(-10, 10), y + random_range(-10, 10), CaveSparkle){
+			image_angle = random(360);
+			image_index = 2;
+			image_xscale = random_range(0.5, 1.5);
+			image_blend = choose(make_color_rgb(0, 255, 0), make_color_rgb(255, 0, 255));
+			image_alpha = 0.5;
+			image_speed = 0;
+			depth = other.depth;
+
+			if(fork()){
+				var t = choose(-1, 1);
+				while(instance_exists(self)){
+					y--;
+					image_angle += (t * 5);
+					image_xscale *= 0.95;
+					image_yscale = image_xscale;
+					if(image_xscale < 0.1) instance_destroy();
+					wait 1;
+					}
+				exit;
+				}
+			}
+    x = next_floor.x + 16;
+    y = next_floor.y + 16;
+	sound_play(global.sndGatorTeleport);
+	
+	repeat(5) with instance_create(x + random_range(-10, 10), y + random_range(-10, 10), CaveSparkle){
+				image_angle = random(360);
+				image_index = 2;
+				image_xscale = random_range(0.5, 1.5);
+				image_blend = choose(make_color_rgb(0, 255, 0), make_color_rgb(255, 0, 255));
+				image_alpha = 0.5;
+				image_speed = 0;
+				depth = other.depth;
+
+				if(fork()){
+					var t = choose(-1, 1);
+					while(instance_exists(self)){
+						y--;
+						image_angle += (t * 5);
+						image_xscale *= 0.95;
+						image_yscale = image_xscale;
+						if(image_xscale < 0.1) instance_destroy();
+						wait 1;
+					}
+					exit;
+				}
+			}
+
+    // clear walls around floor to avoid getting stuck in some cases:
+    with(instance_create(x, y, PortalClear)){
+      image_xscale    = 0.3;
+      image_yscale    = 0.3;
+    }
+  }
+  // set health var:
+  tele_health = my_health;
+
 #define enter_to_oasis_step
 if(nexthurt > current_frame){
 	if(sprite_index != spr_hurt) {
@@ -2640,14 +2793,14 @@ if(opt.fix_venus_car == true){
 
 if(opt.popups == true){
 	if(instance_exists(Player)){
-		if(GameCont.area == 3 && GameCont.subarea == 1 && global.popup_shown._oasis == false && opt.cursed_floor == true){
+		if(GameCont.area == 3 && GameCont.subarea == 1 && global.popup_shown._oasis == false){
 			with instance_create(Player.x,Player.y,PopupText) text = "CHECK OUT SPAWN"
 			global.popup_shown._oasis = true;
 		}
 	}
 	
 	if(instance_exists(Player)){
-		if(GameCont.area == 5 && GameCont.subarea == 1 && global.popup_shown._jungle == false && opt.cursed_floor == true){
+		if(GameCont.area == 5 && GameCont.subarea == 1 && global.popup_shown._jungle == false){
 			with instance_create(Player.x,Player.y,PopupText) text = "CHECK OUT SPAWN"
 			global.popup_shown._jungle = true;
 		}
@@ -2657,12 +2810,6 @@ if(opt.popups == true){
 #define idpdtank_death
 with (SnowTankExplode){
 	sprite_index = global.sprIDPDTankExplode;
-	}
-	
-#define buff_gator_death
-with (instance_create(x,y,EFlakBullet)){
-		team = 1;
-		hitid = [sprBuffGatorDead, "Buff Gator"];
 	}
 	
 #define dog_guardian_death
@@ -2906,7 +3053,7 @@ if(GameCont.area != 100){
 	
 if(opt.popups == true){
 	if(instance_exists(Player)){
-		if(GameCont.area == 104 && global.popup_shown._ccc == false && opt.cursed_floor == true){
+		if(GameCont.area == 104 && global.popup_shown._ccc == false && opt.cursed_caves_rework == true){
 			with instance_create(Player.x,Player.y,PopupText) text = "FLOOR IS @p@qC@qU@qR@qS@qE@qD@q!@s"
 			global.popup_shown._ccc = true;
 		}
@@ -3056,6 +3203,9 @@ if(global.abd == false){
 		sprite_restore(sprHydrant);
 		sprite_restore(sprHydrantHurt);
 		sprite_restore(sprHydrantDead);
+		sprite_restore(sprSnowMan);
+		sprite_restore(sprSnowManHurt);
+		sprite_restore(sprSnowManDead);
 		}
 
 
@@ -3225,12 +3375,12 @@ with(Floor){
     // Check if place is free
     if(!place_meeting(x, y, Wall) && !place_meeting(x, y, prop) && !place_meeting(x, y, chestprop) && !place_meeting(x, y, MaggotSpawn) && !place_meeting(x,y,enemy)) continue;
 
-	if((GameCont.area == 106 || GameCont.area == 6) && random(5) < 1 && opt.mode != 4){
+	if((GameCont.area == 106 || GameCont.area == 6) && random(5) < 1 && opt.mode != 4 && point_distance(x,y,Player.x,Player.x) > 14 * 16){
 		instance_create(x,y,PortalClear);
 		with(instance_create(x,y,Inspector)){
 			IDPDTurret = 1;
-			maxhealth = 40;
-			my_health = 40;
+			maxhealth = 40 + (40 / 100 * (GameCont.loops * 5));
+			my_health = 40 + (40 / 100 * (GameCont.loops * 5));
 			spr_idle = global.sprVacuumCleanerIdle;
 			spr_hurt = global.sprVacuumCleanerHurt;
 			spr_dead = global.sprVacuumCleanerDead;
@@ -3248,31 +3398,6 @@ with(Floor){
 			team = 1;
 			}
 		}
-	
-	/*if(GameCont.area == 106 && global.van_spawned == false){
-		var can_spawn_van = true;
-		
-		if(can_spawn_van == true){
-			with(instance_create(x,y,CustomHitme)){
-				mask_index = mskVan;
-				sprite_index = sprVanDeactivated;
-				spr_shadow_y = -8;
-				snd_dead = 343;
-				my_health = 250;
-				maxhealth = 250;
-				spr_idle = sprVanDeactivated;
-				spr_hurt = sprVanHurt;
-				spr_dead = sprVanDead;
-				spr_shadow = 1317;
-				snd_hurt = sndVanHurt;
-				on_destroy = script_ref_create(fake_van_death);
-				on_hurt = script_ref_create(fake_van_hurt);
-				team = 3;
-				size = 7;
-				}
-			global.van_spawned = true;
-			}
-	}*/
 	
 	if(global.cap_spawned == false && GameCont.area == 0 && GameCont.loops == 5 && opt.l5cap == true){
             var can_spawn_cap = true; 

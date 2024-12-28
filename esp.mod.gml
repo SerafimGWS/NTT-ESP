@@ -207,13 +207,9 @@ global.playing_b_theme = false;
 
 global.palace_boss_dead = false;
 
-global.idpdspawn_freak_proc = 34;
-
 global.idpdspawn_chance_rolled = false;
 
 global.vanspawn_chance_rolled = false;
-
-global.idpdspawn_elite_proc = 50;
 
 global.throne2_spawned = false;
 
@@ -226,7 +222,7 @@ global.idpd_noticed_your_weapon = false;
 global.music_for_bosses = false;
 //Is Area Tried to Became Darker
 global.iattbd = false;
-
+//Area Became Dark
 global.abd = false;
 
 global.van_spawned = false;
@@ -463,7 +459,7 @@ if fork() {
 					"text": "Cursed caves rework"
 				},
 				"desc": {
-					"text": "When @rON@s#@wall weapons@s in @p4-?@s will be @pcursed@s#except of which you holding right now#after leaving @yl1+@s @pcursed crystal caves@s#all of your weapons will be @yuncursed@s"
+					"text": "When @rON@s#@wall weapons@s that touch floor in#@p4-?@s will be @pcursed@s#after leaving @yl1+@s @pcursed crystal caves@s#all of your weapons will be @yuncursed@s"
 				}
 			},
 			{
@@ -578,7 +574,7 @@ if fork() {
 					"text": "Death Effects"
 				},
 				"desc": {
-					"text": "When @rON@s#it will enables @weffects@s#which will happen after#@rdeath@s of @wcertain enemies@s#after @wcertain loop@s"
+					"text": "When @rON@s#it will enable @weffects@s#which will happen after#@rdeath@s of @wcertain enemies@s#after @wcertain loop@s"
 				}
 			},
 			{
@@ -588,7 +584,7 @@ if fork() {
 					"text": "No New Parctiles"
 				},
 				"desc": {
-					"text": "When @rON@s#@rdisables@s spawn of @gnew parctiles@s#in @wPalace@s"
+					"text": "When @rON@s#@rdisables@s spawn of @gnew parctiles@s"
 				}
 			},
 			{
@@ -628,7 +624,7 @@ if fork() {
 					"text": "hammerhead time"
 				},
 				"desc": {
-					"text": "When @wYes@s#@wremoves hammerhead@s from#@wavailable@s @gmutations pool@s#gives @whammerhead@s after#@wreaching L1@s#when@wmore@s#@wgives more hammerheads#with each loop@s"
+					"text": "When @wYes@s#@wremoves hammerhead@s from#@wavailable@s @gmutations pool@s#gives @whammerhead@s after#@wreaching L1@s#when @wmore@s#@wgives more hammerheads#with each loop@s"
 				},
 				"values": [0, 1, 2],
 				"display": ["No", "Yes", "More"]
@@ -739,6 +735,12 @@ opt.crown_guardian_help = global.options.crown_guardian_help;
 opt.popups = global.options.popups;
 opt.hammerhead_time = global.options.hammerhead_time;
 opt.fire_explosions = global.options.fire_explosions;
+
+with(Lightning){
+	if(team = 1){
+		damage = 5;
+	}
+}
 
 with (Flame){
 	if(team = 1){
@@ -2123,24 +2125,35 @@ if(GameCont.loops > 2 && opt.enemies_mutations == true){
 		instance_change(LHBouncer,true);
 		speed = 4;
 		team = 1;
+		hitid = 98
 	}
 	
 	with instances_matching(EnemyBullet4,"hitid",17){
 		instance_change(LHBouncer,true);
 		speed = 4;
 		team = 1;
+		hitid = 17;
 	}
 	
 	with instances_matching(EnemyBullet4,"hitid",26){
 		instance_change(LHBouncer,true);
 		speed = 4;
 		team = 1;
+		hitid = 26;
 	}
 	
 	with instances_matching(EnemyBullet4,"hitid",global.SnowSniperHitid){
 		instance_change(LHBouncer,true);
 		speed = 4;
 		team = 1;
+		hitid = global.SnowSniperHitid;
+	}
+	
+	with instances_matching(EnemyBullet4,"hitid",global.JungleSniperHitid){
+		instance_change(LHBouncer,true);
+		speed = 4;
+		team = 1;
+		hitid = global.JungleSniperHitid;
 	}
 }
 
@@ -2197,11 +2210,15 @@ if(GameCont.area == 104 && opt.cursed_caves_rework == true){
 	}
 }
 
-if(GameCont.area != 104 && global.ccc == true && (Player.curse > 0 || Player.bcurse > 0 || Player.curse > 0 && Player.bcurse > 0)){
-	global.ccc = false;
-	Player.curse = 0;
-	Player.bcurse = 0;
-	sound_play(sndUncurse);
+if(GameCont.area != 104 && global.ccc == true){
+	with (Player){
+		if(curse > 0 || bcurse > 0 || (curse > 0 && bcurse > 0)){
+		global.ccc = false;
+		curse = 0;
+		bcurse = 0;
+		sound_play(sndUncurse);
+		}
+	}
 }
 				
 with instances_matching(CustomObject,"IDPDRocketCreator",1){
@@ -2357,13 +2374,6 @@ if (opt.death_effects == true && GameCont.loops > 0) {
 			}
 		}
 		
-		with instances_matching_le(LightningCrystal, "my_health", 0) {
-			lightning_crystal_death();
-			instance_create(x + irandom(20),y + irandom(20),BigRad);
-			instance_create(x + irandom(20),y + irandom(20),Rad);
-			instance_create(x + irandom(20),y + irandom(20),Rad);
-		}
-		
 		with instances_matching_le(Turret, "my_health", 0) {
 			instance_create(x,y,Explosion);
 			repeat (6) instance_create(x + irandom(20),y + irandom(20),Rad);
@@ -2405,6 +2415,13 @@ if (opt.death_effects == true && GameCont.loops > 0) {
 	}
 	
 	if (opt.death_effects == true && GameCont.loops > 3) {
+	
+		with instances_matching_le(LightningCrystal, "my_health", 0) {
+			lightning_crystal_death();
+			instance_create(x + irandom(20),y + irandom(20),BigRad);
+			instance_create(x + irandom(20),y + irandom(20),Rad);
+			instance_create(x + irandom(20),y + irandom(20),Rad);
+		}
 	
 	with instances_matching_le(Necromancer, "my_health", 0) {
 			with(instance_create(x,y,CustomObject)){
@@ -2453,74 +2470,101 @@ if(instance_exists(Nothing2)){
 }
 
 if(opt.idpd_mashup == true){
-//Rolling chance for IDPD Portals to change on elite/freak ones when IDPD Portals exists
-if((GameCont.loops == 2 || GameCont.loops == 3) && instance_exists(IDPDSpawn) && global.idpdspawn_chance_rolled == false){
-	r = irandom(99)
-	global.idpdspawn_chance_rolled = true;
+	if((GameCont.area != 0 && GameCont.loops == 2) || (GameCont.area == 0 && GameCont.loops == 3)){
+
+		if(instance_exists(IDPDSpawn)){
+			with(IDPDSpawn){ 
+				if(random(3) < 1){
+					if("chancerolled" not in self){
+						chancerolled = true;
+						freak = 1;
+					}
+				}
+				else{
+					if("chancerolled" not in self){
+						chancerolled = true;
+					}
+				}
+			}
+		}
+	
+		if(instance_exists(Van)){
+			with(Van){ 
+				if(random(3) < 1){
+					if("chancerolled" not in self){
+						chancerolled = true;
+						freak = 1;
+					}
+				}
+				else{
+					if("chancerolled" not in self){
+						chancerolled = true;
+					}
+				}
+			}
+		}
+	}
+
+	if((GameCont.area != 0 && GameCont.loops == 3) || (GameCont.area == 0 && GameCont.loops == 4)){
+
+		if(instance_exists(IDPDSpawn)){
+			with(IDPDSpawn){ 
+				if(random(2) < 1){
+					if("chancerolled" not in self){
+						chancerolled = true;
+						freak = 0;
+						elite = 1;
+					}
+				}
+				else{
+					if("chancerolled" not in self){
+						chancerolled = true;
+					}
+				}
+			}
+		}
+	
+		if(instance_exists(Van)){
+			with(Van){ 
+				if(random(2) < 1){
+					if("chancerolled" not in self){
+						chancerolled = true;
+						freak = 0;
+					}
+				}
+				else{
+					if("chancerolled" not in self){
+						chancerolled = true;
+					}
+				}
+			}
+		}
+	}
 }
 
-//Unfreezing roll chance
-if((GameCont.loops == 2 || GameCont.loops == 3) && !instance_exists(IDPDSpawn) && global.idpdspawn_chance_rolled == true){
-	global.idpdspawn_chance_rolled = false;
-}	
-
-//Turning IDPD Portals into freak ones
-if(GameCont.loops == 2 && instance_exists(IDPDSpawn) && r < global.idpdspawn_freak_proc){
-	with IDPDSpawn
-	freak = 1
-}
-
-//Rolling chance for Van Portals to change on normal/freak ones when Van Portals exists
-if((GameCont.loops == 2 || GameCont.loops == 3) && instance_exists(VanSpawn) && global.vanspawn_chance_rolled = false){
-	r2 = irandom(99)
-	global.vanspawn_chance_rolled = true;
-}
-
-//Unfreezing roll chance
-if((GameCont.loops == 2 || GameCont.loops == 3) && !instance_exists(VanSpawn) && global.vanspawn_chance_rolled == true){
-	global.vanspawn_chance_rolled = false;
-}
-
-//Turning Van Portals into freak ones
-if(GameCont.loops == 2 && instance_exists(VanSpawn) && r2 < global.idpdspawn_freak_proc){
-	with Van freak = 1
-}
-
-//Turning IDPD Portals into elite ones
-if(GameCont.loops == 3 && instance_exists(IDPDSpawn) && r < global.idpdspawn_elite_proc){
-	with IDPDSpawn freak = 0
-	with IDPDSpawn elite = 1
-}
-
-//Turning Van Portals into normal ones
-if(GameCont.loops == 3 && instance_exists(VanSpawn) && r2 < global.idpdspawn_elite_proc){
-	with Van freak = 0
-}
-}
-
-//QOL thing. When musBossDead playing and next area will be same b theme will play (Desert)
-if ((audio_is_playing(sndPortalLightning1) || audio_is_playing(sndPortalLightning2) || audio_is_playing(sndPortalLightning3) || audio_is_playing(sndPortalLightning4) || audio_is_playing(sndPortalLightning5) || audio_is_playing(sndPortalLightning6) || audio_is_playing(sndPortalLightning7) || audio_is_playing(sndPortalLightning8)) && audio_is_playing(musBossDead) && GameCont.area == 1 && GameCont.subarea > 1){
+//QOL thing. When musBossDead playing and next area will be same b theme will play
+if((audio_is_playing(sndPortalLightning1) || audio_is_playing(sndPortalLightning2) || audio_is_playing(sndPortalLightning3) || audio_is_playing(sndPortalLightning4) || audio_is_playing(sndPortalLightning5) || audio_is_playing(sndPortalLightning6) || audio_is_playing(sndPortalLightning7) || audio_is_playing(sndPortalLightning8)){
+	if (audio_is_playing(musBossDead) && GameCont.area == 1 && GameCont.subarea > 1){
 		sound_play_music(mus1b);
 		global.playing_b_theme = true;
 	}
 
-//QOL thing. When musBossDead playing and next area will be same b theme will play (Scrapyard)	
-if ((audio_is_playing(sndPortalLightning1) || audio_is_playing(sndPortalLightning2) || audio_is_playing(sndPortalLightning3) || audio_is_playing(sndPortalLightning4) || audio_is_playing(sndPortalLightning5) || audio_is_playing(sndPortalLightning6) || audio_is_playing(sndPortalLightning7) || audio_is_playing(sndPortalLightning8)) && audio_is_playing(musBossDead) && GameCont.area == 3 && GameCont.subarea > 1){
+	if (audio_is_playing(musBossDead) && GameCont.area == 3 && GameCont.subarea > 1){
 		sound_play_music(mus3b);
 		global.playing_b_theme = true;
 	}
 
-//QOL thing. When musBossDead playing and next area will be same b theme will play (Winter City)	
-if ((audio_is_playing(sndPortalLightning1) || audio_is_playing(sndPortalLightning2) || audio_is_playing(sndPortalLightning3) || audio_is_playing(sndPortalLightning4) || audio_is_playing(sndPortalLightning5) || audio_is_playing(sndPortalLightning6) || audio_is_playing(sndPortalLightning7) || audio_is_playing(sndPortalLightning8)) && audio_is_playing(musBossDead) && GameCont.area == 5 && GameCont.subarea > 1){
+	if (audio_is_playing(musBossDead) && GameCont.area == 5 && GameCont.subarea > 1){
 		sound_play_music(mus5b);
 		global.playing_b_theme = true;
 	}
 
-//QOL thing. When musBossDead playing and next area will be same b theme will play (Palace)	
-if ((audio_is_playing(sndPortalLightning1) || audio_is_playing(sndPortalLightning2) || audio_is_playing(sndPortalLightning3) || audio_is_playing(sndPortalLightning4) || audio_is_playing(sndPortalLightning5) || audio_is_playing(sndPortalLightning6) || audio_is_playing(sndPortalLightning7) || audio_is_playing(sndPortalLightning8)) && audio_is_playing(musBossDead) && GameCont.area == 7 && GameCont.subarea > 1){
+
+	if (audio_is_playing(musBossDead) && GameCont.area == 7 && GameCont.subarea > 1){
 		sound_play_music(mus7b);
 		global.playing_b_theme = true;
 	}
+}
 
 //Fix of when boss is down in palace, nothing plays instead of musBossDead	
 if (!(audio_is_playing(mus7) || audio_is_playing(mus7b) || audio_is_playing(mus100b) || audio_is_playing(sndBossWin) || audio_is_playing(musBoss1)) && GameCont.area == 7 && instance_exists(Player) && (GameCont.subarea == 1 || GameCont.subarea == 2)){
@@ -3257,7 +3301,7 @@ if(opt.mode == 1){
 	TopCont.fog = sprFog2;
 }
 
-//Resets L5 Cap Spawn on new run
+//Resets on new run
 if(GameCont.kills == 0){
 	global.cap_spawned = false;
 	global.tip_shown = false;

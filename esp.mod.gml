@@ -58,8 +58,8 @@ global.mansion_pool_w = [[0],[0.05,0.025],[0.25,0.15,1,1],[0.75,0.6,1,1,0.5],[1,
 global.cursed_crystals_caves_pool = [[MeleeFake, FireBaller], [MeleeFake, FireBaller, Guardian, ExploGuardian], [MeleeFake, FireBaller, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
 global.cursed_crystals_caves_pool_w = [[1,1],[1,1,1,1],[1,1,1,1,1,0.35]];
 // Jungle
-global.jungle_pool = [[Raven, Gator, Exploder, Car], [Raven, Gator, Exploder, SuperFrog, SuperFireBaller, Guardian, Car], [Raven, Gator, Exploder, SuperFrog, ExploFreak, SuperFireBaller, Guardian, Sniper, ExploGuardian, DogGuardian, Car], [Raven, Gator, Exploder, SuperFrog, ExploFreak, SuperFireBaller, Guardian, Sniper, ExploGuardian, DogGuardian, BanditBoss, Car]];
-global.jungle_pool_w = [[1,1,1,1],[1,1,1,0.4,0.4,0.6,1],[1,1,1,1,1,1,1,1,1,0.5,1],[1,1,1,1,1,1,1,1,1,0.5,0.3,1]];
+global.jungle_pool = [[Raven, Gator, Exploder, Car], [Raven, Gator, Exploder, SuperFrog, SuperFireBaller, ExploFreak, Car], [Raven, Gator, Exploder, SuperFrog, ExploFreak, SuperFireBaller, Guardian, Sniper, ExploGuardian, Car], [Raven, Gator, Exploder, SuperFrog, ExploFreak, SuperFireBaller, Guardian, Sniper, ExploGuardian, DogGuardian, BanditBoss, Car]];
+global.jungle_pool_w = [[1,1,1,1],[1,1,1,0.4,0.4,0.6,1],[1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,0.5,0.3,1]];
 // IDPD palace
 global.IDPD_pool = [[Turret],[Turret, BecomeTurret],[Turret, BecomeTurret, PopoFreak]];
 global.IDPD_pool_w = [[0],[0.25,0.25],[0.5,0.5,0.25]];
@@ -100,8 +100,6 @@ global.all_enemies_pool_w = [[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 global.empty_pool = [[Crab]];
 global.empty_pool_w = [[0]];
 
-global.IDPD_band = [Grunt, EliteGrunt, Shielder, EliteShielder, Inspector, EliteInspector]
-
 // Enemies that spawns near cars
 global.CarVenus_Guards = [Molefish, Molefish, Molefish, Molefish, Molefish, Molefish, Molesarge, Molesarge, Molesarge];
 // Locations where IDPD spawns after location have been cleared by half
@@ -119,8 +117,6 @@ if ("esp_mod_opt" in GameCont) {
 	blood_factor: 2,
     // Enemies factor on location
     enemy_factor: 1,
-    // When you kill (IDPD_spawn_proc)% of area the IDPD will spawn
-    special_clear_proc: 0.5, // global.IDPD_spawn_proc
     // Max loops to try add emenies
     attmpts_to_add_enemies: 15,
     // Guaranteed amount enemies on area
@@ -133,8 +129,6 @@ if ("esp_mod_opt" in GameCont) {
     lilhunter_revenge: true,
     // Fixs Venus car in scrapyard and adds enemies near car
     fix_venus_car: true,
-    // Additional IDPD
-    more_IDPD: true,
     // Adds more crows in jungle
     more_ravens_in_jungle: true,
     // After 3th vaul insted of portal to vault Crown Guards will spawn
@@ -190,8 +184,6 @@ trace("Also look in the options and make your game as comfortable as possible!")
 
 // -----Important----- //
 // THIS IS NOT GAMERULES DONT TOUCH IT! GAME RULES IS "opt"
-// true когда special_clear_proc был активирован
-global.proc_triggered = false;
 // true если LilHunter умрет и заспавнит VanSpawn 
 global.lilhunter_revenged = false;
 // true когда факела превратились в Guardian
@@ -207,10 +199,6 @@ global.playing_b_theme = false;
 
 global.palace_boss_dead = false;
 
-global.idpdspawn_chance_rolled = false;
-
-global.vanspawn_chance_rolled = false;
-
 global.throne2_spawned = false;
 
 global.cap_spawned = false;
@@ -224,8 +212,6 @@ global.music_for_bosses = false;
 global.iattbd = false;
 //Area Became Dark
 global.abd = false;
-
-global.van_spawned = false;
 
 global.horror_taunted = false;
 
@@ -1341,10 +1327,12 @@ if(GameCont.area != 7 && GameCont.area != 5 && opt.no_guards == true){
 	instance_delete(Guardian);
 	instance_delete(ExploGuardian);
 	instance_delete(DogGuardian);
+	instance_delete(GhostGuardian);
 }
 
 if(GameCont.area == 5 && opt.no_guards == true){
 	instance_delete(Guardian);
+	instance_delete(GhostGuardian);
 }
 
 if(GameCont.loops == 1 && opt.mode == 0){
@@ -2543,7 +2531,7 @@ if(opt.idpd_mashup == true){
 }
 
 //QOL thing. When musBossDead playing and next area will be same b theme will play
-if((audio_is_playing(sndPortalLightning1) || audio_is_playing(sndPortalLightning2) || audio_is_playing(sndPortalLightning3) || audio_is_playing(sndPortalLightning4) || audio_is_playing(sndPortalLightning5) || audio_is_playing(sndPortalLightning6) || audio_is_playing(sndPortalLightning7) || audio_is_playing(sndPortalLightning8)){
+if((audio_is_playing(sndPortalLightning1) || audio_is_playing(sndPortalLightning2) || audio_is_playing(sndPortalLightning3) || audio_is_playing(sndPortalLightning4) || audio_is_playing(sndPortalLightning5) || audio_is_playing(sndPortalLightning6) || audio_is_playing(sndPortalLightning7) || audio_is_playing(sndPortalLightning8))){
 	if (audio_is_playing(musBossDead) && GameCont.area == 1 && GameCont.subarea > 1){
 		sound_play_music(mus1b);
 		global.playing_b_theme = true;
@@ -2607,19 +2595,6 @@ with(WantRevivePopoFreak){
 
 GameCont.esp_mod_opt = opt;
 
-// Count how much enemies on location
-global.enemies_on_location = 0;
-
-with(enemy) { // Не нашел в API значения врагов на локации
-    global.enemies_on_location++;
-}
-
-global.enemies_on_location = clamp(global.enemies_on_location,0,global.enemies_on_start);
-//trace(string(global.enemies_on_location)+" / "+ string(global.enemies_on_start)) // Debug
-var proc_enemy = (global.enemies_on_location / global.enemies_on_start);
-if (proc_enemy <= opt.special_clear_proc && !global.proc_triggered && !instance_exists(Portal)){
-    area_proc_cleared();
-}
 // -------------------------------
 
 // Detects when level ends generaion
@@ -3338,22 +3313,6 @@ with(enemy){
     global.enemies_on_start++;
 }
 
-// ----------------------------- //
-
-// ------When location cleared by opt.special_clear_proc (0.5) -------- //
-#define area_proc_cleared
-var IDPD_allowed = false;
-// Check if IDPD can spawn on that location
-for (i=0; i < array_length(global.IDPD_spawn_locations); i++) { 
-    if (global.IDPD_spawn_locations[i] == GameCont.area) IDPD_allowed = true;
-}
-
-if (IDPD_allowed && opt.more_IDPD) {
-    add_IDPD();
-	}
-
-global.proc_triggered = true;
-
 // -----Enemies------ //
 #define add_more_enemies
 if (!instance_exists(Player)) return;
@@ -3494,26 +3453,6 @@ if (opt.more_ravens_in_jungle && GameCont.area == areas.jungle)
 
 if (opt.cursing_enabled && GameCont.crown != crwn_none)
 	curse_c();
-
-#define fake_van_hurt(damage)
-nexthurt = current_frame + 5;
-my_health -= damage;
-sound_play(sndVanHurt);
-image_index = 0;
-if (my_health <= 0) {
-    repeat (3) instance_create(x + random_range(-1, 1), y + random_range(-1, 1), PopoExplosion);
-}
-	
-#define fake_van_death
-repeat(7){
-	instance_create(x + irandom(20),y + irandom(20),BlueFlame)
-	}
-repeat(3){
-	instance_create(x + irandom(20),y + irandom(20),AmmoPickup)
-	}
-with(instance_create(x,y,Corpse)){
-	sprite_index = sprVanDead;
-	}
 	
 #define curse_c
 var curse_chance = opt.evry_cursed_crystal
@@ -3552,16 +3491,6 @@ with(CarVenus){
 }
 
 // -------------- //
-#define add_IDPD
-if (!instance_exists(Player)) return;
-//trace("Calling the police!");
-var needed = (GameCont.loops + 1) * 2;
-
-// Adding IDPD portals
-for (i=0; i < needed; i++) { 
-    instance_create(0,0,IDPDSpawn);
-}
-
 #define chest_replacer
 if (opt.mode == 1){
 	with(AmmoChest){ 

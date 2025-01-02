@@ -102,8 +102,6 @@ global.empty_pool_w = [[0]];
 
 // Enemies that spawns near cars
 global.CarVenus_Guards = [Molefish, Molefish, Molefish, Molefish, Molefish, Molefish, Molesarge, Molesarge, Molesarge];
-// Locations where IDPD spawns after location have been cleared by half
-global.IDPD_spawn_locations = [areas.winter, areas.labs, areas.palace,"city","labs","palace"];
 // Areas/Sub areas where you can find CrownGuardian
 global.crown_guardian_locations = [areas.desert,areas.scrapyard,areas.winter,areas.palace,"coast","trench","hive"];
 global.crown_guardian_sublocation = 2;
@@ -122,7 +120,7 @@ if ("esp_mod_opt" in GameCont) {
     // Guaranteed amount enemies on area
     enemies_guaranteed: 1,
     // Add guaranteed amount enemies on area every loop
-    loop_guranteed_add: 1,
+    loop_guranteed_add: 2,
     // Chance to spawn an enemie
     spawn_chance: 0.5,
     // Van spawn after killing Lil Hunter
@@ -169,7 +167,7 @@ if ("esp_mod_opt" in GameCont) {
 	chest_replacments: true,
 	//Curses all weapons on floor in Cursed Crystal Caves
 	cursed_caves_rework: true,
-	//L3 Bouncers
+	//Enemies mutations - teleports for gators on L1+ and bouncers for snipers, snow tanks and gold snow tanks
 	enemies_mutations: true,
 	//Crown guardian help
 	crown_guardian_help: true,
@@ -179,7 +177,7 @@ if ("esp_mod_opt" in GameCont) {
 };
 
 // -----Commands zone------- //
-trace("Thanks for installing the Extended Spawn Pools 1.7 mod!");
+trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 291924 mod!");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -236,8 +234,16 @@ global.rest_room = false;
 global.wind_left = false;
 
 global.amount_of_crown_guardians = 0;
-
+//Cursed Crystal Caves
 global.ccc = false;
+//Common Enemies Multiplyer
+global.cem = 1;
+//ESP Enemies Multiplier
+global.eem = 1;
+//ESP Level Of Hardness Count
+global.elohc = 1;
+//Sprites Restored In Menu
+global.srim = false;
 
 global.popup_shown = {
 	"_salamander": false,
@@ -658,6 +664,10 @@ global.IDPDTankHitid = [global.sprIDPDTankIdle,"IDPD Tank"];
 // -----Tick------ //
 #define game_start
 
+global.cap_spawned = false;
+global.tip_shown = false;
+global.inner_chance_proc = false;
+global.cap_dead = false;
 global.amount_of_crown_guardians = 0;
 
 global.popup_shown = {
@@ -721,6 +731,142 @@ opt.crown_guardian_help = global.options.crown_guardian_help;
 opt.popups = global.options.popups;
 opt.hammerhead_time = global.options.hammerhead_time;
 opt.fire_explosions = global.options.fire_explosions;
+opt.attmpts_to_add_enemies = 15 * (GameCont.loops + 1);
+
+//We are in a game so sprites after we come back in menu will restore
+if(!instance_exists(MenuGen)){
+	global.srim = false;
+}
+
+//We are in a menu and we need to restore sprites which was replaced
+if(instance_exists(MenuGen) && global.srim == false){
+	sprite_restore(sprBigSkull);
+	sprite_restore(sprBigSkullOpen);
+	sprite_restore(sprBigSkullHurt);
+	sprite_restore(sprBigSkullOpenHurt);
+	sprite_restore(sprBigSkullDead);
+	sprite_restore(sprBonePileIdle);
+	sprite_restore(sprBonePileHurt);
+	sprite_restore(sprBonePileDead);
+	sprite_restore(sprBones);
+	sprite_restore(sprCactus);
+	sprite_restore(sprCactusHurt);
+	sprite_restore(sprCactusDead);
+	sprite_restore(sprCactus2);
+	sprite_restore(sprCactus2Hurt);
+	sprite_restore(sprCactus2Dead);
+	sprite_restore(sprCactus3);
+	sprite_restore(sprCactus3Hurt);
+	sprite_restore(sprCactus3Dead);
+	sprite_restore(sprCactusB);
+	sprite_restore(sprCactusBHurt);
+	sprite_restore(sprCactusBDead);
+	sprite_restore(sprCactusB2);
+	sprite_restore(sprCactusB2Hurt);
+	sprite_restore(sprCactusB2Dead);
+	sprite_restore(sprCactusB3);
+	sprite_restore(sprCactusB3Hurt);
+	sprite_restore(sprCactusB3Dead);
+	sprite_restore(sprDebris1);
+	sprite_restore(sprDesertTopDecal);
+	sprite_restore(sprDetail1);
+	sprite_restore(sprFloor1);
+	sprite_restore(sprFloor1Explo);
+	sprite_restore(sprFloor1B);
+	sprite_restore(sprMSpawnIdle);
+	sprite_restore(sprMSpawnDead);
+	sprite_restore(sprMSpawnHurt);
+	sprite_restore(sprMSpawnChrg);
+	sprite_restore(sprWall1Bot);
+	sprite_restore(sprWall1Out);
+	sprite_restore(sprWall1Top);
+	sprite_restore(sprWall1Trans);
+	sprite_restore(sprWind);
+	sprite_restore(sprTires);
+	sprite_restore(sprTiresDead);
+	sprite_restore(sprTiresHurt);
+	sprite_restore(sprTopDecalScrapyard);
+	sprite_restore(sprFloor3);
+	sprite_restore(sprFloor3B);
+	sprite_restore(sprWall3Out);
+	sprite_restore(sprDetail3);
+	sprite_restore(sprWall3Bot);
+	sprite_restore(sprWall3Trans);
+	sprite_restore(sprWall3Top);
+	sprite_restore(sprFloor3Explo);
+	sprite_restore(sprDebris3);
+	sprite_restore(bak3);
+	sprite_restore(sprCarIdle);
+	sprite_restore(sprCarHurt);
+	sprite_restore(sprCarThrown);
+	sprite_restore(sprSnowBotRedCarIdle);
+	sprite_restore(sprSnowBotRedCarLift);
+	sprite_restore(sprSnowBotRedCarWalk);
+	sprite_restore(sprSnowBotRedCarHurt);
+	sprite_restore(sprSnowBotRedCarThrow);
+	sprite_restore(sprTrap);
+	sprite_restore(sprTrapGameover);
+	sprite_restore(sprTrapScorchMark);
+	sprite_restore(sprRainDrop);
+	sprite_restore(sprRainDropSlowmo);
+	sprite_restore(sprRainSplash);
+	sprite_restore(sprScrapDecal);
+	sprite_restore(sprSodaMachine);
+	sprite_restore(sprStreetLight);
+	sprite_restore(sprIcicle);
+	sprite_restore(sprWall5Trans);
+	sprite_restore(sprTopDecalCity);
+	sprite_restore(sprIceDecal);
+	sprite_restore(sprIcicleDead);
+	sprite_restore(sprIcicleHurt);
+	sprite_restore(sprSodaMachineDead);
+	sprite_restore(sprSodaCan);
+	sprite_restore(sprStreetLightDead);
+	sprite_restore(sprFloor5B);
+	sprite_restore(sprFloor5Explo);
+	sprite_restore(sprFloor5);
+	sprite_restore(sprWall5Out);
+	sprite_restore(sprWall5Top);
+	sprite_restore(sprDebris5);
+	sprite_restore(sprDetail5);
+	sprite_restore(sprWall5Bot);
+	sprite_restore(sprSodaMachineHurt);
+	sprite_restore(sprStreetLightHurt);
+	sprite_restore(sprSnowBotCarLift);
+	sprite_restore(sprFrozenCar);
+	sprite_restore(sprSnowBotCarIdle);
+	sprite_restore(sprSnowBotCarWalk);
+	sprite_restore(sprSnowBotCarHurt);
+	sprite_restore(sprSnowBotCarThrow);
+	sprite_restore(sprFrozenCarThrown);
+	sprite_restore(sprFrozenCarHurt);
+	sprite_restore(sprSnowFlake);
+	sprite_restore(sprHydrant);
+	sprite_restore(sprHydrantHurt);
+	sprite_restore(sprHydrantDead);
+	sprite_restore(sprSnowMan);
+	sprite_restore(sprSnowManHurt);
+	sprite_restore(sprPStat1Idle);
+	sprite_restore(sprPStat2Idle);
+	sprite_restore(sprSnowManDead);
+	sprite_restore(sprPStat2Hurt);
+	sprite_restore(sprPStatDead);
+	sprite_restore(sprSnowManDead);
+	sprite_restore(sprSnowBotRedCarLift);
+	sprite_restore(sprRainDrop);
+	sprite_restore(sprRainDropSlowmo);
+	sprite_restore(sprRainSplash);
+	sprite_restore(sprBanditBossIdle);
+	sprite_restore(sprBanditBossWalk);
+	sprite_restore(sprBanditBossFire);
+	sprite_restore(sprBanditBossTell);
+	sprite_restore(sprBanditBossDash);
+	sprite_restore(sprBanditBossStop);
+	sprite_restore(sprBanditBossHurt);
+	sprite_restore(sprBanditBossDead);
+	sprite_restore(sprBossIntro);	
+	global.srim = true;
+}
 
 with(Lightning){
 	if(team = 1){
@@ -735,11 +881,18 @@ with (Flame){
 }
 
 if(opt.fire_explosions == true){
+	
+	with instances_matching(Grenade,"sprite_index",sprFlare){
+		fireproof = true;
+	}
+	
 	if(instance_exists(Grenade)){
-		with instances_matching(Grenade,"sprite_index",!sprFlare){
-			if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
-				instance_destroy();
-			}	
+		with (Grenade){
+			if("fireproof" not in self){
+				if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
+					instance_destroy();
+				}
+			}		
 		}
 	}
 	if(instance_exists(Rocket)){
@@ -1147,6 +1300,15 @@ if(GameCont.area == 105){
 		hitid = [sprBanditBossIdle,"Jungle Big Bandit"];
 		}
 	}
+
+if(skill_get(12)){
+	with instances_matching(projectile,"newprojectile",true){
+		if("slowed" not in self){
+			slowed = true;
+			speed -= speed * 0.25;
+		}
+	}
+}
 
 if(skill_get(11)){
 	with instances_matching(Inspector,"IDPDTurret",1){
@@ -1637,20 +1799,20 @@ if(opt.mode == 2){
 		global.snowspawn_controller_created = true;
 		}
 
-if(instance_exists(BigMaggot)){
-	with(BigMaggot){
-		alarm1 = -1;
+	if(instance_exists(BigMaggot)){
+		with(BigMaggot){
+			alarm1 = -1;
+		}
 	}
-}
 
-if(audio_is_playing(amb3)){
-	sound_stop(amb3);
-	sound_play_ambient(amb5);
+	if(audio_is_playing(amb3)){
+		sound_stop(amb3);
+		sound_play_ambient(amb5);
 	}
 	
 	with instances_matching(CustomObject,"SSC",1){
 	//Time untile spawn snow flake
-	if("tussf" not in self){
+		if("tussf" not in self){
 				tussf = irandom(10);
 				}
 					tussf -= current_time_scale;
@@ -1834,7 +1996,7 @@ if(GameCont.area == 5 || opt.mode == 2){
 		}
 	}
 	
-if(GameCont.area == 105){
+if(GameCont.area == 105 && opt.mode != 2){
 	with(Sniper){
 		spr_idle = global.sprJungleSniperIdle;
 		spr_walk = global.sprJungleSniperWalk;
@@ -1908,6 +2070,21 @@ if(global.abd == true && GameCont.area == 1 && global.sprites_swapped == false &
 	sprite_replace(sprWall1Top,"sprWall0Top_strip8.png",8);
 	sprite_replace(sprWall1Trans,"sprWall0Trans_strip8.png",8);
 	sprite_replace(sprWind,"sprWind_strip9.png",9);
+	sprite_replace(sprFloor5B,"sprFloor5B.png",8);
+	sprite_replace(sprSnowFlake,"sprSnowFlake.png",3);
+	sprite_replace(sprSnowBotCarLift,"sprSnowBotCarLift.png",4);
+	sprite_replace(sprFrozenCar,"sprFrozenCar.png",1);
+	sprite_replace(sprSnowBotCarIdle,"sprSnowBotCarIdle.png",6);
+	sprite_replace(sprSnowBotCarWalk,"sprSnowBotCarWalk.png",8);
+	sprite_replace(sprSnowBotCarHurt,"sprSnowBotCarHurt.png",3);
+	sprite_replace(sprSnowBotCarThrow,"sprSnowBotCarThrow.png",5);
+	sprite_replace(sprFrozenCarThrown,"sprFrozenCarThrown.png",6);
+	sprite_replace(sprFrozenCarHurt,"sprFrozenCarHurt.png",3);
+	sprite_replace(sprPStat1Idle,"sprPStat1Idle.png",1);
+	sprite_replace(sprPStat1Hurt,"sprPStat1Hurt.png",3);
+	sprite_replace(sprPStat2Idle,"sprPStat2Idle.png",1);
+	sprite_replace(sprPStat2Hurt,"sprPStat2Hurt.png",3);
+	sprite_replace(sprPStatDead,"sprPStatDead.png",3);
 	background_color = make_color_rgb(106, 122, 175);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
@@ -1941,15 +2118,32 @@ if(global.abd == true && GameCont.area == 3 && global.sprites_swapped == false &
 	sprite_replace(sprTrap,"sprTrap.png",1);
 	sprite_replace(sprTrapGameover,"sprTrapGameover.png",1);
 	sprite_replace(sprTrapScorchMark,"sprTrapScorchMark.png",1);
-	sprite_replace(sprRainDrop,"sprRainDrop.png",1);
-	sprite_replace(sprRainDropSlowmo,"sprRainDropSlowmo.png",1);
-	sprite_replace(sprRainSplash,"sprRainSplash.png",3);
 	sprite_replace(sprScrapDecal,"sprScrapDecal.png",2);
 	sprite_replace(sprWind,"sprWind_strip9.png",9);
+	sprite_replace(sprFloor5B,"sprFloor5B.png",8);
+	sprite_replace(sprSnowFlake,"sprSnowFlake.png",3);
+	sprite_replace(sprSnowBotCarLift,"sprSnowBotCarLift.png",4);
+	sprite_replace(sprFrozenCar,"sprFrozenCar.png",1);
+	sprite_replace(sprSnowBotCarIdle,"sprSnowBotCarIdle.png",6);
+	sprite_replace(sprSnowBotCarWalk,"sprSnowBotCarWalk.png",8);
+	sprite_replace(sprSnowBotCarHurt,"sprSnowBotCarHurt.png",3);
+	sprite_replace(sprSnowBotCarThrow,"sprSnowBotCarThrow.png",5);
+	sprite_replace(sprFrozenCarThrown,"sprFrozenCarThrown.png",6);
+	sprite_replace(sprFrozenCarHurt,"sprFrozenCarHurt.png",3);
+	sprite_replace(sprPStat1Idle,"sprPStat1Idle.png",1);
+	sprite_replace(sprPStat1Hurt,"sprPStat1Hurt.png",3);
+	sprite_replace(sprPStat2Idle,"sprPStat2Idle.png",1);
+	sprite_replace(sprPStat2Hurt,"sprPStat2Hurt.png",3);
+	sprite_replace(sprPStatDead,"sprPStatDead.png",3);
 	background_color = make_color_rgb(40, 43, 83);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
 	global.sprites_swapped = true;
+	if(opt.mode != 2){
+		sprite_replace(sprRainDrop,"sprRainDrop.png",1);
+		sprite_replace(sprRainDropSlowmo,"sprRainDropSlowmo.png",1);
+		sprite_replace(sprRainSplash,"sprRainSplash.png",3);
+		}
 	}
 	
 if(global.abd == true && GameCont.area == 5 && global.sprites_swapped == false && instance_exists(BackCont)){
@@ -1990,6 +2184,12 @@ if(global.abd == true && GameCont.area == 5 && global.sprites_swapped == false &
 	sprite_replace(sprSnowManHurt,"sprSnowManHurt.png",3);
 	sprite_replace(sprSnowManDead,"sprSnowManDead.png",3);
 	sprite_replace(sprWind,"sprWind_strip9.png",9);
+	sprite_replace(sprSnowFlake,"sprSnowFlake.png",3);
+	sprite_replace(sprPStat1Idle,"sprPStat1Idle.png",1);
+	sprite_replace(sprPStat1Hurt,"sprPStat1Hurt.png",3);
+	sprite_replace(sprPStat2Idle,"sprPStat2Idle.png",1);
+	sprite_replace(sprPStat2Hurt,"sprPStat2Hurt.png",3);
+	sprite_replace(sprPStatDead,"sprPStatDead.png",3);	
 	background_color = make_color_rgb(50, 54, 152);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
@@ -2067,6 +2267,7 @@ if(GameCont.loops > 2 && opt.idpd_mashup == true){
 	
 	with instances_matching(EnemyBullet4,"hitid",global.IDPDTankHitid){
 		instance_change(IDPDBullet,true);
+		newprojectile = true;
 		speed = 8;
 		team = 1;
 		hitid = global.IDPDTankHitid;
@@ -2090,7 +2291,8 @@ if(GameCont.loops > 2 && opt.enemies_mutations == true){
 	with instances_matching(JockRocket,"hitid",98){
 		instance_change(Wind,false);
 		with(instance_create(x,y,Disc)){
-		sprite_index = sprGoldDisc;
+			newprojectile = true;
+			sprite_index = sprGoldDisc;
 			if(instance_exists(Player)){
 				target = instance_nearest(x,y,Player);
 				}
@@ -2098,26 +2300,28 @@ if(GameCont.loops > 2 && opt.enemies_mutations == true){
 			target = 0;
 			}
 
-	if target > 0{
-		if random(50)<1
-			motion_add(direction+choose(-90,90),3)
-		if speed > random(6)
-			speed = 3
-		motion_add(point_direction(x,y,target.x,target.y),8);
-		image_angle = direction;
-		}
+			if target > 0{
+				if random(50)<1
+				motion_add(direction+choose(-90,90),3)
+			if speed > random(6)
+				speed = 8
+			motion_add(point_direction(x,y,target.x,target.y),8);
+			image_angle = direction;
+			}
 		}
 	}
 	
 	with instances_matching(EnemyBullet4,"hitid",98){
 		instance_change(LHBouncer,true);
+		newprojectile = true;
 		speed = 4;
 		team = 1;
-		hitid = 98
+		hitid = 98;
 	}
 	
 	with instances_matching(EnemyBullet4,"hitid",17){
 		instance_change(LHBouncer,true);
+		newprojectile = true;
 		speed = 4;
 		team = 1;
 		hitid = 17;
@@ -2125,6 +2329,7 @@ if(GameCont.loops > 2 && opt.enemies_mutations == true){
 	
 	with instances_matching(EnemyBullet4,"hitid",26){
 		instance_change(LHBouncer,true);
+		newprojectile = true;
 		speed = 4;
 		team = 1;
 		hitid = 26;
@@ -2132,6 +2337,7 @@ if(GameCont.loops > 2 && opt.enemies_mutations == true){
 	
 	with instances_matching(EnemyBullet4,"hitid",global.SnowSniperHitid){
 		instance_change(LHBouncer,true);
+		newprojectile = true;
 		speed = 4;
 		team = 1;
 		hitid = global.SnowSniperHitid;
@@ -2139,6 +2345,7 @@ if(GameCont.loops > 2 && opt.enemies_mutations == true){
 	
 	with instances_matching(EnemyBullet4,"hitid",global.JungleSniperHitid){
 		instance_change(LHBouncer,true);
+		newprojectile = true;
 		speed = 4;
 		team = 1;
 		hitid = global.JungleSniperHitid;
@@ -2198,6 +2405,7 @@ if(GameCont.area == 104 && opt.cursed_caves_rework == true){
 	}
 }
 
+//Uncurse your weapons after exiting cursed crystal caves on L1+ 
 if(GameCont.area != 104 && global.ccc == true){
 	with (Player){
 		if(curse > 0 || bcurse > 0 || (curse > 0 && bcurse > 0)){
@@ -2216,6 +2424,7 @@ with instances_matching(CustomObject,"IDPDRocketCreator",1){
 				launch -= current_time_scale;
 				if(launch <= 0){
 					with(instance_create(x,y,PopoRocket)){
+						newprojectile = true;
 						hitid = global.IDPDTankHitid;
 						team = 1;
 			
@@ -2230,7 +2439,7 @@ with instances_matching(CustomObject,"IDPDRocketCreator",1){
 						if random(50)<1
 					motion_add(direction+choose(-90,90),3)
 					if speed > random(6)
-						speed = 3
+						speed = 7
 					motion_add(point_direction(x,y,target.x,target.y),7);
 						image_angle = direction;
 					}
@@ -2290,10 +2499,7 @@ if (opt.death_effects == true && GameCont.loops > 0) {
 		
 		with instances_matching_le(TechnoMancer, "my_health", 0) {
 			techno_mancer_death();
-			instance_create(x + irandom(20),y + irandom(20),BigRad);
-			instance_create(x + irandom(20),y + irandom(20),BigRad);
-			instance_create(x + irandom(20),y + irandom(20),BigRad);
-			instance_create(x + irandom(20),y + irandom(20),BigRad);
+			repeat (4) instance_create(x + irandom(20),y + irandom(20),BigRad);
 			repeat (8) instance_create(x + irandom(20),y + irandom(20),Rad);
 			sound_play(sndClusterLauncher);
 		}
@@ -2411,7 +2617,7 @@ if (opt.death_effects == true && GameCont.loops > 0) {
 			instance_create(x + irandom(20),y + irandom(20),Rad);
 		}
 	
-	with instances_matching_le(Necromancer, "my_health", 0) {
+		with instances_matching_le(Necromancer, "my_health", 0) {
 			with(instance_create(x,y,CustomObject)){
 				//Necromancer will revive
 				nwr = 1;
@@ -2420,8 +2626,8 @@ if (opt.death_effects == true && GameCont.loops > 0) {
 		}
 		
 		with(instances_matching(Corpse, "sprite_index", sprNecromancerDead)){
-					speed = 0;
-			}
+			speed = 0;
+		}
 				
 		if(!instance_exists(Portal)){
 			with(instances_matching(CustomObject, "nwr", 1)){
@@ -2868,6 +3074,7 @@ with (instance_create(x,y,Throne2Ball)){
 	
 #define bandit_death
 with (instance_create(x,y,EnemyBullet1)){
+		newprojectile = true;
 		team = 1;
 		if((opt.mode == 0 || opt.mode > 2) && GameCont.area != 5 && GameCont.area != "city"){
 			hitid = [sprBanditDead, "Bandit"];
@@ -2890,7 +3097,7 @@ with (instance_create(x,y,EnemyBullet1)){
 		if random(50)<1
 			motion_add(direction+choose(-90,90),3)
 		if speed > random(6)
-			speed = 3
+			speed = 4
 		motion_add(point_direction(x,y,target.x,target.y),4);
 		image_angle = direction;
 		}
@@ -2899,6 +3106,7 @@ with (instance_create(x,y,EnemyBullet1)){
 	
 #define molefish_death
 with (instance_create(x,y,EnemyBullet1)){
+		newprojectile = true;
 		team = 1;
 		hitid = [sprMolefishDead, "Molefish"];
 //Homing bullets
@@ -2913,7 +3121,7 @@ with (instance_create(x,y,EnemyBullet1)){
 		if random(50)<1
 			motion_add(direction+choose(-90,90),3)
 		if speed > random(6)
-			speed = 3
+			speed = 4
 		motion_add(point_direction(x,y,target.x,target.y),4);
 		image_angle = direction;
 		}
@@ -2923,6 +3131,7 @@ with (instance_create(x,y,EnemyBullet1)){
 
 #define wolf_death
 for(var spread = -17; spread <= 17; spread += 17) with (instance_create(x,y,EnemyBullet1)){
+		newprojectile = true;
 		team = 1;
 		hitid = [sprWolfDead, "Wolf"];
 //Homing bullets
@@ -2937,7 +3146,7 @@ for(var spread = -17; spread <= 17; spread += 17) with (instance_create(x,y,Enem
 		if random(50)<1
 			motion_add(direction+choose(-90,90),3)
 		if speed > random(6)
-			speed = 3
+			speed = 4
 		motion_add(point_direction(x,y,target.x,target.y) + spread,4);
 		image_angle = direction;
 		}
@@ -2945,6 +3154,7 @@ for(var spread = -17; spread <= 17; spread += 17) with (instance_create(x,y,Enem
 	
 #define grunt_death
 with (instance_create(x,y,IDPDBullet)){
+		newprojectile = true;
 		team = 1;
 		hitid = [sprGruntDead, "Grunt"];
 //Homing bullets
@@ -2959,8 +3169,8 @@ with (instance_create(x,y,IDPDBullet)){
 		if random(50)<1
 			motion_add(direction+choose(-90,90),3)
 		if speed > random(6)
-			speed = 3
-		motion_add(point_direction(x,y,target.x,target.y),7);
+			speed = 8
+		motion_add(point_direction(x,y,target.x,target.y),8);
 		image_angle = direction;
 		}
 		
@@ -2968,6 +3178,7 @@ with (instance_create(x,y,IDPDBullet)){
 	
 #define inspector_death
 with (instance_create(x,y,PopoSlug)){
+		newprojectile = true;
 		team = 1;
 		hitid = [sprInspectorDead, "Inspector"];
 //Homing bullets
@@ -2982,8 +3193,8 @@ with (instance_create(x,y,PopoSlug)){
 		if random(50)<1
 			motion_add(direction+choose(-90,90),3)
 		if speed > random(6)
-			speed = 3
-		motion_add(point_direction(x,y,target.x,target.y),15);
+			speed = 16
+		motion_add(point_direction(x,y,target.x,target.y),16);
 		image_angle = direction;
 		}
 		
@@ -2991,6 +3202,7 @@ with (instance_create(x,y,PopoSlug)){
 
 #define molesarge_death
 for(var spread2 = -12; spread2 <= 12; spread2 += 6) with (instance_create(x,y,EnemyBullet3)){
+		newprojectile = true;
 		team = 1;
 		hitid = [sprMolesargeDead, "Molesarge"];
 //Homing bullets
@@ -3005,8 +3217,8 @@ for(var spread2 = -12; spread2 <= 12; spread2 += 6) with (instance_create(x,y,En
 		if random(50)<1
 			motion_add(direction+choose(-90,90),3)
 		if speed > random(6)
-			speed = 3
-		motion_add(point_direction(x,y,target.x,target.y) + spread2 * 1.75,12);
+			speed = 10
+		motion_add(point_direction(x,y,target.x,target.y) + spread2 * 1.75,10);
 		image_angle = direction;
 		}
 	}	
@@ -3118,114 +3330,119 @@ if(opt.mode == 2){
 }
 
 if(global.abd == false){
-		sprite_restore(sprBigSkull);
-		sprite_restore(sprBigSkullOpen);
-		sprite_restore(sprBigSkullHurt);
-		sprite_restore(sprBigSkullOpenHurt);
-		sprite_restore(sprBigSkullDead);
-		sprite_restore(sprBonePileIdle);
-		sprite_restore(sprBonePileHurt);
-		sprite_restore(sprBonePileDead);
-		sprite_restore(sprBones);
-		sprite_restore(sprCactus);
-		sprite_restore(sprCactusHurt);
-		sprite_restore(sprCactusDead);
-		sprite_restore(sprCactus2);
-		sprite_restore(sprCactus2Hurt);
-		sprite_restore(sprCactus2Dead);
-		sprite_restore(sprCactus3);
-		sprite_restore(sprCactus3Hurt);
-		sprite_restore(sprCactus3Dead);
-		sprite_restore(sprCactusB);
-		sprite_restore(sprCactusBHurt);
-		sprite_restore(sprCactusBDead);
-		sprite_restore(sprCactusB2);
-		sprite_restore(sprCactusB2Hurt);
-		sprite_restore(sprCactusB2Dead);
-		sprite_restore(sprCactusB3);
-		sprite_restore(sprCactusB3Hurt);
-		sprite_restore(sprCactusB3Dead);
-		sprite_restore(sprDebris1);
-		sprite_restore(sprDesertTopDecal);
-		sprite_restore(sprDetail1);
-		sprite_restore(sprFloor1);
-		sprite_restore(sprFloor1Explo);
-		sprite_restore(sprFloor1B);
-		sprite_restore(sprMSpawnIdle);
-		sprite_restore(sprMSpawnDead);
-		sprite_restore(sprMSpawnHurt);
-		sprite_restore(sprMSpawnChrg);
-		sprite_restore(sprWall1Bot);
-		sprite_restore(sprWall1Out);
-		sprite_restore(sprWall1Top);
-		sprite_restore(sprWall1Trans);
-		sprite_restore(sprWind);
-		sprite_restore(sprTires);
-		sprite_restore(sprTiresDead);
-		sprite_restore(sprTiresHurt);
-		sprite_restore(sprTopDecalScrapyard);
-		sprite_restore(sprFloor3);
-		sprite_restore(sprFloor3B);
-		sprite_restore(sprWall3Out);
-		sprite_restore(sprDetail3);
-		sprite_restore(sprWall3Bot);
-		sprite_restore(sprWall3Trans);
-		sprite_restore(sprWall3Top);
-		sprite_restore(sprFloor3Explo);
-		sprite_restore(sprDebris3);
-		sprite_restore(bak3);
-		sprite_restore(sprCarIdle);
-		sprite_restore(sprCarHurt);
-		sprite_restore(sprCarThrown);
-		sprite_restore(sprSnowBotRedCarIdle);
-		sprite_restore(sprSnowBotRedCarLift);
-		sprite_restore(sprSnowBotRedCarWalk);
-		sprite_restore(sprSnowBotRedCarHurt);
-		sprite_restore(sprSnowBotRedCarThrow);
-		sprite_restore(sprTrap);
-		sprite_restore(sprTrapGameover);
-		sprite_restore(sprTrapScorchMark);
-		sprite_restore(sprRainDrop);
-		sprite_restore(sprRainDropSlowmo);
-		sprite_restore(sprRainSplash);
-		sprite_restore(sprScrapDecal);
-		sprite_restore(sprSodaMachine);
-		sprite_restore(sprStreetLight);
-		sprite_restore(sprIcicle);
-		sprite_restore(sprWall5Trans);
-		sprite_restore(sprTopDecalCity);
-		sprite_restore(sprIceDecal);
-		sprite_restore(sprIcicleDead);
-		sprite_restore(sprIcicleHurt);
-		sprite_restore(sprSodaMachineDead);
-		sprite_restore(sprSodaCan);
-		sprite_restore(sprStreetLightDead);
-		sprite_restore(sprFloor5B);
-		sprite_restore(sprFloor5Explo);
-		sprite_restore(sprFloor5);
-		sprite_restore(sprWall5Out);
-		sprite_restore(sprWall5Top);
-		sprite_restore(sprDebris5);
-		sprite_restore(sprDetail5);
-		sprite_restore(sprWall5Bot);
-		sprite_restore(sprSodaMachineHurt);
-		sprite_restore(sprStreetLightHurt);
-		sprite_restore(sprSnowBotCarLift);
-		sprite_restore(sprFrozenCar);
-		sprite_restore(sprSnowBotCarIdle);
-		sprite_restore(sprSnowBotCarWalk);
-		sprite_restore(sprSnowBotCarHurt);
-		sprite_restore(sprSnowBotCarThrow);
-		sprite_restore(sprFrozenCarThrown);
-		sprite_restore(sprFrozenCarHurt);
-		sprite_restore(sprSnowFlake);
-		sprite_restore(sprHydrant);
-		sprite_restore(sprHydrantHurt);
-		sprite_restore(sprHydrantDead);
-		sprite_restore(sprSnowMan);
-		sprite_restore(sprSnowManHurt);
-		sprite_restore(sprSnowManDead);
-		}
+	sprite_restore(sprBigSkull);
+	sprite_restore(sprBigSkullOpen);
+	sprite_restore(sprBigSkullHurt);
+	sprite_restore(sprBigSkullOpenHurt);
+	sprite_restore(sprBigSkullDead);
+	sprite_restore(sprBonePileIdle);
+	sprite_restore(sprBonePileHurt);
+	sprite_restore(sprBonePileDead);
+	sprite_restore(sprBones);
+	sprite_restore(sprCactus);
+	sprite_restore(sprCactusHurt);
+	sprite_restore(sprCactusDead);
+	sprite_restore(sprCactus2);
+	sprite_restore(sprCactus2Hurt);
+	sprite_restore(sprCactus2Dead);
+	sprite_restore(sprCactus3);
+	sprite_restore(sprCactus3Hurt);
+	sprite_restore(sprCactus3Dead);
+	sprite_restore(sprCactusB);
+	sprite_restore(sprCactusBHurt);
+	sprite_restore(sprCactusBDead);
+	sprite_restore(sprCactusB2);
+	sprite_restore(sprCactusB2Hurt);
+	sprite_restore(sprCactusB2Dead);
+	sprite_restore(sprCactusB3);
+	sprite_restore(sprCactusB3Hurt);
+	sprite_restore(sprCactusB3Dead);
+	sprite_restore(sprDebris1);
+	sprite_restore(sprDesertTopDecal);
+	sprite_restore(sprDetail1);
+	sprite_restore(sprFloor1);
+	sprite_restore(sprFloor1Explo);
+	sprite_restore(sprFloor1B);
+	sprite_restore(sprMSpawnIdle);
+	sprite_restore(sprMSpawnDead);
+	sprite_restore(sprMSpawnHurt);
+	sprite_restore(sprMSpawnChrg);
+	sprite_restore(sprWall1Bot);
+	sprite_restore(sprWall1Out);
+	sprite_restore(sprWall1Top);
+	sprite_restore(sprWall1Trans);
+	sprite_restore(sprWind);
+	sprite_restore(sprTires);
+	sprite_restore(sprTiresDead);
+	sprite_restore(sprTiresHurt);
+	sprite_restore(sprTopDecalScrapyard);
+	sprite_restore(sprFloor3);
+	sprite_restore(sprFloor3B);
+	sprite_restore(sprWall3Out);
+	sprite_restore(sprDetail3);
+	sprite_restore(sprWall3Bot);
+	sprite_restore(sprWall3Trans);
+	sprite_restore(sprWall3Top);
+	sprite_restore(sprFloor3Explo);
+	sprite_restore(sprDebris3);
+	sprite_restore(bak3);
+	sprite_restore(sprCarIdle);
+	sprite_restore(sprCarHurt);
+	sprite_restore(sprCarThrown);
+	sprite_restore(sprSnowBotRedCarIdle);
+	sprite_restore(sprSnowBotRedCarLift);
+	sprite_restore(sprSnowBotRedCarWalk);
+	sprite_restore(sprSnowBotRedCarHurt);
+	sprite_restore(sprSnowBotRedCarThrow);
+	sprite_restore(sprTrap);
+	sprite_restore(sprTrapGameover);
+	sprite_restore(sprTrapScorchMark);
+	sprite_restore(sprRainDrop);
+	sprite_restore(sprRainDropSlowmo);
+	sprite_restore(sprRainSplash);
+	sprite_restore(sprScrapDecal);
+	sprite_restore(sprSodaMachine);
+	sprite_restore(sprStreetLight);
+	sprite_restore(sprIcicle);
+	sprite_restore(sprWall5Trans);
+	sprite_restore(sprTopDecalCity);
+	sprite_restore(sprIceDecal);
+	sprite_restore(sprIcicleDead);
+	sprite_restore(sprIcicleHurt);
+	sprite_restore(sprSodaMachineDead);
+	sprite_restore(sprSodaCan);
+	sprite_restore(sprStreetLightDead);
+	sprite_restore(sprFloor5B);
+	sprite_restore(sprFloor5Explo);
+	sprite_restore(sprFloor5);
+	sprite_restore(sprWall5Out);
+	sprite_restore(sprWall5Top);
+	sprite_restore(sprDebris5);
+	sprite_restore(sprDetail5);
+	sprite_restore(sprWall5Bot);
+	sprite_restore(sprSodaMachineHurt);
+	sprite_restore(sprStreetLightHurt);
+	sprite_restore(sprSnowBotCarLift);
+	sprite_restore(sprFrozenCar);
+	sprite_restore(sprSnowBotCarIdle);
+	sprite_restore(sprSnowBotCarWalk);
+	sprite_restore(sprSnowBotCarHurt);
+	sprite_restore(sprSnowBotCarThrow);
+	sprite_restore(sprFrozenCarThrown);
+	sprite_restore(sprFrozenCarHurt);
+	sprite_restore(sprSnowFlake);
+	sprite_restore(sprHydrant);
+	sprite_restore(sprHydrantHurt);
+	sprite_restore(sprHydrantDead);
+	sprite_restore(sprSnowMan);
+	sprite_restore(sprSnowManHurt);
+	sprite_restore(sprPStat1Idle);
+	sprite_restore(sprPStat2Idle);
+	sprite_restore(sprSnowManDead);
+	sprite_restore(sprPStat2Hurt);
+	sprite_restore(sprPStatDead);
+	sprite_restore(sprSnowManDead);
+	}
 
 
 if(Player.my_health == 1 && GameCont.area == 106 && GameCont.subarea == 1){
@@ -3274,14 +3491,6 @@ if(opt.IDPD_seek == 1 && GameCont.area == 106){
 
 if(opt.mode == 1){
 	TopCont.fog = sprFog2;
-}
-
-//Resets on new run
-if(GameCont.kills == 0){
-	global.cap_spawned = false;
-	global.tip_shown = false;
-	global.inner_chance_proc = false;
-	global.cap_dead = false;
 }
 
 //Plays sound on halloween mode

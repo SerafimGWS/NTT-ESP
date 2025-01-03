@@ -2848,11 +2848,9 @@ if(instance_exists(GenCont) && !global.GenCont_exists){
 	global.TempHard = GameCont.hard;
 	if(global.cem >= 1){
 		GameCont.hard += global.TempHard * (global.cem - 1);
-		trace(GameCont.hard);
 	}
 	else{
 		GameCont.hard = global.TempHard * global.cem + 1;
-		trace(GameCont.hard);
 	}
 }
 
@@ -2861,11 +2859,9 @@ if(!instance_exists(GenCont) && global.GenCont_exists){
     global.GenCont_exists = false;
 	if(global.cem >= 1){
 		GameCont.hard -= global.TempHard * (global.cem - 1);
-		trace(GameCont.hard);
 	}
 	else{
 		GameCont.hard = global.TempHard;
-		trace(GameCont.hard);
 	}
 }
 // -------------------------------

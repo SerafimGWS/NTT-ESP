@@ -112,7 +112,7 @@ if ("esp_mod_opt" in GameCont) {
 	opt = GameCont.esp_mod_opt;
 } else opt = {
     // Blood crown factor
-	blood_factor: 2,
+	blood_factor: 1.5,
     // Enemies factor on location
     enemy_factor: 1,
     // Max loops to try add emenies
@@ -121,8 +121,8 @@ if ("esp_mod_opt" in GameCont) {
     enemies_guaranteed: 1,
     // Add guaranteed amount enemies on area every loop
     loop_guranteed_add: 2,
-    // Chance to spawn an enemie
-    spawn_chance: 0.5,
+    //
+    chance_to_not_spawn: 50,
     // Van spawn after killing Lil Hunter
     lilhunter_revenge: true,
     // Fixs Venus car in scrapyard and adds enemies near car
@@ -177,7 +177,7 @@ if ("esp_mod_opt" in GameCont) {
 };
 
 // -----Commands zone------- //
-trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 291924 mod!");
+trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 020125 mod!");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -241,9 +241,10 @@ global.cem = 1;
 //ESP Enemies Multiplier
 global.eem = 1;
 //ESP Level Of Hardness Count
-global.elohc = 1;
+global.factor = 1;
 //Sprites Restored In Menu
 global.srim = false;
+global.TempHard = 0;
 
 global.popup_shown = {
 	"_salamander": false,
@@ -360,7 +361,9 @@ global.options = {
 	"enemies_mutations": true,
 	"crown_guardian_help": true,
 	"popups": true,
-	"idpd_seek": 1, // cycles can have anything as long as it's an item in their array	
+	"idpd_seek": 1,
+	"common_difficulty_multiplier": 0.5,
+	"esp_difficulty_multiplier": 0.5,
 };
 
 global.loaded = false;
@@ -451,29 +454,36 @@ if fork() {
 					"text": "Cursed caves rework"
 				},
 				"desc": {
-					"text": "When @rON@s#@wall weapons@s that touch floor in#@p4-?@s will be @pcursed@s#after leaving @yl1+@s @pcursed crystal caves@s#all of your weapons will be @yuncursed@s"
+					"text": "When @rON@s#@wall weapons@s that touch floor in#@p4-?@s will be @pcursed@s#after leaving @yl1+@s @pcursed crystal caves@s#all curses will be @ylifted@s"
 				}
 			},
 			{
-				"option": "nes",
-				"kind": "bool",
+				"option": "mode",
+				"kind": "choice",
 				"name": {
-					"text": "No Early Shielders"
+					"text": "special mode"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wreplace all@s @bshielders@s#with @binspectors@s until you pass#@w10 stages@s"
-				}
+					"text": "When @wNO@s#no special modes will be enabled#when @phalloween@s (1)#@wnormal floor@s will be covered in @wcobweb@s#@wenables@s it's @wown spawnpool@s for @wall areas@s#when @bcar throw@s (2)#@wfloor@s will be covered with @bice@s#@wenables@s it's @wown spawnpool@s for @wall areas@s#when @rnuclear casino@s (3)#@wenables@s @wspawnpool@s with @rall enemies@s#with @wsome exceptions@s#when @wno new enemies@s (4)#@wno new enemies@s will spawn"
+				},
+				"values": [0, 1, 2, 3, 4],
+				"display": ["No", "1", "2", "3", "4"]
 			},
 			{
-				"option": "piov",
+				"option": "chest_replacments",
 				"kind": "bool",
 				"name": {
-					"text": "careful IDPD in labs"
+					"text": "Chest Replacments"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wreplace all@s @bvans@s with#@b4 idpd portals@s in @wLabs@s"
+					"text": "When @rON@s#it will @wreplace some chests@s#@ypizza@s#@wammo chest@s-@ypizza chest@s#@bwinter city@s#@wammo chest@s - @bIDPD Chests@s# in @plabs@s#@wammo chest@s - @wmimic@s#@rhealth chest@s - @rsuper mimic@s#in @bHQ@s#@wammo chests@s - @bIDPD chests@s#@grad chests@s - @rhealth chests@s#at @pHalloween@s#@wammo chests@s - @wmimics@s#@rhealth chests@s - @rsuper mimics@s,#@grad chests@s - @grad maggot chests@s#if @bcar throw@s is enabled#@wammo chests@s - @ypresents chests@s"
 				}
-			},
+			},			
+		]
+	});
+	
+	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page2", {
+		"options": [
 			{
 				"option": "diropf",
 				"kind": "bool",
@@ -504,11 +514,6 @@ if fork() {
 					"text": "When @rON@s#@rfire@s when @wcontacts@s with#@wany@s @rexplosive projectile@s#destroys the projectile"
 				}
 			},
-		]
-	});
-	
-	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page2", {
-		"options": [
 			{
 				"option": "no_new_tips",
 				"kind": "bool",
@@ -540,16 +545,6 @@ if fork() {
 				}
 			},
 			{
-				"option": "l5cap",
-				"kind": "bool",
-				"name": {
-					"text": "L5 Captain"
-				},
-				"desc": {
-					"text": "When @rON@s#you will @rfight@s the @bCaptain@s#before @gThorne 2@s on @w0-1 L5@s"
-				}
-			},
-			{
 				"option": "enemies_mutations",
 				"kind": "bool",
 				"name": {
@@ -560,15 +555,33 @@ if fork() {
 				}
 			},
 			{
-				"option": "death_effects",
+				"option": "idpd_mashup",
 				"kind": "bool",
 				"name": {
-					"text": "Death Effects"
+					"text": "IDPD Mashup"
 				},
 				"desc": {
-					"text": "When @rON@s#it will enable @weffects@s#which will happen after#@rdeath@s of @wcertain enemies@s#after @wcertain loop@s"
+					"text": "When @rON@s#@yL2@s: @w1/3@s @bportals@s and @bvans@s#will contain @bpopo freaks@s#@gL3@s: @w1/2@s @bportals@s and @bvans@s#will contain @yelites@s#P.S. Vans on L3 can also contain#non elite IDPD#because i can't control#if van will contain elites#@rL3+@s:@w1/3@s @bportals@s#will contain @bIDPD tanks@s"
 				}
+			},			
+			{
+				"option": "idpd_seek",
+				"kind": "choice",
+				"name": {
+					"text": "IDPD Seek"
+				},
+				"desc": {
+					"text": "Switch between IDPD Seek modes.#@gNo@s# No Addinational @bIDPD@s. #@yYes@s# Adds more @bIDPD@s to #@wSnow Town@s, @wLabs@s and @wPalace@s. #@rMore@s# Adds even more @bIDPD@s to #@wSnow Town@s and @wPalace@s#+ visiting @bHQ@s #or having a @pcrown@s #or killing @bcap@s #will add addinational @bIDPD@s"
+				},
+				"values": [0, 1, 2],
+				"display": ["No", "Yes", "More"]
 			},
+		]
+	});
+			
+	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page3", {
+		"reference": script_ref_create(draw_back_button),
+		"options": [
 			{
 				"option": "no_new_parcticles",
 				"kind": "bool",
@@ -590,23 +603,23 @@ if fork() {
 				}
 			},
 			{
-				"option": "idpd_mashup",
+				"option": "l5cap",
 				"kind": "bool",
 				"name": {
-					"text": "IDPD Mashup"
+					"text": "L5 Captain"
 				},
 				"desc": {
-					"text": "When @rON@s#@yL2@s: @w1/3@s @bportals@s and @bvans@s#will contain @bpopo freaks@s#@gL3@s: @w1/2@s @bportals@s and @bvans@s#will contain @yelites@s#P.S. Vans on L3 can also contain#non elite IDPD#because i can't control#if van will contain elites#@rL3+@s:@w1/3@s @bportals@s#will contain @bIDPD tanks@s"
+					"text": "When @rON@s#you will @rfight@s the @bCaptain@s#before @gThorne 2@s on @w0-1 L5@s"
 				}
 			},
 			{
-				"option": "chest_replacments",
+				"option": "nes",
 				"kind": "bool",
 				"name": {
-					"text": "Chest Replacments"
+					"text": "No Early Shielders"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wreplace some chests@s#@ypizza@s#@wammo chest@s-@ypizza chest@s#@bwinter city@s#@wammo chest@s - @bIDPD Chests@s# in @plabs@s#@wammo chest@s - @wmimic@s#@rhealth chest@s - @rsuper mimic@s#in @bHQ@s#@wammo chests@s - @bIDPD chests@s#@grad chests@s - @rhealth chests@s#at @pHalloween@s#@wammo chests@s - @wmimics@s#@rhealth chests@s - @rsuper mimics@s,#@grad chests@s - @grad maggot chests@s#if @bcar throw@s is enabled#@wammo chests@s - @ypresents chests@s"
+					"text": "When @rON@s#it will @wreplace all@s @bshielders@s#with @binspectors@s until you pass#@w10 stages@s"
 				}
 			},
 			{
@@ -622,35 +635,58 @@ if fork() {
 				"display": ["No", "Yes", "More"]
 			},
 			{
-				"option": "mode",
-				"kind": "choice",
+				"option": "piov",
+				"kind": "bool",
 				"name": {
-					"text": "special mode"
+					"text": "careful IDPD in labs"
 				},
 				"desc": {
-					"text": "When @wNO@s#no special modes will be enabled#when @phalloween@s (1)#@wnormal floor@s will became a @wcobweb@s#@wenables@s his @wown spawnpool@s fol @wall areas@s#when @bcar throw@s (2)#@wfloor@s will be covered with @bice@s#@wenables@s his @wown spawnpool@s for @wall areas@s#when @rall enemies@s (3)#@wenables@s @wspawnpool@s with @rall enemies@s#with @wsome execptions@s#when @wno new enemies@s (4)#@wno new enemies@s will spawn"
-				},
-				"values": [0, 1, 2, 3, 4],
-				"display": ["No", "1", "2", "3", "4"]
+					"text": "When @rON@s#it will @wreplace all@s @bvans@s with#@b4 idpd portals@s in @wLabs@s"
+				}
 			},
 			{
-				"option": "idpd_seek",
-				"kind": "choice",
+				"option": "death_effects",
+				"kind": "bool",
 				"name": {
-					"text": "IDPD Seek"
+					"text": "Death Effects"
 				},
 				"desc": {
-					"text": "Switch between IDPD Seek modes.#@gNo@s# No Addinational @bIDPD@s. #@yYes@s# Adds more @bIDPD@s to #@wSnow Town@s, @wLabs@s and @wPalace@s. #@rMore@s# Adds even more @bIDPD@s to #@wSnow Town@s and @wPalace@s#+ visiting @bHQ@s #or having a @pcrown@s #or killing @bcap@s #will add addinational @bIDPD@s"
+					"text": "When @rON@s#it will enable @weffects@s#which will happen after#@rdeath@s of @wcertain enemies@s#after @wcertain loop@s"
+				}
+			},
+			{
+				"option": "common_difficulty_multiplier",
+				"kind": "slider",
+				"name": {
+					"text": "rdm"
 				},
-				"values": [0, 1, 2],
-				"display": ["No", "Yes", "More"]
+				"desc": {
+					"text": "rdm - @wregular@s @rdifficulty@s @ymultiplier@s#set multiplier from 0.2 to 2"
+				},
+				"format": {
+					"display_multiplier": 2
+				}
+			},
+			{
+				"option": "esp_difficulty_multiplier",
+				"kind": "slider",
+				"name": {
+					"text": "edm"
+				},
+				"desc": {
+					"text": "edm - @besp@s @rdifficulty@s @ymultiplier@s#set multiplier from 0.2 to 2"
+				},
+				"format": {
+					"display_multiplier": 2
+				}
 			}
 		]
 	});
 	
-	call(scr.option_set_mod_display_name, mod_current_type, mod_current, "  ESP  #OPTIONS");
-	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page", "CONFIG");
-	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page2", "CONFIG");
+	call(scr.option_set_mod_display_name, mod_current_type, mod_current, "   ESP#SETTINGS");
+	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page", "CONFIG PAGE I");
+	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page2", "CONFIG PAGE II");
+	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page3", "CONFIG PAGE III");
 	
 	exit;
 }
@@ -669,6 +705,7 @@ global.tip_shown = false;
 global.inner_chance_proc = false;
 global.cap_dead = false;
 global.amount_of_crown_guardians = 0;
+global.factor = GameCont.hard;
 
 global.popup_shown = {
 	"_salamander": false,
@@ -732,6 +769,8 @@ opt.popups = global.options.popups;
 opt.hammerhead_time = global.options.hammerhead_time;
 opt.fire_explosions = global.options.fire_explosions;
 opt.attmpts_to_add_enemies = 15 * (GameCont.loops + 1);
+global.cem = global.options.common_difficulty_multiplier * 2;
+global.eem = global.options.esp_difficulty_multiplier * 2;
 
 //We are in a game so sprites after we come back in menu will restore
 if(!instance_exists(MenuGen)){
@@ -1651,7 +1690,7 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 	}
 	
 	if(r4 == 25 && global.tip_shown == false && GameCont.loops > 0){
-		GenCont.tip = "amphibian @oheartburn@s";
+		GenCont.tip = "amphibian @yheartburn@s";
 		global.tip_shown = true;
 	}
 	
@@ -2806,11 +2845,28 @@ GameCont.esp_mod_opt = opt;
 // Detects when level ends generaion
 if(instance_exists(GenCont) && !global.GenCont_exists){
     global.GenCont_exists = true;
+	global.TempHard = GameCont.hard;
+	if(global.cem >= 1){
+		GameCont.hard += global.TempHard * (global.cem - 1);
+		trace(GameCont.hard);
+	}
+	else{
+		GameCont.hard = global.TempHard * global.cem + 1;
+		trace(GameCont.hard);
+	}
 }
 
 if(!instance_exists(GenCont) && global.GenCont_exists){
     area_gen_ends();
     global.GenCont_exists = false;
+	if(global.cem >= 1){
+		GameCont.hard -= global.TempHard * (global.cem - 1);
+		trace(GameCont.hard);
+	}
+	else{
+		GameCont.hard = global.TempHard;
+		trace(GameCont.hard);
+	}
 }
 // -------------------------------
 
@@ -2838,6 +2894,133 @@ if(instance_exists(LilHunterDie) && !global.lilhunter_revenged && opt.lilhunter_
 }
 
 #define cleanup
+
+sprite_restore(sprBigSkull);
+sprite_restore(sprBigSkullOpen);
+sprite_restore(sprBigSkullHurt);
+sprite_restore(sprBigSkullOpenHurt);
+sprite_restore(sprBigSkullDead);
+sprite_restore(sprBonePileIdle);
+sprite_restore(sprBonePileHurt);
+sprite_restore(sprBonePileDead);
+sprite_restore(sprBones);
+sprite_restore(sprCactus);
+sprite_restore(sprCactusHurt);
+sprite_restore(sprCactusDead);
+sprite_restore(sprCactus2);
+sprite_restore(sprCactus2Hurt);
+sprite_restore(sprCactus2Dead);
+sprite_restore(sprCactus3);
+sprite_restore(sprCactus3Hurt);
+sprite_restore(sprCactus3Dead);
+sprite_restore(sprCactusB);
+sprite_restore(sprCactusBHurt);
+sprite_restore(sprCactusBDead);
+sprite_restore(sprCactusB2);
+sprite_restore(sprCactusB2Hurt);
+sprite_restore(sprCactusB2Dead);
+sprite_restore(sprCactusB3);
+sprite_restore(sprCactusB3Hurt);
+sprite_restore(sprCactusB3Dead);
+sprite_restore(sprDebris1);
+sprite_restore(sprDesertTopDecal);
+sprite_restore(sprDetail1);
+sprite_restore(sprFloor1);
+sprite_restore(sprFloor1Explo);
+sprite_restore(sprFloor1B);
+sprite_restore(sprMSpawnIdle);
+sprite_restore(sprMSpawnDead);
+sprite_restore(sprMSpawnHurt);
+sprite_restore(sprMSpawnChrg);
+sprite_restore(sprWall1Bot);
+sprite_restore(sprWall1Out);
+sprite_restore(sprWall1Top);
+sprite_restore(sprWall1Trans);
+sprite_restore(sprWind);
+sprite_restore(sprTires);
+sprite_restore(sprTiresDead);
+sprite_restore(sprTiresHurt);
+sprite_restore(sprTopDecalScrapyard);
+sprite_restore(sprFloor3);
+sprite_restore(sprFloor3B);
+sprite_restore(sprWall3Out);
+sprite_restore(sprDetail3);
+sprite_restore(sprWall3Bot);
+sprite_restore(sprWall3Trans);
+sprite_restore(sprWall3Top);
+sprite_restore(sprFloor3Explo);
+sprite_restore(sprDebris3);
+sprite_restore(bak3);
+sprite_restore(sprCarIdle);
+sprite_restore(sprCarHurt);
+sprite_restore(sprCarThrown);
+sprite_restore(sprSnowBotRedCarIdle);
+sprite_restore(sprSnowBotRedCarLift);
+sprite_restore(sprSnowBotRedCarWalk);
+sprite_restore(sprSnowBotRedCarHurt);
+sprite_restore(sprSnowBotRedCarThrow);
+sprite_restore(sprTrap);
+sprite_restore(sprTrapGameover);
+sprite_restore(sprTrapScorchMark);
+sprite_restore(sprRainDrop);
+sprite_restore(sprRainDropSlowmo);
+sprite_restore(sprRainSplash);
+sprite_restore(sprScrapDecal);
+sprite_restore(sprSodaMachine);
+sprite_restore(sprStreetLight);
+sprite_restore(sprIcicle);
+sprite_restore(sprWall5Trans);
+sprite_restore(sprTopDecalCity);
+sprite_restore(sprIceDecal);
+sprite_restore(sprIcicleDead);
+sprite_restore(sprIcicleHurt);
+sprite_restore(sprSodaMachineDead);
+sprite_restore(sprSodaCan);
+sprite_restore(sprStreetLightDead);
+sprite_restore(sprFloor5B);
+sprite_restore(sprFloor5Explo);
+sprite_restore(sprFloor5);
+sprite_restore(sprWall5Out);
+sprite_restore(sprWall5Top);
+sprite_restore(sprDebris5);
+sprite_restore(sprDetail5);
+sprite_restore(sprWall5Bot);
+sprite_restore(sprSodaMachineHurt);
+sprite_restore(sprStreetLightHurt);
+sprite_restore(sprSnowBotCarLift);
+sprite_restore(sprFrozenCar);
+sprite_restore(sprSnowBotCarIdle);
+sprite_restore(sprSnowBotCarWalk);
+sprite_restore(sprSnowBotCarHurt);
+sprite_restore(sprSnowBotCarThrow);
+sprite_restore(sprFrozenCarThrown);
+sprite_restore(sprFrozenCarHurt);
+sprite_restore(sprSnowFlake);
+sprite_restore(sprHydrant);
+sprite_restore(sprHydrantHurt);
+sprite_restore(sprHydrantDead);
+sprite_restore(sprSnowMan);
+sprite_restore(sprSnowManHurt);
+sprite_restore(sprPStat1Idle);
+sprite_restore(sprPStat2Idle);
+sprite_restore(sprSnowManDead);
+sprite_restore(sprPStat2Hurt);
+sprite_restore(sprPStatDead);
+sprite_restore(sprSnowManDead);
+sprite_restore(sprSnowBotRedCarLift);
+sprite_restore(sprRainDrop);
+sprite_restore(sprRainDropSlowmo);
+sprite_restore(sprRainSplash);
+sprite_restore(sprBanditBossIdle);
+sprite_restore(sprBanditBossWalk);
+sprite_restore(sprBanditBossFire);
+sprite_restore(sprBanditBossTell);
+sprite_restore(sprBanditBossDash);
+sprite_restore(sprBanditBossStop);
+sprite_restore(sprBanditBossHurt);
+sprite_restore(sprBanditBossDead);
+sprite_restore(sprBossIntro);	
+
 if global.loaded {
 	// remove the mod from Custom Options
 	call(scr.option_remove_mod, mod_current_type, mod_current);
@@ -2850,6 +3033,10 @@ CustomOptions_save();
 #macro call script_ref_call
 
 #macro mod_current_type global.mod_current_type
+
+#define draw_back_button
+//draw_sprite_ext(sprBackButton, 0, 0, 0, 1, 1, 0, c_white, 1);
+draw_sprite_ext(sprMutant3Sit, sprite_get_number(sprMutant3Sit) - 3, game_width / 2, game_height / 2, 5, 5, 0, c_white, 1);
 
 #define CustomOptions_init
 // a script that runs when Custom Options loads, if this mod exists first
@@ -3575,8 +3762,8 @@ if ((GameCont.area = areas.palace || GameCont.area = areas.IDPD) && GameCont.sub
 // Pool is P, W
 var pool = get_pool(); 
 
-var factor = 1.0 + GameCont.loops + GameCont.hard;
-if (GameCont.crown == crwn_blood) factor = (factor * opt.enemy_factor) * opt.blood_factor;
+global.factor += 1;
+if (GameCont.crown == crwn_blood) global.factor = global.factor * opt.blood_factor;
 var guarantee = opt.enemies_guaranteed + (GameCont.loops * opt.loop_guranteed_add);
 
 var spawned = 0;
@@ -3648,7 +3835,7 @@ with(Floor){
         continue;
     }
 
-    if(random(opt.spawn_chance) < factor / 100){
+    if(irandom(opt.chance_to_not_spawn) <= global.factor * global.eem){
         instance_create(x + 16,y + 16,pull_from_pool(pool));
 		instance_create(x + 16,y + 16,PortalClear);
         spawned++;

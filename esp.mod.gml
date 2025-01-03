@@ -285,20 +285,7 @@ global.SnowSniperWalk = sprite_add("sprSnowSniperWalk.png", 6, 12, 12);
 global.SnowSniperHurt = sprite_add("sprSnowSniperHurt.png", 3, 12, 12);
 global.SnowSniperDead = sprite_add("sprSnowSniperDead.png", 6, 12, 12);
 
-global.CobWeb0 = sprite_add("sprCobWeb0.png", 1,0,0);
-global.CobWeb1 = sprite_add("sprCobWeb1.png", 1,0,0);
-global.CobWeb2 = sprite_add("sprCobWeb2.png", 1,0,0);
-global.CobWeb3 = sprite_add("sprCobWeb3.png", 1,0,0);
-global.CobWeb5 = sprite_add("sprCobWeb5.png", 1,0,0);
-global.CobWeb6 = sprite_add("sprCobWeb6.png", 1,0,0);
-global.CobWeb7 = sprite_add("sprCobWeb7.png", 1,0,0);
-global.CobWeb100 = sprite_add("sprCobWeb100.png", 1,0,0);
-global.CobWeb101 = sprite_add("sprCobWeb101.png", 1,0,0);
-global.CobWeb102 = sprite_add("sprCobWeb102.png", 1,0,0);
-global.CobWeb103 = sprite_add("sprCobWeb103.png", 1,0,0);
-global.CobWeb105 = sprite_add("sprCobWeb105.png", 1,0,0);
-global.CobWeb106 = sprite_add("sprCobWeb106.png", 1,0,0);
-global.CobWeb107 = sprite_add("sprCobWeb107.png", 1,0,0);
+global.sprCobWeb = sprite_add("sprCobWeb.png", 1,0,0);
 global.IcePizza = sprite_add("sprPizzaEntranceIce_strip2.png", 2,0,0);
 
 global.sprRadFalke = sprite_add("sprRadFlake_strip3.png",3,0,0);
@@ -1915,107 +1902,6 @@ if(opt.mode == 2){
 			}
 		}
 	}
-
-if(opt.mode == 1 && instance_exists(Floor)){
-	if(Floor.traction != 2 && global.sprites_swapped == false){
-		with instances_matching(Floor,"sprite_index",sprFloor0){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb0;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor1){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb1;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor2){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb2;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor3){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb3;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor4){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = sprFloor4B;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor5){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb5;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor6){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb6;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor7){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb7;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor100){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb100;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor101){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb101;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor102){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb100;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor103){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb103;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor104){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = sprFloor104B;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor105){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb105;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor106){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb106;
-			}
-		with instances_matching(Floor,"sprite_index",sprFloor107){
-			area = 4;
-			traction = 2;
-			styleb = 1;
-			sprite_index = global.CobWeb107;
-			}
-		}
-	}
 	
 //Horror taunting
 if(!instance_exists(Player) && instance_exists(EnemyHorror) && global.horror_taunted == false){
@@ -3441,6 +3327,28 @@ global.sprites_swapped = false;
 global.abd = false;
 global.jungle_enabler_spawned = false;
 global.snowspawn_controller_created = false;
+
+if(opt.mode == 1 && instance_exists(Floor)){
+	with(Floor){
+		if(traction !=2){
+			if(random(3) < 1){
+				if("touched" not in self){
+					touched = true;
+					traction = 2;
+					with (instance_create(x,y,CustomObject)){
+						sprite_index = global.sprCobWeb;
+						cobweb = true;
+						}
+					}
+				}
+			else{
+				if("touched" not in self){
+					touched = true;
+				}
+			}
+		}
+	}					
+}
 
 if(GameCont.vaults > 2 && (GameCont.area == 105 || GameCont.area == 103 || GameCont.area == 101 || (GameCont.area == global.crown_guardian_locations && GameCont.subarea == 2))){
 	global.amount_of_crown_guardians += 2;

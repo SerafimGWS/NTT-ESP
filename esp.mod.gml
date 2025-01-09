@@ -179,7 +179,7 @@ if ("esp_mod_opt" in GameCont) {
 };
 
 // -----Commands zone------- //
-trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 020125 mod!");
+trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 090125 mod!");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //

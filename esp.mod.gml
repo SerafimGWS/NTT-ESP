@@ -173,7 +173,9 @@ if ("esp_mod_opt" in GameCont) {
 	crown_guardian_help: true,
 	popups: true,
 	hammerhead_time: 0,
-	fire_explosions: true
+	fire_explosions: true,
+	floor_changes: true,
+	bonus_loop_max_health: true
 };
 
 // -----Commands zone------- //
@@ -297,7 +299,7 @@ global.sprJungleCarHurt = sprite_add("sprJungleCarHurt.png",3,0,0);
 
 global.sprOasisEnterIdle = sprite_add("sprOasisScrapyardEnterIdle.png",1,16,16);
 global.sprOasisEnterHurt = sprite_add("sprOasisScrapyardEnterHurt.png",3,16,16);
-global.sprOasisEnterDead = sprite_add("sprOasisScrapyardEnterDeadpng.png",1,16,16);
+global.sprOasisEnterDead = sprite_add("sprOasisScrapyardEnterDeadpng.png",1,8,8);
 global.sndOasisEnterAppears = sound_add("sndWaterMineLand.ogg");
 
 global.sndGatorTeleport = sound_add("teleport.ogg");
@@ -351,6 +353,8 @@ global.options = {
 	"idpd_seek": 1,
 	"common_difficulty_multiplier": 0.5,
 	"esp_difficulty_multiplier": 0.5,
+	"floor_changes": false,
+	"bonus_loop_max_health": true,
 };
 
 global.loaded = false;
@@ -374,6 +378,16 @@ if fork() {
 	
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page", {
 		"options": [
+			{
+				"option": "bonus_loop_max_health",
+				"kind": "bool",
+				"name": {
+					"text": "Potential Bonus Max Health"
+				},
+				"desc": {
+					"text": "When @rON@s#whith each @yloop@s you gain#@w1 potential bonus max health@s#1 picked up @rhealth chest@s =#@w-1 pbmh@s, @g+1 max health@s"
+				}
+			},
 			{
 				"option": "lilhunter_revenge",
 				"kind": "bool",
@@ -471,6 +485,16 @@ if fork() {
 	
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page2", {
 		"options": [
+			{
+				"option": "floor_changes",
+				"kind": "bool",
+				"name": {
+					"text": "Floor Changes Off"
+				},
+				"desc": {
+					"text": "When @rON@s#it will @wdisable all floor@s changes from any other options"
+				}
+			},
 			{
 				"option": "diropf",
 				"kind": "bool",
@@ -648,7 +672,7 @@ if fork() {
 					"text": "rdm"
 				},
 				"desc": {
-					"text": "rdm - @wregular@s @rdifficulty@s @ymultiplier@s#set multiplier from 0.2 to 2"
+					"text": "rdm - @wregular@s @rdifficulty@s @ymultiplier@s#set multiplier from 0 to 2"
 				},
 				"format": {
 					"display_multiplier": 2
@@ -661,7 +685,7 @@ if fork() {
 					"text": "edm"
 				},
 				"desc": {
-					"text": "edm - @besp@s @rdifficulty@s @ymultiplier@s#set multiplier from 0.2 to 2"
+					"text": "edm - @besp@s @rdifficulty@s @ymultiplier@s#set multiplier from 0 to 2"
 				},
 				"format": {
 					"display_multiplier": 2
@@ -758,6 +782,8 @@ opt.fire_explosions = global.options.fire_explosions;
 opt.attmpts_to_add_enemies = 15 * (GameCont.loops + 1);
 global.cem = global.options.common_difficulty_multiplier * 2;
 global.eem = global.options.esp_difficulty_multiplier * 2;
+opt.floor_changes = global.options.floor_changes;
+opt.bonus_loop_max_health = global.options.floor_changes;
 
 //We are in a game so sprites after we come back in menu will restore
 if(!instance_exists(MenuGen)){
@@ -1852,7 +1878,7 @@ if(opt.mode == 2){
 					}
 	}
 	
-	if(instance_exists(PizzaEntrance)){
+	if(instance_exists(PizzaEntrance) && opt.floor_changes == false){
 		if(PizzaEntrance.sprite_index == sprPizzaEntrance){
 			with(PizzaEntrance){
 				sprite_index = global.IcePizza;
@@ -1860,7 +1886,7 @@ if(opt.mode == 2){
 			}
 		}
 	
-	if(instance_exists(Floor)){
+	if(instance_exists(Floor) && opt.floor_changes == false){
 		if(Floor.traction != 0.1){
 			with(Floor){
 				area = 5;
@@ -2172,11 +2198,7 @@ if(GameCont.loops > 2 && opt.idpd_mashup == true){
 					}
 					instance_create(x, y, AmmoPickup);
 					instance_create(x, y, AmmoPickup);
-					instance_create(x + irandom(20), y+ irandom(20), BlueFlame);
-					instance_create(x + irandom(20), y+ irandom(20), BlueFlame);
-					instance_create(x + irandom(20), y+ irandom(20), BlueFlame);
-					instance_create(x + irandom(20), y+ irandom(20), BlueFlame);
-					instance_create(x + irandom(20), y+ irandom(20), BlueFlame);
+					repeat (4) instance_create(x + irandom(20), y+ irandom(20), BlueFlame);
 					augh_imDead = 10;
 					sound_play(sndIDPDNadeExplo);
 					instance_destroy();
@@ -2732,23 +2754,13 @@ GameCont.esp_mod_opt = opt;
 if(instance_exists(GenCont) && !global.GenCont_exists){
     global.GenCont_exists = true;
 	global.TempHard = GameCont.hard;
-	if(global.cem >= 1){
-		GameCont.hard += global.TempHard * (global.cem - 1);
-	}
-	else{
-		GameCont.hard = global.TempHard * global.cem + 1;
-	}
+	GameCont.hard = global.TempHard * global.cem;
 }
 
 if(!instance_exists(GenCont) && global.GenCont_exists){
     area_gen_ends();
     global.GenCont_exists = false;
-	if(global.cem >= 1){
-		GameCont.hard -= global.TempHard * (global.cem - 1);
-	}
-	else{
-		GameCont.hard = global.TempHard;
-	}
+	GameCont.hard = global.TempHard;
 }
 // -------------------------------
 
@@ -3328,7 +3340,10 @@ global.abd = false;
 global.jungle_enabler_spawned = false;
 global.snowspawn_controller_created = false;
 
-if(opt.mode == 1 && instance_exists(Floor)){
+if(global.cap_spawned == true && global.cap_dead == false){
+}
+
+if(opt.mode == 1 && instance_exists(Floor) && opt.floor_changes == false){
 	with(Floor){
 		if(traction !=2){
 			if(random(3) < 1){
@@ -3338,6 +3353,7 @@ if(opt.mode == 1 && instance_exists(Floor)){
 					with (instance_create(x,y,CustomObject)){
 						sprite_index = global.sprCobWeb;
 						cobweb = true;
+						depth = 4;
 						}
 					}
 				}
@@ -3404,6 +3420,11 @@ if(opt.chest_replacments == true){
 
 if((GameCont.area == 0 || GameCont.area = 7 && GameCont.subarea = 3) && GameCont.loops < 4){
 	GameCont.seenhq = 0;
+	if(instance_exists(Player) && opt.bonus_loop_max_health == true){
+		with(Player){
+			chickendeaths += 1;
+		}
+	}
 }
 
 if(opt.mode != 2){

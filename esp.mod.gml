@@ -34,10 +34,10 @@ global.scrapyard_pool_w = [[0.1,0.03],[0.125,0.125,0.125,0.125,0.125],[0.2,1,1,0
 global.crystals_caves_pool = [[Molesarge], [Molesarge, Guardian, SuperFireBaller], [Necromancer, Guardian, SuperFireBaller, ExploGuardian, DogGuardian, Molesarge], [Necromancer, Guardian, SuperFireBaller, ExploGuardian, DogGuardian, BanditBoss, Molesarge], [Necromancer, Guardian, SuperFireBaller, ExploGuardian, DogGuardian, BanditBoss, Molesarge]];
 global.crystals_caves_pool_w = [[0.05],[0.4,0.3,0.15],[1,1,0.6,1,0.3,1],[1,1,1,1,0.5,0.25,1],[1,1,1,1,0.9,0.35,1]];
 // Winter
-global.winter_pool = [[PopoFreak], [Jock, Sniper, PopoFreak], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer]];
-global.winter_pool_w = [[0.005],[0.25,0.25,0.25],[0.25,1,0.4,1,1,1],[1,1,1,1,1,1,0.1],[1,1,1,1,1,1,0.35]];
+global.winter_pool = [[PopoFreak, StreetLight, Wind], [Jock, Sniper, PopoFreak], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer]];
+global.winter_pool_w = [[0.005,1,1],[0.25,0.25,0.25],[0.25,1,0.4,1,1,1],[1,1,1,1,1,1,0.1],[1,1,1,1,1,1,0.35]];
 // Labs
-global.labs_pool = [[PopoFreak, JungleFly, FrogEgg, Rat], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage, DogGuardian]];
+global.labs_pool = [[PopoFreak, BigMaggot, FrogEgg, Rat], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage, DogGuardian]];
 global.labs_pool_w = [[0.25,0.4,1,1],[0.35,0.35,1,0.25,0.2,0.3],[1,1,1,1,1,1,0.8,0.4,1],[1,1,1,1,1,1,1,0.4,1,0.8]];
 // Palace
 global.palace_pool = [[Gator, GatorSmoke], [Gator, JungleAssassin, BuffGator], [Gator, JungleAssassin, PopoFreak, Turret, BuffGator], [Gator, JungleAssassin, PopoFreak, Turret, BecomeTurret, CrownGuardian, BuffGator]];
@@ -175,11 +175,13 @@ if ("esp_mod_opt" in GameCont) {
 	hammerhead_time: 0,
 	fire_explosions: true,
 	floor_changes: true,
-	bonus_loop_max_health: true
+	bonus_loop_max_health: true,
+	special_code: "insert your code here",
+	seed: ""
 };
 
 // -----Commands zone------- //
-trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 090125 mod!");
+trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 220125 mod!");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -355,6 +357,8 @@ global.options = {
 	"esp_difficulty_multiplier": 0.5,
 	"floor_changes": false,
 	"bonus_loop_max_health": true,
+	"special_code": "insert your code here",
+	"seed": "",
 };
 
 global.loaded = false;
@@ -666,6 +670,16 @@ if fork() {
 				}
 			},
 			{
+				"option": "seed",
+				"kind": "text",
+				"name": {
+					"text": "seed",
+				},
+				"desc": {
+					"text": "enter seed to play the same run endless amount of times"
+				}
+			},			
+			{
 				"option": "common_difficulty_multiplier",
 				"kind": "slider",
 				"name": {
@@ -723,6 +737,7 @@ global.popup_shown = {
 	"_rat": false,
 	"_molefish": false,
 	"_buffgator": false,
+	"_gator": false,
 	"_junglefly": false,
 	"_jock": false,
 	"_last": false,
@@ -784,6 +799,12 @@ global.cem = global.options.common_difficulty_multiplier * 2;
 global.eem = global.options.esp_difficulty_multiplier * 2;
 opt.floor_changes = global.options.floor_changes;
 opt.bonus_loop_max_health = global.options.floor_changes;
+opt.special_code = global.options.special_code;
+opt.seed = global.options.seed;
+
+//if(opt.seed == 111111111111111 && GameCont.area != 1 && GameCont.area != 107){
+	//GameCont.area = 1;
+	//}	
 
 //We are in a game so sprites after we come back in menu will restore
 if(!instance_exists(MenuGen)){
@@ -1003,340 +1024,338 @@ if(GameCont.area == 100){
 if(opt.popups == true){
 
 	if(instance_exists(Salamander) && instance_exists(Player)){
-		if(point_in_circle(Salamander.x,Salamander.y,Player.x,Player.y,180) && global.popup_shown._salamander == false && opt.death_effects == true && GameCont.loops > 0){
-			with(Salamander){
+		with(Salamander){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._salamander == false && opt.death_effects == true && GameCont.loops > 0){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._salamander = true;
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._salamander = true;
 		}
 	}
 	
 	if(instance_exists(Rat) && instance_exists(Player)){
-		if(point_in_circle(Rat.x,Rat.y,Player.x,Player.y,180) && global.popup_shown._rat == false && opt.death_effects == true && GameCont.loops > 0){
-			with(Rat){
+		with(Rat){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._rat == false && opt.death_effects == true && GameCont.loops > 0){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._rat = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._rat = true;
 		}
 	}
 	
 	if(instance_exists(Molefish) && instance_exists(Player)){
-		if(point_in_circle(Molefish.x,Molefish.y,Player.x,Player.y,180) && global.popup_shown._molefish == false && opt.death_effects == true && GameCont.loops > 0){
-			with(Molefish){
+		with(Molefish){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._molefish == false && opt.death_effects == true && GameCont.loops > 0){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._molefish = true;
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._molefish = true;
 		}
 	}
 	
 	if(instance_exists(BuffGator) && instance_exists(Player)){
-		if(point_in_circle(BuffGator.x,BuffGator.y,Player.x,Player.y,180) && global.popup_shown._buffgator == false && opt.enemies_mutations == true && GameCont.loops > 0){
-			with(BuffGator){
+		with(BuffGator){		
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._buffgator == false && opt.enemies_mutations == true && GameCont.loops > 0){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._buffgator = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._buffgator = true;
 		}
 	}
 	
 	if(instance_exists(Gator) && instance_exists(Player)){
-		if(point_in_circle(Gator.x,Gator.y,Player.x,Player.y,180) && global.popup_shown._buffgator == false && opt.enemies_mutations == true && GameCont.loops > 0){
-			with(Gator){
+		with(Gator){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._gator == false && opt.enemies_mutations == true && GameCont.loops > 0){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._gator = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._buffgator = true;
 		}
 	}
 	
 	if(instance_exists(JungleFly) && instance_exists(Player)){
-		if(point_in_circle(JungleFly.x,JungleFly.y,Player.x,Player.y,180) && global.popup_shown._junglefly == false && opt.death_effects == true && GameCont.loops > 0){
-			with(JungleFly){
+		with(JungleFly){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._junglefly == false && opt.death_effects == true && GameCont.loops > 0){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._junglefly = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._junglefly = true;
 		}
 	}
 	
 	if(instance_exists(Jock) && instance_exists(Player)){
-		if(point_in_circle(Jock.x,Jock.y,Player.x,Player.y,180) && global.popup_shown._jock == false && opt.death_effects == true && GameCont.loops > 1){
-			with(Jock){
+		with(Jock){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._jock == false && opt.death_effects == true && GameCont.loops > 1){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._jock = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._jock = true;
 		}
 	}
 	
 	if(instance_exists(Last) && instance_exists(Player)){
-		if(point_in_circle(Last.x,Last.y,Player.x,Player.y,180) && global.popup_shown._last == false && opt.death_effects == true && GameCont.loops > 1){
-			with(Last){
+		with(Last){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._last == false && opt.death_effects == true && GameCont.loops > 1){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._last = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._last = true;
 		}
 	}
 	
 	if(instance_exists(Bandit) && instance_exists(Player)){
-		if(point_in_circle(Bandit.x,Bandit.y,Player.x,Player.y,180) && global.popup_shown._bandit == false && opt.death_effects == true && GameCont.loops > 1){
-			with(Bandit){
+		with(Bandit){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._bandit == false && opt.death_effects == true && GameCont.loops > 1){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._bandit = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._bandit = true;
 		}
 	}
 	
 	if(instance_exists(Molesarge) && instance_exists(Player)){
-		if(point_in_circle(Molesarge.x,Molesarge.y,Player.x,Player.y,180) && global.popup_shown._molesarge == false && opt.death_effects == true && GameCont.loops > 1){
-			with(Molesarge){
+		with(Molesarge){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._molesarge == false && opt.death_effects == true && GameCont.loops > 1){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._molesarge = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._molesarge = true;
 		}
 	}
 	
 	if(instance_exists(Van) && instance_exists(Player)){
-		if(point_in_circle(Van.x,Van.y,Player.x,Player.y,180) && global.popup_shown._van == false && opt.death_effects == true && GameCont.loops > 1){
-			with(Van){
+		with(Van){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._van == false && opt.death_effects == true && GameCont.loops > 1){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._van = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._van = true;
 		}
 	}
 	
 	if(instance_exists(Grunt) && instance_exists(Player)){
-		if(point_in_circle(Grunt.x,Grunt.y,Player.x,Player.y,180) && global.popup_shown._grunt == false && opt.death_effects == true && GameCont.loops > 1){
-			with(Grunt){
+		with(Grunt){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._grunt == false && opt.death_effects == true && GameCont.loops > 1){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._grunt = true;					
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._grunt = true;
 		}
 	}
 	
 	if(instance_exists(Inspector) && instance_exists(Player)){
-		if(point_in_circle(Inspector.x,Inspector.y,Player.x,Player.y,180) && global.popup_shown._inspector == false && opt.death_effects == true && GameCont.loops > 1){
-			with(Inspector){
+		with(Inspector){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._inspector == false && opt.death_effects == true && GameCont.loops > 1){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._inspector = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._inspector = true;
 		}
 	}
 	
 	if(instance_exists(TechnoMancer) && instance_exists(Player)){
-		if(point_in_circle(TechnoMancer.x,TechnoMancer.y,Player.x,Player.y,180) && global.popup_shown._technomancer == false && opt.death_effects == true && GameCont.loops > 1){
-			with(TechnoMancer){
+		with(TechnoMancer){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._technomancer == false && opt.death_effects == true && GameCont.loops > 1){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._technomancer = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._technomancer = true;
 		}
 	}
 	
 	if(instance_exists(CrownGuardian) && instance_exists(Player)){
-		if(point_in_circle(CrownGuardian.x,CrownGuardian.y,Player.x,Player.y,180) && global.popup_shown._crownguardian == false && opt.death_effects == true && GameCont.loops > 1){
-			with(CrownGuardian){
+		with(CrownGuardian){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._crownguardian == false && opt.death_effects == true && GameCont.loops > 1){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._crownguardian = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._crownguardian = true;
 		}
 	}
 	
 	if(instance_exists(Wolf) && instance_exists(Player)){
-		if(point_in_circle(Wolf.x,Wolf.y,Player.x,Player.y,180) && global.popup_shown._wolf == false && opt.death_effects == true && GameCont.loops > 1){
-			with(Wolf){
+		with(Wolf){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._wolf == false && opt.death_effects == true && GameCont.loops > 1){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._wolf = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._wolf = true;
 		}
 	}
 	
 	if(instance_exists(OasisBoss) && instance_exists(Player)){
-		if(point_in_circle(OasisBoss.x,OasisBoss.y,Player.x,Player.y,180) && global.popup_shown._oasisboss == false && opt.death_effects == true && GameCont.loops > 1){
-			with(OasisBoss){	
+		with(OasisBoss){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._oasisboss == false && opt.death_effects == true && GameCont.loops > 1){	
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._oasisboss = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._oasisboss = true;
 		}
 	}
 	
 	if(instance_exists(ExploGuardian) && instance_exists(Player)){
-		if(point_in_circle(ExploGuardian.x,ExploGuardian.y,Player.x,Player.y,180) && global.popup_shown._exploguardian == false && opt.death_effects == true && GameCont.loops > 2){
-			with(ExploGuardian){
+		with(ExploGuardian){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._exploguardian == false && opt.death_effects == true && GameCont.loops > 2){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._exploguardian = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._exploguardian = true;
 		}
 	}
 	
 	if(instance_exists(DogGuardian) && instance_exists(Player)){
-		if(point_in_circle(DogGuardian.x,DogGuardian.y,Player.x,Player.y,180) && global.popup_shown._dogguardian == false && opt.death_effects == true && GameCont.loops > 2){
-			with(DogGuardian){
+		with(DogGuardian){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._dogguardian == false && opt.death_effects == true && GameCont.loops > 2){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._dogguardian = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._dogguardian = true;
 		}
 	}
 	
 	if(instance_exists(LightningCrystal) && instance_exists(Player)){
-		if(point_in_circle(LightningCrystal.x,LightningCrystal.y,Player.x,Player.y,180) && global.popup_shown._lightningcrystal == false && opt.death_effects == true && GameCont.loops > 2){
-			with(LightningCrystal){
+		with(LightningCrystal){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._lightningcrystal == false && opt.death_effects == true && GameCont.loops > 3){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._lightningcrystal = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._lightningcrystal = true;
 		}
 	}
 	
 	if(instance_exists(JungleBandit) && instance_exists(Player)){
-		if(point_in_circle(JungleBandit.x,JungleBandit.y,Player.x,Player.y,180) && global.popup_shown._junglebandit == false && opt.death_effects == true && GameCont.loops > 2){
-			with(JungleBandit){
+		with(JungleBandit){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._junglebandit == false && opt.death_effects == true && GameCont.loops > 2){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._junglebandit = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._junglebandit = true;
 		}
 	}
 	
 	if(instance_exists(JungleAssassin) && instance_exists(Player)){
-		if(point_in_circle(JungleAssassin.x,JungleAssassin.y,Player.x,Player.y,180) && global.popup_shown._jungleassasin == false && opt.death_effects == true && GameCont.loops > 2){
-			with(JungleAssassin){
+		with(JungleAssassin){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._jungleassasin == false && opt.death_effects == true && GameCont.loops > 2){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._jungleassasin = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._jungleassasin = true;
 		}
 	}
 	
 	if(instance_exists(BanditBoss) && instance_exists(Player)){
-		if(point_in_circle(BanditBoss.x,BanditBoss.y,Player.x,Player.y,180) && global.popup_shown._junglebanditboss == false && opt.death_effects == true && GameCont.loops > 2 && GameCont.area == 105){
-			with(BanditBoss){
+		with(BanditBoss){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._junglebanditboss == false && opt.death_effects == true && GameCont.loops > 2 && GameCont.area == 105){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._junglebanditboss = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._junglebanditboss = true;
 		}
 	}
 	
 	if(instance_exists(EliteGrunt) && instance_exists(Player)){
-		if(point_in_circle(EliteGrunt.x,EliteGrunt.y,Player.x,Player.y,180) && global.popup_shown._elitegrunt == false && opt.death_effects == true && GameCont.loops > 2){
-			with(EliteGrunt){
+		with(EliteGrunt){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._elitegrunt == false && opt.death_effects == true && GameCont.loops > 2){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._elitegrunt = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._elitegrunt = true;
 		}
 	}
 	
 	if(instance_exists(Sniper) && instance_exists(Player)){
-		if(point_in_circle(Sniper.x,Sniper.y,Player.x,Player.y,180) && global.popup_shown._sniper == false && opt.enemies_mutations == true && GameCont.loops > 2){
-			with(Sniper){
+		with(Sniper){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._sniper == false && opt.enemies_mutations == true && GameCont.loops > 2){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._sniper = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._sniper = true;
 		}
 	}
 	
 	if(instance_exists(SnowTank) && instance_exists(Player)){
-		if(point_in_circle(SnowTank.x,SnowTank.y,Player.x,Player.y,180) && global.popup_shown._snowtank == false && opt.enemies_mutations == true && GameCont.loops > 2){
-			with(SnowTank){
+		with(SnowTank){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._snowtank == false && opt.enemies_mutations == true && GameCont.loops > 2){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._snowtank = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._snowtank = true;
 		}
 	}
 	
 	if(instance_exists(GoldSnowTank) && instance_exists(Player)){
-		if(point_in_circle(GoldSnowTank.x,GoldSnowTank.y,Player.x,Player.y,180) && global.popup_shown._goldsnowtank == false && opt.enemies_mutations == true && GameCont.loops > 2){
-			with(GoldSnowTank){
-				if("police" not in self){
+		with(GoldSnowTank){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._goldsnowtank == false && opt.enemies_mutations == true && GameCont.loops > 2 && "police" not in self){
 					leveluped = 1;
 					with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 					instance_create(x,y,LevelUp);
 					sound_play(sndLevelUltra);
 					global.popup_shown._goldsnowtank = true;
-				}
 			}
 		}
 	}
 	
 	if(instance_exists(Necromancer) && instance_exists(Player)){
-		if(point_in_circle(Necromancer.x,Necromancer.y,Player.x,Player.y,180) && global.popup_shown._necromancer == false && opt.death_effects == true && GameCont.loops > 2){
-			with(Necromancer){
+		with(Necromancer){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._necromancer == false && opt.death_effects == true && GameCont.loops > 3){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
+				sound_play(sndLevelUltra);
+				global.popup_shown._necromancer = true;				
 			}
-			sound_play(sndLevelUltra);
-			global.popup_shown._necromancer = true;
 		}
 	}
 }	
@@ -1841,6 +1860,23 @@ if(global.IDPDTankDeath == true){
 		instance_delete(SnowTankExplode);
 		global.IDPDTankDeath = false;
 	}
+
+if(instance_exists(BigMaggot)){
+	if((opt.floor_changes == false && opt.mode == 2) || (GameCont.area != 1  && GameCont.area != 101 && GameCont.area != 105 && GameCont.area != 0 && GameCont.area != "banditcamp" && GameCont.area != "jungle" && GameCont.area != "night_desert" && GameCont.area != "oasis" && GameCont.area != "scorpionboss" && GameCont.area != "coast")){
+		with(BigMaggot){
+			if(alarm1 != -1){
+				alarm1 = -1;
+			}
+		}
+	}
+	else{
+		with(BigMaggot){
+			if(alarm == -1){
+				alarm = 1;
+			}
+		}
+	}
+}
 	
 //Floor chages
 if(opt.mode == 2){
@@ -1850,12 +1886,6 @@ if(opt.mode == 2){
 			}
 		global.snowspawn_controller_created = true;
 		}
-
-	if(instance_exists(BigMaggot)){
-		with(BigMaggot){
-			alarm1 = -1;
-		}
-	}
 
 	if(audio_is_playing(amb3)){
 		sound_stop(amb3);

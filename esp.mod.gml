@@ -35,7 +35,7 @@ global.crystals_caves_pool = [[Molesarge], [Molesarge, Guardian, SuperFireBaller
 global.crystals_caves_pool_w = [[0.05],[0.4,0.3,0.15],[1,1,0.6,1,0.3,1],[1,1,1,1,0.5,0.25,1],[1,1,1,1,0.9,0.35,1]];
 // Winter
 global.winter_pool = [[PopoFreak, StreetLight, Wind], [Jock, Sniper, PopoFreak], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer]];
-global.winter_pool_w = [[0.005,1,1],[0.25,0.25,0.25],[0.25,1,0.4,1,1,1],[1,1,1,1,1,1,0.1],[1,1,1,1,1,1,0.35]];
+global.winter_pool_w = [[0.005,0.25,1],[0.25,0.25,0.25],[0.25,1,0.4,1,1,1],[1,1,1,1,1,1,0.1],[1,1,1,1,1,1,0.35]];
 // Labs
 global.labs_pool = [[PopoFreak, BigMaggot, FrogEgg, Rat], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage, DogGuardian]];
 global.labs_pool_w = [[0.25,0.4,1,1],[0.35,0.35,1,0.25,0.2,0.3],[1,1,1,1,1,1,0.8,0.4,1],[1,1,1,1,1,1,1,0.4,1,0.8]];
@@ -383,16 +383,6 @@ if fork() {
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page", {
 		"options": [
 			{
-				"option": "bonus_loop_max_health",
-				"kind": "bool",
-				"name": {
-					"text": "Potential Bonus Max Health"
-				},
-				"desc": {
-					"text": "When @rON@s#whith each @yloop@s you gain#@w1 potential bonus max health@s#1 picked up @rhealth chest@s =#@w-1 pbmh@s, @g+1 max health@s"
-				}
-			},
-			{
 				"option": "lilhunter_revenge",
 				"kind": "bool",
 				"name": {
@@ -420,6 +410,16 @@ if fork() {
 				},
 				"desc": {
 					"text": "When @rON@s#@wravens@s will have @rx5@s spawn multiplier"
+				}
+			},
+			{
+				"option": "bonus_loop_max_health",
+				"kind": "bool",
+				"name": {
+					"text": "Potential Bonus Max Health"
+				},
+				"desc": {
+					"text": "When @rON@s#with each @yloop@s you gain#@w1 potential bonus max health@s#1 picked up @rhealth chest@s =#@w-1 pbmh@s, @g+1 max health@s"
 				}
 			},
 			{
@@ -1871,8 +1871,8 @@ if(instance_exists(BigMaggot)){
 	}
 	else{
 		with(BigMaggot){
-			if(alarm == -1){
-				alarm = 1;
+			if(alarm1 == -1){
+				alarm1 = 1;
 			}
 		}
 	}

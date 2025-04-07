@@ -35,7 +35,7 @@ global.crystals_caves_pool = [[Molesarge], [Molesarge, Guardian, SuperFireBaller
 global.crystals_caves_pool_w = [[0.05],[0.4,0.3,0.15],[1,1,0.6,1,0.3,1],[1,1,1,1,0.5,0.25,1],[1,1,1,1,0.9,0.35,1]];
 // Winter
 global.winter_pool = [[PopoFreak, StreetLight, Wind], [Jock, Sniper, PopoFreak], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer]];
-global.winter_pool_w = [[0.005,0.25,1],[0.25,0.25,0.25],[0.25,1,0.4,1,1,1],[1,1,1,1,1,1,0.1],[1,1,1,1,1,1,0.35]];
+global.winter_pool_w = [[0.005,0.25,1],[0.25,0.25,0.1],[0.25,1,0.4,1,1,1],[1,1,1,1,1,1,0.1],[1,1,1,1,1,1,0.35]];
 // Labs
 global.labs_pool = [[PopoFreak, BigMaggot, FrogEgg, Rat], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage, DogGuardian]];
 global.labs_pool_w = [[0.25,0.4,1,1],[0.35,0.35,1,0.25,0.2,0.3],[1,1,1,1,1,1,0.8,0.4,1],[1,1,1,1,1,1,1,0.4,1,0.8]];
@@ -46,14 +46,14 @@ global.palace_pool_w = [[0.3,0.3],[1,1,0.3],[1,1,1,1,0.25],[1,1,1,1,1,0.25,1]];
 global.vault_pool = [[Torch]];
 global.vault_pool_w = [[1]];
 // Oasis
-global.oasis_pool = [[Turtle, Exploder, Gator, Freak], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, OasisBoss], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, OasisBoss, Guardian, ExploGuardian], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, OasisBoss, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
-global.oasis_pool_w = [[0.5,1,1,1],[1,1,1,1,0.3,0.3,0.1],[1,1,1,1,1,1,0.4,1,1],[1,1,1,1,1,1,1,1,1,1,0.4]];
+global.oasis_pool = [[Turtle, Exploder, Gator, Freak], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, OasisBoss, Guardian, ExploGuardian], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, OasisBoss, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
+global.oasis_pool_w = [[0.5,1,1,1],[1,1,1,1,0.3,0.3],[1,1,1,1,1,1,0.4,1,1],[1,1,1,1,1,1,1,1,1,1,0.4]];
 // PIZZA!
 global.pizza_pool = [[Crab]];
 global.pizza_pool_w = [[0]];
 // Mansion
-global.mansion_pool = [[GoldScorpion], [GoldScorpion, GoldSnowTank], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
-global.mansion_pool_w = [[0],[0.05,0.025],[0.25,0.15,1,1],[0.75,0.6,1,1,0.5],[1,1,1,1,0.75,0.4]];
+global.mansion_pool = [[GoldScorpion], [GoldScorpion, GoldSnowTank, Wind], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
+global.mansion_pool_w = [[0],[0.05,0.025,1],[0.25,0.15,1,1],[0.75,0.6,1,1,0.5],[1,1,1,1,0.75,0.4]];
 // Cursed crystal caves
 global.cursed_crystals_caves_pool = [[MeleeFake, FireBaller], [MeleeFake, FireBaller, Guardian, ExploGuardian], [MeleeFake, FireBaller, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
 global.cursed_crystals_caves_pool_w = [[1,1],[1,1,1,1],[1,1,1,1,1,0.35]];
@@ -87,15 +87,6 @@ global.undergrowth_pool_w = [[0.07,0.2],[0.6,1,0.3,0.5,0.3],[1,1,0.8,1,1,0.5,1],
 // Moon
 global.moon_pool = [[SnowTank], [SnowTank], [SnowTank, PopoFreak, Guardian], [SnowTank, PopoFreak, Guardian, ExploGuardian, DogGuardian], [SnowTank, PopoFreak, Guardian, ExploGuardian, DogGuardian]];
 global.moon_pool_w = [[0.125],[0.25],[0.5,0.5,0.5],[1,1,1,1,0.4],[1,1,1,1,0.8]];
-// Halloween
-global.halloween_pool = [[Wolf, Freak], [Wolf, Necromancer, Freak, ExploFreak, Spider], [Wolf, Necromancer, Freak, ExploFreak, RhinoFreak, Spider], [Wolf, Necromancer, PopoFreak, Freak, ExploFreak, RhinoFreak, Spider]];
-global.halloween_pool_w = [[0.1,0.4],[0.2,0.1,0.2,0.1,0.5],[0.5,0.25,1,0.25,0.5,1],[1,0.5,0.5,1,0.5,1,1]];
-// car_throw
-global.car_throw_pool = [[Car, SnowBot], [Car, SnowBot], [Car, SnowBot], [Car, SnowBot]];
-global.car_throw_pool_w = [[0.1,0.1],[0.2,0.2],[0.5,0.5],[1,1]];
-// All enemies
-global.all_enemies_pool = [[Bandit, BanditBoss, Barrel, BecomeTurret, BigFish, BigMaggot, BoneFish, BuffGator, Car, Cocoon, Crab, CrownGuardian, CrownGuardianOld, DogGuardian, EliteGrunt, EliteInspector, EliteShielder, Exploder, ExploFreak, ExploGuardian, FastRat, FireBaller, Freak, FrogEgg, Gator, GatorSmoke, GhostGuardian, GoldBarrel, GoldScorpion, GoldSnowTank, Guardian, IDPDChest, IDPDSpawn, Inspector, Grunt, InvLaserCrystal, InvSpider, Jock, JungleAssassin, JungleAssassinHide, JungleBandit, JungleFly, LaserCrystal, LightningCrystal, Maggot, MaggotSpawn, MeleeBandit, MeleeFake, Mimic, Molefish, Molesarge, MutantTube, Necromancer, OasisBoss, PopoFreak, RadMaggot, RadMaggotChest, Rat, Ratking, RatkingRage, Raven, Salamander, Scorpion, Shielder, Sniper, SnowBot, SnowMan, SnowTank, Spider, SuperFireBaller, SuperFrog, TechnoMancer, ToxicBarrel, Turret, Turtle, WantPopo, WantRevivePopoFreak, WantVan, WaterMine, Wolf]];
-global.all_enemies_pool_w = [[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]];
 // Empty
 global.empty_pool = [[Crab]];
 global.empty_pool_w = [[0]];
@@ -128,7 +119,7 @@ if ("esp_mod_opt" in GameCont) {
     // Fixs Venus car in scrapyard and adds enemies near car
     fix_venus_car: true,
     // Adds more crows in jungle
-    more_ravens_in_jungle: true,
+    more_ravens_in_jungle: 1,
     // After 3th vaul insted of portal to vault Crown Guards will spawn
     crown_guardian_on_max: true,
 	// Enable curse on some enemies on crystal cave
@@ -154,7 +145,7 @@ if ("esp_mod_opt" in GameCont) {
 	//Spawns 1 time Captain on 0-1 L5
 	l5cap: false,
 	//several modes
-	mode: 0,
+	no_addinational_enemies: false,
 	//Death effect for certain enemies after reaching L1, 2 or 3
 	death_effects: true,
 	//Removes new tips
@@ -181,7 +172,7 @@ if ("esp_mod_opt" in GameCont) {
 };
 
 // -----Commands zone------- //
-trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 220125 mod!");
+trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 070425 mod!");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -330,7 +321,7 @@ mod_current_type = script_ref_create(0)[0];
 global.options = {
 	"lilhunter_revenge": true, 
 	"fix_venus_car": true, 
-	"more_ravens_in_jungle": true, 
+	"more_ravens_in_jungle": 1, 
 	"crown_guardian_on_max": true, 
 	"cursing_enabled": true, 
 	"nes": true, 
@@ -341,7 +332,7 @@ global.options = {
 	"no_jocks": false, 
 	"l5cap": false,
 	"fire_explosions": true,	
-	"mode": 0, 
+	"no_addinational_enemies": false, 
 	"hammerhead_time": 0,
 	"death_effects": true, 
 	"no_new_tips": false, 
@@ -404,12 +395,15 @@ if fork() {
 			},
 			{
 				"option": "more_ravens_in_jungle",
-				"kind": "bool",
+				"kind": "slider",
 				"name": {
-					"text": "More ravens in a jungle"
+					"text": "jungle ravens"
 				},
 				"desc": {
-					"text": "When @rON@s#@wravens@s will have @rx5@s spawn multiplier"
+					"text": "Controls @yspawnrate@s of @rravens@s in a @gjungle@s"
+				},
+				"format": {
+					"display_multiplier": 5
 				}
 			},
 			{
@@ -463,16 +457,14 @@ if fork() {
 				}
 			},
 			{
-				"option": "mode",
-				"kind": "choice",
+				"option": "no_addinational_enemies",
+				"kind": "bool",
 				"name": {
-					"text": "special mode"
+					"text": "no addinational enemies"
 				},
 				"desc": {
-					"text": "When @wNO@s#no special modes will be enabled#when @phalloween@s (1)#@wnormal floor@s will be covered in @wcobweb@s#@wenables@s it's @wown spawnpool@s for @wall areas@s#when @bcar throw@s (2)#@wfloor@s will be covered with @bice@s#@wenables@s it's @wown spawnpool@s for @wall areas@s#when @rnuclear casino@s (3)#@wenables@s @wspawnpool@s with @rall enemies@s#with @wsome exceptions@s#when @wno new enemies@s (4)#@wno new enemies@s will spawn"
-				},
-				"values": [0, 1, 2, 3, 4],
-				"display": ["No", "1", "2", "3", "4"]
+					"text": "When @wYES@s#@wno new enemies@s will spawn"
+				}
 			},
 			{
 				"option": "chest_replacments",
@@ -481,7 +473,7 @@ if fork() {
 					"text": "Chest Replacments"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wreplace some chests@s#@ypizza@s#@wammo chest@s-@ypizza chest@s#@bwinter city@s#@wammo chest@s - @bIDPD Chests@s# in @plabs@s#@wammo chest@s - @wmimic@s#@rhealth chest@s - @rsuper mimic@s#in @bHQ@s#@wammo chests@s - @bIDPD chests@s#@grad chests@s - @rhealth chests@s#at @pHalloween@s#@wammo chests@s - @wmimics@s#@rhealth chests@s - @rsuper mimics@s,#@grad chests@s - @grad maggot chests@s#if @bcar throw@s is enabled#@wammo chests@s - @ypresents chests@s"
+					"text": "When @rON@s#it will @wreplace some chests@s#@ypizza@s#@wammo chest@s-@ypizza chest@s#@bwinter city@s#@wammo chest@s - @bIDPD Chests@s# in @plabs@s#@wammo chest@s - @wmimic@s#@rhealth chest@s - @rsuper mimic@s#in @bHQ@s#@wammo chests@s - @bIDPD chests@s#@grad chests@s - @rhealth chests@s"
 				}
 			},			
 		]
@@ -496,7 +488,7 @@ if fork() {
 					"text": "Floor Changes Off"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wdisable all floor@s changes from any other options"
+					"text": "When @rON@s#it will @wdisable all floor@s changes#from any other options"
 				}
 			},
 			{
@@ -576,7 +568,7 @@ if fork() {
 					"text": "IDPD Mashup"
 				},
 				"desc": {
-					"text": "When @rON@s#@yL2@s: @w1/3@s @bportals@s and @bvans@s#will contain @bpopo freaks@s#@gL3@s: @w1/2@s @bportals@s and @bvans@s#will contain @yelites@s#P.S. Vans on L3 can also contain#non elite IDPD#because i can't control#if van will contain elites#@rL3+@s:@w1/3@s @bportals@s#will contain @bIDPD tanks@s"
+					"text": "When @rON@s#@yL2@s: @w1/3@s @bportals@s and @bvans@s#will contain @bpopo freaks@s#@gL3@s: @w1/2@s @bportals@s and @bvans@s#will contain @yelites@s#P.S. Vans on L3 can also contain#non elite IDPD#because i can't control#if van will contain elites"
 				}
 			},			
 			{
@@ -781,7 +773,7 @@ opt.add_dark = global.options.add_dark;
 opt.idpd_mashup = global.options.idpd_mashup;
 opt.no_jocks = global.options.no_jocks;
 opt.l5cap = global.options.l5cap;
-opt.mode = global.options.mode;
+opt.no_addinational_enemies = global.options.no_addinational_enemies;
 opt.death_effects = global.options.death_effects;
 opt.no_new_tips = global.options.no_new_tips;
 opt.no_new_parcticles = global.options.no_new_parcticles;
@@ -801,10 +793,6 @@ opt.floor_changes = global.options.floor_changes;
 opt.bonus_loop_max_health = global.options.floor_changes;
 opt.special_code = global.options.special_code;
 opt.seed = global.options.seed;
-
-//if(opt.seed == 111111111111111 && GameCont.area != 1 && GameCont.area != 107){
-	//GameCont.area = 1;
-	//}	
 
 //We are in a game so sprites after we come back in menu will restore
 if(!instance_exists(MenuGen)){
@@ -982,7 +970,7 @@ if(opt.fire_explosions == true){
 			}	
 		}
 	}
-	if(instance_exists(PopoFreak)){
+	if(instance_exists(PopoRocket)){
 		with(PopoRocket){
 			if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
 				instance_destroy();
@@ -1391,15 +1379,6 @@ if(skill_get(11)){
 	}
 }
 
-with instances_matching(instances_matching_le(Inspector, "my_health", 0), "IDPDTurret", 1){
-	instance_create(x,y,Explosion);
-	}
-
-with instances_matching(Inspector,"IDPDTurret",1){
-	control = 1;
-	walk = 0;
-	}
-
 //Just in case, i don't know any mods which gives you the possibility to escape the captain office legally (like it's supposed to be escapable) before L3 and which gaves you possibility to eneter HQ on later loops
 if(global.cap_spawned == true && GameCont.area == 106 && GameCont.subarea == 3 && instance_exists(Player) && GameCont.loops == 3 && global.cap_dead == false){
 	wait 5;
@@ -1463,7 +1442,7 @@ if(GameCont.area == 105 && instance_exists(Car)){
 		}
 	}
 
-if(GameCont.area == 1 && opt.no_new_parcticles == false && opt.mode != 2 && global.last_vault == false){
+if(GameCont.area == 1 && opt.no_new_parcticles == false && global.last_vault == false){
 	if(global.snowspawn_controller_created == false){
 		with(instance_create(10016,10016,CustomObject)){
 			SC = 1;
@@ -1482,34 +1461,22 @@ if(GameCont.area == 1 && opt.no_new_parcticles == false && opt.mode != 2 && glob
 							if(global.wind_left = true){
 								with(instance_create(Player.x + 350,Player.y + random_range(50, 750),SnowFlake)){
 									wave = random_range(-25,25);
+									if("rad" not in self){
+										sand = true;
+										}
 									}
 								}
 							else{
 								with(instance_create(Player.x - 350,Player.y + random_range(50, 750),SnowFlake)){
 									wave = random_range(-25,25);
+									if("rad" not in self){
+										sand = true;
+										}
 									}
 								}
 							}
 						tussf = irandom(50);
 					}
-	}
-		
-	with(SnowFlake){
-		y -= 1;
-		
-		if(global.abd == true){
-			sprite_index = global.sprSandFXnight;
-		}
-		else{
-			sprite_index = global.sprSandFX;
-		}
-		
-		if(global.wind_left = true){
-			x -= 3;
-		}
-		else{
-			x += 3;
-		}
 	}
 }
 	
@@ -1531,13 +1498,35 @@ if(GameCont.area == 7 && opt.no_new_parcticles == false && global.last_vault == 
 						if(instance_exists(Player)){
 							with(instance_create(Player.x + random_range(-125,125),Player.y+500,SnowFlake)){
 								wave = random_range(-25,25);
+								if("sand" not in self){
+									rad = true;
+									}
 								}
 							}
 						tussf = irandom(100);
 					}
 	}
+}
+
+with(SnowFlake){
+	if("sand" in self){
+		y -= 1;
 		
-	with(SnowFlake){
+		if(global.abd == true){
+			sprite_index = global.sprSandFXnight;
+		}
+		else{
+			sprite_index = global.sprSandFX;
+		}
+		
+		if(global.wind_left = true){
+			x -= 3;
+		}
+		else{
+			x += 3;
+		}
+	}
+	if("rad" in self){
 		sprite_index = global.sprRadFalke;
 		y -= 3;
 	}
@@ -1554,27 +1543,6 @@ if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont
 		entered_the_jungles = 0;
 		}
 	sound_play(sndWallBreakJungle);
-	}
-
-if(GameCont.area != 7 && GameCont.area != 5 && opt.no_guards == true){
-	instance_delete(Guardian);
-	instance_delete(ExploGuardian);
-	instance_delete(DogGuardian);
-	instance_delete(GhostGuardian);
-}
-
-if(GameCont.area == 5 && opt.no_guards == true){
-	instance_delete(Guardian);
-	instance_delete(GhostGuardian);
-}
-
-if(GameCont.loops == 1 && opt.mode == 0){
-	if(GameCont.area == 1 || GameCont.area == 7){
-		instance_delete(Sniper);
-		}
-	if(GameCont.area == 5){
-		instance_delete(DogGuardian);
-		}
 	}
 	
 //Salamander sound fix
@@ -1750,7 +1718,7 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 1 && global.tip_shown == false && (GameCont.area == 1 || GameCont.area == 3) && opt.mode == 0){
+	if(r4 > 49 && r5 == 1 && global.tip_shown == false && (GameCont.area == 1 || GameCont.area == 3) && opt.no_addinational_enemies == false){
 		GenCont.tip = "@wsalamanders@s love the sun";
 		global.tip_shown = true;
 	}
@@ -1760,7 +1728,7 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 2 && opt.mode == 0){
+	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 2 && opt.no_addinational_enemies == false){
 		GenCont.tip = "the gun godz cameo we deserve";
 		global.tip_shown = true;
 	}
@@ -1862,7 +1830,7 @@ if(global.IDPDTankDeath == true){
 	}
 
 if(instance_exists(BigMaggot)){
-	if((opt.floor_changes == false && opt.mode == 2) || (GameCont.area != 1  && GameCont.area != 101 && GameCont.area != 105 && GameCont.area != 0 && GameCont.area != "banditcamp" && GameCont.area != "jungle" && GameCont.area != "night_desert" && GameCont.area != "oasis" && GameCont.area != "scorpionboss" && GameCont.area != "coast")){
+	if(GameCont.area != 1  && GameCont.area != 101 && GameCont.area != 105 && GameCont.area != 0 && GameCont.area != "banditcamp" && GameCont.area != "jungle" && GameCont.area != "night_desert" && GameCont.area != "oasis" && GameCont.area != "scorpionboss" && GameCont.area != "coast"){
 		with(BigMaggot){
 			if(alarm1 != -1){
 				alarm1 = -1;
@@ -1877,88 +1845,7 @@ if(instance_exists(BigMaggot)){
 		}
 	}
 }
-	
-//Floor chages
-if(opt.mode == 2){
-	if(global.snowspawn_controller_created == false){
-		with(instance_create(10016,10016,CustomObject)){
-			SSC = 1;
-			}
-		global.snowspawn_controller_created = true;
-		}
-
-	if(audio_is_playing(amb3)){
-		sound_stop(amb3);
-		sound_play_ambient(amb5);
-	}
-	
-	with instances_matching(CustomObject,"SSC",1){
-	//Time untile spawn snow flake
-		if("tussf" not in self){
-				tussf = irandom(10);
-				}
-					tussf -= current_time_scale;
-					if(tussf <= 0){
-						if(instance_exists(Player) && (GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 105 || GameCont.area == 0)){
-							with(instance_create(Player.x + random_range(-125,125),Player.y-140,SnowFlake)){
-								wave = random_range(-25,25);
-								}
-							}
-						tussf = irandom(10);
-					}
-	}
-	
-	if(instance_exists(PizzaEntrance) && opt.floor_changes == false){
-		if(PizzaEntrance.sprite_index == sprPizzaEntrance){
-			with(PizzaEntrance){
-				sprite_index = global.IcePizza;
-				}
-			}
-		}
-	
-	if(instance_exists(Floor) && opt.floor_changes == false){
-		if(Floor.traction != 0.1){
-			with(Floor){
-				area = 5;
-				traction = 0.1;
-				styleb = 1;
-				sprite_index = sprFloor5B;
-			}
-		}
-	}
-	
-	if(instance_exists(Car)){
-		if(Car.spr_idle != sprFrozenCar){
-			with(Car){
-				spr_idle = sprFrozenCar;
-				spr_hurt = sprFrozenCarHurt;
-			}
-		}
-	}
-	
-	if(instance_exists(CarThrow)){
-		if(CarThrow.sprite_index != sprFrozenCarThrown){
-			with(CarThrow){
-				spr_idle = sprFrozenCarThrown;
-			}
-		}
-	}
-	
-	if(instance_exists(SnowBot)){
-		with(SnowBotCar){
-			if(ammo == 1){
-				spr_idle = sprSnowBotCarIdle;
-				spr_walk = sprSnowBotCarWalk;
-				spr_hurt = sprSnowBotCarHurt;
-				spr_fire = sprSnowBotCarThrow;
-				}
-			else{
-				spr_fire = sprSnowBotFire;
-				}
-			}
-		}
-	}
-	
+		
 //Horror taunting
 if(!instance_exists(Player) && instance_exists(EnemyHorror) && global.horror_taunted == false){
 	global.horror_taunted = true;
@@ -1967,7 +1854,7 @@ if(!instance_exists(Player) && instance_exists(EnemyHorror) && global.horror_tau
 	}
 
 //Changing sprites
-if(GameCont.area == 5 || opt.mode == 2){
+if(GameCont.area == 5){
 	with(Sniper){
 		spr_idle = global.SnowSniperIdle;
 		spr_walk = global.SnowSniperWalk;
@@ -1977,33 +1864,13 @@ if(GameCont.area == 5 || opt.mode == 2){
 		}
 	}
 	
-if(GameCont.area == 105 && opt.mode != 2){
+if(GameCont.area == 105){
 	with(Sniper){
 		spr_idle = global.sprJungleSniperIdle;
 		spr_walk = global.sprJungleSniperWalk;
 		spr_hurt = global.sprJungleSniperHurt;
 		spr_dead = global.sprJungleSniperDead;
 		hitid = global.JungleSniperHitid;
-		}
-	}
-
-if(opt.mode == 2){
-	with (Bandit){
-		spr_idle = sprSnowBanditIdle;
-		spr_hurt = sprSnowBanditHurt;
-		spr_dead = sprSnowBanditDead;
-		spr_walk = sprSnowBanditWalk;
-		hitid = 23;
-		}
-	}
-	
-if(opt.mode == 1){
-	with (Bandit){
-		spr_idle = sprSpookyBanditIdle;
-		spr_hurt = sprSpookyBanditHurt;
-		spr_dead = sprSpookyBanditDead;
-		spr_walk = sprSpookyBanditWalk;
-		hitid = 79;
 		}
 	}
 
@@ -2120,11 +1987,9 @@ if(global.abd == true && GameCont.area == 3 && global.sprites_swapped == false &
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
 	global.sprites_swapped = true;
-	if(opt.mode != 2){
-		sprite_replace(sprRainDrop,"sprRainDrop.png",1);
-		sprite_replace(sprRainDropSlowmo,"sprRainDropSlowmo.png",1);
-		sprite_replace(sprRainSplash,"sprRainSplash.png",3);
-		}
+	sprite_replace(sprRainDrop,"sprRainDrop.png",1);
+	sprite_replace(sprRainDropSlowmo,"sprRainDropSlowmo.png",1);
+	sprite_replace(sprRainSplash,"sprRainSplash.png",3);
 	}
 	
 if(global.abd == true && GameCont.area == 5 && global.sprites_swapped == false && instance_exists(BackCont)){
@@ -2183,73 +2048,6 @@ if(GameCont.area == 106 && GameCont.subarea = 3){
 		freak = 0;
 		}
 	}
-
-if(GameCont.loops > 2 && opt.idpd_mashup == true){
-
-	with(IDPDSpawn) if( random(3) < 1 && alarm1 = 1){
-		alarm1 = 1000;
-		instance_create(x,y,PortalClear);
-		with(instance_create(x,y,GoldSnowTank)){
-			police = 1;
-			hitid = global.IDPDTankHitid;
-		}
-	}
-
-	with instances_matching(GoldSnowTank,"police",1){
-		spr_idle = global.sprIDPDTankIdle;
-		spr_walk = global.sprIDPDTankWalk;
-		spr_hurt = global.sprIDPDTankHurt;
-		spr_dead = global.sprIDPDTankDead;
-		raddrop = 0;
-		if(my_health <= 0){
-			global.IDPDTankDeath = true;
-			with(instance_create(x,y,CustomObject)){
-				sprite_index = global.sprIDPDTankExplode;
-				idpdtank = 1;
-				}
-			}
-	}
-	
-	with instances_matching(Corpse,"sprite_index",global.sprIDPDTankDead){
-		speed = 0
-	}
-	
-	with(instances_matching(CustomObject, "idpdtank", 1)){
-				if("aughimDead" not in self){
-					aughimDead = 10;
-			}
-				aughimDead -= current_time_scale;
-				if(aughimDead <= 0){
-					with(instance_create(x, y, PopoExplosion)){
-						hitid = [global.sprIDPDTankExplode, "IDPD Tank"];
-					}
-					with(instance_create(x, y, PopoExplosion)){
-						hitid = [global.sprIDPDTankExplode, "IDPD Tank"];
-					}
-					instance_create(x, y, AmmoPickup);
-					instance_create(x, y, AmmoPickup);
-					repeat (4) instance_create(x + irandom(20), y+ irandom(20), BlueFlame);
-					augh_imDead = 10;
-					sound_play(sndIDPDNadeExplo);
-					instance_destroy();
-					}
-				}
-	
-	with instances_matching(JockRocket,"hitid",global.IDPDTankHitid){
-		instance_change(Wind,false);
-		with(instance_create(x,y,CustomObject)){
-			IDPDRocketCreator = 1;
-		}
-	}
-	
-	with instances_matching(EnemyBullet4,"hitid",global.IDPDTankHitid){
-		instance_change(IDPDBullet,true);
-		newprojectile = true;
-		speed = 8;
-		team = 1;
-		hitid = global.IDPDTankHitid;
-	}
-}
 
 if(GameCont.loops > 0 && opt.enemies_mutations == true){
 
@@ -2393,43 +2191,6 @@ if(GameCont.area != 104 && global.ccc == true){
 		}
 	}
 }
-				
-with instances_matching(CustomObject,"IDPDRocketCreator",1){
-		if("launch" not in self){
-					launch = 15;
-			}
-				launch -= current_time_scale;
-				if(launch <= 0){
-					with(instance_create(x,y,PopoRocket)){
-						newprojectile = true;
-						hitid = global.IDPDTankHitid;
-						team = 1;
-			
-					if(instance_exists(Player)){
-						target = instance_nearest(x,y,Player);
-						}
-					else{
-					target = 0;
-					}
-
-					if target > 0{
-						if random(50)<1
-					motion_add(direction+choose(-90,90),3)
-					if speed > random(6)
-						speed = 7
-					motion_add(point_direction(x,y,target.x,target.y),7);
-						image_angle = direction;
-					}
-					}
-					launch = 15;
-					sound_play(sndEliteGruntRocketFire);
-					instance_destroy();
-					}
-				}
-			
-with instances_matching(Inspector,"IDPDTurret",1){
-			speed = 0;
-		}
 		
 //Death effects
 if (opt.death_effects == true && GameCont.loops > 0) {
@@ -3143,11 +2904,6 @@ if(opt.popups == true){
 	}
 }
 	
-#define idpdtank_death
-with (SnowTankExplode){
-	sprite_index = global.sprIDPDTankExplode;
-	}
-	
 #define dog_guardian_death
 with (instance_create(x,y,BigGuardianBullet)){
 		team = 1;
@@ -3187,13 +2943,10 @@ with (instance_create(x,y,Throne2Ball)){
 with (instance_create(x,y,EnemyBullet1)){
 		newprojectile = true;
 		team = 1;
-		if((opt.mode == 0 || opt.mode > 2) && GameCont.area != 5 && GameCont.area != "city"){
+		if(GameCont.area != 5 && GameCont.area != "city"){
 			hitid = [sprBanditDead, "Bandit"];
 		}
-		if(opt.mode == 1){
-			hitid = [sprSpookyBanditDead, "Halloween Bandit"];
-		}
-		if(opt.mode == 2 || (GameCont.area == 5 || GameCont.area == "city")){
+		if(GameCont.area == 5 || GameCont.area == "city"){
 			hitid = [sprSnowBanditDead, "Snow Bandit"];
 		}
 //Homing bullets
@@ -3370,30 +3123,35 @@ global.abd = false;
 global.jungle_enabler_spawned = false;
 global.snowspawn_controller_created = false;
 
-if(global.cap_spawned == true && global.cap_dead == false){
+if(GameCont.area != 7 && GameCont.area != 5 && opt.no_guards == true){
+	with (Guardian) instance_delete(self);
+	with (ExploGuardian) instance_delete(self);
+	with (DogGuardian) instance_delete(self);
+	with (GhostGuardian) instance_delete(self);
 }
 
-if(opt.mode == 1 && instance_exists(Floor) && opt.floor_changes == false){
-	with(Floor){
-		if(traction !=2){
-			if(random(3) < 1){
-				if("touched" not in self){
-					touched = true;
-					traction = 2;
-					with (instance_create(x,y,CustomObject)){
-						sprite_index = global.sprCobWeb;
-						cobweb = true;
-						depth = 4;
-						}
-					}
-				}
-			else{
-				if("touched" not in self){
-					touched = true;
-				}
-			}
+if(GameCont.area == 5 && opt.no_guards == true){
+	with (Guardian) instance_delete(self);
+	with (GhostGuardian) instance_delete(self);
+}
+
+if(GameCont.loops == 1 && opt.no_addinational_enemies == false){
+	if(GameCont.area == 1 || GameCont.area == 7){
+		with (Sniper) instance_delete(self);
 		}
-	}					
+	if(GameCont.area == 5){
+		with(DogGuardian) instance_delete(self);
+		}
+	}
+
+if(GameCont.area == 3 && GameCont.subarea == 3 && GameCont.crown != crwn_none){
+	with(WeaponChest){
+		curse = 1;
+		sprite_index = sprCursedChest;
+		}
+	}
+
+if(global.cap_spawned == true && global.cap_dead == false){
 }
 
 if(GameCont.vaults > 2 && (GameCont.area == 105 || GameCont.area == 103 || GameCont.area == 101 || (GameCont.area == global.crown_guardian_locations && GameCont.subarea == 2))){
@@ -3455,20 +3213,6 @@ if((GameCont.area == 0 || GameCont.area = 7 && GameCont.subarea = 3) && GameCont
 			chickendeaths += 1;
 		}
 	}
-}
-
-if(opt.mode != 2){
-	sprite_restore(sprSnowBotRedCarLift);
-	sprite_restore(sprRainDrop);
-	sprite_restore(sprRainDropSlowmo);
-	sprite_restore(sprRainSplash);
-}
-
-if(opt.mode == 2){
-	sprite_replace(sprRainDrop,"sprNone.png",1);
-	sprite_replace(sprRainDropSlowmo,"sprNone.png",1);
-	sprite_replace(sprRainSplash,"sprNone.png",1);
-	sprite_replace(sprSnowBotRedCarLift,"sprSnowBotCarLift_strip4.png",4);
 }
 
 if(global.abd == false){
@@ -3592,7 +3336,7 @@ if(Player.my_health == 1 && GameCont.area == 106 && GameCont.subarea == 1){
 	}
 
 
-if(GameCont.area != 5 && GameCont.area != 105 && opt.mode != 2){
+if(GameCont.area != 5 && GameCont.area != 105){
 	sprite_restore(sprBanditBossIdle);
 	sprite_restore(sprBanditBossWalk);
 	sprite_restore(sprBanditBossFire);
@@ -3615,7 +3359,7 @@ if(GameCont.area == 105){
 	sprite_replace(sprBanditBossDead,"JungleBigBanditDead.png",9,16,16 );
 	}
 	
-if(GameCont.area == 5 || opt.mode == 2){
+if(GameCont.area == 5){
 	sprite_replace(sprBossIntro,"sprBossIntro.png",10,150,0 );
 	sprite_replace(sprBanditBossIdle,"sprSnowBigBanditIdle.png",6,16,16 );
 	sprite_replace(sprBanditBossWalk,"sprSnowBigBanditWalk.png",8,16,16 );
@@ -3630,15 +3374,6 @@ if(GameCont.area == 5 || opt.mode == 2){
 if(opt.IDPD_seek == 1 && GameCont.area == 106){
 	instance_create(0,0,WantVan);
 	}
-
-if(opt.mode == 1){
-	TopCont.fog = sprFog2;
-}
-
-//Plays sound on halloween mode
-if(opt.mode == 1){
-	sound_play(sndHalloweenWolf);
-}
 
 if(opt.chest_replacments == true){
 	chest_replacer ();
@@ -3728,30 +3463,13 @@ with(Floor){
     if(point_distance(x,y,Player.x,Player.x) < 7 * 16) continue;
     // Check if place is free
     if(!place_meeting(x, y, Wall) && !place_meeting(x, y, prop) && !place_meeting(x, y, chestprop) && !place_meeting(x, y, MaggotSpawn) && !place_meeting(x,y,enemy)) continue;
-
-	if((GameCont.area == 106 || GameCont.area == 6) && random(5) < 1 && opt.mode != 4 && point_distance(x,y,Player.x,Player.x) > 14 * 16){
-		instance_create(x,y,PortalClear);
-		with(instance_create(x,y,Inspector)){
-			IDPDTurret = 1;
-			maxhealth = 40 + (40 / 100 * (GameCont.loops * 5));
-			my_health = 40 + (40 / 100 * (GameCont.loops * 5));
-			spr_idle = global.sprVacuumCleanerIdle;
-			spr_hurt = global.sprVacuumCleanerHurt;
-			spr_dead = global.sprVacuumCleanerDead;
-			spr_walk = global.sprVacuumCleanerIdle;
-			hitid = [global.sprVacuumCleanerIdle,"Vacuum Cleaner"]
-			snd_hurt = sndHitMetal;
-			snd_dead = sndExplosion;
-			grenades = 0;
-			}
-		}
 		
-	if(GameCont.area == 105 && random(5) < 1 && opt.mode != 4){
+	/*if(GameCont.area == 105 && random(5) < 1 && opt.no_addinational_enemies != 4){
 		instance_create(x,y,PortalClear);
 		with(instance_create(x,y,Sapling)){
 			team = 1;
 			}
-		}
+		}*/
 	
 	if(global.cap_spawned == false && GameCont.area == 0 && GameCont.loops == 5 && opt.l5cap == true){
             var can_spawn_cap = true; 
@@ -3799,7 +3517,7 @@ with(Floor){
 
 //trace("Placed: " + string(spawned)+"/"+string(guarantee)); // Debug
 			
-if (opt.more_ravens_in_jungle && GameCont.area == areas.jungle)
+if (GameCont.area == areas.jungle)
     add_ravens();
 
 if (opt.cursing_enabled && GameCont.crown != crwn_none)
@@ -3843,35 +3561,6 @@ with(CarVenus){
 
 // -------------- //
 #define chest_replacer
-if (opt.mode == 1){
-	with(AmmoChest){ 
-		instance_change(Wind,false);
-		instance_create(x,y,Mimic);
-	}
-	with(HealthChest){ 
-		instance_change(Wind,false);
-		instance_create(x,y,SuperMimic);
-	}
-	with(RadChest){ 
-		instance_change(RadMaggotChest,true);
-	}
-	return;
-}
-if (opt.mode == 2){
-	with(AmmoChest){ 
-		instance_change(Wind,false);
-		instance_create(x,y,AmmoChestMystery);
-	}
-	with(IDPDChest){ 
-		instance_change(Wind,false);
-		instance_create(x,y,AmmoChestMystery);
-	}
-	with(Mimic){ 
-		instance_change(Wind,false);
-		instance_create(x,y,AmmoChestMystery);
-	}
-	return;
-}
 switch (GameCont.area) {	
 	case areas.pizza:
 		with(RadChest){//HealthChest
@@ -4016,7 +3705,7 @@ switch (GameCont.area) {
 
 // -------------- //
 #define add_ravens
-var need_to_add = GameCont.loops * 5;
+var need_to_add = GameCont.loops * (opt.more_ravens_in_jungle * 5);
 
 with(Raven){
     for (i=0; i < need_to_add; i++) 
@@ -4046,40 +3735,13 @@ return f_enemy;
 #define get_pool
 
 // No enemies mode
-if (opt.mode == 4){ 
-	var curr_loop = clamp(GameCont.loops,0,array_length(global.empty_pool) - 1);
+if (opt.no_addinational_enemies == true){ 
+	var curr_loop = clamp(GameCont.loops ,0,array_length(global.empty_pool) - 1);
 	return {
 	p: global.empty_pool[curr_loop],
 	w: global.empty_pool_w[curr_loop]
 	}
 }
-
-// All enemies mode
-if (opt.mode == 3){ 
-	var curr_loop = clamp(GameCont.loops,0,array_length(global.all_enemies_pool) - 1);
-	return {
-	p: global.all_enemies_pool[curr_loop],
-	w: global.all_enemies_pool_w[curr_loop]
-	}
-}
-
-// car throw mode
-if (opt.mode == 2){ 
-	var curr_loop = clamp(GameCont.loops,0,array_length(global.car_throw_pool) - 1);
-	return {
-	p: global.car_throw_pool[curr_loop],
-	w: global.car_throw_pool_w[curr_loop]
-	}
-}	
-
-// Halloween mode
-if (opt.mode == 1){ 
-	var curr_loop = clamp(GameCont.loops,0,array_length(global.halloween_pool) - 1);
-	return {
-	p: global.halloween_pool[curr_loop],
-	w: global.halloween_pool_w[curr_loop]
-	}
-}	
 
 var pool = global.empty_pool;
 var pool_w = global.empty_pool_w;

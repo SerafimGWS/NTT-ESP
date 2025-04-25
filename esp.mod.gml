@@ -172,7 +172,7 @@ if ("esp_mod_opt" in GameCont) {
 };
 
 // -----Commands zone------- //
-trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 230425 mod!");
+trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 250425 mod!");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -326,6 +326,13 @@ global.sprJungleSniperDead = sprite_add("sprJungleSniperDead.png",6,12,12);
 
 global.sprUltraChest = sprite_add("ultrachest.png",5,30,45);
 
+global.sprGruntIdleRad = sprite_add("sprGruntIdleRad.png",14,8,17);
+global.sprGruntWalkRad = sprite_add("sprGruntWalkRad.png",6,8,17);
+global.sprGruntHurtRad = sprite_add("sprGruntHurtRad.png",3,8,17);
+global.sprEliteGruntIdleRad = sprite_add("sprEliteGruntIdleRad.png",14,8,18);
+global.sprEliteGruntWalkRad = sprite_add("sprEliteGruntWalkRad.png",6,8,18);
+global.sprEliteGruntHurtRad = sprite_add("sprEliteGruntHurtRad.png",3,8,18);
+
 mod_current_type = script_ref_create(0)[0];
 
 // values for your options should go in a global lightweight object
@@ -389,7 +396,7 @@ if fork() {
 				"option": "lilhunter_revenge",
 				"kind": "bool",
 				"name": {
-					"text": "Lil Hunter Revenge"
+					"text": "@(sprLilHunterWalk:0)@s Lil Hunter Revenge"
 				},
 				"desc": {
 					"text": "When @rON@s#if @blil hunter@s @rdies@s - spawns a @bvan spawn@s"
@@ -399,7 +406,7 @@ if fork() {
 				"option": "fix_venus_car",
 				"kind": "bool",
 				"name": {
-					"text": "Fixed Venus Car"
+					"text": "@(sprVenusCarFixed:0)  Fixed Venus Car"
 				},
 				"desc": {
 					"text": "When @rON@s# @yvenuz car@s will be @wfixed@s from start#+ it will have @winf hp@s #but @wexplodes@s when @pportal@s appears"
@@ -409,7 +416,7 @@ if fork() {
 				"option": "more_ravens_in_jungle",
 				"kind": "slider",
 				"name": {
-					"text": "jungle ravens"
+					"text": "@(sprRavenIdle:0) jungle ravens"
 				},
 				"desc": {
 					"text": "Controls @yspawnrate@s of @rravens@s in a @gjungle@s"
@@ -422,7 +429,7 @@ if fork() {
 				"option": "bonus_loop_max_health",
 				"kind": "bool",
 				"name": {
-					"text": "Potential Bonus Max Health"
+					"text": "@(sprHealthChest:0) Potential Bonus Max Health"
 				},
 				"desc": {
 					"text": "When @rON@s#with each @yloop@s you gain#@w1 potential bonus max health@s#1 picked up @rhealth chest@s =#@w-1 pbmh@s, @g+1 max health@s"
@@ -432,7 +439,7 @@ if fork() {
 				"option": "crown_guardian_on_max",
 				"kind": "bool",
 				"name": {
-					"text": "Crown Guardians on max"
+					"text": "@(sprCrownGuardianIdle:0) Crown Guardians on max"
 				},
 				"desc": {
 					"text": "When @rON@s#and after you visited @w3rd@s @gVault@s#on each @wn-2@s stage#will spawn @g2 crown guardians@s#and if @wloop@s is higher than 2#it will spawn @r4 big bandits@s#(except for @ydesert@s)#if you skipped n-2 area#on n-2 will spawn 2 more guardians"
@@ -442,7 +449,7 @@ if fork() {
 				"option": "crown_guardian_help",
 				"kind": "bool",
 				"name": {
-					"text": "Crown Guardians Help"
+					"text": "@(sprTorch:0) Crown Guardians Help"
 				},
 				"desc": {
 					"text": "When @rON@s# when you activate @gcrown ped@s#or break @gcrown guardian statue@s#in 1st vault#@gguardians@s will replace @wall torches@s#in 2nd vault#@wturrets@s will come out# and in 3rd one#each @gtorch@s will summon @bIDPD@s"
@@ -452,7 +459,7 @@ if fork() {
 				"option": "cursing_enabled",
 				"kind": "bool",
 				"name": {
-					"text": "Spreading curse"
+					"text": "@(sprInvSpiderIdle:0) Spreading curse"
 				},
 				"desc": {
 					"text": "When @rON@s#@ycrystals@s and @yspiders@s will be @pcursed@s#with @wchance 1/7@s,#if you have @pcursed crown@s#@wchance will be 2/3@s,#if @wno crowns@s#no @pcursed crystals@s and @pspiders@s"
@@ -462,7 +469,7 @@ if fork() {
 				"option": "cursed_caves_rework",
 				"kind": "bool",
 				"name": {
-					"text": "Cursed caves rework"
+					"text": "@(sprCurse:3) Cursed caves rework"
 				},
 				"desc": {
 					"text": "When @rON@s#@wall weapons@s that touch floor in#@p4-?@s will be @pcursed@s#after leaving @yl1+@s @pcursed crystal caves@s#all curses will be @ylifted@s"
@@ -472,7 +479,7 @@ if fork() {
 				"option": "no_addinational_enemies",
 				"kind": "bool",
 				"name": {
-					"text": "no addinational enemies"
+					"text": "@(sprLilHunterWalk:0)no addinational enemies"
 				},
 				"desc": {
 					"text": "When @wYES@s#@wno new enemies@s will spawn"
@@ -482,7 +489,7 @@ if fork() {
 				"option": "chest_replacments",
 				"kind": "bool",
 				"name": {
-					"text": "Chest Replacments"
+					"text": "@(sprAmmoChest:0) Chest Replacments"
 				},
 				"desc": {
 					"text": "When @rON@s#it will @wreplace some chests@s#@ypizza@s#@wammo chest@s-@ypizza chest@s#@bwinter city@s#@wammo chest@s - @bIDPD Chests@s# in @plabs@s#@wammo chest@s - @wmimic@s#@rhealth chest@s - @rsuper mimic@s#in @bHQ@s#@wammo chests@s - @bIDPD chests@s#@grad chests@s - @rhealth chests@s"
@@ -497,7 +504,7 @@ if fork() {
 				"option": "floor_changes",
 				"kind": "bool",
 				"name": {
-					"text": "Floor Changes Off"
+					"text": "@(sprFloor1:0) Floor Changes Off"
 				},
 				"desc": {
 					"text": "When @rON@s#it will @wdisable all floor@s changes#from any other options"
@@ -507,7 +514,7 @@ if fork() {
 				"option": "diropf",
 				"kind": "bool",
 				"name": {
-					"text": "Early Popo Freaks Revives"
+					"text": "@(sprPopoReviveArea:0) Early Popo Freaks Revives"
 				},
 				"desc": {
 					"text": "When @rON@s#it will @wenable all@s @bPopo Freaks revives@s#before @g3rd loop@s"
@@ -517,7 +524,7 @@ if fork() {
 				"option": "add_dark",
 				"kind": "bool",
 				"name": {
-					"text": "More Darkness"
+					"text": "@(sprNightCactus) More Darkness"
 				},
 				"desc": {
 					"text": "When @rON@s#apllies @pdarkness@s on #@wPalace, Jungles and Night Desert@s#+ @y25% Chance for night version of area@s"
@@ -527,7 +534,7 @@ if fork() {
 				"option": "fire_explosions",
 				"kind": "bool",
 				"name": {
-					"text": "fire explosions"
+					"text": "@(sprDragonFire:0) fire explosions"
 				},
 				"desc": {
 					"text": "When @rON@s#@rfire@s when @wcontacts@s with#@wany@s @rexplosive projectile@s#destroys the projectile"
@@ -537,7 +544,7 @@ if fork() {
 				"option": "no_new_tips",
 				"kind": "bool",
 				"name": {
-					"text": "No New Tips"
+					"text": "@(sprPortal:0) No New Tips"
 				},
 				"desc": {
 					"text": "When @rON@s#it will @wdisable all new tips@s"
@@ -547,7 +554,7 @@ if fork() {
 				"option": "popups",
 				"kind": "bool",
 				"name": {
-					"text": "popups"
+					"text": "@(sprLevelUp:4) popups"
 				},
 				"desc": {
 					"text": "When @rON@s#it will @wshow some new popups@s"
@@ -557,7 +564,7 @@ if fork() {
 				"option": "no_jocks",
 				"kind": "bool",
 				"name": {
-					"text": "No Jocks!"
+					"text": "@(sprJockIdle:0) No Jocks!"
 				},
 				"desc": {
 					"text": "When @rON@s#it will @rdelete@s @wall Jocks@s"
@@ -567,7 +574,7 @@ if fork() {
 				"option": "enemies_mutations",
 				"kind": "bool",
 				"name": {
-					"text": "Enemies Mutations"
+					"text": "@(sprLHBouncer:1) Enemies Mutations"
 				},
 				"desc": {
 					"text": "When @rON@s#starting from @gL1@s#it will #give on @rhit@s @pteleports@s to all @ggators@s#from @bL3@s#@wreplace@s @wsniper and snow tank bullets@s# with @wbouncers@s#@ygolden tank rockets@s replaced#with @ygolden discs@s"
@@ -577,7 +584,7 @@ if fork() {
 				"option": "idpd_mashup",
 				"kind": "bool",
 				"name": {
-					"text": "IDPD Mashup"
+					"text": "@(sprPopoFreakIdle:0) IDPD Mashup"
 				},
 				"desc": {
 					"text": "When @rON@s#@yL2@s: @w1/3@s @bportals@s and @bvans@s#will contain @bpopo freaks@s#@gL3@s: @w1/2@s @bportals@s and @bvans@s#will contain @yelites@s#P.S. Vans on L3 can also contain#non elite IDPD#because i can't control#if van will contain elites"
@@ -587,7 +594,7 @@ if fork() {
 				"option": "idpd_seek",
 				"kind": "choice",
 				"name": {
-					"text": "IDPD Seek"
+					"text": "@(sprPopoPortal:0) IDPD Seek"
 				},
 				"desc": {
 					"text": "Switch between IDPD Seek modes.#@gNo@s# No Addinational @bIDPD@s. #@yYes@s# Adds more @bIDPD@s to #@wSnow Town@s, @wLabs@s and @wPalace@s. #@rMore@s# Adds even more @bIDPD@s to #@wSnow Town@s and @wPalace@s#+ visiting @bHQ@s #or having a @pcrown@s #or killing @bcap@s #will add addinational @bIDPD@s"
@@ -605,7 +612,7 @@ if fork() {
 				"option": "no_new_parcticles",
 				"kind": "bool",
 				"name": {
-					"text": "No New Parctiles"
+					"text": "@(global.sprRadFalke:0) No New Parctiles"
 				},
 				"desc": {
 					"text": "When @rON@s#@rdisables@s spawn of @gnew parctiles@s"
@@ -615,7 +622,7 @@ if fork() {
 				"option": "no_guards",
 				"kind": "bool",
 				"name": {
-					"text": "No Guardians"
+					"text": "@(sprGuardianIdle:0) No Guardians"
 				},
 				"desc": {
 					"text": "When @rON@s#it will delete @wall@s @gGuards@s#which have been added by @wesp@s"
@@ -625,7 +632,7 @@ if fork() {
 				"option": "l5cap",
 				"kind": "bool",
 				"name": {
-					"text": "L5 Captain"
+					"text": "@(sprLastSit:0) L5 Captain"
 				},
 				"desc": {
 					"text": "When @rON@s#you will @rfight@s the @bCaptain@s#before @gThorne 2@s on @w0-1 L5@s"
@@ -635,7 +642,7 @@ if fork() {
 				"option": "nes",
 				"kind": "bool",
 				"name": {
-					"text": "No Early Shielders"
+					"text": "@(sprShielderIdle:0) No Early Shielders"
 				},
 				"desc": {
 					"text": "When @rON@s#it will @wreplace all@s @bshielders@s#with @binspectors@s until you pass#@w10 stages@s"
@@ -645,7 +652,7 @@ if fork() {
 				"option": "hammerhead_time",
 				"kind": "choice",
 				"name": {
-					"text": "hammerhead time"
+					"text": "@(sprSkillIconHUD:26) hammerhead time"
 				},
 				"desc": {
 					"text": "When @wYes@s#@wremoves hammerhead@s from#@wavailable@s @gmutations pool@s#gives @whammerhead@s after#@wreaching L1@s#when @wmore@s#@wgives more hammerheads#with each loop@s"
@@ -657,7 +664,7 @@ if fork() {
 				"option": "piov",
 				"kind": "bool",
 				"name": {
-					"text": "careful IDPD in labs"
+					"text": "@(sprVanDrive:3) careful IDPD in labs"
 				},
 				"desc": {
 					"text": "When @rON@s#it will @wreplace all@s @bvans@s with#@b4 idpd portals@s in @wLabs@s"
@@ -667,7 +674,7 @@ if fork() {
 				"option": "death_effects",
 				"kind": "bool",
 				"name": {
-					"text": "Death Effects"
+					"text": "@(sprSalamanderDead) Death Effects"
 				},
 				"desc": {
 					"text": "When @rON@s#it will enable @weffects@s#which will happen after#@rdeath@s of @wcertain enemies@s#after @wcertain loop@s"
@@ -677,7 +684,7 @@ if fork() {
 				"option": "seed",
 				"kind": "text",
 				"name": {
-					"text": "seed",
+					"text": "@(sprTangleSeed:0) seed",
 				},
 				"desc": {
 					"text": "enter seed to play the same run endless amount of times"
@@ -687,7 +694,7 @@ if fork() {
 				"option": "common_difficulty_multiplier",
 				"kind": "slider",
 				"name": {
-					"text": "rdm"
+					"text": "@(sprBanditIdle:0) rdm"
 				},
 				"desc": {
 					"text": "rdm - @wregular@s @rdifficulty@s @ymultiplier@s#set multiplier from 0 to 2"
@@ -700,7 +707,7 @@ if fork() {
 				"option": "esp_difficulty_multiplier",
 				"kind": "slider",
 				"name": {
-					"text": "edm"
+					"text": "@(sprFireBallerIdle:0) edm"
 				},
 				"desc": {
 					"text": "edm - @besp@s @rdifficulty@s @ymultiplier@s#set multiplier from 0 to 2"
@@ -821,6 +828,93 @@ opt.floor_changes = global.options.floor_changes;
 opt.bonus_loop_max_health = global.options.floor_changes;
 opt.special_code = global.options.special_code;
 opt.seed = global.options.seed;
+
+if(opt.IDPD_seek == 2 && GameCont.hard > 9){
+	with(Grunt){
+    	if("RadHolder" not in self){
+        	if(random(3) < 1){
+            	RadHolder = 1;
+            	maxhealth += 4;
+            	my_health += 4;
+            	healthcheck = my_health - 4;
+        	}
+        	else{
+            	RadHolder = 0;
+        	}
+    	}
+	}
+
+	with(EliteGrunt){
+    	if("RadHolder" not in self){
+        	if(random(2) < 1){
+            	RadHolder = 1;
+            	maxhealth += 4;
+            	my_health += 4;
+            	healthcheck = my_health - 4;
+        	}
+        	else{
+            	RadHolder = 0;
+        	}
+    	}
+	}
+}
+
+with(Grunt){
+	if("RadHolder" in self){
+        	if(RadHolder == 1){
+            	spr_idle = global.sprGruntIdleRad;
+            	spr_walk = global.sprGruntWalkRad;
+            	spr_hurt = global.sprGruntHurtRad;
+            	snd_hurt = sndHitMetal;
+            	if(healthcheck > my_health){
+                	repeat(25) with instance_create(x,y,Rad){
+                    	speed = random_range(-5,5);
+                    	direction = random(360);
+                	}
+                	with instance_create(x,y,Corpse) sprite_index = sprRadChestCorpse;
+                	sound_play(sndEXPChest);
+                	RadHolder = 2;
+            	}
+        	}
+        	if(RadHolder == 2){
+            	spr_idle = sprGruntIdle;
+            	spr_walk = sprGruntWalk;
+            	spr_hurt = sprGruntHurt;
+            	if(male == 0){
+                	snd_hurt = sndGruntHurtF;
+            	}
+            	if(male == 1){
+                	snd_hurt = sndGruntHurtM;
+            	}
+        	}
+	}
+}
+
+with(EliteGrunt){
+	if("RadHolder" in self){
+        	if(RadHolder == 1){
+            	spr_idle = global.sprEliteGruntIdleRad;
+            	spr_walk = global.sprEliteGruntWalkRad;
+            	spr_hurt = global.sprEliteGruntHurtRad;
+            	snd_hurt = sndHitMetal;
+            	if(healthcheck > my_health){
+                	repeat(25) with instance_create(x,y,Rad){
+                    	speed = random_range(-5,5);
+                    	direction = random(360);
+                	}
+                	with instance_create(x,y,Corpse) sprite_index = sprRadChestCorpse;
+                	sound_play(sndEXPChest);
+                	RadHolder = 2;
+            	}
+        	}
+        	if(RadHolder == 2){
+            	spr_idle = sprEliteGruntIdle;
+            	spr_walk = sprEliteGruntWalk;
+            	spr_hurt = sprEliteGruntHurt;
+            	snd_hurt = sndEliteGruntHurt;
+      		}
+    	}
+}
 
 //We are in a game so sprites after we come back in menu will restore
 if(!instance_exists(MenuGen)){
@@ -3581,7 +3675,7 @@ with(Floor){
     // Check if place is free
     if(!place_meeting(x, y, Wall) && !place_meeting(x, y, prop) && !place_meeting(x, y, chestprop) && !place_meeting(x, y, MaggotSpawn) && !place_meeting(x,y,enemy)) continue;
 
-	if(global.ultrachest_spawned == false && (GameCont.area == 1 || GameCont.area == 3) && GameCont.vaults > 2){
+	if(global.ultrachest_spawned == false && (GameCont.area == 1 || GameCont.area == 3) && GameCont.vaults > 2 && GameCont.subarea == 2){
 		var can_spawn_challange = true;
 
 		if(can_spawn_challange == true){
@@ -3994,28 +4088,24 @@ switch (GameCont.area) {
         pool_w = global.winter_pool_w;
         break;	
 	case "noyetihere":
-        pool = global.pizza_pool;
-        pool_w = global.pizza_pool_w;
+        pool = global.empty_pool;
+        pool_w = global.empty_pool_w;
         break;
 	case "labs":
         pool = global.labs_pool;
         pool_w = global.labs_pool_w;
         break;	
 	case "elevator":
-        pool = global.pizza_pool;
-        pool_w = global.pizza_pool_w;
+        pool = global.empty_pool;
+        pool_w = global.empty_pool_w;
         break;	
 	case "palace":
         pool = global.palace_pool;
         pool_w = global.palace_pool_w;
         break;
-	case "palace":
-        pool = global.pizza_pool;
-        pool_w = global.pizza_pool_w;
-        break;
 	case "venuz":
-        pool = global.pizza_pool;
-        pool_w = global.pizza_pool_w;
+        pool = global.empty_pool;
+        pool_w = global.empty_pool_w;
         break;	
 	case "icecave":
         pool = global.hmicecaves_pool;
@@ -4046,12 +4136,12 @@ switch (GameCont.area) {
         pool_w = global.moon_pool_w;
         break;	
 	case "terminal":
-        pool = global.pizza_pool;
-        pool_w = global.pizza_pool_w;
+        pool = global.empty_pool;
+        pool_w = global.empty_pool_w;
         break;
 	case "terminal_transition":
-        pool = global.pizza_pool;
-        pool_w = global.pizza_pool_w;
+        pool = global.empty_pool;
+        pool_w = global.empty_pool_w;
         break;	
 	case "burntdesert":
         pool = global.desert_pool;

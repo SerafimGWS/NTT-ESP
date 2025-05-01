@@ -40,8 +40,8 @@ global.winter_pool_w = [[0.005,0.25,1],[0.25,0.25,0.1],[0.25,1,0.4,1,1,1],[1,1,1
 global.labs_pool = [[PopoFreak, BigMaggot, FrogEgg, Rat], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage, DogGuardian]];
 global.labs_pool_w = [[0.25,0.4,1,1],[0.35,0.35,1,0.25,0.2,0.3],[1,1,1,1,1,1,0.8,0.4,1],[1,1,1,1,1,1,1,0.4,1,0.8]];
 // Palace
-global.palace_pool = [[Gator, GatorSmoke], [Gator, JungleAssassin, BuffGator], [Gator, JungleAssassin, PopoFreak, Turret, BuffGator], [Gator, JungleAssassin, PopoFreak, Turret, BecomeTurret, CrownGuardian, BuffGator]];
-global.palace_pool_w = [[0.3,0.3],[1,1,0.3],[1,1,1,1,0.25],[1,1,1,1,1,0.25,1]];
+global.palace_pool = [[Gator, GatorSmoke], [Gator, JungleAssassin, BuffGator], [Gator, JungleAssassin, PopoFreak, Turret, BuffGator], [Gator, JungleAssassin, PopoFreak, Turret, BecomeTurret, BuffGator]];
+global.palace_pool_w = [[0.3,0.3],[1,1,0.3],[1,1,1,1,0.25],[1,1,1,1,1,1]];
 // Vault
 global.vault_pool = [[Torch]];
 global.vault_pool_w = [[1]];
@@ -295,43 +295,42 @@ global.popup_shown = {
 };
 
 //Sprites
-global.SnowSniperIdle = sprite_add("sprSnowSniperIdle.png", 4, 12, 12);
-global.SnowSniperWalk = sprite_add("sprSnowSniperWalk.png", 6, 12, 12);
-global.SnowSniperHurt = sprite_add("sprSnowSniperHurt.png", 3, 12, 12);
-global.SnowSniperDead = sprite_add("sprSnowSniperDead.png", 6, 12, 12);
+global.SnowSniperIdle = sprite_add("sources/Enemies/SnowSnipers/sprSnowSniperIdle.png", 4, 12, 12);
+global.SnowSniperWalk = sprite_add("sources/Enemies/SnowSnipers/sprSnowSniperWalk.png", 6, 12, 12);
+global.SnowSniperHurt = sprite_add("sources/Enemies/SnowSnipers/sprSnowSniperHurt.png", 3, 12, 12);
+global.SnowSniperDead = sprite_add("sources/Enemies/SnowSnipers/sprSnowSniperDead.png", 6, 12, 12);
 
-global.sprCobWeb = sprite_add("sprCobWeb.png", 1,0,0);
-global.IcePizza = sprite_add("sprPizzaEntranceIce_strip2.png", 2,0,0);
+global.sprCobWeb = sprite_add("sources/OtherObjects/Cobweb/sprCobWeb.png", 1,0,0);
 
-global.sprRadFalke = sprite_add("sprRadFlake_strip3.png",3,0,0);
-global.sprSandFX = sprite_add("sprSandFX.png",1,0,0);
-global.sprSandFXnight = sprite_add("sprSandFXnight.png",1,0,0);
+global.sprRadFalke = sprite_add("sources/Etc/Parcticles/sprRadFlake_strip3.png",3,0,0);
+global.sprSandFX = sprite_add("sources/Etc/Parcticles/sprSandFX.png",1,0,0);
+global.sprSandFXnight = sprite_add("sources/Etc/Parcticles/sprSandFXnight.png",1,0,0);
 
-global.sprJungleCarIdle = sprite_add("sprJungleCarIdle.png",1,0,0);
-global.sprJungleCarHurt = sprite_add("sprJungleCarHurt.png",3,0,0);
+global.sprJungleCarIdle = sprite_add("sources/OtherObjects/JungleCar/sprJungleCarIdle.png",1,0,0);
+global.sprJungleCarHurt = sprite_add("sources/OtherObjects/JungleCar/sprJungleCarHurt.png",3,0,0);
 
-global.sprOasisEnterIdle = sprite_add("sprOasisScrapyardEnterIdle.png",1,16,16);
-global.sprOasisEnterHurt = sprite_add("sprOasisScrapyardEnterHurt.png",3,16,16);
-global.sprOasisEnterDead = sprite_add("sprOasisScrapyardEnterDeadpng.png",1,8,8);
-global.sndOasisEnterAppears = sound_add("sndWaterMineLand.ogg");
+global.sprOasisEnterIdle = sprite_add("sources/OtherObjects/OasisEnter/sprOasisScrapyardEnterIdle.png",1,16,16);
+global.sprOasisEnterHurt = sprite_add("sources/OtherObjects/OasisEnter/sprOasisScrapyardEnterHurt.png",3,16,16);
+global.sprOasisEnterDead = sprite_add("sources/OtherObjects/OasisEnter/sprOasisScrapyardEnterDeadpng.png",1,8,8);
+global.sndOasisEnterAppears = sound_add("sources/OtherObjects/OasisEnter/sndWaterMineLand.ogg");
 
-global.sndGatorTeleport = sound_add("teleport.ogg");
+global.sndGatorTeleport = sound_add("sources/teleport.ogg");
 
-global.sprBPickup = sprite_add("sprBPickup.png",2,6,12);
+global.sprBPickup = sprite_add("sources/Etc/sprBPickup.png",2,6,12);
 
-global.sprJungleSniperIdle = sprite_add("sprJungleSniperIdle.png",6,12,12);
-global.sprJungleSniperWalk = sprite_add("sprJungleSniperWalk.png",6,12,12);
-global.sprJungleSniperHurt = sprite_add("sprJungleSniperHurt.png",3,12,12);
-global.sprJungleSniperDead = sprite_add("sprJungleSniperDead.png",6,12,12);
+global.sprJungleSniperIdle = sprite_add("sources/Enemies/JungleSnipers/sprJungleSniperIdle.png",6,12,12);
+global.sprJungleSniperWalk = sprite_add("sources/Enemies/JungleSnipers/sprJungleSniperWalk.png",6,12,12);
+global.sprJungleSniperHurt = sprite_add("sources/Enemies/JungleSnipers/sprJungleSniperHurt.png",3,12,12);
+global.sprJungleSniperDead = sprite_add("sources/Enemies/JungleSnipers/sprJungleSniperDead.png",6,12,12);
 
-global.sprUltraChest = sprite_add("ultrachest.png",5,30,45);
+global.sprUltraChest = sprite_add("sources/OtherObjects/UltraChest/ultrachest.png",5,30,45);
 
-global.sprGruntIdleRad = sprite_add("sprGruntIdleRad.png",14,8,17);
-global.sprGruntWalkRad = sprite_add("sprGruntWalkRad.png",6,8,17);
-global.sprGruntHurtRad = sprite_add("sprGruntHurtRad.png",3,8,17);
-global.sprEliteGruntIdleRad = sprite_add("sprEliteGruntIdleRad.png",14,8,18);
-global.sprEliteGruntWalkRad = sprite_add("sprEliteGruntWalkRad.png",6,8,18);
-global.sprEliteGruntHurtRad = sprite_add("sprEliteGruntHurtRad.png",3,8,18);
+global.sprGruntIdleRad = sprite_add("sources/Enemies/RadGrunts/sprGruntIdleRad.png",14,8,17);
+global.sprGruntWalkRad = sprite_add("sources/Enemies/RadGrunts/sprGruntWalkRad.png",6,8,17);
+global.sprGruntHurtRad = sprite_add("sources/Enemies/RadGrunts/sprGruntHurtRad.png",3,8,17);
+global.sprEliteGruntIdleRad = sprite_add("sources/Enemies/RadGrunts/sprEliteGruntIdleRad.png",14,8,18);
+global.sprEliteGruntWalkRad = sprite_add("sources/Enemies/RadGrunts/sprEliteGruntWalkRad.png",6,8,18);
+global.sprEliteGruntHurtRad = sprite_add("sources/Enemies/RadGrunts/sprEliteGruntHurtRad.png",3,8,18);
 
 mod_current_type = script_ref_create(0)[0];
 
@@ -419,7 +418,7 @@ if fork() {
 					"text": "@(sprRavenIdle:0) jungle ravens"
 				},
 				"desc": {
-					"text": "Controls @yspawnrate@s of @rravens@s in a @gjungle@s"
+					"text": "Controls @yspawnrate@s#of @rravens@s in a @gjungle@s"
 				},
 				"format": {
 					"display_multiplier": 5
@@ -2042,63 +2041,63 @@ if(GameCont.area == 105){
 
 	
 if(global.abd == true && GameCont.area == 1 && global.sprites_swapped == false && instance_exists(BackCont)){
-	sprite_replace(sprBigSkull,"sprBigSkull_strip1.png",1);
-	sprite_replace(sprBigSkullOpen,"sprBigSkullOpen_strip1.png",1);
-	sprite_replace(sprBigSkullHurt,"sprBigSkullHurt_strip3.png",3);
-	sprite_replace(sprBigSkullOpenHurt,"sprBigSkullOpenHurt_strip3.png",3);
-	sprite_replace(sprBigSkullDead,"sprBigSkullDead_strip3.png",3);
-	sprite_replace(sprBonePileIdle,"sprBonePileIdle_strip1.png",1);
-	sprite_replace(sprBonePileHurt,"sprBonePileHurt_strip3.png",3);
-	sprite_replace(sprBonePileDead,"sprBonePileDead_strip4.png",3);
-	sprite_replace(sprBones,"sprBones_strip2.png",2);
-	sprite_replace(sprCactus,"sprCactus_strip1.png",1);
-	sprite_replace(sprCactusHurt,"sprCactusHurt_strip3.png",3);
-	sprite_replace(sprCactusDead,"sprCactusDead_strip4.png",4);
-	sprite_replace(sprCactus2,"sprCactus2_strip1.png",1);
-	sprite_replace(sprCactus2Hurt,"sprCactus2Hurt_strip3.png",3);
-	sprite_replace(sprCactus2Dead,"sprCactus2Dead_strip4.png",4);
-	sprite_replace(sprCactus3,"sprCactus3_strip1.png",1);
-	sprite_replace(sprCactus3Hurt,"sprCactus3Hurt_strip3.png",3);
-	sprite_replace(sprCactus3Dead,"sprCactus3Dead_strip4.png",4);
-	sprite_replace(sprCactusB,"sprCactusB_strip1.png",1);
-	sprite_replace(sprCactusBHurt,"sprCactusBHurt_strip3.png",3);
-	sprite_replace(sprCactusBDead,"sprCactusBDead_strip4.png",4);
-	sprite_replace(sprCactusB2,"sprCactusB2_strip1.png",1);
-	sprite_replace(sprCactusB2Hurt,"sprCactusB2Hurt_strip3.png",3);
-	sprite_replace(sprCactusB2Dead,"sprCactusB2Dead_strip4.png",4);
-	sprite_replace(sprCactusB3,"sprCactusB3_strip1.png",1);
-	sprite_replace(sprCactusB3Hurt,"sprCactusB3Hurt_strip3.png",3);
-	sprite_replace(sprCactusB3Dead,"sprCactusB3Dead_strip4.png",4);
-	sprite_replace(sprDebris1,"sprDebris0_strip4.png",4);
-	sprite_replace(sprDesertTopDecal,"sprDesertTopDecal_strip3.png",3);
-	sprite_replace(sprDetail1,"sprDetail0_strip5.png",5);
-	sprite_replace(sprFloor1,"sprFloor1_strip4.png",4);
-	sprite_replace(sprFloor1Explo,"sprFloor1Explo_strip4.png",4);
-	sprite_replace(sprFloor1B,"sprFloor1B_strip4.png",4);
-	sprite_replace(sprMSpawnIdle,"sprMSpawnIdle_strip4.png",4);
-	sprite_replace(sprMSpawnDead,"sprMSpawnDead_strip2.png",2);
-	sprite_replace(sprMSpawnHurt,"sprMSpawnHurt_strip3.png",3);
-	sprite_replace(sprMSpawnChrg,"sprMSpawnChrg_strip4.png",4);
-	sprite_replace(sprWall1Bot,"sprWall0Bot_strip4.png",4);
-	sprite_replace(sprWall1Out,"sprWall0Out_strip1.png",1);
-	sprite_replace(sprWall1Top,"sprWall0Top_strip8.png",8);
-	sprite_replace(sprWall1Trans,"sprWall0Trans_strip8.png",8);
-	sprite_replace(sprWind,"sprWind_strip9.png",9);
-	sprite_replace(sprFloor5B,"sprFloor5B.png",8);
-	sprite_replace(sprSnowFlake,"sprSnowFlake.png",3);
-	sprite_replace(sprSnowBotCarLift,"sprSnowBotCarLift.png",4);
-	sprite_replace(sprFrozenCar,"sprFrozenCar.png",1);
-	sprite_replace(sprSnowBotCarIdle,"sprSnowBotCarIdle.png",6);
-	sprite_replace(sprSnowBotCarWalk,"sprSnowBotCarWalk.png",8);
-	sprite_replace(sprSnowBotCarHurt,"sprSnowBotCarHurt.png",3);
-	sprite_replace(sprSnowBotCarThrow,"sprSnowBotCarThrow.png",5);
-	sprite_replace(sprFrozenCarThrown,"sprFrozenCarThrown.png",6);
-	sprite_replace(sprFrozenCarHurt,"sprFrozenCarHurt.png",3);
-	sprite_replace(sprPStat1Idle,"sprPStat1Idle.png",1);
-	sprite_replace(sprPStat1Hurt,"sprPStat1Hurt.png",3);
-	sprite_replace(sprPStat2Idle,"sprPStat2Idle.png",1);
-	sprite_replace(sprPStat2Hurt,"sprPStat2Hurt.png",3);
-	sprite_replace(sprPStatDead,"sprPStatDead.png",3);
+	sprite_replace(sprBigSkull,"sources/Areas/NightDesert/sprBigSkull_strip1.png",1);
+	sprite_replace(sprBigSkullOpen,"sources/Areas/NightDesert/sprBigSkullOpen_strip1.png",1);
+	sprite_replace(sprBigSkullHurt,"sources/Areas/NightDesert/sprBigSkullHurt_strip3.png",3);
+	sprite_replace(sprBigSkullOpenHurt,"sources/Areas/NightDesert/sprBigSkullOpenHurt_strip3.png",3);
+	sprite_replace(sprBigSkullDead,"sources/Areas/NightDesert/sprBigSkullDead_strip3.png",3);
+	sprite_replace(sprBonePileIdle,"sources/Areas/NightDesert/sprBonePileIdle_strip1.png",1);
+	sprite_replace(sprBonePileHurt,"sources/Areas/NightDesert/sprBonePileHurt_strip3.png",3);
+	sprite_replace(sprBonePileDead,"sources/Areas/NightDesert/sprBonePileDead_strip4.png",3);
+	sprite_replace(sprBones,"sources/Areas/NightDesert/sprBones_strip2.png",2);
+	sprite_replace(sprCactus,"sources/Areas/NightDesert/sprCactus_strip1.png",1);
+	sprite_replace(sprCactusHurt,"sources/Areas/NightDesert/sprCactusHurt_strip3.png",3);
+	sprite_replace(sprCactusDead,"sources/Areas/NightDesert/sprCactusDead_strip4.png",4);
+	sprite_replace(sprCactus2,"sources/Areas/NightDesert/sprCactus2_strip1.png",1);
+	sprite_replace(sprCactus2Hurt,"sources/Areas/NightDesert/sprCactus2Hurt_strip3.png",3);
+	sprite_replace(sprCactus2Dead,"sources/Areas/NightDesert/sprCactus2Dead_strip4.png",4);
+	sprite_replace(sprCactus3,"sources/Areas/NightDesert/sprCactus3_strip1.png",1);
+	sprite_replace(sprCactus3Hurt,"sources/Areas/NightDesert/sprCactus3Hurt_strip3.png",3);
+	sprite_replace(sprCactus3Dead,"sources/Areas/NightDesert/sprCactus3Dead_strip4.png",4);
+	sprite_replace(sprCactusB,"sources/Areas/NightDesert/sprCactusB_strip1.png",1);
+	sprite_replace(sprCactusBHurt,"sources/Areas/NightDesert/sprCactusBHurt_strip3.png",3);
+	sprite_replace(sprCactusBDead,"sources/Areas/NightDesert/sprCactusBDead_strip4.png",4);
+	sprite_replace(sprCactusB2,"sources/Areas/NightDesert/sprCactusB2_strip1.png",1);
+	sprite_replace(sprCactusB2Hurt,"sources/Areas/NightDesert/sprCactusB2Hurt_strip3.png",3);
+	sprite_replace(sprCactusB2Dead,"sources/Areas/NightDesert/sprCactusB2Dead_strip4.png",4);
+	sprite_replace(sprCactusB3,"sources/Areas/NightDesert/sprCactusB3_strip1.png",1);
+	sprite_replace(sprCactusB3Hurt,"sources/Areas/NightDesert/sprCactusB3Hurt_strip3.png",3);
+	sprite_replace(sprCactusB3Dead,"sources/Areas/NightDesert/sprCactusB3Dead_strip4.png",4);
+	sprite_replace(sprDebris1,"sources/Areas/NightDesert/sprDebris0_strip4.png",4);
+	sprite_replace(sprDesertTopDecal,"sources/Areas/NightDesert/sprDesertTopDecal_strip3.png",3);
+	sprite_replace(sprDetail1,"sources/Areas/NightDesert/sprDetail0_strip5.png",5);
+	sprite_replace(sprFloor1,"sources/Areas/NightDesert/sprFloor1_strip4.png",4);
+	sprite_replace(sprFloor1Explo,"sources/Areas/NightDesert/sprWall0Explo_strip4.png",4);
+	sprite_replace(sprFloor1B,"sources/Areas/NightDesert/sprFloor1B_strip4.png",4);
+	sprite_replace(sprMSpawnIdle,"sources/Areas/NightDesert/sprMSpawnIdle_strip4.png",4);
+	sprite_replace(sprMSpawnDead,"sources/Areas/NightDesert/sprMSpawnDead_strip2.png",2);
+	sprite_replace(sprMSpawnHurt,"sources/Areas/NightDesert/sprMSpawnHurt_strip3.png",3);
+	sprite_replace(sprMSpawnChrg,"sources/Areas/NightDesert/sprMSpawnChrg_strip4.png",4);
+	sprite_replace(sprWall1Bot,"sources/Areas/NightDesert/sprWall0Bot_strip4.png",4);
+	sprite_replace(sprWall1Out,"sources/Areas/NightDesert/sprWall0Out_strip1.png",1);
+	sprite_replace(sprWall1Top,"sources/Areas/NightDesert/sprWall0Top_strip8.png",8);
+	sprite_replace(sprWall1Trans,"sources/Areas/NightDesert/sprWall0Trans_strip8.png",8);
+	sprite_replace(sprWind,"sources/Areas/NightDesert/sprWind_strip9.png",9);
+	sprite_replace(sprFloor5B,"sources/Areas/NightCity/sprFloor5B.png",8);
+	sprite_replace(sprSnowFlake,"sources/Areas/NightCity/sprSnowFlake.png",3);
+	sprite_replace(sprSnowBotCarLift,"sources/Areas/NightCity/sprSnowBotCarLift.png",4);
+	sprite_replace(sprFrozenCar,"sources/Areas/NightCity/sprFrozenCar.png",1);
+	sprite_replace(sprSnowBotCarIdle,"sources/Areas/NightCity/sprSnowBotCarIdle.png",6);
+	sprite_replace(sprSnowBotCarWalk,"sources/Areas/NightCity/sprSnowBotCarWalk.png",8);
+	sprite_replace(sprSnowBotCarHurt,"sources/Areas/NightCity/sprSnowBotCarHurt.png",3);
+	sprite_replace(sprSnowBotCarThrow,"sources/Areas/NightCity/sprSnowBotCarThrow.png",5);
+	sprite_replace(sprFrozenCarThrown,"sources/Areas/NightCity/sprFrozenCarThrown.png",6);
+	sprite_replace(sprFrozenCarHurt,"sources/Areas/NightCity/sprFrozenCarHurt.png",3);
+	sprite_replace(sprPStat1Idle,"sources/Areas/Night/sprPStat1Idle.png",1);
+	sprite_replace(sprPStat1Hurt,"sources/Areas/Night/sprPStat1Hurt.png",3);
+	sprite_replace(sprPStat2Idle,"sources/Areas/Night/sprPStat2Idle.png",1);
+	sprite_replace(sprPStat2Hurt,"sources/Areas/Night/sprPStat2Hurt.png",3);
+	sprite_replace(sprPStatDead,"sources/Areas/Night/sprPStatDead.png",3);
 	background_color = make_color_rgb(106, 122, 175);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
@@ -2107,101 +2106,101 @@ if(global.abd == true && GameCont.area == 1 && global.sprites_swapped == false &
 
 
 if(global.abd == true && GameCont.area == 3 && global.sprites_swapped == false && instance_exists(BackCont)){
-	sprite_replace(sprTires,"sprTires.png",1);
-	sprite_replace(sprTiresDead,"sprTiresDead.png",3);
-	sprite_replace(sprTiresHurt,"sprTiresHurt.png",3);
-	sprite_replace(sprTopDecalScrapyard,"sprTopDecalScrapyard.png",3);
-	sprite_replace(sprFloor3,"sprFloor3_strip4.png",4);
-	sprite_replace(sprFloor3B,"sprFloor3B_strip4.png",3);
-	sprite_replace(sprWall3Out,"sprWall3Out.png",3);
-	sprite_replace(sprDetail3,"sprDetail3_strip5.png",5);
-	sprite_replace(sprWall3Bot,"sprWall3Bot_strip4.png",4);
-	sprite_replace(sprWall3Trans,"sprWall3Trans_strip8.png",3);
-	sprite_replace(sprWall3Top,"sprWall3Top_strip8.png",4);
-	sprite_replace(sprFloor3Explo,"sprFloor3Explo_strip4.png",4);
-	sprite_replace(sprDebris3,"sprDebris3_strip4.png",4);
-	sprite_replace(bak3,"bak3.png",1);
-	sprite_replace(sprCarIdle,"sprCarIdleNight.png",1);
-	sprite_replace(sprCarHurt,"sprCarHurtNight.png",3);
-	sprite_replace(sprCarThrown,"sprCarThrown.png",6);
-	sprite_replace(sprSnowBotRedCarIdle,"sprSnowBotRedCarIdle.png",6);
-	sprite_replace(sprSnowBotRedCarLift,"sprSnowBotRedCarLift.png",4);
-	sprite_replace(sprSnowBotRedCarWalk,"sprSnowBotRedCarWalk.png",8);
-	sprite_replace(sprSnowBotRedCarHurt,"sprSnowBotRedCarHurt.png",3);
-	sprite_replace(sprSnowBotRedCarThrow,"sprSnowBotRedCarThrow.png",5);
-	sprite_replace(sprTrap,"sprTrap.png",1);
-	sprite_replace(sprTrapGameover,"sprTrapGameover.png",1);
-	sprite_replace(sprTrapScorchMark,"sprTrapScorchMark.png",1);
-	sprite_replace(sprScrapDecal,"sprScrapDecal.png",2);
-	sprite_replace(sprWind,"sprWind_strip9.png",9);
-	sprite_replace(sprFloor5B,"sprFloor5B.png",8);
-	sprite_replace(sprSnowFlake,"sprSnowFlake.png",3);
-	sprite_replace(sprSnowBotCarLift,"sprSnowBotCarLift.png",4);
-	sprite_replace(sprFrozenCar,"sprFrozenCar.png",1);
-	sprite_replace(sprSnowBotCarIdle,"sprSnowBotCarIdle.png",6);
-	sprite_replace(sprSnowBotCarWalk,"sprSnowBotCarWalk.png",8);
-	sprite_replace(sprSnowBotCarHurt,"sprSnowBotCarHurt.png",3);
-	sprite_replace(sprSnowBotCarThrow,"sprSnowBotCarThrow.png",5);
-	sprite_replace(sprFrozenCarThrown,"sprFrozenCarThrown.png",6);
-	sprite_replace(sprFrozenCarHurt,"sprFrozenCarHurt.png",3);
-	sprite_replace(sprPStat1Idle,"sprPStat1Idle.png",1);
-	sprite_replace(sprPStat1Hurt,"sprPStat1Hurt.png",3);
-	sprite_replace(sprPStat2Idle,"sprPStat2Idle.png",1);
-	sprite_replace(sprPStat2Hurt,"sprPStat2Hurt.png",3);
-	sprite_replace(sprPStatDead,"sprPStatDead.png",3);
+	sprite_replace(sprTires,"sources/Areas/NightScrapyard/sprTires.png",1);
+	sprite_replace(sprTiresDead,"sources/Areas/NightScrapyard/sprTiresDead.png",3);
+	sprite_replace(sprTiresHurt,"sources/Areas/NightScrapyard/sprTiresHurt.png",3);
+	sprite_replace(sprTopDecalScrapyard,"sources/Areas/NightScrapyard/sprTopDecalScrapyard.png",3);
+	sprite_replace(sprFloor3,"sources/Areas/NightScrapyard/sprFloor3_strip4.png",4);
+	sprite_replace(sprFloor3B,"sources/Areas/NightScrapyard/sprFloor3B_strip4.png",3);
+	sprite_replace(sprWall3Out,"sources/Areas/NightScrapyard/sprWall3Out.png",3);
+	sprite_replace(sprDetail3,"sources/Areas/NightScrapyard/sprDetail3_strip5.png",5);
+	sprite_replace(sprWall3Bot,"sources/Areas/NightScrapyard/sprWall3Bot_strip4.png",4);
+	sprite_replace(sprWall3Trans,"sources/Areas/NightScrapyard/sprWall3Trans_strip8.png",3);
+	sprite_replace(sprWall3Top,"sources/Areas/NightScrapyard/sprWall3Top_strip8.png",4);
+	sprite_replace(sprFloor3Explo,"sources/Areas/NightScrapyard/sprFloor3Explo_strip4.png",4);
+	sprite_replace(sprDebris3,"sources/Areas/NightScrapyard/sprDebris3_strip4.png",4);
+	sprite_replace(bak3,"sources/Areas/NightScrapyard/bak3.png",1);
+	sprite_replace(sprCarIdle,"sources/Areas/NightScrapyard/sprCarIdleNight.png",1);
+	sprite_replace(sprCarHurt,"sources/Areas/NightScrapyard/sprCarHurtNight.png",3);
+	sprite_replace(sprCarThrown,"sources/Areas/NightScrapyard/sprCarThrown.png",6);
+	sprite_replace(sprSnowBotRedCarIdle,"sources/Areas/NightScrapyard/sprSnowBotRedCarIdle.png",6);
+	sprite_replace(sprSnowBotRedCarLift,"sources/Areas/NightScrapyard/sprSnowBotRedCarLift.png",4);
+	sprite_replace(sprSnowBotRedCarWalk,"sources/Areas/NightScrapyard/sprSnowBotRedCarWalk.png",8);
+	sprite_replace(sprSnowBotRedCarHurt,"sources/Areas/NightScrapyard/sprSnowBotRedCarHurt.png",3);
+	sprite_replace(sprSnowBotRedCarThrow,"sources/Areas/NightScrapyard/sprSnowBotRedCarThrow.png",5);
+	sprite_replace(sprTrap,"sources/Areas/NightScrapyard/sprTrap.png",1);
+	sprite_replace(sprTrapGameover,"sources/Areas/NightScrapyard/sprTrapGameover.png",1);
+	sprite_replace(sprTrapScorchMark,"sources/Areas/NightScrapyard/sprTrapScorchMark.png",1);
+	sprite_replace(sprScrapDecal,"sources/Areas/NightScrapyard/sprScrapDecal.png",2);
+	sprite_replace(sprWind,"sources/Areas/NightDesert/sprWind_strip9.png",9);
+	sprite_replace(sprFloor5B,"sources/Areas/NightCity/sprFloor5B.png",8);
+	sprite_replace(sprSnowFlake,"sources/Areas/NightCity/sprSnowFlake.png",3);
+	sprite_replace(sprSnowBotCarLift,"sources/Areas/NightCity/sprSnowBotCarLift.png",4);
+	sprite_replace(sprFrozenCar,"sources/Areas/NightCity/sprFrozenCar.png",1);
+	sprite_replace(sprSnowBotCarIdle,"sources/Areas/NightCity/sprSnowBotCarIdle.png",6);
+	sprite_replace(sprSnowBotCarWalk,"sources/Areas/NightCity/sprSnowBotCarWalk.png",8);
+	sprite_replace(sprSnowBotCarHurt,"sources/Areas/NightCity/sprSnowBotCarHurt.png",3);
+	sprite_replace(sprSnowBotCarThrow,"sources/Areas/NightCity/sprSnowBotCarThrow.png",5);
+	sprite_replace(sprFrozenCarThrown,"sources/Areas/NightCity/sprFrozenCarThrown.png",6);
+	sprite_replace(sprFrozenCarHurt,"sources/Areas/NightCity/sprFrozenCarHurt.png",3);
+	sprite_replace(sprPStat1Idle,"sources/Areas/Night/sprPStat1Idle.png",1);
+	sprite_replace(sprPStat1Hurt,"sources/Areas/Night/sprPStat1Hurt.png",3);
+	sprite_replace(sprPStat2Idle,"sources/Areas/Night/sprPStat2Idle.png",1);
+	sprite_replace(sprPStat2Hurt,"sources/Areas/Night/sprPStat2Hurt.png",3);
+	sprite_replace(sprPStatDead,"sources/Areas/Night/sprPStatDead.png",3);
 	background_color = make_color_rgb(40, 43, 83);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
 	global.sprites_swapped = true;
-	sprite_replace(sprRainDrop,"sprRainDrop.png",1);
-	sprite_replace(sprRainDropSlowmo,"sprRainDropSlowmo.png",1);
-	sprite_replace(sprRainSplash,"sprRainSplash.png",3);
+	sprite_replace(sprRainDrop,"sources/Areas/NightScrapyard/sprRainDrop.png",1);
+	sprite_replace(sprRainDropSlowmo,"sources/Areas/NightScrapyard/sprRainDropSlowmo.png",1);
+	sprite_replace(sprRainSplash,"sources/Areas/NightScrapyard/sprRainSplash.png",3);
 	}
 	
 if(global.abd == true && GameCont.area == 5 && global.sprites_swapped == false && instance_exists(BackCont)){
-	sprite_replace(sprSodaMachine,"sprSodaMachine.png",1);
-	sprite_replace(sprStreetLight,"sprStreetLight.png",1);
-	sprite_replace(sprIcicle,"sprIcicle.png",1);
-	sprite_replace(sprWall5Trans,"sprWall5Trans.png",1);
-	sprite_replace(sprTopDecalCity,"sprTopDecalCity.png",3);
-	sprite_replace(sprIceDecal,"sprIceDecal.png",2);
-	sprite_replace(sprIcicleDead,"sprIcicleDead.png",4);
-	sprite_replace(sprIcicleHurt,"sprIcicleHurt.png",3);
-	sprite_replace(sprSodaMachineDead,"sprSodaMachineDead.png",3);
-	sprite_replace(sprSodaCan,"sprSodaCan.png",3);
-	sprite_replace(sprStreetLightDead,"sprStreetLightDead.png",3);
-	sprite_replace(sprFloor5B,"sprFloor5B.png",8);
-	sprite_replace(sprFloor5Explo,"sprFloor5Explo.png",4);
-	sprite_replace(sprFloor5,"sprFloor5.png",8);
-	sprite_replace(sprWall5Out,"sprWall5Out.png",2);
-	sprite_replace(sprWall5Top,"sprWall5Top.png",4);
-	sprite_replace(sprDebris5,"sprDebris5.png",4);
-	sprite_replace(sprDetail5,"sprDetail5.png",3);
-	sprite_replace(sprWall5Bot,"sprWall5Bot.png",3);
-	sprite_replace(sprSodaMachineHurt,"sprSodaMachineHurt.png",3);
-	sprite_replace(sprStreetLightHurt,"sprStreetLightHurt.png",3);
-	sprite_replace(sprSnowBotCarLift,"sprSnowBotCarLift.png",4);
-	sprite_replace(sprFrozenCar,"sprFrozenCar.png",1);
-	sprite_replace(sprSnowBotCarIdle,"sprSnowBotCarIdle.png",6);
-	sprite_replace(sprSnowBotCarWalk,"sprSnowBotCarWalk.png",8);
-	sprite_replace(sprSnowBotCarHurt,"sprSnowBotCarHurt.png",3);
-	sprite_replace(sprSnowBotCarThrow,"sprSnowBotCarThrow.png",5);
-	sprite_replace(sprFrozenCarThrown,"sprFrozenCarThrown.png",6);
-	sprite_replace(sprFrozenCarHurt,"sprFrozenCarHurt.png",3);
-	sprite_replace(sprSnowFlake,"sprSnowFlake.png",3);
-	sprite_replace(sprHydrant,"sprHydrant.png",1);
-	sprite_replace(sprHydrantHurt,"sprHydrantHurt.png",3);
-	sprite_replace(sprHydrantDead,"sprHydrantDead.png",3);
-	sprite_replace(sprSnowMan,"sprSnowMan.png",1);
-	sprite_replace(sprSnowManHurt,"sprSnowManHurt.png",3);
-	sprite_replace(sprSnowManDead,"sprSnowManDead.png",3);
-	sprite_replace(sprWind,"sprWind_strip9.png",9);
-	sprite_replace(sprSnowFlake,"sprSnowFlake.png",3);
-	sprite_replace(sprPStat1Idle,"sprPStat1Idle.png",1);
-	sprite_replace(sprPStat1Hurt,"sprPStat1Hurt.png",3);
-	sprite_replace(sprPStat2Idle,"sprPStat2Idle.png",1);
-	sprite_replace(sprPStat2Hurt,"sprPStat2Hurt.png",3);
-	sprite_replace(sprPStatDead,"sprPStatDead.png",3);	
+	sprite_replace(sprSodaMachine,"sources/Areas/NightCity/sprSodaMachine.png",1);
+	sprite_replace(sprStreetLight,"sources/Areas/NightCity/sprStreetLight.png",1);
+	sprite_replace(sprIcicle,"sources/Areas/NightCity/sprIcicle.png",1);
+	sprite_replace(sprWall5Trans,"sources/Areas/NightCity/sprWall5Trans.png",1);
+	sprite_replace(sprTopDecalCity,"sources/Areas/NightCity/sprTopDecalCity.png",3);
+	sprite_replace(sprIceDecal,"sources/Areas/NightCity/sprIceDecal.png",2);
+	sprite_replace(sprIcicleDead,"sources/Areas/NightCity/sprIcicleDead.png",4);
+	sprite_replace(sprIcicleHurt,"sources/Areas/NightCity/sprIcicleHurt.png",3);
+	sprite_replace(sprSodaMachineDead,"sources/Areas/NightCity/sprSodaMachineDead.png",3);
+	sprite_replace(sprSodaCan,"sources/Areas/NightCity/sprSodaCan.png",3);
+	sprite_replace(sprStreetLightDead,"sources/Areas/NightCity/sprStreetLightDead.png",3);
+	sprite_replace(sprFloor5B,"sources/Areas/NightCity/sprFloor5B.png",8);
+	sprite_replace(sprFloor5Explo,"sources/Areas/NightCity/sprFloor5Explo.png",4);
+	sprite_replace(sprFloor5,"sources/Areas/NightCity/sprFloor5.png",8);
+	sprite_replace(sprWall5Out,"sources/Areas/NightCity/sprWall5Out.png",2);
+	sprite_replace(sprWall5Top,"sources/Areas/NightCity/sprWall5Top.png",4);
+	sprite_replace(sprDebris5,"sources/Areas/NightCity/sprDebris5.png",4);
+	sprite_replace(sprDetail5,"sources/Areas/NightCity/sprDetail5.png",3);
+	sprite_replace(sprWall5Bot,"sources/Areas/NightCity/sprWall5Bot.png",3);
+	sprite_replace(sprSodaMachineHurt,"sources/Areas/NightCity/sprSodaMachineHurt.png",3);
+	sprite_replace(sprStreetLightHurt,"sources/Areas/NightCity/sprStreetLightHurt.png",3);
+	sprite_replace(sprSnowBotCarLift,"sources/Areas/NightCity/sprSnowBotCarLift.png",4);
+	sprite_replace(sprFrozenCar,"sources/Areas/NightCity/sprFrozenCar.png",1);
+	sprite_replace(sprSnowBotCarIdle,"sources/Areas/NightCity/sprSnowBotCarIdle.png",6);
+	sprite_replace(sprSnowBotCarWalk,"sources/Areas/NightCity/sprSnowBotCarWalk.png",8);
+	sprite_replace(sprSnowBotCarHurt,"sources/Areas/NightCity/sprSnowBotCarHurt.png",3);
+	sprite_replace(sprSnowBotCarThrow,"sources/Areas/NightCity/sprSnowBotCarThrow.png",5);
+	sprite_replace(sprFrozenCarThrown,"sources/Areas/NightCity/sprFrozenCarThrown.png",6);
+	sprite_replace(sprFrozenCarHurt,"sources/Areas/NightCity/sprFrozenCarHurt.png",3);
+	sprite_replace(sprSnowFlake,"sources/Areas/NightCity/sprSnowFlake.png",3);
+	sprite_replace(sprHydrant,"sources/Areas/NightCity/sprHydrant.png",1);
+	sprite_replace(sprHydrantHurt,"sources/Areas/NightCity/sprHydrantHurt.png",3);
+	sprite_replace(sprHydrantDead,"sources/Areas/NightCity/sprHydrantDead.png",3);
+	sprite_replace(sprSnowMan,"sources/Areas/NightCity/sprSnowMan.png",1);
+	sprite_replace(sprSnowManHurt,"sources/Areas/NightCity/sprSnowManHurt.png",3);
+	sprite_replace(sprSnowManDead,"sources/Areas/NightCity/sprSnowManDead.png",3);
+	sprite_replace(sprWind,"sources/Areas/NightDesert/sprWind_strip9.png",9);
+	sprite_replace(sprSnowFlake,"sources/Areas/NightCity/sprSnowFlake.png",3);
+	sprite_replace(sprPStat1Idle,"sources/Areas/Night/sprPStat1Idle.png",1);
+	sprite_replace(sprPStat1Hurt,"sources/Areas/Night/sprPStat1Hurt.png",3);
+	sprite_replace(sprPStat2Idle,"sources/Areas/Night/sprPStat2Idle.png",1);
+	sprite_replace(sprPStat2Hurt,"sources/Areas/Night/sprPStat2Hurt.png",3);
+	sprite_replace(sprPStatDead,"sources/Areas/Night/sprPStatDead.png",3);	
 	background_color = make_color_rgb(50, 54, 152);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
@@ -3560,26 +3559,26 @@ if(GameCont.area != 5 && GameCont.area != 105){
 }
 
 if(GameCont.area == 105){
-	sprite_replace(sprBanditBossIdle,"JungleBigBanditIdle.png",6,16,16 );
-	sprite_replace(sprBanditBossWalk,"JungleBigBanditWalk.png",8,16,16 );
-	sprite_replace(sprBanditBossFire,"JungleBigBanditFire.png",2,16,16 );
-	sprite_replace(sprBanditBossTell,"JungleBigBanditTell.png",2,16,16 );
-	sprite_replace(sprBanditBossDash,"JungleBigBanditDash.png",2,16,16 );
-	sprite_replace(sprBanditBossStop,"JungleBigBanditStop.png",2,16,16 );
-	sprite_replace(sprBanditBossHurt,"JungleBigBanditHurt.png",3,16,16 );
-	sprite_replace(sprBanditBossDead,"JungleBigBanditDead.png",9,16,16 );
+	sprite_replace(sprBanditBossIdle,"sources/Enemies/JungleBigBandit/JungleBigBanditIdle.png",6,16,16 );
+	sprite_replace(sprBanditBossWalk,"sources/Enemies/JungleBigBandit/JungleBigBanditWalk.png",8,16,16 );
+	sprite_replace(sprBanditBossFire,"sources/Enemies/JungleBigBandit/JungleBigBanditFire.png",2,16,16 );
+	sprite_replace(sprBanditBossTell,"sources/Enemies/JungleBigBandit/JungleBigBanditTell.png",2,16,16 );
+	sprite_replace(sprBanditBossDash,"sources/Enemies/JungleBigBandit/JungleBigBanditDash.png",2,16,16 );
+	sprite_replace(sprBanditBossStop,"sources/Enemies/JungleBigBandit/JungleBigBanditStop.png",2,16,16 );
+	sprite_replace(sprBanditBossHurt,"sources/Enemies/JungleBigBandit/JungleBigBanditHurt.png",3,16,16 );
+	sprite_replace(sprBanditBossDead,"sources/Enemies/JungleBigBandit/JungleBigBanditDead.png",9,16,16 );
 	}
 	
 if(GameCont.area == 5){
-	sprite_replace(sprBossIntro,"sprBossIntro.png",10,150,0 );
-	sprite_replace(sprBanditBossIdle,"sprSnowBigBanditIdle.png",6,16,16 );
-	sprite_replace(sprBanditBossWalk,"sprSnowBigBanditWalk.png",8,16,16 );
-	sprite_replace(sprBanditBossFire,"sprSnowBigBanditFire.png",2,16,16 );
-	sprite_replace(sprBanditBossTell,"sprSnowBigBanditTell.png",2,16,16 );
-	sprite_replace(sprBanditBossDash,"sprSnowBigBanditDash.png",2,16,16 );
-	sprite_replace(sprBanditBossStop,"sprSnowBigBanditStop.png",2,16,16 );
-	sprite_replace(sprBanditBossHurt,"sprSnowBigBanditHurt.png",3,16,16 );
-	sprite_replace(sprBanditBossDead,"sprSnowBigBanditDead.png",9,16,16 );
+	sprite_replace(sprBossIntro,"sources/Enemies/SnowBigBandit/sprBossIntro.png",10,150,0 );
+	sprite_replace(sprBanditBossIdle,"sources/Enemies/SnowBigBandit/sprSnowBigBanditIdle.png",6,16,16 );
+	sprite_replace(sprBanditBossWalk,"sources/Enemies/SnowBigBandit/sprSnowBigBanditWalk.png",8,16,16 );
+	sprite_replace(sprBanditBossFire,"sources/Enemies/SnowBigBandit/sprSnowBigBanditFire.png",2,16,16 );
+	sprite_replace(sprBanditBossTell,"sources/Enemies/SnowBigBandit/sprSnowBigBanditTell.png",2,16,16 );
+	sprite_replace(sprBanditBossDash,"sources/Enemies/SnowBigBandit/sprSnowBigBanditDash.png",2,16,16 );
+	sprite_replace(sprBanditBossStop,"sources/Enemies/SnowBigBandit/sprSnowBigBanditStop.png",2,16,16 );
+	sprite_replace(sprBanditBossHurt,"sources/Enemies/SnowBigBandit/sprSnowBigBanditHurt.png",3,16,16 );
+	sprite_replace(sprBanditBossDead,"sources/Enemies/SnowBigBandit/sprSnowBigBanditDead.png",9,16,16 );
 	}
 
 if(opt.IDPD_seek == 1 && GameCont.area == 106){
@@ -3681,6 +3680,10 @@ with(Floor){
 		if(can_spawn_challange == true){
 			with instance_create(x,y,CustomObject){ 
 						UltraChest = 1;
+			}
+			with instance_create(x,y,PortalClear){
+				image_xscale = 2;
+				image_yscale = 2;
 			}
 			global.ultrachest_spawned = true;
 		}

@@ -325,13 +325,6 @@ global.sprJungleSniperDead = sprite_add("sources/Enemies/JungleSnipers/sprJungle
 
 global.sprUltraChest = sprite_add("sources/OtherObjects/UltraChest/ultrachest.png",5,30,45);
 
-global.sprGruntIdleRad = sprite_add("sources/Enemies/RadGrunts/sprGruntIdleRad.png",14,8,17);
-global.sprGruntWalkRad = sprite_add("sources/Enemies/RadGrunts/sprGruntWalkRad.png",6,8,17);
-global.sprGruntHurtRad = sprite_add("sources/Enemies/RadGrunts/sprGruntHurtRad.png",3,8,17);
-global.sprEliteGruntIdleRad = sprite_add("sources/Enemies/RadGrunts/sprEliteGruntIdleRad.png",14,8,18);
-global.sprEliteGruntWalkRad = sprite_add("sources/Enemies/RadGrunts/sprEliteGruntWalkRad.png",6,8,18);
-global.sprEliteGruntHurtRad = sprite_add("sources/Enemies/RadGrunts/sprEliteGruntHurtRad.png",3,8,18);
-
 mod_current_type = script_ref_create(0)[0];
 
 // values for your options should go in a global lightweight object
@@ -351,7 +344,7 @@ global.options = {
 	"l5cap": false,
 	"fire_explosions": true,	
 	"no_addinational_enemies": false, 
-	"hammerhead_time": 0,
+	"hammerhead_time": 1,
 	"death_effects": true, 
 	"no_new_tips": false, 
 	"no_new_parcticles": false, 
@@ -843,7 +836,21 @@ if(opt.IDPD_seek == 2 && GameCont.hard > 9){
     	}
 	}
 
-	with(EliteGrunt){
+	with(Inspector){
+    	if("RadHolder" not in self){
+        	if(random(2) < 1){
+            	RadHolder = 1;
+            	maxhealth += 4;
+            	my_health += 4;
+            	healthcheck = my_health - 4;
+        	}
+        	else{
+            	RadHolder = 0;
+        	}
+    	}
+	}
+
+	with(Shielder){
     	if("RadHolder" not in self){
         	if(random(2) < 1){
             	RadHolder = 1;
@@ -859,60 +866,89 @@ if(opt.IDPD_seek == 2 && GameCont.hard > 9){
 }
 
 with(Grunt){
-	if("RadHolder" in self){
-        	if(RadHolder == 1){
-            	spr_idle = global.sprGruntIdleRad;
-            	spr_walk = global.sprGruntWalkRad;
-            	spr_hurt = global.sprGruntHurtRad;
-            	snd_hurt = sndHitMetal;
-            	if(healthcheck > my_health){
-                	repeat(25) with instance_create(x,y,Rad){
-                    	speed = random_range(-5,5);
-                    	direction = random(360);
-                	}
-                	with instance_create(x,y,Corpse) sprite_index = sprRadChestCorpse;
-                	sound_play(sndEXPChest);
-                	RadHolder = 2;
-            	}
-        	}
-        	if(RadHolder == 2){
-            	spr_idle = sprGruntIdle;
-            	spr_walk = sprGruntWalk;
-            	spr_hurt = sprGruntHurt;
-            	if(male == 0){
-                	snd_hurt = sndGruntHurtF;
-            	}
-            	if(male == 1){
-                	snd_hurt = sndGruntHurtM;
-            	}
-        	}
-	}
+    if("RadHolder" in self){
+        if(RadHolder == 1){
+            snd_hurt = sndHitMetal;
+            roll = 0;
+            angle = 0;
+            script_bind_draw(radchestback, -1);
+            if(healthcheck > my_health){
+                repeat(25) with instance_create(x,y,Rad){
+                    speed = random_range(-5,5);
+                    direction = random(360);
+                }
+                with instance_create(x,y,Corpse) sprite_index = sprRadChestCorpse;
+                sound_play(sndEXPChest);
+                RadHolder = 2;
+            }
+        }
+        if(RadHolder == 2){
+            if(male == 0){
+                snd_hurt = sndGruntHurtF;
+            }
+            if(male == 1){
+                snd_hurt = sndGruntHurtM;
+            }
+        }
+	}	
 }
 
-with(EliteGrunt){
+with(Inspector){
 	if("RadHolder" in self){
-        	if(RadHolder == 1){
-            	spr_idle = global.sprEliteGruntIdleRad;
-            	spr_walk = global.sprEliteGruntWalkRad;
-            	spr_hurt = global.sprEliteGruntHurtRad;
-            	snd_hurt = sndHitMetal;
-            	if(healthcheck > my_health){
-                	repeat(25) with instance_create(x,y,Rad){
-                    	speed = random_range(-5,5);
-                    	direction = random(360);
-                	}
-                	with instance_create(x,y,Corpse) sprite_index = sprRadChestCorpse;
-                	sound_play(sndEXPChest);
-                	RadHolder = 2;
-            	}
-        	}
-        	if(RadHolder == 2){
-            	spr_idle = sprEliteGruntIdle;
-            	spr_walk = sprEliteGruntWalk;
-            	spr_hurt = sprEliteGruntHurt;
-            	snd_hurt = sndEliteGruntHurt;
-      		}
-    	}
+        if(RadHolder == 1){
+            snd_hurt = sndHitMetal;
+            control = 0;
+            script_bind_draw(telekenesis, -1);
+            script_bind_draw(radchestback, -1);
+            rad_inspector();
+            if(healthcheck > my_health){
+                repeat(25) with instance_create(x,y,Rad){
+                    speed = random_range(-5,5);
+                    direction = random(360);
+                }
+                with instance_create(x,y,Corpse) sprite_index = sprRadChestCorpse;
+                sound_play(sndEXPChest);
+                RadHolder = 2;
+            }
+        }
+        if(RadHolder == 2){
+            spr_idle = sprInspectorIdle;
+            spr_walk = sprInspectorWalk;
+            spr_hurt = sprInspectorHurt;
+            if(male == 0){
+                snd_hurt = sndInspectorHurtF;
+            }
+            if(male == 1){
+                snd_hurt = sndInspectorHurtM;
+            }
+        }
+	}	
+}
+
+with(Shielder){
+    if("RadHolder" in self){
+        if(RadHolder == 1){
+            snd_hurt = sndHitMetal;
+            script_bind_draw(radchestback, -1);
+            if(healthcheck > my_health){
+                repeat(25) with instance_create(x,y,Rad){
+                    speed = random_range(-5,5);
+                    direction = random(360);
+                }
+                with instance_create(x,y,Corpse) sprite_index = sprRadChestCorpse;
+                sound_play(sndEXPChest);
+                RadHolder = 2;
+            }
+        }
+        if(RadHolder == 2){
+            if(male == 0){
+                snd_hurt = sndShielderHurtF;
+            }
+            if(male == 1){
+                snd_hurt = sndShielderHurtM;
+            }
+        }
+	}
 }
 
 //We are in a game so sprites after we come back in menu will restore
@@ -2201,7 +2237,7 @@ if(global.abd == true && GameCont.area == 5 && global.sprites_swapped == false &
 	sprite_replace(sprPStat2Idle,"sources/Areas/Night/sprPStat2Idle.png",1);
 	sprite_replace(sprPStat2Hurt,"sources/Areas/Night/sprPStat2Hurt.png",3);
 	sprite_replace(sprPStatDead,"sources/Areas/Night/sprPStatDead.png",3);	
-	background_color = make_color_rgb(50, 54, 152);
+	background_color = make_color_rgb(59, 55, 124);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
 	global.sprites_swapped = true;
@@ -2741,6 +2777,51 @@ if(!global.vault_torch_transformed && instance_exists(CrownGuardian) && opt.crow
 if(instance_exists(LilHunterDie) && !global.lilhunter_revenged && opt.lilhunter_revenge){
     instance_create(0,0,VanSpawn);
     global.lilhunter_revenged = true;
+}
+
+#define rad_inspector
+
+with Player {
+        if point_distance(x, y, other.x, other.y) < 240 {
+            if place_free(x + lengthdir_x(1, point_direction(x, y, other.x, other.y)), y) x -= lengthdir_x(1, point_direction(x, y, other.x, other.y))
+            if place_free(x, y + lengthdir_y(1, point_direction(x, y, other.x, other.y))) y -= lengthdir_y(1, point_direction(x, y, other.x, other.y))
+        }
+    }
+
+#define telekenesis
+
+with(Inspector){
+    if("RadHolder" in self){
+        if(RadHolder == 1){
+            draw_sprite_ext(sprEyesB, -1, x, y, 1, 1, angle, c_white, 1);
+        }
+    }
+}
+
+#define radchestback
+
+with(Grunt){
+    if("RadHolder" in self){
+        if(RadHolder == 1){
+            draw_sprite_ext(sprRadChest, -1, x, y-8, 1, 1, angle, c_white, 1);
+        }
+    }
+}
+
+with(Inspector){
+    if("RadHolder" in self){
+        if(RadHolder == 1){
+            draw_sprite_ext(sprRadChest, -1, x, y-14, 1, 1, angle, c_white, 1);
+        }
+    }
+}
+
+with(Shielder){
+    if("RadHolder" in self){
+        if(RadHolder == 1){
+            draw_sprite_ext(sprRadChest, -1, x, y-12, 1, 1, angle, c_white, 1);
+        }
+    }
 }
 
 #define ultra_weapon

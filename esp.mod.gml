@@ -1067,6 +1067,7 @@ if(instance_exists(MenuGen) && global.srim == false){
 	sprite_restore(sprPStat1Idle);
 	sprite_restore(sprPStat2Idle);
 	sprite_restore(sprSnowManDead);
+	sprite_restore(sprPStat1Hurt);
 	sprite_restore(sprPStat2Hurt);
 	sprite_restore(sprPStatDead);
 	sprite_restore(sprSnowManDead);
@@ -2134,6 +2135,8 @@ if(global.abd == true && GameCont.area == 1 && global.sprites_swapped == false &
 	sprite_replace(sprPStat2Idle,"sources/Areas/Night/sprPStat2Idle.png",1);
 	sprite_replace(sprPStat2Hurt,"sources/Areas/Night/sprPStat2Hurt.png",3);
 	sprite_replace(sprPStatDead,"sources/Areas/Night/sprPStatDead.png",3);
+	sprite_replace(sprCarIdle,"sources/Areas/NightScrapyard/sprCarIdleNight.png",1);
+	sprite_replace(sprCarHurt,"sources/Areas/NightScrapyard/sprCarHurtNight.png",3);
 	background_color = make_color_rgb(106, 122, 175);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
@@ -2184,7 +2187,7 @@ if(global.abd == true && GameCont.area == 3 && global.sprites_swapped == false &
 	sprite_replace(sprPStat2Idle,"sources/Areas/Night/sprPStat2Idle.png",1);
 	sprite_replace(sprPStat2Hurt,"sources/Areas/Night/sprPStat2Hurt.png",3);
 	sprite_replace(sprPStatDead,"sources/Areas/Night/sprPStatDead.png",3);
-	background_color = make_color_rgb(40, 43, 83);
+	background_color = make_color_rgb(51, 57, 71);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
 	global.sprites_swapped = true;
@@ -2964,6 +2967,7 @@ sprite_restore(sprSnowManHurt);
 sprite_restore(sprPStat1Idle);
 sprite_restore(sprPStat2Idle);
 sprite_restore(sprSnowManDead);
+sprite_restore(sprPStat1Hurt);
 sprite_restore(sprPStat2Hurt);
 sprite_restore(sprPStatDead);
 sprite_restore(sprSnowManDead);
@@ -3616,6 +3620,7 @@ if(global.abd == false){
 	sprite_restore(sprPStat1Idle);
 	sprite_restore(sprPStat2Idle);
 	sprite_restore(sprSnowManDead);
+	sprite_restore(sprPStat1Hurt);
 	sprite_restore(sprPStat2Hurt);
 	sprite_restore(sprPStatDead);
 	sprite_restore(sprSnowManDead);

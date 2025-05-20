@@ -1,4 +1,4 @@
-#macro VERSION "9940, 9944, and v100 (release)"
+#macro VERSION "9940, 9944, and v100 (patch 3)"
 #define init
 mod_current_type = script_ref_create(0)[0];
 
@@ -1419,8 +1419,8 @@ if instance_exists(Menu) && instance_exists(Loadout) {
 
 var _mousePos = world_to_region(mouse_x[p], mouse_y[p], self);
 
-if button_pressed(p, "spec")
-|| (button_pressed(p, "fire") && _mousePos.x <= 28 && _mousePos.y <= 28)
+if (!instance_exists(MENU.keys_region[p]) && (button_pressed(p, "spec")
+|| (button_pressed(p, "fire") && _mousePos.x <= 28 && _mousePos.y <= 28)))
 || (!paused && !instance_exists(Menu))
 || (paused && instance_exists(PauseButton))
 || (paused && !open && !instance_exists(OptionMenuButton)) {
@@ -1490,7 +1490,7 @@ draw_set_font(fntBigName);
 with region_create(
 	_p,
 	game_width / 2,
-	game_height / 2 - (_paused ? 44 + (string_height_fixed(MENU.mods[MENU.mod_index].name) * 0.65) / 2 : 0),
+	game_height / 2 - (_paused ? 48 + ceil(string_height_fixed(MENU.mods[MENU.mod_index].name) * 0.65) / 2 : 0),
 	string_width_fixed(MENU.mods[MENU.mod_index].name) + 80,
 	string_height_fixed(MENU.mods[MENU.mod_index].name),
 	c_black,
@@ -2558,8 +2558,6 @@ with region_create(
 	index = 0;
 	value = values[index];
 	
-	on_step = script_ref_create(Cycle_step);
-	
 	on_draw = script_ref_wrap(
 		script_ref_create(Cycle_draw),
 		script_ref_create(Name_draw)
@@ -2577,9 +2575,6 @@ with region_create(
 	
 	return self;
 }
-
-#define Cycle_step
-index = array_find_index(values, value);
 
 #define Cycle_draw
 var _halign = draw_get_halign();
@@ -2822,9 +2817,9 @@ draw_set_font(fntChat);
 draw_text_nt(
 	4,
 	round(abs(y2 - y1) / 2),
-	`@(color:${selected ? c_white : c_silver})${
+	`@(color:${selected ? (inputting ? c_dkgray : c_white) : c_silver})${
 		inputting
-		? (current_frame % 20 < 10 ? "|" : "")
+		? "(Type a chat message)"
 		: string_hash_to_newline(display_override != null ? display_override : prefix + string(value) + suffix)
 	}`
 );
@@ -2904,6 +2899,7 @@ with region_create(
 	
 	var _validKeys = [
 		"fire",
+		"spec",
 		"pick",
 		"swap",
 		"nort",
@@ -3586,10 +3582,7 @@ var _wrapped = script_is_wrapped(_scriptReference);
 var _clonedReferences = [];
 
 if _superWrapped {
-	var i = -1;
-	
-	repeat array_length(_superScriptReference[3]) {
-		i += 1;
+	for var i = 0, _scriptReferenceCount = array_length(_superScriptReference[3]); _scriptReferenceCount > i; i ++; {
 		array_push(_clonedReferences, array_clone(_superScriptReference[@3][@i]));
 	}
 } else {
@@ -3597,10 +3590,7 @@ if _superWrapped {
 }
 
 if _wrapped {
-	var i = -1;
-	
-	repeat array_length(_scriptReference[3]) {
-		i += 1;
+	for var i = 0, _scriptReferenceCount = array_length(_scriptReference[3]); _scriptReferenceCount > i; i ++; {
 		array_push(_clonedReferences, array_clone(_scriptReference[@3][@i]));
 	}
 } else {
@@ -3610,33 +3600,34 @@ if _wrapped {
 return script_ref_create(script_ref_wrapped, _clonedReferences);
 
 #define script_is_wrapped(_scriptReference)
-return _scriptReference[1] == mod_current
-&& _scriptReference[0] == mod_current_type
-&& _scriptReference[2] == "script_ref_wrapped";
+return is_array(_scriptReference) && array_length(_scriptReference) >= 4
+	&& _scriptReference[1] == mod_current
+	&& _scriptReference[0] == mod_current_type
+	&& _scriptReference[2] == "script_ref_wrapped";
 
 #define script_ref_wrapped
-if argument_count > 0 {
-	var i = -1;
+for var i = 0, _scriptReferenceCount = array_length(argument[0]); _scriptReferenceCount > i; i ++; {
+	var _script = argument[0][@ i];
 	
-	repeat array_length(argument[0]) {
-		var _script = argument[0][@ ++i];
+	if argument_count > 1 {
+		_script = array_clone(_script);
 		
-		if argument_count > 1 {
-			_script = array_clone(_script);
-			
-			var j = 0; // intentional 0, we skip the first argument
-			
-			repeat argument_count - 1 {
-				array_push(_script, argument[++j]);
-			}
-		}
-		
-		var _result = script_ref_call_wc(_script, self, other);
-		
-		if !instance_exists(self) || (_result != null && _result) {
-			exit;
+		for var j = 1; argument_count > j; j ++; {
+			array_push(_script, argument[j]);
 		}
 	}
+	
+	var _result = script_ref_call_wc(_script, self, other);
+	
+	try{
+		if (_result || !instance_exists(self)) {
+			return _result;
+		}
+	}
+	
+	catch(_error) {
+		_result = false;
+	};
 }
 
 #define script_ref_call_wc
@@ -3647,18 +3638,26 @@ var _other = argument[2];
 if argument_count > 3 {
 	_scriptReference = array_clone(_scriptReference);
 	
-	var i = 2; // intentional 2, we skip the first three arguments
-	
-	repeat argument_count - 3 {
-		array_push(_scriptReference, argument[++i]);
+	for var i = 3; argument_count > i; i ++; {
+		array_push(_scriptReference, argument[i]);
 	}
 }
 
-if self != _self || other != _other {
+if _other != null && _other != noone && _self != null && _self != noone && (self != _self || other != _other) {
 	with _other {
 		with _self {
-			return mod_script_call(mod_current_type, mod_current, "script_ref_call_wc", _scriptReference, _self, _other);
+			return mod_script_call(mod_current_type, mod_current, "script_ref_call_wc", _scriptReference, self, other);
 		}
+	}
+} else if _other != null && _other != noone && other != _other {
+	with _other {
+		with self {
+			return mod_script_call(mod_current_type, mod_current, "script_ref_call_wc", _scriptReference, null, other);
+		}
+	}
+} else if _self != null && _self != noone && self != _self {
+	with _self {
+		return mod_script_call_self(mod_current_type, mod_current, "script_ref_call_wc", _scriptReference, self, null);
 	}
 }
 

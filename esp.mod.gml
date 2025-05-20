@@ -172,7 +172,7 @@ if ("esp_mod_opt" in GameCont) {
 };
 
 // -----Commands zone------- //
-trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 250425 mod!");
+trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 200525 mod!");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -325,6 +325,10 @@ global.sprJungleSniperDead = sprite_add("sources/Enemies/JungleSnipers/sprJungle
 
 global.sprUltraChest = sprite_add("sources/OtherObjects/UltraChest/ultrachest.png",5,30,45);
 
+global.OPTIONS_FILE = "options.json";
+
+global.PRESET_FILE = "presets.json";
+
 mod_current_type = script_ref_create(0)[0];
 
 // values for your options should go in a global lightweight object
@@ -361,6 +365,7 @@ global.options = {
 	"bonus_loop_max_health": true,
 	"special_code": "insert your code here",
 	"seed": "",
+	"reset": false,
 };
 
 global.loaded = false;
@@ -598,7 +603,7 @@ if fork() {
 	});
 			
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page3", {
-		"reference": script_ref_create(draw_back_button),
+		//"reference": script_ref_create(draw_back_button),
 		"options": [
 			{
 				"option": "no_new_parcticles",
@@ -710,11 +715,27 @@ if fork() {
 			}
 		]
 	});
+
+	call(scr.option_add_page, mod_current_type, mod_current, "options", "options_reset", {
+		"options": [
+			{
+				"option": "reset",
+				"kind": "bool",
+				"name": {
+					"text": "Options Reset"
+				},
+				"desc": {
+					"text": "When @rON@s#loads presets"
+				}
+			},		
+		]
+	});
 	
 	call(scr.option_set_mod_display_name, mod_current_type, mod_current, "   ESP#SETTINGS");
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page", "CONFIG PAGE I");
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page2", "CONFIG PAGE II");
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page3", "CONFIG PAGE III");
+	call(scr.option_set_page_display_name, mod_current_type, mod_current, "options_reset", "OPTIONS RESET");
 	
 	exit;
 }
@@ -820,6 +841,27 @@ opt.floor_changes = global.options.floor_changes;
 opt.bonus_loop_max_health = global.options.floor_changes;
 opt.special_code = global.options.special_code;
 opt.seed = global.options.seed;
+
+if(global.options.reset){
+	if (fork()) {
+	wait(file_load(global.PRESET_FILE) + 1);
+
+	if (file_exists(global.PRESET_FILE)) {
+		var _options = json_decode(string_load(global.PRESET_FILE));
+        var option_count = lq_size(global.options);
+    
+        for (var i = 0; option_count > i; i++) {
+            if (!lq_exists(_options, lq_get_key(global.options, i))) {
+                lq_set(_options, lq_get_key(global.options, i), lq_get_value(global.options, i));
+            }
+        }
+
+        global.options = _options;
+		global.options.reset = false;
+		call(scr.options_refresh)
+		}
+	}
+}
 
 if(opt.IDPD_seek == 2 && GameCont.hard > 9){
 	with(Grunt){
@@ -1129,12 +1171,12 @@ with (CustomObject){
 	}
 }
 
-with(WepPickup){
+/*with(WepPickup){
 	if(place_meeting(x,y,global.ultrachest_id) && id != global.ultraweapon_id && global.ultrachest_frame > 2 && global.weapon_deleted == false){
 		instance_delete(id);
 		global.weapon_deleted = true;
 	}
-}
+}*/
 
 with(Lightning){
 	if(team = 1){
@@ -3008,10 +3050,32 @@ draw_sprite_ext(sprMutant3Sit, sprite_get_number(sprMutant3Sit) - 3, game_width 
 #define CustomOptions_open
 // a script that runs when a user selects your mod through Custom Options' GUI
 // you can load your options file here or in `#define init`
+if (fork()) {
+	wait(file_load(global.OPTIONS_FILE) + 1);
+
+	if (file_exists(global.OPTIONS_FILE)) {
+		var _options = json_decode(string_load(global.OPTIONS_FILE));
+        var option_count = lq_size(global.options);
+    
+        for (var i = 0; option_count > i; i++) {
+            if (!lq_exists(_options, lq_get_key(global.options, i))) {
+                lq_set(_options, lq_get_key(global.options, i), lq_get_value(global.options, i));
+            }
+        }
+
+        global.options = _options;
+	} else {
+		string_save(json_encode(global.options, "   "), global.OPTIONS_FILE);
+		string_save(json_encode(global.options, "   "), global.PRESET_FILE);
+	}
+}
+//trace(`${mod_current}.${mod_current_type}::CustomOptions_open`);
 
 #define CustomOptions_save
 // a script that runs when Custom Options detects the menu closing
 // you can save your options file here or in `#define cleanup`
+string_save(json_encode(global.options, "  "), global.OPTIONS_FILE);
+//trace(`${mod_current}.${mod_current_type}::CustomOptions_save`);
 
 #define gator_tp()
   if("tele_health" not in self){
@@ -3085,27 +3149,25 @@ draw_sprite_ext(sprMutant3Sit, sprite_get_number(sprMutant3Sit) - 3, game_width 
   tele_health = my_health;
 
 #define enter_to_oasis_step
-if(nexthurt > current_frame){
-	if(sprite_index != spr_hurt) {
-		image_index = 0;
-		sprite_index = spr_hurt;}
-		}
-	else{
-		if(speed > friction) 
-			sprite_index = spr_walk;
-		else 
-			sprite_index = spr_idle;
-		}
+	
+if(sprite_index != spr_hurt){
+	sprite_index = spr_idle;
+}
+else if(image_index > 2) sprite_index = spr_idle;
 
-#define enter_to_oasis_hurt (damage)
-if sprite_index != spr_hurt
-	image_index = 0;
-	sprite_index = spr_hurt;
-sound_play(sndOasisHurt);
-my_health -= damage;
 if (my_health <= 0) {
     instance_destroy();
 }
+
+
+#define enter_to_oasis_hurt (damage)
+
+nexthurt = current_frame + 6;
+sound_play(sndOasisHurt);
+my_health -= damage;
+
+sprite_index = spr_hurt;
+image_index = 0;
 
 #define enter_to_oasis_destroy
 repeat (3) instance_create(x + random_range(-1, 1), y + random_range(-1, 1), Explosion);

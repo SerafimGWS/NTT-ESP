@@ -172,7 +172,7 @@ if ("esp_mod_opt" in GameCont) {
 };
 
 // -----Commands zone------- //
-trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 200525 mod!");
+trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 260525 mod!");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -293,6 +293,11 @@ global.popup_shown = {
 	"_oasis": false,
 	"_jungle": false,
 };
+
+global.onetimetip_shown = {
+	"chicken": false,
+	"sans": false,
+}
 
 //Sprites
 global.SnowSniperIdle = sprite_add("sources/Enemies/SnowSnipers/sprSnowSniperIdle.png", 4, 12, 12);
@@ -747,6 +752,11 @@ global.JungleSniperHitid = [global.sprJungleSniperIdle, "Jungle Sniper"];
 // -----Tick------ //
 #define game_start
 
+global.onetimetip_shown = {
+	"chicken": false,
+	"sans": false,
+}
+
 global.cap_spawned = false;
 global.tip_shown = false;
 global.inner_chance_proc = false;
@@ -913,7 +923,10 @@ with(Grunt){
             snd_hurt = sndHitMetal;
             roll = 0;
             angle = 0;
-            script_bind_draw(radchestback, -1);
+			if("already_drawing" not in self){
+            	script_bind_draw(radchestback, -1);
+				already_drawing = 1;
+			}
             if(healthcheck > my_health){
                 repeat(25) with instance_create(x,y,Rad){
                     speed = random_range(-5,5);
@@ -940,8 +953,11 @@ with(Inspector){
         if(RadHolder == 1){
             snd_hurt = sndHitMetal;
             control = 0;
-            script_bind_draw(telekenesis, -1);
-            script_bind_draw(radchestback, -1);
+			if("already_drawing" not in self){
+				script_bind_draw(telekenesis, -1);
+            	script_bind_draw(radchestback, -1);
+				already_drawing = 1;
+			}
             rad_inspector();
             if(healthcheck > my_health){
                 repeat(25) with instance_create(x,y,Rad){
@@ -971,7 +987,10 @@ with(Shielder){
     if("RadHolder" in self){
         if(RadHolder == 1){
             snd_hurt = sndHitMetal;
-            script_bind_draw(radchestback, -1);
+			if("already_drawing" not in self){
+            	script_bind_draw(radchestback, -1);
+				already_drawing = 1;
+			}
             if(healthcheck > my_health){
                 repeat(25) with instance_create(x,y,Rad){
                     speed = random_range(-5,5);
@@ -1179,13 +1198,13 @@ with (CustomObject){
 }*/
 
 with(Lightning){
-	if(team = 1){
+	if(team == 1){
 		damage = 5;
 	}
 }
 
 with (Flame){
-	if(team = 1){
+	if(team == 1){
 		damage = 1;
 	}
 }
@@ -1878,20 +1897,20 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 		global.tip_shown = true;
 	}
 	
-	if(r4 == 14 && global.tip_shown == false && Player.wep == wep_ultra_shovel && GameCont.loops > 2){
+	/*if(r4 == 14 && global.tip_shown == false && Player.wep == wep_ultra_shovel && GameCont.loops > 2){
 		GenCont.tip = "swing like belmont";
 		global.tip_shown = true;
-	}
+	}*/
 	
 	if(global.last_vault == true && global.tip_shown == false && GameCont.vaults > 2 && opt.crown_guardian_on_max == true){
 		GenCont.tip = "@gproto guardians@s are now homeless";
 		global.tip_shown = true;
 	}
 	
-	if(r4 == 15 && global.tip_shown == false && GameCont.loops > 2 && opt.idpd_mashup == true){
+	/*if(r4 == 15 && global.tip_shown == false && GameCont.loops > 2 && opt.idpd_mashup == true){
 		GenCont.tip = "with progress, tech is mass produced";
 		global.tip_shown = true;
-	}
+	}*/
 	
 	if(r4 == 16 && global.tip_shown == false && GameCont.loops > 0){
 		GenCont.tip = "is it not excessive?";
@@ -1908,9 +1927,10 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 		global.tip_shown = true;
 	}
 	
-	if((r4 == 19 && global.tip_shown == false && Player.wep == wep_ultra_crossbow) || (r4 == 19 && global.tip_shown == false && Player.race == "chicken") || (r4 == 19 && global.tip_shown == false && Player.wep == wep_ultra_crossbow && Player.race == "chicken")){
+	if(global.tip_shown == false && Player.wep == wep_ultra_crossbow && Player.race == "chicken" && global.onetimetip_shown.chicken == false){
 		GenCont.tip = "why did the chicken @gultracross@s the road";
 		global.tip_shown = true;
+		global.onetimetip_shown.chicken = true;
 	}
 	
 	if(r4 == 20 && global.tip_shown == false && GameCont.loops > 2){
@@ -1938,27 +1958,27 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 		global.tip_shown = true;
 	}
 	
-	if(r4 == 25 && global.tip_shown == false && GameCont.loops > 0){
+	if(r4 == 25 && global.tip_shown == false && GameCont.loops > 0 && opt.death_effects == true){
 		GenCont.tip = "amphibian @yheartburn@s";
 		global.tip_shown = true;
 	}
 	
-	if(r4 == 26 && global.tip_shown == false && GameCont.loops > 0){
+	if(r4 == 26 && global.tip_shown == false && GameCont.loops > 0 && opt.death_effects == true){
 		GenCont.tip = "a @wbig surprise@s awaits in the @wsnow@s";
 		global.tip_shown = true;
 	}
 	
-	if(r4 == 27 && global.tip_shown == false && GameCont.loops > 0){
+	if(r4 == 27 && global.tip_shown == false && GameCont.loops > 0 && opt.death_effects == true){
 		GenCont.tip = "the @wrats@s are @gmolting@s";
 		global.tip_shown = true;
 	}
 	
-	if(r4 == 28 && global.tip_shown == false && GameCont.loops > 1){
+	if(r4 == 28 && global.tip_shown == false && GameCont.loops > 1 && opt.death_effects == true){
 		GenCont.tip = "emerjency @wcluster@s ejection";
 		global.tip_shown = true;
 	}
 	
-	if(r4 == 29 && global.tip_shown == false && GameCont.loops > 1){
+	if(r4 == 29 && global.tip_shown == false && GameCont.loops > 1 && opt.death_effects == true){
 		GenCont.tip = "spawning season";
 		global.tip_shown = true;
 	}
@@ -2012,9 +2032,10 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 5){
+	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 5 && global.onetimetip_shown.sans == false){
 		GenCont.tip = "hey. is your refrigerator running?";
 		global.tip_shown = true;
+		global.onetimetip_shown = true;
 	}
 	
 	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 105){

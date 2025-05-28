@@ -2382,7 +2382,8 @@ if(global.abd == true && GameCont.area == 3 && global.sprites_swapped == false &
 	sprite_replace(sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1);
 	sprite_replace(sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3);
 	sprite_replace(sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3);
-	background_color = make_color_rgb(51, 57, 71);
+	//background_color = make_color_rgb(51, 57, 71);
+	background_color = make_color_rgb(40, 43, 91);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
 	global.sprites_swapped = true;
@@ -3677,17 +3678,19 @@ if(GameCont.area == 3 && GameCont.subarea == 3 && GameCont.crown != crwn_none){
 		instance_delete(self);
 		}
 	with(WeaponChest){
-		switch (sprite_index){
-			case sprWeaponChest:
-				sprite_index = sprCursedChest;
-				break;
-			case sprWeaponChestSteroidsUltra:
-				sprite_index = sprCursedChestSteroidsUltra;
-				break;
-			default:
-				image_blend = c_purple;
-				break;
-		}
+		if(sprite_index != sprCursedChest && sprite_index != sprCursedChestSteroidsUltra){
+			switch (sprite_index){
+				case sprWeaponChest:
+					sprite_index = sprCursedChest;
+					break;
+				case sprWeaponChestSteroidsUltra:
+					sprite_index = sprCursedChestSteroidsUltra;
+					break;
+				default:
+					image_blend = c_purple;
+					break;
+				}
+			}
 		curse = 1;
 		}
 	}

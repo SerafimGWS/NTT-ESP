@@ -145,7 +145,7 @@ if ("esp_mod_opt" in GameCont) {
 	//Spawns 1 time Captain on 0-1 L5
 	l5cap: false,
 	//several modes
-	no_addinational_enemies: false,
+	no_throne_yell: false,
 	//Death effect for certain enemies after reaching L1, 2 or 3
 	death_effects: true,
 	//Removes new tips
@@ -175,7 +175,7 @@ if ("esp_mod_opt" in GameCont) {
 };
 
 // -----Commands zone------- //
-trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 260525 mod!");
+trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 030625 mod!");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -270,6 +270,9 @@ global.aowb = 0;
 
 global.target = 0;
 
+global.no_addinational_yell = false;
+global.idpdyell_playing = false;
+
 global.popup_shown = {
 	"_salamander": false,
 	"_rat": false,
@@ -363,7 +366,7 @@ global.options = {
 	"no_jocks": false, 
 	"l5cap": false,
 	"fire_explosions": true,	
-	"no_addinational_enemies": false, 
+	"no_throne_yell": false, 
 	"hammerhead_time": 1,
 	"death_effects": true, 
 	"no_new_tips": false, 
@@ -501,13 +504,13 @@ if fork() {
 				}
 			},
 			{
-				"option": "no_addinational_enemies",
+				"option": "no_throne_yell",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprLilHunterWalk:0)no addinational enemies"
+					"text": "@(sprLilHunterWalk:0) No Throne Yell"
 				},
 				"desc": {
-					"text": "When @wYES@s#@wno new enemies@s will spawn"
+					"text": "When @wON@s#@wmutants will not@s say#anything upon enetering @g7-3@s"
 				}
 			},
 			{
@@ -785,6 +788,11 @@ global.JungleSniperHitid = [global.sprJungleSniperIdle, "Jungle Sniper"];
 // -----Tick------ //
 #define game_start
 
+/*if (is_int64(opt.seed)) {
+	game_set_seed(opt.seed);
+	trace(`Seed ${opt.seed}, RNG ${irandom($ffFFffFF)}`);
+}*/
+
 if(GameCont.loops > 0){
 	global.aowb = (GameCont.loops + 1) * 10 + 10;
 }
@@ -823,6 +831,9 @@ global.used_skills = [0, 0, 0, 0, 0, 0];
 global.ultrachest_spawned = false;
 
 global.temp_skippedchests = 0;
+
+global.no_addinational_yell = false;
+global.idpdyell_playing = false;
 
 global.popup_shown = {
 	"_salamander": false,
@@ -873,7 +884,7 @@ opt.add_dark = global.options.add_dark;
 opt.idpd_mashup = global.options.idpd_mashup;
 opt.no_jocks = global.options.no_jocks;
 opt.l5cap = global.options.l5cap;
-opt.no_addinational_enemies = global.options.no_addinational_enemies;
+opt.no_throne_yell = global.options.no_throne_yell;
 opt.death_effects = global.options.death_effects;
 opt.no_new_tips = global.options.no_new_tips;
 opt.no_new_parcticles = global.options.no_new_parcticles;
@@ -892,7 +903,7 @@ global.eem = global.options.esp_difficulty_multiplier * 2;
 opt.floor_changes = global.options.floor_changes;
 opt.bonus_loop_max_health = global.options.floor_changes;
 opt.special_code = global.options.special_code;
-opt.seed = global.options.seed;
+opt.seed = string_digits(global.options.seed);
 opt.rmb = global.options.rmb;
 opt.deflect_colour = global.options.deflect_colour;
 
@@ -913,6 +924,32 @@ if(global.options.reset){
         global.options = _options;
 		global.options.reset = false;
 		call(scr.options_refresh)
+		}
+	}
+}
+
+//Potential fix of idpd spawning in first ending
+if(instance_exists(LastCutscene)){
+	instance_delete(IDPDSpawn);
+}
+
+
+with(Player){
+	//NTT 9940 Missing captain speech fix
+	if(GameCont.area == 106 && GameCont.subarea == 3){
+		if(snd_cptn != null){
+			if(snd_spch != snd_cptn){
+				snd_spch = snd_cptn;
+			}
+		}
+	}
+
+	if(snd_idpd != null){
+		if(audio_is_playing(snd_idpd) && global.idpdyell_playing == false){
+			global.idpdyell_playing = true;
+		}
+		if(!audio_is_playing(snd_idpd) && global.idpdyell_playing == true){
+			snd_idpd = null;
 		}
 	}
 }
@@ -2119,7 +2156,7 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 1 && global.tip_shown == false && (GameCont.area == 1 || GameCont.area == 3) && opt.no_addinational_enemies == false){
+	if(r4 > 49 && r5 == 1 && global.tip_shown == false && (GameCont.area == 1 || GameCont.area == 3) && global.eem <= 0){
 		GenCont.tip = "@wsalamanders@s love the sun";
 		global.tip_shown = true;
 	}
@@ -2129,7 +2166,7 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 2 && opt.no_addinational_enemies == false){
+	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 2 && global.eem <= 0){
 		GenCont.tip = "the gun godz cameo we deserve";
 		global.tip_shown = true;
 	}
@@ -2167,7 +2204,7 @@ if(instance_exists(GenCont) && opt.no_new_tips == false){
 	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 5 && global.onetimetip_shown.sans == false){
 		GenCont.tip = "hey. is your refrigerator running?";
 		global.tip_shown = true;
-		global.onetimetip_shown = true;
+		global.onetimetip_shown.sans = true;
 	}
 	
 	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 105){
@@ -2979,12 +3016,18 @@ if(instance_exists(LilHunterDie) && !global.lilhunter_revenged && opt.lilhunter_
 
 #define rad_inspector
 
-with Player {
+/*with Player {
         if point_distance(x, y, other.x, other.y) < 240 {
             if place_free(x + lengthdir_x(1, point_direction(x, y, other.x, other.y)), y) x -= lengthdir_x(1, point_direction(x, y, other.x, other.y))
             if place_free(x, y + lengthdir_y(1, point_direction(x, y, other.x, other.y))) y -= lengthdir_y(1, point_direction(x, y, other.x, other.y))
         }
-    }
+    }*/
+
+with Player {
+	if distance_to_object(other) <= 72 && speed < 16 { 
+		motion_add(point_direction(other.x, other.y, x, y), 0.4)
+		}
+	}
 
 #define telekenesis
 
@@ -3227,6 +3270,13 @@ if (fork()) {
 #define CustomOptions_save
 // a script that runs when Custom Options detects the menu closing
 // you can save your options file here or in `#define cleanup`
+/*if (global.options.seed != "") {
+	opt.seed = real(global.options.seed);
+	trace(`Seed changed to ${opt.seed}.`);
+} else {
+	opt.seed = null;
+	trace("seed reset.");
+}*/
 string_save(json_encode(global.options, "  "), global.OPTIONS_FILE);
 //trace(`${mod_current}.${mod_current_type}::CustomOptions_save`);
 
@@ -3633,6 +3683,13 @@ global.weapon_deleted = false;
 
 global.ultrachest_spawned = false;
 
+with(Player){
+	if(opt.no_throne_yell == false && GameCont.area == 7 && GameCont.subarea == 3 && global.no_addinational_yell == false){
+		sound_play(snd_thrn);
+		global.no_addinational_yell = true;
+	}
+}
+
 if(global.temp_skippedchests > 0){
 GameCont.nochest = global.temp_skippedchests;
 }
@@ -3659,7 +3716,7 @@ if(GameCont.area == 5 && opt.no_guards == true){
 	with (GhostGuardian) instance_delete(self);
 }
 
-if(GameCont.loops == 1 && opt.no_addinational_enemies == false){
+if(GameCont.loops == 1 && global.eem <= 0){
 	if(GameCont.area == 1 || GameCont.area == 7){
 		with (Sniper) instance_delete(self);
 		}
@@ -4101,6 +4158,22 @@ with(LaserCrystal){
 	}
 }
 
+if(instance_exists(Floor) && instance_exists(InvSpider) && opt.floor_changes == false){
+	with(Floor){
+		if(traction !=2 && place_meeting(x,y,InvSpider)){
+			if("touched" not in self){
+				touched = true;
+				traction = 2;
+				with (instance_create(x,y,CustomObject)){
+					sprite_index = global.sprCobWeb;
+					cobweb = true;
+					depth = 4;
+					}
+				}
+			}
+		}
+	}	
+
 // -------------- //
 #define fix_car_venus
 with(CarVenus){
@@ -4290,15 +4363,6 @@ while(f_enemy == Wind){
 return f_enemy;
 
 #define get_pool
-
-// No enemies mode
-if (opt.no_addinational_enemies == true){ 
-	var curr_loop = clamp(GameCont.loops ,0,array_length(global.empty_pool) - 1);
-	return {
-	p: global.empty_pool[curr_loop],
-	w: global.empty_pool_w[curr_loop]
-	}
-}
 
 var pool = global.empty_pool;
 var pool_w = global.empty_pool_w;

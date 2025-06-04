@@ -2565,7 +2565,7 @@ if(GameCont.loops > 2 && opt.enemies_mutations == true){
 }
 
 if(global.iattbd == false){
-	if(irandom(4) < 1 && opt.add_dark == true && (GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5 || GameCont == 103)){
+	if(irandom(4) < 1 && opt.add_dark == true && (GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5 || GameCont.area == 103)){
 		global.iattbd = true;
 		TopCont.darkness = 1;
 		if(GameCont.area == 1){
@@ -3682,6 +3682,21 @@ global.ultrachest_frame = 0;
 global.weapon_deleted = false;
 
 global.ultrachest_spawned = false;
+
+with(WeaponChest){
+	if(opt.chest_replacments == true && GameCont.area == 102){
+		with(instance_create(x,y,WepPickup)){
+			wep = wep_party_gun;
+		}
+		instance_delete(self);
+	}
+}
+
+with(ProtoChest){
+	if(wep == wep_party_gun){
+		wep = irandom(127);
+	}
+}
 
 with(Player){
 	if(opt.no_throne_yell == false && GameCont.area == 7 && GameCont.subarea == 3 && global.no_addinational_yell == false){

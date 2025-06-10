@@ -22,73 +22,73 @@ enum areas {
 }
 
 // Desert
-global.desert_pool = [[FireBaller, Salamander], [FireBaller, Salamander, Guardian, ExploGuardian, Wind], [Salamander, Guardian, ExploGuardian, SuperFireBaller, DogGuardian], [Salamander, Guardian, ExploGuardian, SuperFireBaller, DogGuardian]];
-global.desert_pool_w = [[0.03,0.03],[0.8,0.2,0.2,0.2,1],[1,1,1,0.6,0.4],[1,1,1,1,0.8]];
+global.desert_pool =   [[FireBaller, Salamander], [FireBaller, Salamander, Guardian, ExploGuardian, Wind], [Salamander, Guardian, ExploGuardian, SuperFireBaller, DogGuardian, FireBaller], [Salamander, Guardian, ExploGuardian, SuperFireBaller, DogGuardian, FireBaller]];
+global.desert_pool_w = [[0.03,       0.03],       [0.8,        0.2,        0.2,      0.2,           1],    [1,          1,        1,             0.6,             0.4,         1],          [1,          1,        1,             1,               1,           1]];
 // Sewers
-global.sewers_pool = [[Turtle, FireBaller], [Turtle, FireBaller, JungleBandit, Spider], [Necromancer, Turtle, FireBaller, Spider, JungleFly, JungleBandit, JungleAssassinHide, RatkingRage], [Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, Guardian, JungleAssassinHide, JungleBandit, RatkingRage, RhinoFreak], [Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, Guardian, ExploGuardian, JungleBandit, BanditBoss, RatkingRage, RhinoFreak, JungleAssassinHide], [Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, Guardian, ExploGuardian, DogGuardian, BanditBoss, RatkingRage, RhinoFreak, JungleAssassinHide, JungleBandit], [Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, Guardian, ExploGuardian, DogGuardian, BanditBoss, RatkingRage, RhinoFreak, JungleAssassinHide, JungleBandit]];
-global.sewers_pool_w = [[0.5,0.5],[1,1,1,1],[0.4,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,0.125,1,1,1],[1,1,1,1,1,1,1,1,0.6,0.25,1,1,1,1],[1,1,1,1,1,1,1,1,0.9,0.35,1,1,1,1]];
+global.sewers_pool =   [[Turtle, FireBaller], [Turtle, FireBaller, JungleBandit, Spider], [Turtle, FireBaller, Spider, JungleFly, JungleBandit, JungleAssassinHide, RatkingRage], [Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, JungleAssassinHide, JungleBandit, RatkingRage, RhinoFreak], [Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, Guardian, ExploGuardian, JungleBandit, RatkingRage, RhinoFreak, JungleAssassinHide], [Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, Guardian, ExploGuardian, DogGuardian, BanditBoss, RatkingRage, RhinoFreak, JungleAssassinHide, JungleBandit], [Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, Guardian, ExploGuardian, DogGuardian, BanditBoss, RatkingRage, RhinoFreak, JungleAssassinHide, JungleBandit]];
+global.sewers_pool_w = [[0.25,    0.25],      [1,      1,          1,            1],      [1,      1,          1,      1,         1,            1,                  1],           [1,           1,      1,           1,     1,         1,                1,                  1,            1,           1],          [1,           1,      1,          1,      1,         1,                1,        1,             1,            1,           1,          1],                  [1,           1,      1,          1,      1,         1,                1,        1,             0.6,         0.25,       1,           1,          1,                  1],            [1,           1,      1,          1,      1,         1,                1,        1,             0.9,         0.35,       1,           1,          1,                  1]];
 // Scrapyard
-global.scrapyard_pool = [[Wolf, Jock], [Ratking, Crab, Wolf, Jock], [ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret, Guardian, ExploGuardian, Ratking], [ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret, Guardian, ExploGuardian, DogGuardian, TechnoMancer, BecomeTurret, Ratking, RatkingRage], [ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret, Guardian, ExploGuardian, DogGuardian, TechnoMancer, BecomeTurret, BanditBoss, Ratking, RatkingRage], [ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret, Guardian, ExploGuardian, DogGuardian, TechnoMancer, BecomeTurret, BanditBoss, Ratking, RatkingRage]];
-global.scrapyard_pool_w = [[0.1,0.03],[0.125,0.125,0.125,0.125,0.125],[0.2,1,1,0.2,1,1,1,1,1,1],[0.2,1,0.2,1,1,1,1,1,0.4,0.125,1,1,1],[0.2,1,1,0.2,1,1,1,1,0.75,0.25,1,0.2,1,1],[0.2,1,1,0.2,1,1,1,1,1,0.35,1,0.35,1,1]];
+global.scrapyard_pool =   [[Wolf, Tires, Wind], [Crab, Wolf, Jock], [ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret], [ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret, Guardian, BecomeTurret, Ratking, RatkingRage], [ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret, Guardian, ExploGuardian, DogGuardian, TechnoMancer, BecomeTurret, BanditBoss, Ratking, RatkingRage], [ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret, Guardian, ExploGuardian, DogGuardian, TechnoMancer, BecomeTurret, BanditBoss, Ratking, RatkingRage]];
+global.scrapyard_pool_w = [[0.1,  0.03,  1],    [0.125,0.125,0.125],[0.2,         1,    1,    0.2,  1,        1],      [0.2,         1,    0.2,  1,    1,        1,      1,        1,            1,       1],           [0.2,         1,    1,    0.2,  1,        1,      1,        1,             0.75,        0.25,         1,            0.2,        1,       1],           [0.2,         1,    1,    0.2,  1,        1,      1,        1,             1,           0.35,         1,            0.35,       1,       1]];
 // Crystal caves 
-global.crystals_caves_pool = [[Molesarge], [Molesarge, Guardian, SuperFireBaller], [Necromancer, Guardian, SuperFireBaller, ExploGuardian, DogGuardian, Molesarge], [Necromancer, Guardian, SuperFireBaller, ExploGuardian, DogGuardian, BanditBoss, Molesarge], [Necromancer, Guardian, SuperFireBaller, ExploGuardian, DogGuardian, BanditBoss, Molesarge]];
-global.crystals_caves_pool_w = [[0.05],[0.4,0.3,0.15],[1,1,0.6,1,0.3,1],[1,1,1,1,0.5,0.25,1],[1,1,1,1,0.9,0.35,1]];
+global.crystals_caves_pool =   [[Molesarge], [Molesarge, GoldScorpion, SuperFireBaller], [Necromancer, Guardian, SuperFireBaller, ExploGuardian, GoldScorpion, Molesarge], [Necromancer, Guardian, SuperFireBaller, ExploGuardian, DogGuardian, BanditBoss, Molesarge,	GoldScorpion], [Necromancer, Guardian, SuperFireBaller, ExploGuardian, DogGuardian, BanditBoss, Molesarge, GoldScorpion]];
+global.crystals_caves_pool_w = [[0.05],      [0.65,      0.1,            0.1],             [1,           1,        0.6,             1,             0.3,            1],         [1,           1,        1,               1,             0.5,         0.25,       1,          1],              [1,           1,        1,               1,             0.9,         0.35,       1,         1]];
 // Winter
-global.winter_pool = [[PopoFreak, StreetLight, Wind], [Jock, Sniper, PopoFreak], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer]];
-global.winter_pool_w = [[0.005,0.25,1],[0.25,0.25,0.1],[0.25,1,0.4,1,1,1],[1,1,1,1,1,1,0.1],[1,1,1,1,1,1,0.35]];
+global.winter_pool =   [[PopoFreak, StreetLight, Wind], [Jock, Sniper, PopoFreak], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer]];
+global.winter_pool_w = [[0.005,     0.25,        1],    [0.25, 0.25,   0.1],       [0.25, 1,      0.4,       1,      1,            1],        [1,    1,      1,         1,      1,            1,        0.1],          [1,    1,      1,         1,      1,            1,        0.35]];
 // Labs
-global.labs_pool = [[PopoFreak, BigMaggot, FrogEgg, Rat], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage, DogGuardian]];
-global.labs_pool_w = [[0.25,0.4,1,1],[0.35,0.35,1,0.25,0.2,0.3],[1,1,1,1,1,1,0.8,0.4,1],[1,1,1,1,1,1,1,0.4,1,0.8]];
+global.labs_pool =   [[PopoFreak, BigMaggot, FrogEgg, Rat], [PopoFreak, JungleFly, FrogEgg, Exploder, BuffGator, BigMaggot], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, SuperFrog, LightningCrystal, RatkingRage, Exploder, BigMaggot], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage, DogGuardian, BigMaggot, Exploder]];
+global.labs_pool_w = [[0.25,      0.4,       1,       1],   [0.35,      0.35,      1,       0.25,      0.2,       0.3],      [1,         1,         1,       1,         1,         1,        0.8,       0.4,              1,           1,        1],         [1,         1,         1,       1,         1,         1,        1,             0.4,              1,           0.8,         1,         1]];
 // Palace
-global.palace_pool = [[Gator, GatorSmoke], [Gator, JungleAssassin, BuffGator], [Gator, JungleAssassin, PopoFreak, Turret, BuffGator], [Gator, JungleAssassin, PopoFreak, Turret, BecomeTurret, BuffGator]];
-global.palace_pool_w = [[0.3,0.3],[1,1,0.3],[1,1,1,1,0.25],[1,1,1,1,1,1]];
+global.palace_pool =   [[Gator, GatorSmoke, Pillar, Generator, BuffGator], [Gator, JungleAssassin, BuffGator, GatorSmoke], [Gator, JungleAssassin, PopoFreak, Turret, BuffGator], [Gator, JungleAssassin, PopoFreak, Turret, BecomeTurret, BuffGator]];
+global.palace_pool_w = [[0.3,   0.3,        0.3,    0.3,       0.05],      [1,     0.5,            0.3,       1],          [1,     1,              1,         1,      0.25],      [1,     1,              1,         1,      1,            1]];
 // Vault
 global.vault_pool = [[Torch]];
 global.vault_pool_w = [[1]];
 // Oasis
-global.oasis_pool = [[Turtle, Exploder, Gator, Freak], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, OasisBoss, Guardian, ExploGuardian], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, OasisBoss, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
-global.oasis_pool_w = [[0.5,1,1,1],[1,1,1,1,0.3,0.3],[1,1,1,1,1,1,0.4,1,1],[1,1,1,1,1,1,1,1,1,1,0.4]];
+global.oasis_pool =   [[Turtle, Exploder, Gator, Freak], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, Guardian, ExploGuardian], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, OasisBoss, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
+global.oasis_pool_w = [[0.5,    1,        1,     1],     [1,      1,        1,     1,     0.3,       0.3],       [1,      1,        1,     1,     1,         1,         1,        1],             [1,      1,        1,     1,     1,         1,         1,         1,        1,             1,           0.4]];
 // PIZZA!
-global.pizza_pool = [[Crab]];
-global.pizza_pool_w = [[0]];
+global.pizza_pool = [[Spider]];
+global.pizza_pool_w = [[0.1]];
 // Mansion
-global.mansion_pool = [[GoldScorpion], [GoldScorpion, GoldSnowTank, Wind], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
-global.mansion_pool_w = [[0],[0.05,0.025,1],[0.25,0.15,1,1],[0.75,0.6,1,1,0.5],[1,1,1,1,0.75,0.4]];
+global.mansion_pool =   [[GoldScorpion], [GoldScorpion, GoldSnowTank, Wind, MoneyPile], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
+global.mansion_pool_w = [[0],            [0.05,         0.025,        1,    1],         [0.25,         0.15,         1,        1],             [0.75,         0.6,          1,        1,             0.5],         [1,            1,            1,        1,             0.75,        0.4]];
 // Cursed crystal caves
-global.cursed_crystals_caves_pool = [[MeleeFake, FireBaller], [MeleeFake, FireBaller, Guardian, ExploGuardian], [MeleeFake, FireBaller, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
-global.cursed_crystals_caves_pool_w = [[1,1],[1,1,1,1],[1,1,1,1,1,0.35]];
+global.cursed_crystals_caves_pool =   [[MeleeFake, FireBaller, Scorpion], [MeleeFake, FireBaller, Guardian, ExploGuardian, Scorpion], [MeleeFake, FireBaller, Guardian, ExploGuardian, DogGuardian, BanditBoss, Scorpion]];
+global.cursed_crystals_caves_pool_w = [[0.33,      0.33,       0.33],     [1,         1,          1,        1,             1],        [1,         1,          1,        1,             1,           0.35,       1]];
 // Jungle
-global.jungle_pool = [[Raven, Gator, Exploder, Car], [Raven, Gator, Exploder, SuperFrog, SuperFireBaller, ExploFreak, Car], [Raven, Gator, Exploder, SuperFrog, ExploFreak, SuperFireBaller, Guardian, Sniper, ExploGuardian, Car], [Raven, Gator, Exploder, SuperFrog, ExploFreak, SuperFireBaller, Guardian, Sniper, ExploGuardian, DogGuardian, BanditBoss, Car]];
-global.jungle_pool_w = [[1,1,1,1],[1,1,1,0.4,0.4,0.6,1],[1,1,1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1,1,0.5,0.3,1]];
+global.jungle_pool =   [[Raven, Gator, Exploder, Car], [Raven, Gator, Exploder, SuperFrog, ExploFreak, Car, BuffGator], [Raven, Gator, Exploder, SuperFrog, ExploFreak, Guardian, Sniper, ExploGuardian, Car, BuffGator], [Raven, Gator, Exploder, SuperFrog, ExploFreak, Guardian, Sniper, ExploGuardian, DogGuardian, BanditBoss, Car, BuffGator]];
+global.jungle_pool_w = [[1,     1,     1,        1],   [1,     1,     1,        0.4,       0.6,        1,   0.5],       [1,     1,     1,        1,         1,          1,        1,      1,             1,   1],         [1,     1,     1,        1,         1,          1,        1,      1,             0.5,         0.3,        1,   1]];
 // IDPD palace
-global.IDPD_pool = [[Turret],[Turret, BecomeTurret],[Turret, BecomeTurret, PopoFreak]];
-global.IDPD_pool_w = [[0],[0.25,0.25],[0.5,0.5,0.25]];
+global.IDPD_pool =   [[Turret],[Turret, BecomeTurret],[Turret, BecomeTurret, PopoFreak]];
+global.IDPD_pool_w = [[0],     [0.25,   0.25],        [0.5,    0.5,          0.25]];
 // Vacation
 global.vacation_pool = [[GoldChest]];
 global.vacation_pool_w = [[1]];
 // Coast
-global.nttecoast_pool = [[Bandit, Maggot, BigMaggot, MaggotSpawn], [Bandit, Maggot, BigMaggot, MaggotSpawn, Salamander, JungleFly], [Bandit, Maggot, BigMaggot, MaggotSpawn, Salamander, JungleFly, Guardian, ExploGuardian], [Bandit, Maggot, BigMaggot, MaggotSpawn, Salamander, JungleFly, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
-global.nttecoast_pool_w = [[1,1,0.25,0.5], [1,1,1,1,0.3,0.5], [1,1,1,1,1,1,0.5,0.5], [1,1,1,1,1,1,1,1,0.4,0.25]];
+global.nttecoast_pool =   [[Bandit, Maggot, BigMaggot, MaggotSpawn], [Bandit, Maggot, BigMaggot, MaggotSpawn, Salamander, JungleFly], [Bandit, Maggot, BigMaggot, MaggotSpawn, Salamander, JungleFly, Guardian, ExploGuardian], [Bandit, Maggot, BigMaggot, MaggotSpawn, Salamander, JungleFly, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
+global.nttecoast_pool_w = [[1,      1,      0.25,      0.5],         [1,      1,      1,         1,           0.3,        0.5],       [1,      1,      1,         1,           1,          1,         0.5,      0.5],           [1,      1,      1,         1,           1,          1,         1,        1,             0.4,         0.25]];
 // Abbyss
-global.nttetrench_pool = [[Freak, Freak, BoneFish, MeleeFake], [Freak, Freak, BoneFish, MeleeFake, Guardian, OasisBoss], [Freak, Freak, BoneFish, MeleeFake, Guardian, OasisBoss, ExploGuardian, DogGuardian]];
-global.nttetrench_pool_w = [[1,1,1,1],[1,1,1,1,0.3,0.1],[1,1,1,1,1,0.25,1,0.4]];
+global.nttetrench_pool =   [[Freak, Freak, BoneFish, MeleeFake], [Freak, Freak, BoneFish, MeleeFake, Guardian, OasisBoss], [Freak, Freak, BoneFish, MeleeFake, Guardian, OasisBoss, ExploGuardian, DogGuardian]];
+global.nttetrench_pool_w = [[1,     1,     1,        1],         [1,     1,     1,        1,         0.3,      0.1],       [1,     1,     1,        1,         1,        0.25,      1,             0.4]];
 // Red
-global.nttered_pool = [[Molefish], [Molefish, ExploFreak, SuperFireBaller], [Molefish, ExploFreak, SuperFireBaller, Guardian, ExploGuardian], [Molefish, ExploFreak, SuperFireBaller, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
-global.nttered_pool_w = [[1], [1,0.25,0.2], [1,0.5,0.4,0.5,0.4], [1,0.8,1,1,1,0.4,0.25]];
+global.nttered_pool =   [[Molefish], [Molefish, ExploFreak, SuperFireBaller], [Molefish, ExploFreak, SuperFireBaller, Guardian, ExploGuardian], [Molefish, ExploFreak, SuperFireBaller, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
+global.nttered_pool_w = [[1],        [1,        0.25,       0.2],             [1,        0.5,        0.4,             0.5,      0.4],           [1,        0.8,        1,               1,        1,             0.4,         0.25]];
 // Ice Caves
-global.hmicecaves_pool = [[Jock, Necromancer], [Jock, Necromancer, Guardian], [Jock, Necromancer, Guardian, ExploGuardian, DogGuardian]];
-global.hmicecaves_pool_w = [[0.2,0.1],[0.5,0.5,0.5],[1,1,1,1,1]];
+global.hmicecaves_pool =   [[Jock, Necromancer], [Jock, Necromancer, Guardian], [Jock, Necromancer, Guardian, ExploGuardian, DogGuardian]];
+global.hmicecaves_pool_w = [[0.2,  0.1],         [0.5,  0.5,         0.5],      [1,    1,           1,        1,             1]];
 // Hive
-global.hive_pool = [[Spider, LaserCrystal], [Spider, LaserCrystal, JungleFly, Molesarge], [Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, Guardian], [Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, Guardian, ExploGuardian, DogGuardian, ExploFreak]];
-global.hive_pool_w = [[0.125,0.025],[1,0.75,0.5,1],[1,1,1,1,0.5,1],[1,1,1,1,1,1,1,0.6,0.5]];
+global.hive_pool =   [[Spider, LaserCrystal], [Spider, LaserCrystal, JungleFly, Molesarge], [Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, Guardian], [Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, Guardian, ExploGuardian, DogGuardian, ExploFreak]];
+global.hive_pool_w = [[0.125,  0.025],        [1,      0.75,         0.5,       1],         [1,      1,            1,         1,          0.5,       1,            1],        [1,      1,            1,         1,          1,         1,            1,        0.6,           0.5,         1]];
 // Undergrowth
-global.undergrowth_pool = [[Salamander, FireBaller], [Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin], [Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak, Guardian], [Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak, Guardian, ExploGuardian, DogGuardian]];
-global.undergrowth_pool_w = [[0.07,0.2],[0.6,1,0.3,0.5,0.3],[1,1,0.8,1,1,0.5,1],[1,1,1,1,1,0.8,1,1,0.4]];
+global.undergrowth_pool =   [[Salamander, FireBaller], [Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin], [Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak, Guardian], [Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak, Guardian, ExploGuardian, DogGuardian]];
+global.undergrowth_pool_w = [[0.07,       0.2],        [0.6,        1,          0.3,             0.5,          0.3],            [1,          1,          0.8,             1,            1,              0.5,        1],        [1,          1,          1,               1,            1,              0.8,        1,        1,             0.4]];
 // Moon
-global.moon_pool = [[SnowTank], [SnowTank], [SnowTank, PopoFreak, Guardian], [SnowTank, PopoFreak, Guardian, ExploGuardian, DogGuardian], [SnowTank, PopoFreak, Guardian, ExploGuardian, DogGuardian]];
-global.moon_pool_w = [[0.125],[0.25],[0.5,0.5,0.5],[1,1,1,1,0.4],[1,1,1,1,0.8]];
+global.moon_pool =   [[SnowTank], [SnowTank], [SnowTank, PopoFreak, Guardian], [SnowTank, PopoFreak, Guardian, ExploGuardian, DogGuardian], [SnowTank, PopoFreak, Guardian, ExploGuardian, DogGuardian]];
+global.moon_pool_w = [[0.125],    [0.25],     [0.5,      0.5,       0.5],      [1,        1,         1,        1,             0.4],         [1,        1,         1,        1,             0.8]];
 // Empty
-global.empty_pool = [[Crab]];
+global.empty_pool = [[Wind]];
 global.empty_pool_w = [[0]];
 
 // Enemies that spawns near cars
@@ -97,85 +97,12 @@ global.CarVenus_Guards = [Molefish, Molefish, Molefish, Molefish, Molefish, Mole
 global.crown_guardian_locations = [areas.winter,areas.palace,"coast","trench","hive"];
 global.crown_guardian_sublocation = 2;
 
-#macro opt global.g_opt
+global.enemy_factor = 1;
 
-if ("esp_mod_opt" in GameCont) {
-	opt = GameCont.esp_mod_opt;
-} else opt = {
-    // Blood crown factor
-	blood_factor: 1.5,
-    // Enemies factor on location
-    enemy_factor: 1,
-    // Max loops to try add emenies
-    attmpts_to_add_enemies: 15,
-    // Guaranteed amount enemies on area
-    enemies_guaranteed: 1,
-    // Add guaranteed amount enemies on area every loop
-    loop_guranteed_add: 2,
-    //
-    chance_to_not_spawn: 50,
-    // Van spawn after killing Lil Hunter
-    lilhunter_revenge: true,
-    // Fixs Venus car in scrapyard and adds enemies near car
-    fix_venus_car: true,
-    // Adds more crows in jungle
-    more_ravens_in_jungle: 1,
-    // After 3th vaul insted of portal to vault Crown Guards will spawn
-    crown_guardian_on_max: true,
-	// Enable curse on some enemies on crystal cave
-	cursing_enabled: true,
-	// Every crystal to replace a with a cursed variant
-	evry_cursed_crystal: 0.14,
-	// Every crystal to replace a with a cursed variant with a cursed crown
-	cured_evry_cursed_crystal: 0.66,
-	// If you have a crown, IDPD will seek you on start of area and on killing 50% of area
-	IDPD_seek: 1,
-	// Replaces all shielders with inspectors before 4-1
-	nes: true,
-	// Replaces all vans with 4 IDPD Portals in labs
-	piov: true,
-	// Disables inf revives of Popo freaks before 3rd loop
-	diropf: false,
-	// Adds darkness to some areas
-	add_dark: true,
-	// Adds popo freaks to 2nd loop and elites to 3rd loop
-	idpd_mashup: true,
-	//Removes Jocks
-	no_jocks: false,
-	//Spawns 1 time Captain on 0-1 L5
-	l5cap: false,
-	//several modes
-	no_throne_yell: false,
-	//Death effect for certain enemies after reaching L1, 2 or 3
-	death_effects: true,
-	//Removes new tips
-	no_new_tips: false,
-	//Removes new parcticles
-	no_new_parcticles: false,
-	//Removes guards
-	no_guards: false,
-	//Chest replacments
-	chest_replacments: true,
-	//Curses all weapons on floor in Cursed Crystal Caves
-	cursed_caves_rework: true,
-	//Enemies mutations - teleports for gators on L1+ and bouncers for snipers, snow tanks and gold snow tanks
-	enemies_mutations: true,
-	//Crown guardian help
-	crown_guardian_help: true,
-	popups: true,
-	hammerhead_time: 1,
-	fire_explosions: true,
-	floor_changes: true,
-	bonus_loop_max_health: true,
-	special_code: "insert your code here",
-	seed: "",
-	//Range Meta Buff
-	rmb: false,
-	deflect_colour: true
-};
+global.attmpts_to_add_enemies = 15;
 
 // -----Commands zone------- //
-trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 030625 mod!");
+trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 100625 mod!");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -242,6 +169,7 @@ global.eem = 1;
 global.factor = 1;
 //Sprites Restored In Menu
 global.srim = false;
+
 global.TempHard = 0;
 
 global.challange_accepted = false;
@@ -272,6 +200,10 @@ global.target = 0;
 
 global.no_addinational_yell = false;
 global.idpdyell_playing = false;
+
+global.early_hammerhead_compensation = false;
+
+global.loop_check = GameCont.loops;
 
 global.popup_shown = {
 	"_salamander": false,
@@ -309,6 +241,7 @@ global.popup_shown = {
 global.onetimetip_shown = {
 	"chicken": false,
 	"sans": false,
+	"dof": false,
 }
 
 //Sprites
@@ -343,6 +276,11 @@ global.sprJungleSniperDead = sprite_add("resources/Enemies/JungleSnipers/sprJung
 global.sprUltraChest = sprite_add("resources/OtherObjects/UltraChest/ultrachest.png",5,30,45);
 
 global.sprWallBonus = sprite_add("resources/OtherObjects/WallBonus/sprWallBonus.png",2,12,12);
+
+global.sprVan = sprite_add_base64("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",18,38.5,19.5)
+global.sprSiren = sprite_add_base64("iVBORw0KGgoAAAANSUhEUgAAAPkAAAAyCAYAAACeYH3nAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QYREwgufEY9MwAAAelJREFUeNrt3UFOwzAURdG6Ys6iWDeLYgVmBEiFAUnsxH3/XKmTSkiN7Ztnfyem3Qrz+t7743cfb63dgBn03+Pt1uaPt0buvyE7psp9ouyN4ETHxYJPFr0RnOhYQPCJojeCEx2LCD5J9LveALIpkVBHUlya49QUn5DmkhwIh+QAyQE8My+awJpxOk09g+SL81RFt7MFHvWbkm4ErbWV+iFa8hFVdWJfcA2S/6c9BrRFI/iTp3gPvZEliD6qbw62RSN4wDQ9TfSkJF9A9EbwgHV4gvDJU/SLRVd4S5F7y0BQXb+mTy66AUdJXqbQRrqa9N739J2HYYBwSA6QHADJAZD8DI5Wxr0zjqlcVPCU5MAzsWMbjuRSHOFpHiX53n1ygiM5ze/VBQfSMV0HSJ6f4mYBIDkAkgM4iY0Veq+aVsSrpjXaneQG0lK/Kf1GcOHBERHT9fL73L33749rIPjjn6W0Y9ljnxzkSPAqkhOd4JF940hmoscIn7gmX+S/mzqSueJaX3W9lOSR1fUvOT3JRjp4GOaUGQFAcgAkB8otiwYtq0gOSHIAp6fxwOJofJX1SPHMsVAYxpbttMG7H5IcWCnRJ2xvlkiqPWkuxXFqqk98dqHMQN4iOsERNYmodLH/EZ3gIHmo7ORGKp/+TvJjblGySAAAAABJRU5ErkJggg==",3,38.5,23.5)
+global.sprOutline = sprite_add_base64("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",18,38.5,19.5)
+global.sprVanStop = sprite_add_base64("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",18,38.5,19.5)
 
 global.OPTIONS_FILE = "options.json";
 
@@ -380,14 +318,18 @@ global.options = {
 	"idpd_seek": 1,
 	"common_difficulty_multiplier": 0.5,
 	"esp_difficulty_multiplier": 0.5,
-	"floor_changes": false,
+	"no_floor_changes": false,
 	"bonus_loop_max_health": true,
 	"special_code": "insert your code here",
 	"seed": "",
 	"reset": false,
 	"rmb": false,
 	"deflect_colour": true,
+	"wild_idpd": false,
+	"hardmodemod_3dvans": false,
 };
+
+//trace(global.options);
 
 global.loaded = false;
 
@@ -529,10 +471,10 @@ if fork() {
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page2", {
 		"options": [
 			{
-				"option": "floor_changes",
+				"option": "no_floor_changes",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprFloor1:0) Floor Changes Off"
+					"text": "@(sprFloor1:0) No Floor Changes"
 				},
 				"desc": {
 					"text": "When @rON@s#it will @wdisable all floor@s changes#from any other options"
@@ -640,6 +582,16 @@ if fork() {
 				"values": [0, 1, 2],
 				"display": ["No", "Yes", "More"]
 			},
+			{
+				"option": "wild_idpd",
+				"kind": "bool",
+				"name": {
+					"text": "@(sprGruntIdle:0) Wild IDPD"
+				},
+				"desc": {
+					"text": "When @rON@s#@rwild@s @bIDPD@s will spawn#@wevery area@s except some#each idpd will have @yrandom@s @graddrop@s#if @graddrop@s is @whigher than 24@s#@bidpd@s will became a @rpopo freak@s#rules for spawn are the#same as for#idpd from portals"
+				}
+			},
 		]
 	});
 			
@@ -716,6 +668,16 @@ if fork() {
 				},
 				"desc": {
 					"text": "When @rON@s#it will enable @weffects@s#which will happen after#@rdeath@s of @wcertain enemies@s#after @wcertain loop@s"
+				}
+			},
+			{
+				"option": "hardmodemod_3dvans",
+				"kind": "bool",
+				"name": {
+					"text": "@(sprSalamanderDead) 3D Vans from Hardmode mod"
+				},
+				"desc": {
+					"text": "When @rON@s#will make @bvans@s @y3d@s#code by @wblaac@s#sprites by jsburg"
 				}
 			},
 			{
@@ -803,6 +765,7 @@ else{
 global.onetimetip_shown = {
 	"chicken": false,
 	"sans": false,
+	"dof": false,
 }
 
 global.cap_spawned = false;
@@ -834,6 +797,10 @@ global.temp_skippedchests = 0;
 
 global.no_addinational_yell = false;
 global.idpdyell_playing = false;
+
+global.early_hammerhead_compensation = false;
+
+global.loop_check = GameCont.loops;
 
 global.popup_shown = {
 	"_salamander": false,
@@ -871,41 +838,15 @@ global.popup_shown = {
 
 #define step
 
-//Sync options and opts
-opt.lilhunter_revenge = global.options.lilhunter_revenge;
-opt.fix_venus_car = global.options.fix_venus_car;
-opt.more_ravens_in_jungle = global.options.more_ravens_in_jungle;
-opt.crown_guardian_on_max = global.options.crown_guardian_on_max;
-opt.cursing_enabled = global.options.cursing_enabled;
-opt.nes = global.options.nes;
-opt.piov = global.options.piov;
-opt.diropf = global.options.diropf;
-opt.add_dark = global.options.add_dark;
-opt.idpd_mashup = global.options.idpd_mashup;
-opt.no_jocks = global.options.no_jocks;
-opt.l5cap = global.options.l5cap;
-opt.no_throne_yell = global.options.no_throne_yell;
-opt.death_effects = global.options.death_effects;
-opt.no_new_tips = global.options.no_new_tips;
-opt.no_new_parcticles = global.options.no_new_parcticles;
-opt.no_guards = global.options.no_guards;
-opt.IDPD_seek = global.options.idpd_seek;
-opt.chest_replacments = global.options.chest_replacments;
-opt.cursed_caves_rework = global.options.cursed_caves_rework;
-opt.enemies_mutations = global.options.enemies_mutations;
-opt.crown_guardian_help = global.options.crown_guardian_help;
-opt.popups = global.options.popups;
-opt.hammerhead_time = global.options.hammerhead_time;
-opt.fire_explosions = global.options.fire_explosions;
-opt.attmpts_to_add_enemies = 15 * (GameCont.loops + 1);
+//trace("step");
+
+//trace(global.options);
+
+global.attmpts_to_add_enemies = 15 * (GameCont.loops + 1);
 global.cem = global.options.common_difficulty_multiplier * 2;
 global.eem = global.options.esp_difficulty_multiplier * 2;
-opt.floor_changes = global.options.floor_changes;
-opt.bonus_loop_max_health = global.options.floor_changes;
-opt.special_code = global.options.special_code;
-opt.seed = string_digits(global.options.seed);
-opt.rmb = global.options.rmb;
-opt.deflect_colour = global.options.deflect_colour;
+//opt.special_code = global.options.special_code;
+//opt.seed = string_digits(global.options.seed);S
 
 if(global.options.reset){
 	if (fork()) {
@@ -928,6 +869,64 @@ if(global.options.reset){
 	}
 }
 
+if(global.options.hardmodemod_3dvans == true){
+	with Van{
+		with instance_create(x,y,CustomObject){
+			name = "3dvan"
+			image_alpha = 0;
+			if instance_exists(Player)
+			target = instance_nearest(x,y,Player)
+			else target = instance_nearest(x,y,Floor)
+			if(target.x > x)
+				right = 1
+			else 
+				right = -1
+			direction = 90 - (90 * right)
+			image_angle = direction
+			drivespeed = 15
+			depth = other.depth
+			start = 20
+			zscale = 1
+			land = 10
+			sprite_index = global.sprVan
+			maxspeed = other.drivespeed
+			on_draw = script_ref_create(vandraw)
+			on_step = script_ref_create(vanguide)
+			on_destroy = script_ref_create(vanexplo)
+			
+			baby = 0
+			image_speed = 0.4
+			with instance_create(x,y,CustomEnemy){
+				mama = other
+				other.baby = id
+				hitid = [sprVanDrive,"VAN"]
+				team = 3
+				maxhealth = 250
+				my_health = 250
+				image_alpha = 0;
+				friction = 10
+				canfly = 1
+				sprite_index = global.sprVan
+				image_speed = 0
+				meleedamage = 10
+				}
+			//alarm0 += choose(0,1,1) //round(1.5 * alarm0)
+			spr_shadow = mskNone
+		}
+		instance_delete(id)
+	}
+}
+
+with(Torch){
+	if(place_meeting(x,y,GuardianStatue)){
+		instance_delete(self);
+	}
+}
+
+if(GameCont.crown == crwn_blood){
+	global.enemy_factor = 1.5;
+}
+
 //Potential fix of idpd spawning in first ending
 if(instance_exists(LastCutscene)){
 	instance_delete(IDPDSpawn);
@@ -935,6 +934,11 @@ if(instance_exists(LastCutscene)){
 
 
 with(Player){
+	var bx1 = x - 213,
+		by1 = y - 120,
+		bx2 = x + 213,
+		by2 = y + 120
+	on_screen_with_player(bx1,by1,bx2,by2);
 	//NTT 9940 Missing captain speech fix
 	if(GameCont.area == 106 && GameCont.subarea == 3){
 		if(snd_cptn != null){
@@ -954,7 +958,7 @@ with(Player){
 	}
 }
 
-if(opt.deflect_colour == true){
+if(global.options.deflect_colour == true){
 	with(projectile){
     	if("deflected" in self && "typ" in self && "team" in self && "hitid" in self){
         	if(hitid == 58){
@@ -969,7 +973,7 @@ if(opt.deflect_colour == true){
 	}
 }
 
-if(opt.rmb == true){
+if(global.options.rmb == true){
 	if(instance_exists(enemy)){
 		with(enemy){
 			if("lessrads" not in self && "raddrop" in self){
@@ -1018,7 +1022,7 @@ if(opt.rmb == true){
 }
 
 with(CustomObject){
-	if(place_meeting(x,y,FloorExplo)){
+	if(!place_meeting(x,y,Wall)){
 		if("bonus_type" in self){
 			switch (bonus_type){
 				case 0:
@@ -1042,7 +1046,7 @@ with(CustomObject){
 	}
 }
 
-if(opt.IDPD_seek == 2 && GameCont.hard > 9){
+if(global.options.idpd_seek == 2 && GameCont.hard > 9){
 	with(Grunt){
     	if("RadHolder" not in self){
         	if(random(3) < 1){
@@ -1089,9 +1093,11 @@ if(opt.IDPD_seek == 2 && GameCont.hard > 9){
 with(Grunt){
     if("RadHolder" in self){
         if(RadHolder == 1){
-            snd_hurt = sndHitMetal;
-            roll = 0;
-            angle = 0;
+			if(snd_hurt != sndHitMetal) {
+				snd_hurt = sndHitMetal;
+			}
+			roll = 0;
+			angle = 0;
 			if("already_drawing" not in self){
             	script_bind_draw(radchestback, -1);
 				already_drawing = 1;
@@ -1107,10 +1113,10 @@ with(Grunt){
             }
         }
         if(RadHolder == 2){
-            if(male == 0){
+            if(male == 0 && snd_hurt != sndGruntHurtF){
                 snd_hurt = sndGruntHurtF;
             }
-            if(male == 1){
+            if(male == 1 && snd_hurt != sndGruntHurtM){
                 snd_hurt = sndGruntHurtM;
             }
         }
@@ -1120,7 +1126,9 @@ with(Grunt){
 with(Inspector){
 	if("RadHolder" in self){
         if(RadHolder == 1){
-            snd_hurt = sndHitMetal;
+			if(snd_hurt != sndHitMetal) {
+				snd_hurt = sndHitMetal;
+			}
             control = 0;
 			if("already_drawing" not in self){
 				script_bind_draw(telekenesis, -1);
@@ -1139,13 +1147,10 @@ with(Inspector){
             }
         }
         if(RadHolder == 2){
-            spr_idle = sprInspectorIdle;
-            spr_walk = sprInspectorWalk;
-            spr_hurt = sprInspectorHurt;
-            if(male == 0){
+            if(male == 0 && snd_hurt != sndInspectorHurtF){
                 snd_hurt = sndInspectorHurtF;
             }
-            if(male == 1){
+            if(male == 1 && snd_hurt != sndInspectorHurtM){
                 snd_hurt = sndInspectorHurtM;
             }
         }
@@ -1155,7 +1160,9 @@ with(Inspector){
 with(Shielder){
     if("RadHolder" in self){
         if(RadHolder == 1){
-            snd_hurt = sndHitMetal;
+			if(snd_hurt != sndHitMetal) {
+				snd_hurt = sndHitMetal;
+			}
 			if("already_drawing" not in self){
             	script_bind_draw(radchestback, -1);
 				already_drawing = 1;
@@ -1171,10 +1178,10 @@ with(Shielder){
             }
         }
         if(RadHolder == 2){
-            if(male == 0){
+            if(male == 0 && snd_hurt != sndShielderHurtF){
                 snd_hurt = sndShielderHurtF;
             }
-            if(male == 1){
+            if(male == 1 && snd_hurt != sndShielderHurtM){
                 snd_hurt = sndShielderHurtM;
             }
         }
@@ -1378,7 +1385,7 @@ with (Flame){
 	}
 }
 
-if(opt.fire_explosions == true){
+if(global.options.fire_explosions == true){
 	
 	with instances_matching(Grenade,"sprite_index",sprFlare){
 		fireproof = true;
@@ -1430,10 +1437,15 @@ if(opt.fire_explosions == true){
 	}
 }
 
-if(opt.hammerhead_time > 0){
-	skill_set_active(26, 0);
-	if(GameCont.loops > 0){
-		skill_set(26, 1);
+if(global.options.hammerhead_time > 0){
+	if(GameCont.loops > 0 && global.early_hammerhead_compensation == false){
+		if(skill_get(26)){
+			GameCont.skillpoints += 1;
+		}
+		else{
+			skill_set(26, 1);
+		}
+		global.early_hammerhead_compensation = true;
 	}
 }
 
@@ -1445,12 +1457,9 @@ if(GameCont.area == 100){
 	global.last_vault = true;
 	}
 
-
-if(opt.popups == true){
-
-	if(instance_exists(Salamander) && instance_exists(Player)){
+	/*if(instance_exists(Salamander)){
 		with(Salamander){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._salamander == false && opt.death_effects == true && GameCont.loops > 0){
+			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._salamander == false && global.options.death_effects == true && GameCont.loops > 0){
 				leveluped = 1;
 				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
 				instance_create(x,y,LevelUp);
@@ -1458,332 +1467,7 @@ if(opt.popups == true){
 				global.popup_shown._salamander = true;
 			}
 		}
-	}
-	
-	if(instance_exists(Rat) && instance_exists(Player)){
-		with(Rat){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._rat == false && opt.death_effects == true && GameCont.loops > 0){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._rat = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(Molefish) && instance_exists(Player)){
-		with(Molefish){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._molefish == false && opt.death_effects == true && GameCont.loops > 0){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._molefish = true;
-			}
-		}
-	}
-	
-	if(instance_exists(BuffGator) && instance_exists(Player)){
-		with(BuffGator){		
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._buffgator == false && opt.enemies_mutations == true && GameCont.loops > 0){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._buffgator = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(Gator) && instance_exists(Player)){
-		with(Gator){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._gator == false && opt.enemies_mutations == true && GameCont.loops > 0){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._gator = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(JungleFly) && instance_exists(Player)){
-		with(JungleFly){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._junglefly == false && opt.death_effects == true && GameCont.loops > 0){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._junglefly = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(Jock) && instance_exists(Player)){
-		with(Jock){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._jock == false && opt.death_effects == true && GameCont.loops > 1){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._jock = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(Last) && instance_exists(Player)){
-		with(Last){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._last == false && opt.death_effects == true && GameCont.loops > 1){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._last = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(Bandit) && instance_exists(Player)){
-		with(Bandit){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._bandit == false && opt.death_effects == true && GameCont.loops > 1){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._bandit = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(Molesarge) && instance_exists(Player)){
-		with(Molesarge){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._molesarge == false && opt.death_effects == true && GameCont.loops > 1){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._molesarge = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(Van) && instance_exists(Player)){
-		with(Van){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._van == false && opt.death_effects == true && GameCont.loops > 1){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._van = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(Grunt) && instance_exists(Player)){
-		with(Grunt){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._grunt == false && opt.death_effects == true && GameCont.loops > 1){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._grunt = true;					
-			}
-		}
-	}
-	
-	if(instance_exists(Inspector) && instance_exists(Player)){
-		with(Inspector){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._inspector == false && opt.death_effects == true && GameCont.loops > 1){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._inspector = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(TechnoMancer) && instance_exists(Player)){
-		with(TechnoMancer){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._technomancer == false && opt.death_effects == true && GameCont.loops > 1){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._technomancer = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(CrownGuardian) && instance_exists(Player)){
-		with(CrownGuardian){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._crownguardian == false && opt.death_effects == true && GameCont.loops > 1){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._crownguardian = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(Wolf) && instance_exists(Player)){
-		with(Wolf){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._wolf == false && opt.death_effects == true && GameCont.loops > 1){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._wolf = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(OasisBoss) && instance_exists(Player)){
-		with(OasisBoss){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._oasisboss == false && opt.death_effects == true && GameCont.loops > 1){	
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._oasisboss = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(ExploGuardian) && instance_exists(Player)){
-		with(ExploGuardian){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._exploguardian == false && opt.death_effects == true && GameCont.loops > 2){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._exploguardian = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(DogGuardian) && instance_exists(Player)){
-		with(DogGuardian){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._dogguardian == false && opt.death_effects == true && GameCont.loops > 2){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._dogguardian = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(LightningCrystal) && instance_exists(Player)){
-		with(LightningCrystal){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._lightningcrystal == false && opt.death_effects == true && GameCont.loops > 3){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._lightningcrystal = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(JungleBandit) && instance_exists(Player)){
-		with(JungleBandit){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._junglebandit == false && opt.death_effects == true && GameCont.loops > 2){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._junglebandit = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(JungleAssassin) && instance_exists(Player)){
-		with(JungleAssassin){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._jungleassasin == false && opt.death_effects == true && GameCont.loops > 2){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._jungleassasin = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(BanditBoss) && instance_exists(Player)){
-		with(BanditBoss){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._junglebanditboss == false && opt.death_effects == true && GameCont.loops > 2 && GameCont.area == 105){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._junglebanditboss = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(EliteGrunt) && instance_exists(Player)){
-		with(EliteGrunt){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._elitegrunt == false && opt.death_effects == true && GameCont.loops > 2){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._elitegrunt = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(Sniper) && instance_exists(Player)){
-		with(Sniper){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._sniper == false && opt.enemies_mutations == true && GameCont.loops > 2){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._sniper = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(SnowTank) && instance_exists(Player)){
-		with(SnowTank){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._snowtank == false && opt.enemies_mutations == true && GameCont.loops > 2){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._snowtank = true;				
-			}
-		}
-	}
-	
-	if(instance_exists(GoldSnowTank) && instance_exists(Player)){
-		with(GoldSnowTank){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._goldsnowtank == false && opt.enemies_mutations == true && GameCont.loops > 2 && "police" not in self){
-					leveluped = 1;
-					with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-					instance_create(x,y,LevelUp);
-					sound_play(sndLevelUltra);
-					global.popup_shown._goldsnowtank = true;
-			}
-		}
-	}
-	
-	if(instance_exists(Necromancer) && instance_exists(Player)){
-		with(Necromancer){
-			if(point_in_circle(x,y,Player.x,Player.y,180) && global.popup_shown._necromancer == false && opt.death_effects == true && GameCont.loops > 3){
-				leveluped = 1;
-				with instance_create(x,y,PopupText) text = "LEVEL ULTRA!";
-				instance_create(x,y,LevelUp);
-				sound_play(sndLevelUltra);
-				global.popup_shown._necromancer = true;				
-			}
-		}
-	}
-}	
+	}*/
 
 if(GameCont.area == 5){
 	with(BanditBoss){
@@ -1831,8 +1515,8 @@ if(global.cap_spawned == true && GameCont.area == 106 && GameCont.subarea == 3 &
 		spr_hurt = mskNone;
 		spr_idle = mskNone;
 		spr_walk = mskNone;
-		snd_dead = musBoss4Silence;
-		snd_hurt = musBoss4Silence;
+		snd_dead = none;
+		snd_hurt = none;
 	}
 	with(LastExecute){
 		instance_destroy();
@@ -1871,15 +1555,15 @@ if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont
 	}
 
 if(GameCont.area == 105 && instance_exists(Car)){
-	if(Car.spr_idle != global.sprJungleCarIdle){
-		with(Car){
+	with(Car){
+		if(spr_idle != global.sprJungleCarIdle){
 			spr_idle = global.sprJungleCarIdle;
 			spr_hurt = global.sprJungleCarHurt;
 			}
 		}
 	}
 
-if(GameCont.area == 1 && opt.no_new_parcticles == false && global.last_vault == false){
+if(GameCont.area == 1 && global.options.no_new_parcticles == false && global.last_vault == false){
 	if(global.snowspawn_controller_created == false){
 		with(instance_create(10016,10016,CustomObject)){
 			SC = 1;
@@ -1917,7 +1601,7 @@ if(GameCont.area == 1 && opt.no_new_parcticles == false && global.last_vault == 
 	}
 }
 	
-if(GameCont.area == 7 && opt.no_new_parcticles == false && global.last_vault == false){
+if(GameCont.area == 7 && global.options.no_new_parcticles == false && global.last_vault == false){
 	if(global.snowspawn_controller_created == false){
 		with(instance_create(10016,10016,CustomObject)){
 			RSC = 1;
@@ -1999,268 +1683,315 @@ if(instance_exists(Portal)){
 
 var r4 = irandom(100);
 
-if(instance_exists(GenCont) && opt.no_new_tips == false){
+if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip_shown == false){
 
-	if(r4 == 1 && global.tip_shown == false){
+	if(r4 == 1){
 		GenCont.tip = "who put plant food in carburator?";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 2 && global.tip_shown == false){
+	if(r4 == 2){
 		GenCont.tip = "gotta get a grip!";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 3 && global.tip_shown == false){
+	if(r4 == 3){
 		GenCont.tip = "life is always getting @rharder...@s";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 4 && global.tip_shown == false){
+	if(r4 == 4){
 		GenCont.tip = "make sure the @rrisk@s is worth it";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 5 && global.tip_shown == false && GameCont.crown != crwn_none && opt.cursing_enabled == true){
+	if(r4 == 5 && GameCont.crown != crwn_none && global.options.cursing_enabled == true){
 		GenCont.tip = "@qthe @p@qc @qu @qr @qs @qe@s is spreading...";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 6 && global.tip_shown == false){
+	if(r4 == 6 && (GameCont.area == 2 || (GameCont.area == 7 && global.eem <= 0) || (GameCont.loops > 0 && (GameCont.area == 3 || GameCont.area == 4 || (GameCont.area == 6 || GameCont.area == 101 || GameCont.area == 105) && global.eem <= 0)))){
 		GenCont.tip = "eat flakes, not flaks";
-		global.tip_shown = true;
+	}
+
+	if(r4 == 7 && GameCont.seenhq == 1){
+		if(global.options.idpd_mashup == true){
+			if(GameCont.loops < 4){
+				GenCont.tip = "@bIDPD@s @wmay forgive you...@s in some way...";
+			}
+		}
+		else{
+			if(GameCont.loops < 3){
+				GenCont.tip = "@bIDPD@s @wmay forgive you...@s in some way...";
+			}
+		}
 	}
 	
-	if(r4 == 7 && global.tip_shown == false){
+	/*if(r4 == 7){
 		GenCont.tip = "zuigerphobia";
-		global.tip_shown = true;
-	}
+	}*/
 	
-	if(r4 == 8 && global.tip_shown == false && Player.race == "venuz" && opt.fix_venus_car == true){
+	if(r4 == 8 && Player.race == "venuz" && global.options.fix_venus_car == true){
 		GenCont.tip = "they fixed the best @ycar!@s";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 9 && global.tip_shown == false && opt.l5cap != false && global.cap_spawned == false && GameCont.loops == 4){
+	if(r4 == 9 && global.options.l5cap != false && global.cap_spawned == false && GameCont.loops == 4){
 		GenCont.tip = "@bcaptain@s is waiting for you...";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 10 && global.tip_shown == false){
+	if(r4 == 10){
 		GenCont.tip = "don't get close!";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 11 && global.tip_shown == false){
+	if(r4 == 11){
 		GenCont.tip = "high @bvoltage@s will kill you";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 12 && global.tip_shown == false && GameCont.loops > 3 && opt.death_effects == true){
+	if(r4 == 12 && GameCont.loops > 3 && global.options.death_effects == true){
 		GenCont.tip = "@wnecromancers@s are studying from the nature";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 13 && global.tip_shown == false && GameCont.loops > 2 && opt.death_effects == true){
+	if(r4 == 13 && GameCont.loops > 2 && global.options.death_effects == true){
 		GenCont.tip = "these @rflowers@s cause @gibs@s";
-		global.tip_shown = true;
+	}
+
+	if(r4 == 14 && (GameCont.area == 4 || GameCont.area == 104)){
+		GenCont.tip = "Generating Cobweb";
 	}
 	
-	/*if(r4 == 14 && global.tip_shown == false && Player.wep == wep_ultra_shovel && GameCont.loops > 2){
+	/*if(r4 == 14 && Player.wep == wep_ultra_shovel && GameCont.loops > 2){
 		GenCont.tip = "swing like belmont";
-		global.tip_shown = true;
 	}*/
 	
-	if(global.last_vault == true && global.tip_shown == false && GameCont.vaults > 2 && opt.crown_guardian_on_max == true){
+	if(global.last_vault == true && GameCont.vaults > 2 && global.options.crown_guardian_on_max == true){
 		GenCont.tip = "@gproto guardians@s are now homeless";
-		global.tip_shown = true;
+	}
+
+	if(r4 == 15 && GameCont.area == 104){
+		GenCont.tip = "removing @p@qc@qu@qr@qs@qe@s";
 	}
 	
-	/*if(r4 == 15 && global.tip_shown == false && GameCont.loops > 2 && opt.idpd_mashup == true){
+	/*if(r4 == 15 && GameCont.loops > 2 && global.options.idpd_mashup == true){
 		GenCont.tip = "with progress, tech is mass produced";
-		global.tip_shown = true;
 	}*/
 	
-	if(r4 == 16 && global.tip_shown == false && GameCont.loops > 0){
+	if(r4 == 16 && GameCont.loops > 0){
 		GenCont.tip = "is it not excessive?";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 17 && global.tip_shown == false && GameCont.loops > 0){
+	if(r4 == 17 && GameCont.loops > 0){
 		GenCont.tip = "your only move is struggle";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 18 && global.tip_shown == false){
+	if(r4 == 18){
 		GenCont.tip = "why's there no nuclear throne 2";
-		global.tip_shown = true;
+	}
+
+	if(r4 == 19 && global.options.no_jocks == true){
+		GenCont.tip = "deleting @bjocks@s";
 	}
 	
-	if(global.tip_shown == false && Player.wep == wep_ultra_crossbow && Player.race == "chicken" && global.onetimetip_shown.chicken == false){
+	if(Player.wep == wep_ultra_crossbow && Player.race == "chicken" && global.onetimetip_shown.chicken == false){
 		GenCont.tip = "why did the chicken @gultracross@s the road";
-		global.tip_shown = true;
 		global.onetimetip_shown.chicken = true;
 	}
 	
-	if(r4 == 20 && global.tip_shown == false && GameCont.loops > 2){
+	if(r4 == 20 && GameCont.loops > 2){
 		GenCont.tip = "not the freaks!";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 21 && global.tip_shown == false && (Player.wep == wep_golden_revolver || Player.wep == wep_golden_wrench || Player.wep == wep_golden_machinegun || Player.wep == wep_golden_shotgun || Player.wep == wep_golden_crossbow || Player.wep == wep_golden_grenade_launcher || Player.wep == wep_golden_laser_pistol || Player.wep == wep_golden_plasma_gun || Player.wep == wep_golden_slugger || Player.wep == wep_golden_splinter_gun || Player.wep == wep_golden_screwdriver || Player.wep == wep_golden_bazooka || Player.wep == wep_golden_assault_rifle || Player.wep == wep_golden_nuke_launcher || Player.wep == wep_golden_disc_gun || Player.wep == wep_golden_frog_pistol)){
+	if(r4 == 21 && (Player.wep == wep_golden_revolver || Player.wep == wep_golden_wrench || Player.wep == wep_golden_machinegun || Player.wep == wep_golden_shotgun || Player.wep == wep_golden_crossbow || Player.wep == wep_golden_grenade_launcher || Player.wep == wep_golden_laser_pistol || Player.wep == wep_golden_plasma_gun || Player.wep == wep_golden_slugger || Player.wep == wep_golden_splinter_gun || Player.wep == wep_golden_screwdriver || Player.wep == wep_golden_bazooka || Player.wep == wep_golden_assault_rifle || Player.wep == wep_golden_nuke_launcher || Player.wep == wep_golden_disc_gun || Player.wep == wep_golden_frog_pistol)){
 		GenCont.tip = "you are filled with a sense of @yjuandice@s";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 22 && global.tip_shown == false && Player.race == "eyes" && skill_get(mut_throne_butt) == 1){
+	if(r4 == 22 && Player.race == "eyes" && skill_get(mut_throne_butt) == 1){
 		GenCont.tip = "2attractive4em";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 23 && global.tip_shown == false && Player.wep == wep_laser_cannon && skill_get(mut_laser_brain) == 1){
+	if(r4 == 23 && Player.wep == wep_laser_cannon && skill_get(mut_laser_brain) == 1){
 		GenCont.tip = "ama firin' mah @glasor@s. @qblaaarg!@s";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 24 && global.tip_shown == false && Player.race == "skeleton"){
+	if(r4 == 24 && Player.race == "skeleton"){
 		GenCont.tip = "call an @rambulance@s... but not for me!";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 25 && global.tip_shown == false && GameCont.loops > 0 && opt.death_effects == true){
+	if(r4 == 25 && GameCont.loops > 0 && global.options.death_effects == true){
 		GenCont.tip = "amphibian @yheartburn@s";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 26 && global.tip_shown == false && GameCont.loops > 0 && opt.death_effects == true){
+	if(r4 == 26 && GameCont.loops > 0 && global.options.death_effects == true){
 		GenCont.tip = "a @wbig surprise@s awaits in the @wsnow@s";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 27 && global.tip_shown == false && GameCont.loops > 0 && opt.death_effects == true){
+	if(r4 == 27 && GameCont.loops > 0 && global.options.death_effects == true){
 		GenCont.tip = "the @wrats@s are @gmolting@s";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 28 && global.tip_shown == false && GameCont.loops > 1 && opt.death_effects == true){
+	if(r4 == 28 && GameCont.loops > 1 && global.options.death_effects == true){
 		GenCont.tip = "emerjency @wcluster@s ejection";
-		global.tip_shown = true;
 	}
 	
-	if(r4 == 29 && global.tip_shown == false && GameCont.loops > 1 && opt.death_effects == true){
+	if(r4 == 29 && GameCont.loops > 1 && global.options.death_effects == true){
 		GenCont.tip = "spawning season";
-		global.tip_shown = true;
+	}
+
+	if(r4 == 30 && GameCont.hard < 10 && global.options.nes == true){
+		GenCont.tip = "@bshielder@s jumpscare";
+	}
+
+	if(r4 == 31 && (GameCont.area == 5 || GameCont.area == 6 || ((GameCont.area == 7 || GameCont.area == 106) && GameCont.loops == 2)) && global.options.diropf == true && global.eem <= 0){
+		GenCont.tip = "@bthey@s will @wsleep...@s @rforever...@s";
+	}
+
+	if(r4 == 32 && global.options.idpd_seek == 2 && GameCont.crown != none && global.idpd_noticed_your_weapon == true && GameCont.seenhq == 1 && global.cap_spawned == true){
+		GenCont.tip = "@wyou@s are @rpopular@s";
+	}
+
+	if(r4 == 33 && global.options.no_new_parcticles == true && global.onetimetip_shown.dof == false){
+		GenCont.tip = "@wno@s devouver of @rfps@s?";
+		global.onetimetip_shown.dof = true;
+	}
+
+	if(r4 == 34 && global.options.no_guards == true){
+		GenCont.tip = "@wwhere@s is my @gtarragon@s?";
+	}
+
+	if(r4 == 35 && global.options.add_dark == true && GameCont.area == 7){
+		GenCont.tip = "you can't see a thing!";
+	}
+
+	if(GameCont.area == 7 && GameCont.subarea == 3){
+		GenCont.tip = "your voice echoes in here...";
+	}
+
+	if(r4 == 36){
+		if(global.options.diropf == true){
+			if(GameCont.loops > 2){
+				GenCont.tip = "@bthe dead@s are @rrestless!@s";
+			}
+		}
+		else{
+			if(((GameCont.area == 5 || GameCont.area == 6 || ((GameCont.area == 7 || GameCont.area == 106) && GameCont.loops > 1)) && global.eem <= 0) || (global.options.idpd_mashup == true && GameCont.loops > 1) || GameCont.loops > 2){
+				GenCont.tip = "@bthe dead@s are @rrestless!@s";
+			}
+		}
+	}
+
+	if(r4 == 37 && global.options.popups == false){
+		GenCont.tip = "did you enable @radblock?@s";
+	}
+
+	if(r4 == 38){
+		GenCont.tip = "every line of code written with love";
+	}
+
+	if(r4 == 39 && GameCont.area == 7 && GameCont.subarea == 1){
+		GenCont.tip = "you feel a burst of excitement!";
+	}
+
+	if(r4 == 40 && Player.wep = wep_party_gun){
+		GenCont.tip = "you feel strangely at peace";
+	}
+
+	if(r4 == 41 && Player.chickendeaths > 0){
+		GenCont.tip = "why i am @wfelling@s @rhunger?@s";
+	}
+
+	if(r4 == 42 && global.options.rmb == true){
+		GenCont.tip = "could be here a crawlspace?";
+	}
+
+	if(r4 == 43 && global.options.rmb == true && Player.wep == 44){
+		GenCont.tip = "i wish there would be a @ygolden bomb@s. @woh. wait.@s";
+	}
+
+	if(r4 == 44 && global.options.rmb == true){
+		GenCont.tip = "@wkeep your eyes@s buttered till the end";
 	}
 	
-	if(r4 > 29 && r4 < 49 && global.tip_shown == false){
-		global.tip_shown = true;
-	}
+	//r4 > 44 && r4 < 49
 	
-	if(r4 > 49 && r5 == 1 && global.tip_shown == false && (GameCont.area == 1 || GameCont.area == 3) && global.eem <= 0){
+	if(r4 > 49 && r5 == 1 && (GameCont.area == 1 || GameCont.area == 3) && global.eem <= 0){
 		GenCont.tip = "@wsalamanders@s love the sun";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 1 && GameCont.loops > 0 && opt.death_effects == true){
+	if(r4 > 49 && r5 == 2 && GameCont.area == 1 && GameCont.loops > 0 && global.options.death_effects == true){
 		GenCont.tip = "@wthe flies@s are getting louder";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 2 && global.eem <= 0){
+	if(r4 > 49 && r5 == 2 && GameCont.area == 2 && global.eem <= 0){
 		GenCont.tip = "the gun godz cameo we deserve";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 1 && global.tip_shown == false && GameCont.area == 104 && opt.cursed_caves_rework == true){
+	if(r4 > 49 && r5 == 1 && GameCont.area == 104 && global.options.cursed_caves_rework == true){
 		GenCont.tip = "floor here is made out of @p@qc @qu @qr @qs @qe @qs@s";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 104){
+	if(r4 > 49 && r5 == 2 && GameCont.area == 104){
 		GenCont.tip = "@ppurple@s suits you better~";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.subarea == 1 && GameCont.area == 3 && opt.fix_venus_car == true){
+	if(r4 > 49 && r5 == 2 && GameCont.subarea == 1 && GameCont.area == 3 && global.options.fix_venus_car == true){
 		GenCont.tip = "@wmolefish@s forgot to close the @ycar@s";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 1 && global.tip_shown == false && GameCont.area == 7 && opt.add_dark == true){
+	if(r4 > 49 && r5 == 1 && GameCont.area == 7 && global.options.add_dark == true){
 		GenCont.tip = "it's @pdark@s with no lamps or windows";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 7){
+	if(r4 > 49 && r5 == 2 && GameCont.area == 7){
 		GenCont.tip = "power of @gplutonium@s shines within you!";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 1 && global.tip_shown == false && GameCont.area == 5 && GameCont.subarea == 1){
+	if(r4 > 49 && r5 == 1 && GameCont.area == 5 && GameCont.subarea == 1){
 		GenCont.tip = "the jungle grows relentless...";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 5 && global.onetimetip_shown.sans == false){
+	if(r4 > 49 && r5 == 2 && GameCont.area == 5 && global.onetimetip_shown.sans == false){
 		GenCont.tip = "hey. is your refrigerator running?";
-		global.tip_shown = true;
 		global.onetimetip_shown.sans = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 105){
+	if(r4 > 49 && r5 == 2 && GameCont.area == 105){
 		GenCont.tip = "28 years in that godforsaken jungle...";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 1 && global.tip_shown == false && GameCont.area == 105){
+	if(r4 > 49 && r5 == 1 && GameCont.area == 105){
 		GenCont.tip = "birds are singing, flowers are blooming";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 1 && global.tip_shown == false && GameCont.area == 103 && GameCont.loops < 3 && GameCont.loops > 0 && opt.enemies_mutations == true){
+	if(r4 > 49 && r5 == 1 && GameCont.area == 103 && GameCont.loops < 3 && GameCont.loops > 0 && global.options.enemies_mutations == true){
 		GenCont.tip = "even @wrockets@s are @ygold!@s";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 103 && GameCont.loops > 2 && opt.enemies_mutations == true){
+	if(r4 > 49 && r5 == 2 && GameCont.area == 103 && GameCont.loops > 2 && global.options.enemies_mutations == true){
 		GenCont.tip = "even @wdisks@s are @ygold?!@s";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 1 && global.tip_shown == false && GameCont.area == 102){
+	if(r4 > 49 && r5 == 1 && GameCont.area == 102){
 		GenCont.tip = "pizza time!";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 102){
-		GenCont.tip = "don't play with electricity";
-		global.tip_shown = true;
+	if(r4 > 49 && r5 == 2 && GameCont.area == 102){
+		GenCont.tip = "you hear the sounds of @grevelry!@s";
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 101){
+	if(r4 > 49 && r5 == 2 && GameCont.area == 101){
 		GenCont.tip = "it's on the house";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 6 && GameCont.loops > 1){
+	if(r4 > 49 && r5 == 2 && GameCont.area == 6 && GameCont.loops > 1){
 		GenCont.tip = "they're practicing gemmation";
-		global.tip_shown = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && global.tip_shown == false && GameCont.area == 6 && GameCont.loops > 2){
+	if(r4 > 49 && r5 == 2 && GameCont.area == 6 && GameCont.loops > 2){
 		GenCont.tip = "ever tried mitosis? you'd better now";
-		global.tip_shown = true;
 	}
 	
-	if(global.tip_shown == false && GameCont.area == 106 && GameCont.subarea == 3 && GameCont.loops < 2){
+	if(GameCont.area == 106 && GameCont.subarea == 3 && GameCont.loops < 2){
 		GenCont.tip = "one way ticket";
-		global.tip_shown = true;
 	}
 	
-	if(global.tip_shown == false && global.cap_dead == false && ((GameCont.area == 106 && GameCont.subarea == 3 && GameCont.loops > 1) || (GameCont.area == 0 && GameCont.subarea == 1 && GameCont.loops > 4))){
+	if(global.cap_dead == false && ((GameCont.area == 106 && GameCont.subarea == 3 && GameCont.loops > 1) || (GameCont.area == 0 && GameCont.subarea == 1 && GameCont.loops > 4))){
 		GenCont.tip = "last remote";
-		global.tip_shown = true;
 	}
+	global.tip_shown = true;
 }
 
 if(instance_exists(BigMaggot)){
@@ -2486,7 +2217,7 @@ if(GameCont.area == 106 && GameCont.subarea = 3){
 		}
 	}
 
-if(GameCont.loops > 0 && opt.enemies_mutations == true){
+if(GameCont.loops > 0 && global.options.enemies_mutations == true){
 
 	if(instance_exists(Gator) || instance_exists(BuffGator)){
 		with (Gator) {
@@ -2499,7 +2230,7 @@ if(GameCont.loops > 0 && opt.enemies_mutations == true){
 
 }
 	
-if(GameCont.loops > 2 && opt.enemies_mutations == true){	
+if(GameCont.loops > 2 && global.options.enemies_mutations == true){	
 	with instances_matching(JockRocket,"hitid",98){
 		instance_change(Wind,false);
 		with(instance_create(x,y,Disc)){
@@ -2565,7 +2296,7 @@ if(GameCont.loops > 2 && opt.enemies_mutations == true){
 }
 
 if(global.iattbd == false){
-	if(irandom(4) < 1 && opt.add_dark == true && (GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5 || GameCont.area == 103)){
+	if(irandom(4) < 1 && global.options.add_dark == true && (GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5 || GameCont.area == 103)){
 		global.iattbd = true;
 		TopCont.darkness = 1;
 		if(GameCont.area == 1){
@@ -2600,14 +2331,14 @@ if(instance_exists(BanditBoss) && global.music_for_bosses == false && GameCont.a
 
 //Makes IDPD seek the player if he holds IDPD Weapon
 with (Player){
-		if((wep == wep_hyper_rifle || wep == wep_hyper_launcher || wep == wep_hyper_slugger || (wep == wep_rogue_rifle && race != "rogue")) && global.idpd_noticed_your_weapon == false && GameCont.kills != 0 && opt.IDPD_seek == 2){
+		if((wep == wep_hyper_rifle || wep == wep_hyper_launcher || wep == wep_hyper_slugger || (wep == wep_rogue_rifle && race != "rogue")) && global.idpd_noticed_your_weapon == false && global.options.idpd_seek == 2){
 			global.idpd_noticed_your_weapon = true;
 			instance_create(0,0,WantPopo);
 			}
 	}	
 
 //Makes weapons cursed in cursed crystal caves
-if(GameCont.area == 104 && opt.cursed_caves_rework == true){
+if(GameCont.area == 104 && global.options.cursed_caves_rework == true){
 	with(WepPickup){
 		curse = 1;
 	}
@@ -2629,26 +2360,28 @@ if(GameCont.area != 104 && global.ccc == true){
 }
 		
 //Death effects
-if (opt.death_effects == true && GameCont.loops > 0) {
-		
-		with instances_matching_le(JungleFly, "my_health", 0) {
-			instance_create(x,y,MaggotExplosion);
-			instance_create(x + irandom(20),y + irandom(20),BigRad);
-			instance_create(x + irandom(20),y + irandom(20),Rad);
-			instance_create(x + irandom(20),y + irandom(20),Rad);
+if (global.options.death_effects == true) {
+	if(GameCont.loops > 0){
+
+		with(JungleFly){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 12;
+			}
 		}
-		
-		with instances_matching_le(Salamander, "my_health", 0) {
-			salamander_death();
-			instance_create(x + irandom(20),y + irandom(20),BigRad);
-			instance_create(x + irandom(20),y + irandom(20),Rad);
-			instance_create(x + irandom(20),y + irandom(20),Rad);
+
+		with(Salamander){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 12;
+			}
 		}
-		
-		with instances_matching_le(Molefish, "my_health", 0) {
-			molefish_death();
-			instance_create(x + irandom(20),y + irandom(20),Rad);
-			sound_play(sndMolefishFire);
+
+		with(Molefish){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 1;
+			}
 		}
 		
 		with instances_matching(Corpse,"sprite_index",sprRatDead){
@@ -2663,111 +2396,129 @@ if (opt.death_effects == true && GameCont.loops > 0) {
 		
 	}
 	
-	if (opt.death_effects == true && GameCont.loops > 1) {
-		
-		with instances_matching_le(Jock, "my_health", 0) {
-			instance_create(x,y,Explosion);
-			repeat (6) instance_create(x + irandom(20),y + irandom(20),Rad);
-			sound_play(sndExplosion);
+	if (GameCont.loops > 1) {
+
+		with(Jock){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 6;
+			}
 		}
-		
-		with instances_matching_le(TechnoMancer, "my_health", 0) {
-			techno_mancer_death();
-			repeat (4) instance_create(x + irandom(20),y + irandom(20),BigRad);
-			repeat (8) instance_create(x + irandom(20),y + irandom(20),Rad);
-			sound_play(sndClusterLauncher);
+
+		with(TechnoMancer){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 48;
+			}
 		}
-		
-		with instances_matching_le(CrownGuardian, "my_health", 0) {
-			crown_guardian_death();
-			instance_create(x + irandom(20),y + irandom(20),BigRad);
-			instance_create(x + irandom(20),y + irandom(20),Rad);
-			instance_create(x + irandom(20),y + irandom(20),Rad);
-			sound_play(sndNothing2Ball);
+
+		with(CrownGuardian){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 12;
+			}
 		}
-		
-		with instances_matching_le(Van, "my_health", 0) {
-			instance_create(x,y,RogueStrike);
+
+		with(Van){
+			if("death_effect" not in self){
+				death_effect = true;
+			}
 		}
-		
-		with instances_matching_le(Bandit, "my_health", 0) {
-			bandit_death();
-			instance_create(x + irandom(20),y + irandom(20),Rad);
-			sound_play(sndEnemyFire);
+
+		with(Bandit){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 1;
+			}
 		}
-		
-		with instances_matching_le(Wolf, "my_health", 0) {
-			wolf_death();
-			repeat (3) instance_create(x + irandom(20),y + irandom(20),Rad);
-			sound_play(sndEnemyFire);
+
+		with(Wolf){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 3;
+			}
 		}
-		
-		with instances_matching_le(Molesarge, "my_health", 0) {
-			molesarge_death();
-			repeat (3) instance_create(x + irandom(20),y + irandom(20),Rad);
-			sound_play(sndMolesargeFire);
+
+		with(Molesarge){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 3;
+			}
 		}
-		
-		with instances_matching_le(OasisBoss, "my_health", 0) {
-			instance_create(x + irandom(20),y + irandom(20),BigRad);
-			instance_create(x + irandom(20),y + irandom(20),BigRad);
-			repeat (4) instance_create(x + irandom(20),y + irandom(20),Rad);
-			repeat (5) instance_create(x + irandom(20),y + irandom(20),BoneFish);
+
+		with(OasisBoss){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 24;
+			}
 		}
-		
-		with instances_matching_le(Grunt, "my_health", 0) {
-			grunt_death();
-			sound_play(sndRogueRifle)
+
+		with(Grunt){
+			if("death_effect" not in self){
+				death_effect = true;
+			}
 		}
-		
-		with instances_matching_le(Inspector, "my_health", 0) {
-			inspector_death();
-			sound_play(sndRogueRifle);
+
+		with(Inspector){
+			if("death_effect" not in self){
+				death_effect = true;
+			}
 		}
-		
-		with instances_matching_le(Last, "my_health", 0) {
-			instance_create(0,0,VanSpawn);
-			global.cap_spawned = true;
+
+		with(Last){
+			if("death_effect" not in self){
+				death_effect = true;
+			}
 		}
 	}
 	
-	if (opt.death_effects == true && GameCont.loops > 2) {
-		
-		if(irandom(2) < 1){
-			with instances_matching_le(DogGuardian, "my_health", 0) {
-				dog_guardian_death();
-				instance_create(x + irandom(20),y + irandom(20),BigRad);
-				instance_create(x + irandom(20),y + irandom(20),BigRad);
-				repeat (4) instance_create(x + irandom(20),y + irandom(20),Rad);
+	if (GameCont.loops > 2) {
+
+		with(DogGuardian){
+			if("death_effect" not in self){
+				if(irandom(2) < 1){
+					death_effect = true;
+					raddrop += 24;
+				}
+				else{
+					death_effect = false;
+				}
+			}
+		}
+
+		with(Turret){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 6;
+			}
+		}
+
+		with(ExploGuardian){
+			if("death_effect" not in self){
+				if(irandom(5) < 1){
+					death_effect = true;
+				}
+				else{
+					death_effect = false;
+				}
+			}
+		}
+
+		with(JungleBandit){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 3;
+			}
+		}
+
+		with(JungleAssassin){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 3;
 			}
 		}
 		
-		with instances_matching_le(Turret, "my_health", 0) {
-			instance_create(x,y,Explosion);
-			repeat (6) instance_create(x + irandom(20),y + irandom(20),Rad);
-			sound_play(sndExplosion);
-		}
-		
-		if(irandom(5) < 1){
-			with instances_matching_le(ExploGuardian, "my_health", 0) {
-				explo_guardian_death();
-				sound_play(sndUltraGrenade);
-			}
-		}
-		
-		with instances_matching_le(JungleBandit, "my_health", 0) {
-			repeat (3) instance_create(x,y,ToxicGas);
-			repeat (3) instance_create(x + irandom(20),y + irandom(20),Rad);
-			sound_play(sndToxicBoltGas);
-		}
-		
-		with instances_matching_le(JungleAssassin, "my_health", 0) {
-			repeat (3) instance_create(x,y,ToxicGas);
-			repeat (3) instance_create(x + irandom(20),y + irandom(20),Rad);
-			sound_play(sndToxicBoltGas);
-		}
-		
-		if(GameCont.area == 105){
+		/*if(GameCont.area == 105){
 			with instances_matching_le(BanditBoss,"my_health", 0) {
 				instance_create(x,y,ToxicDelay);
 				sound_play(sndToxicBoltGas);
@@ -2775,28 +2526,36 @@ if (opt.death_effects == true && GameCont.loops > 0) {
 				instance_create(x + irandom(20),y + irandom(20),Rad);
 				instance_create(x + irandom(20),y + irandom(20),BigRad);
 				}
+			}*/
+
+		with(EliteGrunt){
+			if("death_effect" not in self){
+				death_effect = true;
 			}
-		
-		with instances_matching_le(EliteGrunt, "my_health", 0) {
-			elite_grunt_death();
 		}
 	}
 	
-	if (opt.death_effects == true && GameCont.loops > 3) {
-	
-		with instances_matching_le(LightningCrystal, "my_health", 0) {
-			lightning_crystal_death();
-			instance_create(x + irandom(20),y + irandom(20),BigRad);
-			instance_create(x + irandom(20),y + irandom(20),Rad);
-			instance_create(x + irandom(20),y + irandom(20),Rad);
+	if (GameCont.loops > 3) {
+
+		with(LightningCrystal){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 12;
+			}
+		}
+
+		with(Necromancer){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 6;
+			}
 		}
 	
-		with instances_matching_le(Necromancer, "my_health", 0) {
+		with instances_matching_le(instances_matching(Necromancer,"death_effect",true), "my_health", 0) {
 			with(instance_create(x,y,CustomObject)){
 				//Necromancer will revive
 				nwr = 1;
 			}
-			repeat (6) instance_create(x + irandom(20),y + irandom(20),Rad);
 		}
 		
 		with(instances_matching(Corpse, "sprite_index", sprNecromancerDead)){
@@ -2818,6 +2577,105 @@ if (opt.death_effects == true && GameCont.loops > 0) {
 				}
 			}
 	}
+}
+
+with instances_matching_le(instances_matching(JungleFly,"death_effect",true), "my_health", 0) {
+			instance_create(x,y,MaggotExplosion);
+		}
+
+with instances_matching_le(instances_matching(Salamander,"death_effect",true), "my_health", 0) {
+			salamander_death();
+		}
+
+with instances_matching_le(instances_matching(Molefish,"death_effect",true), "my_health", 0) {
+			molefish_death();
+			sound_play(sndMolefishFire);
+		}
+
+with instances_matching_le(instances_matching(Jock,"death_effect",true), "my_health", 0) {
+			instance_create(x,y,Explosion);
+			sound_play(sndExplosion);
+		}
+
+with instances_matching_le(instances_matching(TechnoMancer,"death_effect",true), "my_health", 0) {
+			techno_mancer_death();
+			sound_play(sndClusterLauncher);
+		}
+
+with instances_matching_le(instances_matching(CrownGuardian,"death_effect",true), "my_health", 0) {
+			crown_guardian_death();
+			sound_play(sndNothing2Ball);
+		}
+
+with instances_matching_le(instances_matching(Van,"death_effect",true), "my_health", 0) {
+			instance_create(x,y,RogueStrike);
+		}
+
+with instances_matching_le(instances_matching(Bandit,"death_effect",true), "my_health", 0) {
+			bandit_death();
+			sound_play(sndEnemyFire);
+		}
+
+with instances_matching_le(instances_matching(Wolf,"death_effect",true), "my_health", 0) {
+			wolf_death();
+			sound_play(sndEnemyFire);
+		}
+
+with instances_matching_le(instances_matching(Molesarge,"death_effect",true), "my_health", 0) {
+			molesarge_death();
+			sound_play(sndMolesargeFire);
+		}
+
+with instances_matching_le(instances_matching(OasisBoss,"death_effect",true), "my_health", 0) {
+			repeat (5) instance_create(x + irandom(20),y + irandom(20),BoneFish);
+		}
+
+with instances_matching_le(instances_matching(Grunt,"death_effect",true), "my_health", 0) {
+			grunt_death();
+			sound_play(sndRogueRifle)
+		}
+
+with instances_matching_le(instances_matching(Inspector,"death_effect",true), "my_health", 0) {
+			inspector_death();
+			sound_play(sndRogueRifle);
+		}
+
+with instances_matching_le(instances_matching(Last,"death_effect",true), "my_health", 0) {
+			instance_create(0,0,VanSpawn);
+			global.cap_spawned = true;
+		}
+
+with instances_matching_le(instances_matching(DogGuardian,"death_effect",true), "my_health", 0) {
+			dog_guardian_death();
+		}
+
+with instances_matching_le(instances_matching(Turret,"death_effect",true), "my_health", 0) {
+			instance_create(x,y,Explosion);
+			sound_play(sndExplosion);
+		}
+
+with instances_matching_le(instances_matching(ExploGuardian,"death_effect",true), "my_health", 0) {
+			explo_guardian_death();
+			sound_play(sndUltraGrenade);
+		}
+
+with instances_matching_le(instances_matching(JungleBandit,"death_effect",true), "my_health", 0) {
+			repeat (3) instance_create(x,y,ToxicGas);
+			sound_play(sndToxicBoltGas);
+		}
+
+with instances_matching_le(instances_matching(JungleAssassin,"death_effect",true), "my_health", 0) {
+			repeat (3) instance_create(x,y,ToxicGas);
+			sound_play(sndToxicBoltGas);
+		}
+
+with instances_matching_le(instances_matching(EliteGrunt,"death_effect",true), "my_health", 0) {
+			elite_grunt_death();
+		}
+
+with instances_matching_le(instances_matching(LightningCrystal,"death_effect",true), "my_health", 0) {
+			lightning_crystal_death();
+		}
 
 if(GameCont.area == 102 || GameCont.area == "pizza" || GameCont.area == "turtles"){
 	with(HealthChest){
@@ -2837,7 +2695,7 @@ if(instance_exists(Nothing2)){
 	global.throne2_spawned = true;
 }
 
-if(opt.idpd_mashup == true){
+if(global.options.idpd_mashup == true){
 	if((GameCont.area != 0 && GameCont.loops == 2) || (GameCont.area == 0 && GameCont.loops == 3)){
 
 		if(instance_exists(IDPDSpawn)){
@@ -2940,40 +2798,36 @@ if (!(audio_is_playing(mus7) || audio_is_playing(mus7b) || audio_is_playing(mus1
 		global.palace_boss_dead = true;
 	}
 
-//No Jocks	
-with(Jock){
-	if (opt.no_jocks != false){
-		instance_change(Wind,false);
-		instance_create(x,y,Wind);
+//No Jocks
+if (global.options.no_jocks != false){
+	with(Jock){
+		instance_delete(id);
 	}
 }
 
 //No Early Shielders	
 with(Shielder){
-	if (GameCont.hard < 10 && opt.nes == true){
-		instance_change(Wind,false);
+	if (GameCont.hard < 10 && global.options.nes == true){
 		instance_create(x,y,Inspector);
+		instance_delete(id);
 	}
 }
 
 //4 IDPD Portals instead of van in Labs
 with(WantVan){
-	if (GameCont.area == 6 && opt.piov == true){
-		instance_change(Wind,false);
+	if (GameCont.area == 6 && global.options.piov == true){
 		instance_create(x,y,WantPopo);
 		instance_create(x,y,WantPopo);
+		instance_delete(id);
 	}
 }
 
 //No early Popo Freak revives
 with(WantRevivePopoFreak){
-	if (GameCont.loops < 3 && opt.diropf == false){
-		instance_change(Wind,false);
-		instance_create(x,y,Wind);
+	if (GameCont.loops < 3 && global.options.diropf == false){
+		instance_delete(id);
 	}
 }
-
-GameCont.esp_mod_opt = opt;
 
 // -------------------------------
 
@@ -2993,35 +2847,484 @@ if(!instance_exists(GenCont) && global.GenCont_exists){
 
 
 // Help in vault for CrownGuardian
-if(!global.vault_torch_transformed && instance_exists(CrownGuardian) && opt.crown_guardian_help == true){
+if(!global.vault_torch_transformed && instance_exists(CrownGuardian) && global.options.crown_guardian_help == true){
     with(Torch){
-        instance_change(Wind,false);
         instance_create(x,y,Guardian);
-		instance_create(x,y,Torch);
-		for(var i = 1; i < GameCont.vaults; i += 2){
+		if(GameCont.vaults > 1){
 			instance_create(x,y,Turret);
 		}
-		for(var i = 2; i < GameCont.vaults; i += 3){
+		if(GameCont.vaults > 2){
 			instance_create(x,y,IDPDSpawn);
 		}
+		instance_destroy();
     }
     global.vault_torch_transformed = true;
 }
 
 // LilHunter help
-if(instance_exists(LilHunterDie) && !global.lilhunter_revenged && opt.lilhunter_revenge){
+if(instance_exists(LilHunterDie) && !global.lilhunter_revenged && global.options.lilhunter_revenge == true){
     instance_create(0,0,VanSpawn);
     global.lilhunter_revenged = true;
 }
 
-#define rad_inspector
+#define makeavan_create(timing)
+with instance_create(10016,10016,CustomObject){
+	enemies = instance_number(enemy)
+	name = "makeavan"
+	please = timing
+	on_step = script_ref_create(makeavan_step)
+	return id;
+	}
+#define makeavan_step
+if (instance_number(enemy) < (enemies/6)*5) && instance_exists(Player)
+	if fork(){
+		wait(please)
+		if instance_exists(self){
+			instance_create(0,0,VanSpawn)
+			instance_destroy()
+			}
+		}
+//}
 
-/*with Player {
-        if point_distance(x, y, other.x, other.y) < 240 {
-            if place_free(x + lengthdir_x(1, point_direction(x, y, other.x, other.y)), y) x -= lengthdir_x(1, point_direction(x, y, other.x, other.y))
-            if place_free(x, y + lengthdir_y(1, point_direction(x, y, other.x, other.y))) y -= lengthdir_y(1, point_direction(x, y, other.x, other.y))
-        }
-    }*/
+//{ van code (draw code from jsburg)
+#define vanguide
+//trace(my_health)
+	
+	
+	if instance_number(enemy)==array_length_1d(instances_matching(CustomObject,"sprite_index",global.sprVan))
+	and instance_exists(Player) and instance_exists(Corpse) and !instance_exists(Spiral){
+		if fork(){
+			var nc_ = instance_nearest(mouse_x,mouse_y,Corpse)
+			wait 30
+			if !instance_exists(Portal) and instance_exists(self)
+			instance_create(nc_.x,nc_.y,Portal)
+			
+			exit;
+			}
+		}
+	
+	
+	if start>0 start -= 1
+	//image_angle = direction
+	if start < 10 and drivespeed > 0
+		drivespeed -= 0.25
+	if drivespeed > 0{
+		motion_add(direction, drivespeed)
+		with instance_create(x+lengthdir_x(30,image_angle+180+30),y+lengthdir_y(30,image_angle+180+30),CaveSparkle) sprite_index = sprIDPDPortalCharge
+		with instance_create(x+lengthdir_x(30,image_angle+180-30),y+lengthdir_y(30,image_angle+180-30),CaveSparkle) sprite_index = sprIDPDPortalCharge
+		with instance_create(x+lengthdir_x(30,image_angle+30),y+lengthdir_y(30,image_angle+30),CaveSparkle) sprite_index = sprIDPDPortalCharge
+		with instance_create(x+lengthdir_x(30,image_angle-30),y+lengthdir_y(30,image_angle-30),CaveSparkle) sprite_index = sprIDPDPortalCharge
+		if start < 4{
+		if random(3)<1 instance_create(x+lengthdir_x(30,image_angle+180+30),y+lengthdir_y(30,image_angle+180+30),BlueFlame) 
+		if random(3)<1 instance_create(x+lengthdir_x(30,image_angle+180-30),y+lengthdir_y(30,image_angle+180-30),BlueFlame) 
+		if random(3)<1 instance_create(x+lengthdir_x(30,image_angle+30),y+lengthdir_y(30,image_angle+30),BlueFlame)
+		if random(3)<1 instance_create(x+lengthdir_x(30,image_angle-30),y+lengthdir_y(30,image_angle-30),BlueFlame) 
+		}
+		if start < 7{
+		with instance_create(x+lengthdir_x(30,image_angle+180+30),y+lengthdir_y(30,image_angle+180+30),Effect) {sprite_index = sprScorch; image_xscale = 0.6; image_yscale = 0.1; image_angle = other.direction; depth = 4}
+		with instance_create(x+lengthdir_x(30,image_angle+180-30),y+lengthdir_y(30,image_angle+180-30),Effect) {sprite_index = sprScorch; image_xscale = 0.6; image_yscale = 0.1; image_angle = other.direction; depth = 4}
+		with instance_create(x+lengthdir_x(30,image_angle+30),y+lengthdir_y(30,image_angle+30),Effect) {sprite_index = sprScorch; image_xscale = 0.6; image_yscale = 0.1; image_angle = other.direction; depth = 4}
+		with instance_create(x+lengthdir_x(30,image_angle-30),y+lengthdir_y(30,image_angle-30),Effect) {sprite_index = sprScorch; image_xscale = 0.6; image_yscale = 0.1; image_angle = other.direction; depth = 4}
+		}
+		}
+	else friction = 1
+	if speed > maxspeed 
+			speed = maxspeed
+	while place_meeting(x,y,Wall){
+		with instance_nearest(x+hspeed,y+vspeed,Wall){
+			instance_create(x,y,FloorExplo);
+			instance_destroy()
+			}
+		}
+	
+	if speed == 0 and  land > 0
+		land -= 1
+	if (GameCont.loops > 0||(GameCont.subarea = 5) and random(6)<GameCont.loops) and start = 6
+		mod_script_call("mod", "enemies", "IDPDTank_create", x+lengthdir_x(30,image_angle+180-30),y+lengthdir_y(30,image_angle+180-30),direction);
+	if land = 1{
+		var ix = x+lengthdir_x(36,image_angle+180);
+		var iy = y+lengthdir_y(36,image_angle+180);
+		repeat(2+GameCont.loops){
+			var copper = choose(Grunt,Grunt,Grunt,Grunt,Grunt,Grunt,Grunt,Inspector,Inspector,Inspector,Shielder,Shielder,Shielder,EliteGrunt,EliteInspector,EliteShielder);
+			if(GameCont.loops > 2){
+				var copper = choose(PopoFreak,PopoFreak,PopoFreak,PopoFreak,PopoFreak,PopoFreak,PopoFreak,PopoFreak,PopoFreak,PopoFreak,PopoFreak,PopoFreak,PopoFreak,PopoFreak,PopoFreak,PopoFreak);
+			}
+			with instance_create(ix,iy,copper)
+				motion_add(point_direction(other.x,other.y,x,y),4)
+			instance_create(ix,iy,PortalClear)
+			}
+		repeat(30)
+			with instance_create(x,y,Dust){
+				motion_add(random(360),random(6))
+				depth = other.depth + .1
+				}
+		}
+	if instance_exists(target)
+			var ang = point_direction(x,y,target.x,target.y);
+		else 
+			var ang = image_angle;
+	if start > 5
+		image_angle = image_angle+(angle_difference(ang,image_angle)/8)
+	if start < 5 and drivespeed > 0 and !place_meeting(x,y,target) and distance_to_object(target)<(game_width/2){
+		image_angle = ang
+		//image_angle = angle_difference(ang,direction)
+		motion_add(direction+(angle_difference(ang,direction)/4), drivespeed/(5+start))
+		drivespeed -= 0.25
+		
+		}
+if instance_exists(baby){
+		with baby{
+			with instance_nearest(x,y,hitme) if distance_to_object(other)<32
+				motion_add(point_direction(other.x,other.y,x,y),0.5)
+			x=other.x+other.hspeed
+			y=other.y+other.vspeed
+			if other.speed > 1
+			canmelee = 1
+			else
+			canmelee = 0
+			image_angle = other.image_angle
+			}
+		}
+	else instance_destroy()
+
+#define vandraw
+if instance_exists(baby){
+	var creator = baby
+	var i;
+	var j = 0;
+	draw_sprite_ext(global.sprOutline, 0 , x, y ,image_xscale, image_yscale, image_angle, c_white, 0.5);
+	if creator.nexthurt > current_frame 
+		d3d_set_fog(1, c_white, 0, 1)
+	for (i = 0; i <= 20; i++){
+		repeat(zscale){
+			draw_sprite_ext(global.sprOutline, clamp(i,0,17) , x, y-land - .5 *(i + j) ,image_xscale, image_yscale, image_angle, c_white, 1);
+			j += 1;
+			}
+		}
+	d3d_set_fog(0, 0, 0, 0)
+	j = 0
+	if speed == 0
+		var sprite = global.sprVanStop;
+	else
+		var sprite = global.sprVan;
+	if creator.nexthurt > current_frame 
+		d3d_set_fog(1, c_white, 0, 1)
+	for (i = 0; i <= 20; i++){
+		repeat(zscale){
+			draw_sprite_ext(sprite, clamp(i,0,17) , x, y-land - .5 *(i + j) ,image_xscale, image_yscale, image_angle, c_white, 1);
+			j += 1;
+			}
+		}
+	d3d_set_fog(0, 0, 0, 0)
+	if speed > 1{
+		draw_sprite_ext(global.sprSiren, image_index , x, y-land - .5 *(i + j),image_xscale, image_yscale, image_angle, image_blend, 1);
+			}
+	}
+#define vanexplo
+repeat 3
+mod_script_call("mod","enemies","scrPickups",80)
+if instance_exists(baby)
+		with baby
+			instance_destroy()
+repeat(3)
+	instance_create(x+random_range(-30,30),y+random_range(-30,30),PopoExplosion)
+with instance_create(x,y,Effect) {
+sprite_index = sprScorch;
+image_xscale = 3
+image_yscale = 3
+}
+repeat(10)
+instance_create(x+random_range(-30,30),x+random_range(-30,30),BlueFlame)
+
+#define on_screen_with_player(bx1,by1,bx2,by2)
+
+if(global.options.popups == true && instance_exists(Player)){
+	if(GameCont.loops > 0){
+		if(global.options.death_effects == true){
+			if(instance_exists(Salamander) && global.popup_shown._salamander == false){
+				with(Salamander){
+					if(x > bx1 && x < bx2 && y > by1 && y < by2){
+						if("levelup_notify" not in self){
+							//trace("poop");
+							levelup_notify = true;
+							levelup_draw();
+							global.popup_shown._salamander = true;
+						}
+					}
+				}
+			}
+			if(instance_exists(Rat) && global.popup_shown._rat == false){
+				with(Rat){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._rat = true;
+					}
+				}
+			}
+			if(instance_exists(Molefish) && global.popup_shown._molefish == false){
+				with(Molefish){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._molefish = true;
+					}
+				}
+			}
+			if(instance_exists(JungleFly) && global.popup_shown._junglefly == false){
+				with(JungleFly){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._junglefly = true;
+					}
+				}
+			}
+		if(global.options.enemies_mutations == true){
+			if(instance_exists(BuffGator) && global.popup_shown._buffgator == false){
+				with(BuffGator){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._buffgator = true;
+					}
+				}
+			}
+			if(instance_exists(Gator) && global.popup_shown._gator == false){
+				with(Gator){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._gator = true;
+					}
+				}
+			}
+		}
+	}
+	if(GameCont.loops > 1){
+		if(global.options.death_effects == true){
+			if(instance_exists(Jock) && global.popup_shown._jock == false){
+				with(Jock){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._jock = true;
+					}
+				}
+			}
+			if(instance_exists(Last) && global.popup_shown._last == false){
+				with(Last){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._last = true;
+					}
+				}
+			}
+			if(instance_exists(Bandit) && global.popup_shown._bandit == false){
+				with(Bandit){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._bandit = true;
+					}
+				}
+			}
+			if(instance_exists(Molesarge) && global.popup_shown._molesarge == false){
+				with(Molesarge){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._molesarge = true;
+					}
+				}
+			}
+			if(instance_exists(Van) && global.popup_shown._van == false){
+				with(Van){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._van = true;
+					}
+				}
+			}
+			if(instance_exists(Grunt) && global.popup_shown._grunt == false){
+				with(Grunt){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._grunt = true;
+					}
+				}
+			}
+			if(instance_exists(Inspector) && global.popup_shown._inspector == false){
+				with(Inspector){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._inspector = true;
+					}
+				}
+			}
+			if(instance_exists(TechnoMancer) && global.popup_shown._technomancer == false){
+				with(TechnoMancer){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._technomancer = true;
+					}
+				}
+			}
+			if(instance_exists(CrownGuardian) && global.popup_shown._crownguardian == false){
+				with(CrownGuardian){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._crownguardian = true;
+					}
+				}
+			}
+			if(instance_exists(Wolf) && global.popup_shown._wolf == false){
+				with(Wolf){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._wolf = true;
+					}
+				}
+			}
+			if(instance_exists(OasisBoss) && global.popup_shown._oasisboss == false){
+				with(OasisBoss){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._oasisboss = true;
+					}
+				}
+			}
+		}
+	}
+	if(GameCont.loops > 2){
+		if(global.options.death_effects == true){
+			if(instance_exists(ExploGuardian) && global.popup_shown._exploguardian == false){
+				with(ExploGuardian){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._exploguardian = true;
+					}
+				}
+			}
+			if(instance_exists(DogGuardian) && global.popup_shown._dogguardian == false){
+				with(DogGuardian){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._dogguardian = true;
+					}
+				}
+			}
+			if(instance_exists(JungleBandit) && global.popup_shown._junglebandit == false){
+				with(JungleBandit){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._junglebandit = true;
+					}
+				}
+			}
+			if(instance_exists(JungleAssassin) && global.popup_shown._jungleassassin == false){
+				with(JungleAssassin){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._jungleassassin = true;
+					}
+				}
+			}
+			if(instance_exists(BanditBoss) && global.popup_shown._junglebanditboss == false && GameCont.area == 105){
+				with(BanditBoss){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._junglebanditboss = true;
+					}
+				}
+			}
+			if(instance_exists(EliteGrunt) && global.popup_shown._elitegrunt == false){
+				with(EliteGrunt){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._elitegrunt = true;
+					}
+				}
+			}
+		}
+		if(global.options.enemies_mutations == true){
+			if(instance_exists(Sniper) && global.popup_shown._sniper == false){
+				with(Sniper){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._sniper = true;
+					}
+				}
+			}
+			if(instance_exists(SnowTank) && global.popup_shown._snowtank == false){
+				with(SnowTank){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._snowtank = true;
+					}
+				}
+			}
+			if(instance_exists(GoldSnowTank) && global.popup_shown._goldsnowtank == false){
+				with(GoldSnowTank){
+					if("police" not in self){
+						if("levelup_notify" not in self){
+							levelup_notify = true;
+							levelup_draw();
+							global.popup_shown._goldsnowtank = true;
+						}
+					}
+				}
+			}
+		}
+	}
+	if(GameCont.loops > 3){
+		if(global.options.death_effects == true){
+			if(instance_exists(LightningCrystal) && global.popup_shown._lightningcrystal == false){
+				with(LightningCrystal){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._lightningcrystal = true;
+					}
+				}
+			}
+			if(instance_exists(Necromancer) && global.popup_shown._necromancer == false){
+				with(Necromancer){
+					if("levelup_notify" not in self){
+						levelup_notify = true;
+						levelup_draw();
+						global.popup_shown._necromancer = true;
+					}
+				}
+			}
+		}
+	}
+}
+}
+
+#define levelup_draw
+
+with(enemy){
+	draw_sprite_ext(sprLevelUp,-1,x,y,1,1,0,c_white,1);
+}
+
+#define rad_inspector
 
 with Player {
 	if distance_to_object(other) <= 72 && speed < 16 { 
@@ -3091,8 +3394,40 @@ if(skill_get(15) && !global.used_skills [5]){
 	global.used_skills [5] = true;
 	return wep_ultra_shotgun;
 }
-var wep_choice = irandom(5);
-return global.ultra_weapons_random [wep_choice];
+with(Player){
+	if(wep == wep_ultra_revoulver || wep == wep_ultra_crossbow || wep == wep_ultra_shovel || wep == wep_ultra_grenade_launcher || wep == wep_ultra_shotgun || wep == wep_ultra_laser_pistol){
+		if(random(1) < 1){
+			return wep;
+		}
+		else{
+			var wep_choice = irandom(5);
+			return global.ultra_weapons_random [wep_choice];
+		}
+	}
+	if(bwep == wep_ultra_revoulver || bwep == wep_ultra_crossbow || bwep == wep_ultra_shovel || bwep == wep_ultra_grenade_launcher || bwep == wep_ultra_shotgun || bwep == wep_ultra_laser_pistol){
+		if(random(1) < 1){
+			return bwep;
+		}
+		else{
+			var wep_choice = irandom(5);
+			return global.ultra_weapons_random [wep_choice];
+		}
+	}
+	if((wep == wep_ultra_revoulver || wep == wep_ultra_crossbow || wep == wep_ultra_shovel || wep == wep_ultra_grenade_launcher || wep == wep_ultra_shotgun || wep == wep_ultra_laser_pistol) && (bwep == wep_ultra_revoulver || bwep == wep_ultra_crossbow || bwep == wep_ultra_shovel || bwep == wep_ultra_grenade_launcher || bwep == wep_ultra_shotgun || bwep == wep_ultra_laser_pistol)){
+		if(random(1) < 1){
+			if(random(1) < 1){
+				return wep;
+			}
+			else{
+				return bwep;
+			}
+		}
+		else{
+			var wep_choice = irandom(5);
+			return global.ultra_weapons_random [wep_choice];
+		}
+	}
+}
 
 #define cleanup
 
@@ -3426,13 +3761,13 @@ with(GameCont){
 global.tip_shown = false;
 global.inner_chance_proc = false;
 
-if(opt.fix_venus_car == true){
+if(global.options.fix_venus_car == true){
 	with(CarVenusFixed){
 		instance_destroy();
 	}
 }
 
-if(opt.popups == true){
+if(global.options.popups == true){
 	if(instance_exists(Player)){
 		if(GameCont.area == 3 && GameCont.subarea == 1 && global.popup_shown._oasis == false){
 			with instance_create(Player.x,Player.y,PopupText) text = "CHECK OUT SPAWN"
@@ -3684,7 +4019,7 @@ global.weapon_deleted = false;
 global.ultrachest_spawned = false;
 
 with(WeaponChest){
-	if(opt.chest_replacments == true && GameCont.area == 102){
+	if(global.options.chest_replacments == true && GameCont.area == 102){
 		with(instance_create(x,y,WepPickup)){
 			wep = wep_party_gun;
 		}
@@ -3699,7 +4034,7 @@ with(ProtoChest){
 }
 
 with(Player){
-	if(opt.no_throne_yell == false && GameCont.area == 7 && GameCont.subarea == 3 && global.no_addinational_yell == false){
+	if(global.options.no_throne_yell == false && GameCont.area == 7 && GameCont.subarea == 3 && global.no_addinational_yell == false){
 		sound_play(snd_thrn);
 		global.no_addinational_yell = true;
 	}
@@ -3719,14 +4054,14 @@ else{
 	global.aowb = (GameCont.loops + 1) * 20;
 }
 
-if(GameCont.area != 7 && GameCont.area != 5 && opt.no_guards == true){
+if(GameCont.area != 7 && GameCont.area != 5 && global.options.no_guards == true){
 	with (Guardian) instance_delete(self);
 	with (ExploGuardian) instance_delete(self);
 	with (DogGuardian) instance_delete(self);
 	with (GhostGuardian) instance_delete(self);
 }
 
-if(GameCont.area == 5 && opt.no_guards == true){
+if(GameCont.area == 5 && global.options.no_guards == true){
 	with (Guardian) instance_delete(self);
 	with (GhostGuardian) instance_delete(self);
 }
@@ -3774,7 +4109,7 @@ if(GameCont.vaults > 2 && (GameCont.area == 105 || GameCont.area == 103 || GameC
 	global.amount_of_crown_guardians += 2;
 	}
 
-if(opt.hammerhead_time == 2 && GameCont.loops > 0){
+if(global.options.hammerhead_time == 2 && GameCont.loops > 0){
 	Player.hammerhead = 20 * GameCont.loops;
 	}
 
@@ -3793,38 +4128,41 @@ if(GameCont.area != 100){
 	global.last_vault = false;
 	}
 	
-if(opt.popups == true){
+if(global.options.popups == true){
 	if(instance_exists(Player)){
-		if(GameCont.area == 104 && global.popup_shown._ccc == false && opt.cursed_caves_rework == true){
+		if(GameCont.area == 104 && global.popup_shown._ccc == false && global.options.cursed_caves_rework == true){
 			with instance_create(Player.x,Player.y,PopupText) text = "FLOOR IS @p@qC@qU@qR@qS@qE@qD@q!@s"
 			global.popup_shown._ccc = true;
 		}
 	}
 }
 
-if(opt.chest_replacments == true){
+if(global.options.chest_replacments == true){
 	with(AmmoChest){
 		if (GameCont.area == 5 || GameCont.area == 106 || GameCont.area == "city" || GameCont.area == "HQ"){
-			instance_change(IDPDChest,false);
+			instance_create(x,y,IDPDChest);
+			instance_delete(self);
 		}
 	}
 
 	with(AmmoChestMystery){
 		if (GameCont.area == 5 || GameCont.area == 106 || GameCont.area == "city" || GameCont.area == "HQ"){
-			instance_change(IDPDChest,false);
+			instance_create(x,y,IDPDChest);
+			instance_delete(self);
 		}
 	}
 
 	with(Mimic){
 		if (GameCont.area == 5 || GameCont.area == 106 || GameCont.area == "city" || GameCont.area == "HQ"){
-			instance_change(IDPDChest,false);
+			instance_create(x,y,IDPDChest);
+			instance_delete(self);
 		}
 	}
 }
 
 if((GameCont.area == 0 || GameCont.area = 7 && GameCont.subarea = 3) && GameCont.loops < 4){
 	GameCont.seenhq = 0;
-	if(instance_exists(Player) && opt.bonus_loop_max_health == true){
+	if(instance_exists(Player) && global.options.bonus_loop_max_health == true){
 		with(Player){
 			chickendeaths += 1;
 		}
@@ -3947,11 +4285,11 @@ if(global.abd == false){
 	sprite_restore(sprSnowManDead);
 	}
 
-
-if(Player.my_health == 1 && GameCont.area == 106 && GameCont.subarea == 1){
-	sound_play_music(mus106b);
+with(Player){
+	if((irandom(my_health) + 1) == 1 && GameCont.area == 106 && GameCont.subarea == 1){
+		sound_play_music(mus106b);
 	}
-
+}
 
 if(GameCont.area != 5 && GameCont.area != 105){
 	sprite_restore(sprBanditBossIdle);
@@ -3988,16 +4326,16 @@ if(GameCont.area == 5){
 	sprite_replace(sprBanditBossDead,"resources/Enemies/SnowBigBandit/sprSnowBigBanditDead.png",9,16,16 );
 	}
 
-if(opt.IDPD_seek == 1 && GameCont.area == 106){
+if(global.options.idpd_seek == 1 && GameCont.area == 106){
 	instance_create(0,0,WantVan);
 	}
 
-if(opt.chest_replacments == true){
+if(global.options.chest_replacments == true){
 	chest_replacer ();
 }
 
 //Adding darknes to palace, jungles and night desert
-if((GameCont.area == 7 || GameCont.area == 105 || GameCont.area == 0 || (GameCont.area == 106 && GameCont.subarea == 2)) && opt.add_dark == true){
+if((GameCont.area == 7 || GameCont.area == 105 || GameCont.area == 0 || (GameCont.area == 106 && GameCont.subarea == 2)) && global.options.add_dark == true){
 	TopCont.darkness = 1;
 }
 
@@ -4005,7 +4343,7 @@ if(GameCont.area == 106 && GameCont.subarea == 2){
 	sound_play_music(mus106b);
 	}
 
-if (instance_exists(CarVenus) && opt.fix_venus_car)
+if (instance_exists(CarVenus) && global.options.fix_venus_car)
     fix_car_venus();
 
 add_more_enemies();
@@ -4020,44 +4358,44 @@ with(enemy){
 #define add_more_enemies
 if (!instance_exists(Player)) return;
 // IDPD Seek
-if (opt.IDPD_seek > 1 && GameCont.crown != crwn_none && !(GameCont.area == 107) && global.no_idpd_for_cap == false){
+if (global.options.idpd_seek > 1 && GameCont.crown != crwn_none && !(GameCont.area == 107) && global.no_idpd_for_cap == false){
 		instance_create(0,0,IDPDSpawn);
 		instance_create(0,0,IDPDSpawn);
 		instance_create(0,0,WantPopo);
 	}
 	
-if (opt.IDPD_seek > 1 && GameCont.seenhq == 1 && !(GameCont.area == 107) && global.no_idpd_for_cap == false){
+if (global.options.idpd_seek > 1 && GameCont.seenhq == 1 && !(GameCont.area == 107) && global.no_idpd_for_cap == false){
 		instance_create(0,0,IDPDSpawn);
 		instance_create(0,0,IDPDSpawn);
 		instance_create(0,0,WantPopo);
 		instance_create(0,0,WantVan);
 	}
 	
-if (opt.IDPD_seek > 1 && global.cap_spawned == true && !(GameCont.area == 107)){
+if (global.options.idpd_seek > 1 && global.cap_spawned == true && !(GameCont.area == 107)){
 		instance_create(0,0,IDPDSpawn);
 		instance_create(0,0,IDPDSpawn);
 		instance_create(0,0,WantPopo);
 		instance_create(0,0,WantVan);
 	}
 
-if (opt.IDPD_seek > 0 && GameCont.area == 5 && GameCont.subarea == 1){
+if (global.options.idpd_seek > 0 && GameCont.area == 5 && GameCont.subarea == 1){
 		instance_create(0,0,IDPDSpawn);
 		instance_create(0,0,IDPDSpawn);
 	}
 	
-if (opt.IDPD_seek > 0 && (GameCont.area == 5 && GameCont.subarea == 2) || (GameCont.area == 6 && GameCont.subarea == 1) || (GameCont.area == 7 && GameCont.subarea == 1)){
+if (global.options.idpd_seek > 0 && (GameCont.area == 5 && GameCont.subarea == 2) || (GameCont.area == 6 && GameCont.subarea == 1) || (GameCont.area == 7 && GameCont.subarea == 1)){
 		repeat(4)instance_create(0,0,IDPDSpawn);
 		instance_create(0,0,WantPopo);
 		instance_create(0,0,WantVan);
 	}
 	
-if (opt.IDPD_seek > 0 && (GameCont.area == 5 && GameCont.subarea == 3) || (GameCont.area == 7 && GameCont.subarea == 2)){
+if (global.options.idpd_seek > 0 && (GameCont.area == 5 && GameCont.subarea == 3) || (GameCont.area == 7 && GameCont.subarea == 2)){
 		repeat(4)instance_create(0,0,IDPDSpawn);
 		instance_create(0,0,WantPopo);
 		instance_create(0,0,WantVan);
 	}
 
-if (opt.IDPD_seek > 1 && (GameCont.area == 5 && GameCont.subarea == 3) || (GameCont.area == 7 && GameCont.subarea == 2)){
+if (global.options.idpd_seek > 1 && (GameCont.area == 5 && GameCont.subarea == 3) || (GameCont.area == 7 && GameCont.subarea == 2)){
 		instance_create(0,0,IDPDSpawn);
 		instance_create(0,0,IDPDSpawn);
 		instance_create(0,0,WantPopo);
@@ -4070,8 +4408,8 @@ if ((GameCont.area = areas.palace || GameCont.area = areas.IDPD) && GameCont.sub
 var pool = get_pool(); 
 
 global.factor += 1;
-if (GameCont.crown == crwn_blood) global.factor = global.factor * opt.blood_factor;
-var guarantee = opt.enemies_guaranteed + (GameCont.loops * opt.loop_guranteed_add);
+//if (GameCont.crown == crwn_blood) global.factor *= opt.blood_factor;
+var guarantee = 1 + (GameCont.loops * 2);
 
 var spawned = 0;
 
@@ -4081,6 +4419,28 @@ with(Floor){
     // Check if place is free
     if(!place_meeting(x, y, Wall) && !place_meeting(x, y, prop) && !place_meeting(x, y, chestprop) && !place_meeting(x, y, MaggotSpawn) && !place_meeting(x,y,enemy)) continue;
 
+/*	if(GameCont.area == 1 || GameCont.area == 2 || GameCont.area == 3 || GameCont.area == 4 || GameCont.area == 5 || GameCont.area == 7 || GameCont.area == 101 || GameCont.area == 102 || GameCont.area == 103 || GameCont.area == 104 || GameCont.area == 105){
+		if(random(15) < ((GameCont.hard * global.eem)+1)){
+			if(GameCont.loops < 1){
+				var random_idpd = choose(Grunt,Grunt,Grunt,Inspector,Shieldier);
+				with instance_create(x,y,random_idpd){
+					raddrop = irandom(24) + 1;
+				}
+			}
+			else{
+				var random_idpd = choose(Grunt,Grunt,Grunt,Inspector,Shieldier,EliteGrunt,EliteInspector,EliteShielder);
+				with instance_create(x,y,random_idpd){
+					if(global.options.idpd_mashup == false){
+						raddrop = irandom(24) + 1 + (GameCont.loops * 8);
+					}
+					else{
+						raddrop = irandom(24) + 1 + (GameCont.loops * 6);
+					}
+				}
+			}
+		}
+	}*/
+	
 	if(global.ultrachest_spawned == false && (GameCont.area == 1 || GameCont.area == 3) && GameCont.vaults > 2 && GameCont.subarea == 2){
 		var can_spawn_challange = true;
 
@@ -4096,7 +4456,7 @@ with(Floor){
 		}
 	}
 	
-	if(global.cap_spawned == false && GameCont.area == 0 && GameCont.loops == 5 && opt.l5cap == true){
+	if(global.cap_spawned == false && GameCont.area == 0 && GameCont.loops == 5 && global.options.l5cap == true){
             var can_spawn_cap = true; 
 				
 			if(can_spawn_cap == true){
@@ -4106,7 +4466,7 @@ with(Floor){
 			}
         }
 		
-    if(!global.crown_guardian_spawned && GameCont.subarea == global.crown_guardian_sublocation && GameCont.vaults == 3 && opt.crown_guardian_on_max){
+    if(!global.crown_guardian_spawned && GameCont.subarea == global.crown_guardian_sublocation && GameCont.vaults == 3 && global.options.crown_guardian_on_max == true){
         var can_spawn = false;
         for (i=0; i < array_length(global.crown_guardian_locations); i++) { 
             if(global.crown_guardian_locations[i] == GameCont.area)
@@ -4137,7 +4497,7 @@ with(Floor){
         continue;
     }
 
-    if(irandom(opt.chance_to_not_spawn) <= global.factor * global.eem){
+    if(irandom(50) <= (global.factor * global.eem) * global.enemy_factor){
         instance_create(x + 16,y + 16,pull_from_pool(pool));
 		instance_create(x + 16,y + 16,PortalClear);
         spawned++;
@@ -4149,51 +4509,45 @@ with(Floor){
 if (GameCont.area == areas.jungle)
     add_ravens();
 
-if (opt.cursing_enabled && GameCont.crown != crwn_none)
+if (global.options.cursing_enabled && GameCont.crown != crwn_none)
 	curse_c();
 	
 #define curse_c
-var curse_chance = opt.evry_cursed_crystal
-if (GameCont.crown == crwn_curses)
-	curse_chance = opt.cured_evry_cursed_crystal
 
 with(Spider){
-	if (random(1) <= curse_chance){
-		instance_change(Wind,false);
-		instance_create(x,y,InvSpider);
-		count = 0;
+	if(GameCont.crown == crwn_curses){
+		if(irandom(2) < 2){
+			instance_create(x,y,InvSpider);
+			instance_delete(self);
+		}
+	}
+	else{
+		if(irandom(6) < 1){
+			instance_create(x,y,InvSpider);
+			instance_delete(self);
+		}
 	}
 }
 
 with(LaserCrystal){
-	if (random(1) <= curse_chance){
-		instance_change(Wind,false);
-		instance_create(x,y,InvLaserCrystal);
-		count = 0;
+	if(GameCont.crown == crwn_curses){
+		if(irandom(2) < 2){
+			instance_create(x,y,InvLaserCrystal);
+			instance_delete(self);
+		}
+	}
+	else{
+		if(irandom(6) < 1){
+			instance_create(x,y,InvLaserCrystal);
+			instance_delete(self);
+		}
 	}
 }
 
-if(instance_exists(Floor) && instance_exists(InvSpider) && opt.floor_changes == false){
-	with(Floor){
-		if(traction !=2 && place_meeting(x,y,InvSpider)){
-			if("touched" not in self){
-				touched = true;
-				traction = 2;
-				with (instance_create(x,y,CustomObject)){
-					sprite_index = global.sprCobWeb;
-					cobweb = true;
-					depth = 4;
-					}
-				}
-			}
-		}
-	}	
-
 // -------------- //
 #define fix_car_venus
-with(CarVenus){
     with(CarVenus){
-        instance_change(Wind,false);
+        instance_delete(self);
         instance_create(x,y,CarVenusFixed);
         for (i=0; i < array_length(global.CarVenus_Guards); i++) { 
             instance_create(x,y,global.CarVenus_Guards[i]);
@@ -4202,147 +4556,146 @@ with(CarVenus){
 				}
         }
     }
-}
 
 // -------------- //
 #define chest_replacer
 switch (GameCont.area) {	
 	case areas.pizza:
-		with(RadChest){//HealthChest
-			instance_change(Wind,false);
+		with(RadChest){
 			instance_create(x,y,HealthChest);
+			instance_delete(self);
 		}
-		with(RogueChest){//HealthChest
-			instance_change(Wind,false);
+		with(RogueChest){
 			instance_create(x,y,HealthChest);
+			instance_delete(self);
 		}
-		with(SuperMimic){//HealthChest
-			instance_change(Wind,false);
+		with(SuperMimic){
 			instance_create(x,y,HealthChest);
+			instance_delete(self);
 		}
-		with(AmmoChest){//HealthChest
-			instance_change(Wind,false);
+		with(AmmoChest){
 			instance_create(x,y,RadChest);
+			instance_delete(self);
 		}
-		with(AmmoChestMystery){//HealthChest
-			instance_change(Wind,false);
+		with(AmmoChestMystery){
 			instance_create(x,y,RadChest);
+			instance_delete(self);
 		}
-		with(IDPDChest){//HealthChest
-			instance_change(Wind,false);
+		with(IDPDChest){
 			instance_create(x,y,RadChest);
+			instance_delete(self);
 		}
-		with(Mimic){//HealthChest
-			instance_change(Wind,false);
+		with(Mimic){
 			instance_create(x,y,RadChest);
+			instance_delete(self);
 		}
 		break;
 	case "pizza":
-		with(RadChest){//HealthChest
-			instance_change(Wind,false);
+		with(RadChest){
 			instance_create(x,y,HealthChest);
+			instance_delete(self);
 		}
-		with(RogueChest){//HealthChest
-			instance_change(Wind,false);
+		with(RogueChest){
 			instance_create(x,y,HealthChest);
+			instance_delete(self);
 		}
-		with(SuperMimic){//HealthChest
-			instance_change(Wind,false);
+		with(SuperMimic){
 			instance_create(x,y,HealthChest);
+			instance_delete(self);
 		}
-		with(AmmoChest){//HealthChest
-			instance_change(Wind,false);
+		with(AmmoChest){
 			instance_create(x,y,RadChest);
+			instance_delete(self);
 		}
-		with(AmmoChestMystery){//HealthChest
-			instance_change(Wind,false);
+		with(AmmoChestMystery){
 			instance_create(x,y,RadChest);
+			instance_delete(self);
 		}
-		with(IDPDChest){//HealthChest
-			instance_change(Wind,false);
+		with(IDPDChest){
 			instance_create(x,y,RadChest);
+			instance_delete(self);
 		}
-		with(Mimic){//HealthChest
-			instance_change(Wind,false);
+		with(Mimic){
 			instance_create(x,y,RadChest);
+			instance_delete(self);
 		}
 		break;	
 	case "turtles":
-		with(RadChest){//HealthChest
-			instance_change(Wind,false);
+		with(RadChest){
 			instance_create(x,y,HealthChest);
+			instance_delete(self);
 		}
-		with(RogueChest){//HealthChest
-			instance_change(Wind,false);
+		with(RogueChest){
 			instance_create(x,y,HealthChest);
+			instance_delete(self);
 		}
-		with(SuperMimic){//HealthChest
-			instance_change(Wind,false);
+		with(SuperMimic){
 			instance_create(x,y,HealthChest);
+			instance_delete(self);
 		}
-		with(AmmoChest){//HealthChest
-			instance_change(Wind,false);
+		with(AmmoChest){
 			instance_create(x,y,RadChest);
+			instance_delete(self);
 		}
-		with(AmmoChestMystery){//HealthChest
-			instance_change(Wind,false);
+		with(AmmoChestMystery){
 			instance_create(x,y,RadChest);
+			instance_delete(self);
 		}
-		with(IDPDChest){//HealthChest
-			instance_change(Wind,false);
+		with(IDPDChest){
 			instance_create(x,y,RadChest);
+			instance_delete(self);
 		}
-		with(Mimic){//HealthChest
-			instance_change(Wind,false);
+		with(Mimic){
 			instance_create(x,y,RadChest);
+			instance_delete(self);
 		}
 		break;		
 	case areas.IDPD:
-		with(RadChest){//HealthChest
-			instance_change(Wind,false);
+		with(RadChest){
 			instance_create(x,y,HealthChest);
+			instance_delete(self);
 		}
-		with(SuperMimic){ //IDPDChest
-			instance_change(Wind,false);
+		with(SuperMimic){
 			instance_create(x,y,HealthChest);
+			instance_delete(self);
 		}
 		break;
 	case "HQ":
-		with(RadChest){//HealthChest
-			instance_change(Wind,false);
+		with(RadChest){
 			instance_create(x,y,HealthChest);
+			instance_delete(self);
 		}
-		with(SuperMimic){ //IDPDChest
-			instance_change(Wind,false);
+		with(SuperMimic){
 			instance_create(x,y,HealthChest);
+			instance_delete(self);
 		}
 		break;
 	case areas.labs:
-		with(AmmoChest){ //Mimic
-			instance_change(Wind,false);
+		with(AmmoChest){
 			instance_create(x,y,Mimic);
+			instance_delete(self);
 		}
-		with(AmmoChestMystery){ //Mimic
-			instance_change(Wind,false);
+		with(AmmoChestMystery){
 			instance_create(x,y,Mimic);
+			instance_delete(self);
 		}		
-		with(HealthChest){//SuperMimic
-			instance_change(Wind,false);
+		with(HealthChest){
 			instance_create(x,y,SuperMimic);
+			instance_delete(self);
 		}
 		break;
 	case "labs":
-		with(AmmoChest){ //Mimic
-			instance_change(Wind,false);
+		with(AmmoChest){
 			instance_create(x,y,Mimic);
+			instance_delete(self);
 		}
-		with(AmmoChestMystery){ //Mimic
-			instance_change(Wind,false);
+		with(AmmoChestMystery){
 			instance_create(x,y,Mimic);
+			instance_delete(self);
 		}		
-		with(HealthChest){//SuperMimic
-			instance_change(Wind,false);
+		with(HealthChest){
 			instance_create(x,y,SuperMimic);
+			instance_delete(self);
 		}
 		break;
 }
@@ -4350,7 +4703,7 @@ switch (GameCont.area) {
 
 // -------------- //
 #define add_ravens
-var need_to_add = GameCont.loops * (opt.more_ravens_in_jungle * 5);
+var need_to_add = GameCont.loops * (global.options.more_ravens_in_jungle * 5);
 
 with(Raven){
     for (i=0; i < need_to_add; i++) 
@@ -4369,7 +4722,7 @@ while(f_enemy == Wind){
         f_enemy = pool.p[rand];
     }
     // You're lucky if this happens to you
-    if(attempts >= opt.attmpts_to_add_enemies) {
+    if(attempts >= global.attmpts_to_add_enemies) {
         break;
     }
     attempts++;

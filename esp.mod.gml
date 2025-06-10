@@ -40,7 +40,7 @@ global.winter_pool_w = [[0.005,     0.25,        1],    [0.25, 0.25,   0.1],    
 global.labs_pool =   [[PopoFreak, BigMaggot, FrogEgg, Rat], [PopoFreak, JungleFly, FrogEgg, Exploder, BuffGator, BigMaggot], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, SuperFrog, LightningCrystal, RatkingRage, Exploder, BigMaggot], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage, DogGuardian, BigMaggot, Exploder]];
 global.labs_pool_w = [[0.25,      0.4,       1,       1],   [0.35,      0.35,      1,       0.25,      0.2,       0.3],      [1,         1,         1,       1,         1,         1,        0.8,       0.4,              1,           1,        1],         [1,         1,         1,       1,         1,         1,        1,             0.4,              1,           0.8,         1,         1]];
 // Palace
-global.palace_pool =   [[Gator, GatorSmoke, Pillar, Generator, BuffGator], [Gator, JungleAssassin, BuffGator, GatorSmoke], [Gator, JungleAssassin, PopoFreak, Turret, BuffGator], [Gator, JungleAssassin, PopoFreak, Turret, BecomeTurret, BuffGator]];
+global.palace_pool =   [[Gator, GatorSmoke, Pillar, SmallGenerator, BuffGator], [Gator, JungleAssassin, BuffGator, GatorSmoke], [Gator, JungleAssassin, PopoFreak, Turret, BuffGator], [Gator, JungleAssassin, PopoFreak, Turret, BecomeTurret, BuffGator]];
 global.palace_pool_w = [[0.3,   0.3,        0.3,    0.3,       0.05],      [1,     0.5,            0.3,       1],          [1,     1,              1,         1,      0.25],      [1,     1,              1,         1,      1,            1]];
 // Vault
 global.vault_pool = [[Torch]];
@@ -319,7 +319,7 @@ global.options = {
 	"common_difficulty_multiplier": 0.5,
 	"esp_difficulty_multiplier": 0.5,
 	"no_floor_changes": false,
-	"bonus_loop_max_health": true,
+	"bonus_loop_max_health": false,
 	"special_code": "insert your code here",
 	"seed": "",
 	"reset": false,
@@ -974,7 +974,7 @@ if(global.options.deflect_colour == true){
 }
 
 if(global.options.rmb == true){
-	if(instance_exists(enemy)){
+	if(instance_exists(enemy) && global.options.idpd_seek == 2 && GameCont.hard > 9){
 		with(enemy){
 			if("lessrads" not in self && "raddrop" in self){
 				lessrads = 1;
@@ -1839,7 +1839,7 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		GenCont.tip = "@bthey@s will @wsleep...@s @rforever...@s";
 	}
 
-	if(r4 == 32 && global.options.idpd_seek == 2 && GameCont.crown != none && global.idpd_noticed_your_weapon == true && GameCont.seenhq == 1 && global.cap_spawned == true){
+	if(r4 == 32 && global.options.idpd_seek == 2 && GameCont.crown != 0 && global.idpd_noticed_your_weapon == true && GameCont.seenhq == 1 && global.cap_spawned == true){
 		GenCont.tip = "@wyou@s are @rpopular@s";
 	}
 
@@ -4343,8 +4343,17 @@ if(GameCont.area == 106 && GameCont.subarea == 2){
 	sound_play_music(mus106b);
 	}
 
-if (instance_exists(CarVenus) && global.options.fix_venus_car)
-    fix_car_venus();
+if (instance_exists(CarVenus) && global.options.fix_venus_car){
+	 with(CarVenus){
+        with instance_create(x,y,CarVenusFixed){
+			my_health = 1000000000;
+		}
+        for (i=0; i < array_length(global.CarVenus_Guards); i++) { 
+            instance_create(x,y,global.CarVenus_Guards[i]);
+        }
+		instance_delete(self);
+    }
+}
 
 add_more_enemies();
 
@@ -4543,20 +4552,6 @@ with(LaserCrystal){
 		}
 	}
 }
-
-// -------------- //
-#define fix_car_venus
-    with(CarVenus){
-        instance_delete(self);
-        instance_create(x,y,CarVenusFixed);
-        for (i=0; i < array_length(global.CarVenus_Guards); i++) { 
-            instance_create(x,y,global.CarVenus_Guards[i]);
-			with (CarVenusFixed){
-				my_health = 1000000000;
-				}
-        }
-    }
-
 // -------------- //
 #define chest_replacer
 switch (GameCont.area) {	

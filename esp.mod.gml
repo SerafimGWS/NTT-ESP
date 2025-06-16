@@ -210,6 +210,10 @@ global.newwepareasarrays = [[16,69,50],[17,71,30,52,41,40,45,101],[21,6,7,8,20,7
 
 global.areaSwitch = 0;
 
+global.enemies_count = 0;
+
+global.weapon_areas = ds_map_create();
+
 #macro timer true
 
 global.playercount = max(1,instance_number(Player));
@@ -344,6 +348,7 @@ global.options = {
 	"protochest_convert": true,
 	"new_weptiers": true,
 	"area_display": true,
+	"last_enemies_display": true,
 };
 
 //trace(global.options);
@@ -767,6 +772,16 @@ if fork() {
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page5", {
 		"options": [
 			{
+				"option": "last_enemies_display",
+				"kind": "bool",
+				"name": {
+					"text": "@(global.sprRadFalke:0) Last Enemies Display"
+				},
+				"desc": {
+					"text": "When @rON@s#will show in which directions#last enemies are in when#there is less than 10% of all enemies on area#made by Golden Epsilon#(default ON)"
+				}
+			},
+			{
 				"option": "seed",
 				"kind": "text",
 				"name": {
@@ -988,6 +1003,17 @@ if(global.options.reset){
 		call(scr.options_refresh)
 		}
 	}
+}
+
+with(enemy){
+	if("counted" not in self){
+		counted = true;
+		global.enemies_count += 1;
+	}
+}
+
+with instances_matching_le(instances_matching(enemy,"counted",true), "my_health", 0) {
+			global.enemies_count -= 1;
 }
 
 if(global.areaSwitch != GameCont.area){
@@ -3165,6 +3191,29 @@ switch(GameCont.area){
         
 }
 
+#define draw
+
+if(global.options.last_enemies_display == true && global.enemies_count <= (global.enemies_on_start / 10)){
+	with(enemy){
+		if(x > view_xview_nonsync - 10 + game_width || x < view_xview_nonsync + 10 || y > view_yview_nonsync - 10 + game_height || y < view_yview_nonsync + 10){
+			draw_sprite_ext(sprite_index, 0, 
+			(x > view_xview_nonsync - 10 + game_width) ? (view_xview_nonsync - 10 + game_width) : ((x < view_xview_nonsync + 10) ? view_xview_nonsync + 10 : x), 
+			(y > view_yview_nonsync - 10 + game_height) ? (view_yview_nonsync - 10 + game_height) : ((y < view_yview_nonsync + 10) ? view_yview_nonsync + 10 : y),
+			0.5, 0.5, 0, c_red, 1);
+		}
+	}
+	with(instances_matching(CustomObject,"is_enemy",true)){
+		if(variable_instance_exists(self, "deactivateName") && variable_instance_exists(self, "storage") && deactivateName == "deactivated"){
+			if(x > view_xview_nonsync - 10 + game_width || x < view_xview_nonsync + 10 || y > view_yview_nonsync - 10 + game_height || y < view_yview_nonsync + 10){
+				draw_sprite_ext(storage[array_find_index(storageVars, "sprite_index")], 0, 
+				(x > view_xview_nonsync - 10 + game_width) ? (view_xview_nonsync - 10 + game_width) : ((x < view_xview_nonsync + 10) ? view_xview_nonsync + 10 : x), 
+				(y > view_yview_nonsync - 10 + game_height) ? (view_yview_nonsync - 10 + game_height) : ((y < view_yview_nonsync + 10) ? view_yview_nonsync + 10 : y),
+				0.5, 0.5, 0, c_red, 1);
+			}
+		}
+	}
+}
+
 #define draw_gui
 
 if (instance_exists(Player) && global.options.area_display == true){
@@ -5145,6 +5194,14 @@ while(f_enemy == Wind){
 return f_enemy;
 
 #define get_pool
+
+if (global.eem <= 0){ 
+	var curr_loop = clamp(GameCont.loops,0,array_length(global.empty_pool) - 1);
+	return {
+	p: global.empty_pool[curr_loop],
+	w: global.empty_pool_w[curr_loop]
+	}
+}
 
 var pool = global.empty_pool;
 var pool_w = global.empty_pool_w;

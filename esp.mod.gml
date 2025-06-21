@@ -102,7 +102,7 @@ global.enemy_factor = 1;
 global.attmpts_to_add_enemies = 15;
 
 // -----Commands zone------- //
-trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 140625 mod!");
+trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 200625 mod!");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -185,7 +185,7 @@ global.ultrachest_frame = 0;
 
 global.weapon_deleted = false;
 
-global.ultra_weapons_random = [wep_ultra_crossbow, wep_ultra_grenade_launcher, wep_ultra_laser_pistol, wep_ultra_revolver, wep_ultra_shotgun, wep_ultra_shovel];
+global.ultra_weapons_random = [94, 95, 87, 86, 93, 92];
 
 global.used_skills = [0, 0, 0, 0, 0, 0];
 
@@ -213,6 +213,12 @@ global.areaSwitch = 0;
 global.enemies_count = 0;
 
 global.weapon_areas = ds_map_create();
+
+global.dogguardian_amount = 0;
+
+global.idpd_band = [Grunt, Inspector, Shielder, EliteGrunt, EliteInspector, EliteShielder];
+
+global.explosives = [Grenade, Rocket, JockRocket, PopoRocket, Nuke];
 
 #macro timer true
 
@@ -297,6 +303,16 @@ global.sprSiren = sprite_add_base64("iVBORw0KGgoAAAANSUhEUgAAAPkAAAAyCAYAAACeYH3
 global.sprOutline = sprite_add_base64("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",18,38.5,19.5)
 global.sprVanStop = sprite_add_base64("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",18,38.5,19.5)
 
+global.sprEliteInspectorRadIdle = sprite_add("resources\Enemies\InfectedIDPD\EliteInspector\sprEliteInspectorRadIdle.png",15,12,12);
+global.sprEliteInspectorRadWalk = sprite_add("resources\Enemies\InfectedIDPD\EliteInspector\sprEliteInspectorRadWalk.png",6,12,12);
+global.sprEliteInspectorRadDead = sprite_add("resources\Enemies\InfectedIDPD\EliteInspector\sprEliteInspectorRadDead.png",6,12,12);
+global.sprEliteInspectorRadHurt = sprite_add("resources\Enemies\InfectedIDPD\EliteInspector\sprEliteInspectorRadHurt.png",3,12,12);
+
+global.sprEliteShielderRadIdle = sprite_add("resources\Enemies\InfectedIDPD\EliteShielder\sprEliteShielderRadIdle.png",15,12,12);
+global.sprEliteShielderRadWalk = sprite_add("resources\Enemies\InfectedIDPD\EliteShielder\sprEliteShielderRadWalk.png",6,12,12);
+global.sprEliteShielderRadDead = sprite_add("resources\Enemies\InfectedIDPD\EliteShielder\sprEliteShielderRadDead.png",6,12,12);
+global.sprEliteShielderRadHurt = sprite_add("resources\Enemies\InfectedIDPD\EliteShielder\sprEliteShielderRadHurt.png",3,12,12);
+
 global.OPTIONS_FILE = "options.json";
 
 global.PRESET_FILE = "presets.json";
@@ -306,7 +322,6 @@ mod_current_type = script_ref_create(0)[0];
 // values for your options should go in a global lightweight object
 // you specify the global's name when adding, doesn't have to be `options`
 global.options = {
-	"lilhunter_revenge": true, 
 	"fix_venus_car": true, 
 	"more_ravens_in_jungle": 1, 
 	"crown_guardian_on_max": true, 
@@ -338,7 +353,7 @@ global.options = {
 	"special_code": "insert your code here",
 	"seed": "",
 	"reset": false,
-	"rmb": false,
+	"rmb": true,
 	"deflect_colour": true,
 	"wild_idpd": false,
 	"hardmodemod_3dvans": false,
@@ -375,13 +390,13 @@ if fork() {
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page", {
 		"options": [
 			{
-				"option": "lilhunter_revenge",
+				"option": "last_enemies_display",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprLilHunterWalk:0) Lil Hunter Revenge"
+					"text": "@(global.sprRadFalke:0) Last Enemies Display"
 				},
 				"desc": {
-					"text": "When @rON@s#if @blil hunter@s @rdies@s - spawns a @bvan spawn@s#(default ON)"
+					"text": "When @rON@s#will show in which directions#last enemies are in when#there is less than 10% of all enemies on area#made by Golden Epsilon#(default ON)"
 				}
 			},
 			{
@@ -772,23 +787,13 @@ if fork() {
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page5", {
 		"options": [
 			{
-				"option": "last_enemies_display",
-				"kind": "bool",
-				"name": {
-					"text": "@(global.sprRadFalke:0) Last Enemies Display"
-				},
-				"desc": {
-					"text": "When @rON@s#will show in which directions#last enemies are in when#there is less than 10% of all enemies on area#made by Golden Epsilon#(default ON)"
-				}
-			},
-			{
 				"option": "seed",
 				"kind": "text",
 				"name": {
 					"text": "@(sprTangleSeed:0) seed",
 				},
 				"desc": {
-					"text": "enter seed to play the same run endless amount of times"
+					"text": "enter seed to play#the same run endless amount of times"
 				}
 			},			
 			{
@@ -850,13 +855,19 @@ if fork() {
 global.SnowSniperHitid = [global.SnowSniperIdle, "Snow Sniper"];
 
 global.JungleSniperHitid = [global.sprJungleSniperIdle, "Jungle Sniper"];
+
+global.RadEliteInspectorHitid = [global.sprEliteInspectorRadIdle, "Wild Elite Inspector"];
+
+global.RadEliteShielderHitid = [global.sprEliteShielderRadIdle, "Wild Elite Shielder"];
 // -----Tick------ //
 #define game_start
 
-/*if (is_int64(gloabl.options.seed)) {
+/*if (is_int64(global.options.seed)) {
 	game_set_seed(global.options.seed);
 	trace(`Seed ${global.options.seed}, RNG ${irandom($ffFFffFF)}`);
 }*/
+
+global.enemies_count = 0;
 
 global.playercount = max(1,instance_number(Player));
 
@@ -1009,11 +1020,13 @@ with(enemy){
 	if("counted" not in self){
 		counted = true;
 		global.enemies_count += 1;
+		//trace(global.enemies_count);
 	}
 }
 
 with instances_matching_le(instances_matching(enemy,"counted",true), "my_health", 0) {
 			global.enemies_count -= 1;
+			//trace(global.enemies_count);
 }
 
 if(global.areaSwitch != GameCont.area){
@@ -1043,40 +1056,12 @@ if(global.areaSwitch != GameCont.area){
 global.areaSwitch = GameCont.area;
 
 if(global.options.wild_idpd == true){
-	with(Grunt){
-		if(raddrop > 24 && team == 1){
-			instance_create(x,y,PopoFreak);
-			instance_delete(self);
-		}
-	}
-	with(Inspector){
-		if(raddrop > 24 && team == 1){
-			instance_create(x,y,PopoFreak);
-			instance_delete(self);
-		}
-	}
-	with(Shielder){
-		if(raddrop > 24 && team == 1){
-			instance_create(x,y,PopoFreak);
-			instance_delete(self);
-		}
-	}
-	with(EliteGrunt){
-		if(raddrop > 24 && team == 1){
-			instance_create(x,y,PopoFreak);
-			instance_delete(self);
-		}
-	}
-	with(EliteInspector){
-		if(raddrop > 24 && team == 1){
-			instance_create(x,y,PopoFreak);
-			instance_delete(self);
-		}
-	}
-	with(EliteShielder){
-		if(raddrop > 24 && team == 1){
-			instance_create(x,y,PopoFreak);
-			instance_delete(self);
+	for (i = 0; i < array_length(global.idpd_band);i++){
+		with (global.idpd_band[i]){
+			if(raddrop > 24 && team == 1){
+				instance_create(x,y,PopoFreak);
+				instance_delete(self);
+			}
 		}
 	}
 }
@@ -1167,7 +1152,7 @@ with(Torch){
 	}
 }
 
-if(GameCont.crown == crwn_blood){
+if(GameCont.crown == crwn_blood && global.enemy_factor != 1.5){
 	global.enemy_factor = 1.5;
 }
 
@@ -1204,14 +1189,14 @@ with(Player){
 
 if(global.options.deflect_colour == true){
 	with(projectile){
-    	if("deflected" in self && "typ" in self && "team" in self && "hitid" in self){
-        	if(hitid == 58){
+    	if(hitid == 58){
             	image_blend = make_color_hsv(255,150,255);            
         	}
-         	if(deflected == 1 && typ == 1){
-                	image_blend = make_color_hsv(100,150,255);
-        	}
-    	}
+        	else{
+         		if(deflected == 1 && typ == 1){
+                	image_blend = make_color_hsv(100,150,255);                  
+            }
+		}
 	}
 }
 
@@ -1245,7 +1230,7 @@ if(global.options.rmb == true){
 					else{
 						image_xscale = 1;
 					}
-					if(random(2) < 1){
+					if(random(1) > 0){
 						image_yscale = -1;
 					}
 					else{
@@ -1438,135 +1423,7 @@ if(!instance_exists(MenuGen)){
 
 //We are in a menu and we need to restore sprites which was replaced
 if(instance_exists(MenuGen) && global.srim == false){
-	sprite_restore(sprBigSkull);
-	sprite_restore(sprBigSkullOpen);
-	sprite_restore(sprBigSkullHurt);
-	sprite_restore(sprBigSkullOpenHurt);
-	sprite_restore(sprBigSkullDead);
-	sprite_restore(sprBonePileIdle);
-	sprite_restore(sprBonePileHurt);
-	sprite_restore(sprBonePileDead);
-	sprite_restore(sprBones);
-	sprite_restore(sprCactus);
-	sprite_restore(sprCactusHurt);
-	sprite_restore(sprCactusDead);
-	sprite_restore(sprCactus2);
-	sprite_restore(sprCactus2Hurt);
-	sprite_restore(sprCactus2Dead);
-	sprite_restore(sprCactus3);
-	sprite_restore(sprCactus3Hurt);
-	sprite_restore(sprCactus3Dead);
-	sprite_restore(sprCactusB);
-	sprite_restore(sprCactusBHurt);
-	sprite_restore(sprCactusBDead);
-	sprite_restore(sprCactusB2);
-	sprite_restore(sprCactusB2Hurt);
-	sprite_restore(sprCactusB2Dead);
-	sprite_restore(sprCactusB3);
-	sprite_restore(sprCactusB3Hurt);
-	sprite_restore(sprCactusB3Dead);
-	sprite_restore(sprDebris1);
-	sprite_restore(sprDesertTopDecal);
-	sprite_restore(sprDetail1);
-	sprite_restore(sprFloor1);
-	sprite_restore(sprFloor1Explo);
-	sprite_restore(sprFloor1B);
-	sprite_restore(sprMSpawnIdle);
-	sprite_restore(sprMSpawnDead);
-	sprite_restore(sprMSpawnHurt);
-	sprite_restore(sprMSpawnChrg);
-	sprite_restore(sprWall1Bot);
-	sprite_restore(sprWall1Out);
-	sprite_restore(sprWall1Top);
-	sprite_restore(sprWall1Trans);
-	sprite_restore(sprWind);
-	sprite_restore(sprTires);
-	sprite_restore(sprTiresDead);
-	sprite_restore(sprTiresHurt);
-	sprite_restore(sprTopDecalScrapyard);
-	sprite_restore(sprFloor3);
-	sprite_restore(sprFloor3B);
-	sprite_restore(sprWall3Out);
-	sprite_restore(sprDetail3);
-	sprite_restore(sprWall3Bot);
-	sprite_restore(sprWall3Trans);
-	sprite_restore(sprWall3Top);
-	sprite_restore(sprFloor3Explo);
-	sprite_restore(sprDebris3);
-	sprite_restore(bak3);
-	sprite_restore(sprCarIdle);
-	sprite_restore(sprCarHurt);
-	sprite_restore(sprCarThrown);
-	sprite_restore(sprSnowBotRedCarIdle);
-	sprite_restore(sprSnowBotRedCarLift);
-	sprite_restore(sprSnowBotRedCarWalk);
-	sprite_restore(sprSnowBotRedCarHurt);
-	sprite_restore(sprSnowBotRedCarThrow);
-	sprite_restore(sprTrap);
-	sprite_restore(sprTrapGameover);
-	sprite_restore(sprTrapScorchMark);
-	sprite_restore(sprRainDrop);
-	sprite_restore(sprRainDropSlowmo);
-	sprite_restore(sprRainSplash);
-	sprite_restore(sprScrapDecal);
-	sprite_restore(sprSodaMachine);
-	sprite_restore(sprStreetLight);
-	sprite_restore(sprIcicle);
-	sprite_restore(sprWall5Trans);
-	sprite_restore(sprTopDecalCity);
-	sprite_restore(sprIceDecal);
-	sprite_restore(sprIcicleDead);
-	sprite_restore(sprIcicleHurt);
-	sprite_restore(sprSodaMachineDead);
-	sprite_restore(sprSodaCan);
-	sprite_restore(sprStreetLightDead);
-	sprite_restore(sprFloor5B);
-	sprite_restore(sprFloor5Explo);
-	sprite_restore(sprFloor5);
-	sprite_restore(sprWall5Out);
-	sprite_restore(sprWall5Top);
-	sprite_restore(sprDebris5);
-	sprite_restore(sprDetail5);
-	sprite_restore(sprWall5Bot);
-	sprite_restore(sprSodaMachineHurt);
-	sprite_restore(sprStreetLightHurt);
-	sprite_restore(sprSnowBotCarLift);
-	sprite_restore(sprFrozenCar);
-	sprite_restore(sprSnowBotCarIdle);
-	sprite_restore(sprSnowBotCarWalk);
-	sprite_restore(sprSnowBotCarHurt);
-	sprite_restore(sprSnowBotCarThrow);
-	sprite_restore(sprFrozenCarThrown);
-	sprite_restore(sprFrozenCarHurt);
-	sprite_restore(sprSnowFlake);
-	sprite_restore(sprHydrant);
-	sprite_restore(sprHydrantHurt);
-	sprite_restore(sprHydrantDead);
-	sprite_restore(sprSnowMan);
-	sprite_restore(sprSnowManHurt);
-	sprite_restore(sprPStat1Idle);
-	sprite_restore(sprPStat2Idle);
-	sprite_restore(sprSnowManDead);
-	sprite_restore(sprPStat1Hurt);
-	sprite_restore(sprPStat2Hurt);
-	sprite_restore(sprPStatDead);
-	sprite_restore(sprSnowManDead);
-	sprite_restore(sprSnowBotRedCarLift);
-	sprite_restore(sprRainDrop);
-	sprite_restore(sprRainDropSlowmo);
-	sprite_restore(sprRainSplash);
-	sprite_restore(sprBanditBossIdle);
-	sprite_restore(sprBanditBossWalk);
-	sprite_restore(sprBanditBossFire);
-	sprite_restore(sprBanditBossTell);
-	sprite_restore(sprBanditBossDash);
-	sprite_restore(sprBanditBossStop);
-	sprite_restore(sprBanditBossHurt);
-	sprite_restore(sprBanditBossDead);
-	sprite_restore(sprBossIntro);
-	sprite_restore(sprDeskIdle);
-	sprite_restore(sprDeskIdleTrans);
-	sprite_restore(sprDeskIdleTurn);
+	restoring_sprites();
 	global.srim = true;
 }
 
@@ -1636,44 +1493,19 @@ if(global.options.fire_explosions == true){
 	with instances_matching(Grenade,"sprite_index",sprFlare){
 		fireproof = true;
 	}
-	
-	if(instance_exists(Grenade)){
-		with (Grenade){
-			if("fireproof" not in self){
-				if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
-					instance_destroy();
+
+	for (i = 0; i < array_length(global.explosives);i++){
+		if(instance_exists(global.explosives[i])){
+			with (global.explosives[i]){
+				if("fireproof" not in self){
+					if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
+						instance_destroy();
+					}
 				}
-			}		
+			}
 		}
 	}
-	if(instance_exists(Rocket)){
-		with(Rocket){
-			if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
-				instance_destroy();
-			}	
-		}
-	}
-	if(instance_exists(JockRocket)){
-		with(JockRocket){
-			if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
-				instance_destroy();
-			}	
-		}
-	}
-	if(instance_exists(PopoRocket)){
-		with(PopoRocket){
-			if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
-				instance_destroy();
-			}	
-		}
-	}
-	if(instance_exists(Nuke)){
-		with(Nuke){
-			if(place_meeting(x,y,Flame) || place_meeting(x,y,FireBall) || place_meeting(x,y,TrapFire)){
-				instance_destroy();
-			}	
-		}
-	}
+	
 	if(instance_exists(FireBall)){
 		with(FireBall){
 			if(place_meeting(x,y,Explosion) || place_meeting(x,y,GreenExplosion) || place_meeting(x,y,SmallExplosion) || place_meeting(x,y,PopoExplosion)){
@@ -1927,9 +1759,13 @@ if(instance_exists(Portal)){
 	portal_exists();
 	}
 
-var r4 = irandom(100);
+var r4 = irandom(200);
 
 if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip_shown == false){
+
+	if(r4 == 0 && Player.race == "horror"){
+		GenCont.tip = "are you feeling it? ";
+	}
 
 	if(r4 == 1){
 		GenCont.tip = "who put plant food in carburator?";
@@ -2000,7 +1836,8 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		GenCont.tip = "Generating Cobweb";
 	}
 	
-	/*if(r4 == 14 && Player.wep == wep_ultra_shovel && GameCont.loops > 2){
+	//ultra shovel
+	/*if(r4 == 14 && Player.wep == 92 && GameCont.loops > 2){
 		GenCont.tip = "swing like belmont";
 	}*/
 	
@@ -2032,7 +1869,8 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		GenCont.tip = "deleting @bjocks@s";
 	}
 	
-	if(Player.wep == wep_ultra_crossbow && Player.race == "chicken" && global.onetimetip_shown.chicken == false){
+	//ultra crossbow
+	if(Player.wep == 94 && Player.race == "chicken" && global.onetimetip_shown.chicken == false){
 		GenCont.tip = "why did the chicken @gultracross@s the road";
 		global.onetimetip_shown.chicken = true;
 	}
@@ -2041,7 +1879,8 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		GenCont.tip = "not the freaks!";
 	}
 	
-	if(r4 == 21 && (Player.wep == wep_golden_revolver || Player.wep == wep_golden_wrench || Player.wep == wep_golden_machinegun || Player.wep == wep_golden_shotgun || Player.wep == wep_golden_crossbow || Player.wep == wep_golden_grenade_launcher || Player.wep == wep_golden_laser_pistol || Player.wep == wep_golden_plasma_gun || Player.wep == wep_golden_slugger || Player.wep == wep_golden_splinter_gun || Player.wep == wep_golden_screwdriver || Player.wep == wep_golden_bazooka || Player.wep == wep_golden_assault_rifle || Player.wep == wep_golden_nuke_launcher || Player.wep == wep_golden_disc_gun || Player.wep == wep_golden_frog_pistol)){
+	//all golden weapons
+	if(r4 == 21 && (Player.wep == 39 || Player.wep == 40 || Player.wep == 41 || Player.wep == 42 || Player.wep == 43 || Player.wep == 44 || Player.wep == 45|| Player.wep == 98 || Player.wep == 99 || Player.wep == 100 || Player.wep == 101 || Player.wep == 102 || Player.wep == 103 || Player.wep == 122 || Player.wep == 123 || Player.wep == 127)){
 		GenCont.tip = "you are filled with a sense of @yjuandice@s";
 	}
 	
@@ -2049,7 +1888,8 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		GenCont.tip = "2attractive4em";
 	}
 	
-	if(r4 == 23 && Player.wep == wep_laser_cannon && skill_get(mut_laser_brain) == 1){
+	//laser cannon
+	if(r4 == 23 && Player.wep == 55 && skill_get(mut_laser_brain) == 1){
 		GenCont.tip = "ama firin' mah @glasor@s. @qblaaarg!@s";
 	}
 	
@@ -2131,7 +1971,8 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		GenCont.tip = "you feel a burst of excitement!";
 	}
 
-	if(r4 == 40 && Player.wep = wep_party_gun){
+	//party gun
+	if(r4 == 40 && Player.wep == 82){
 		GenCont.tip = "you feel strangely at peace";
 	}
 
@@ -2143,6 +1984,7 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		GenCont.tip = "could be here a crawlspace?";
 	}
 
+	//golden grenade launcher
 	if(r4 == 43 && global.options.rmb == true && Player.wep == 44){
 		GenCont.tip = "i wish there would be a @ygolden bomb@s. @woh. wait.@s";
 	}
@@ -2158,83 +2000,99 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 	if(r4 == 46 && GameCont.area == 103 && GameCont.loops > 0){
 		GenCont.tip = "@ybusiness@s is @rbooming@s";
 	}
+
+	if(r4 == 47 && Player.race == "robot"){
+		GenCont.tip = "sample text";
+	}
+
+	if(r4 == 48 && global.options.wild_idpd == true){
+		GenCont.tip = "@rwild@s @whunt@s";
+	}
+
+	if(r4 == 49 && global.options.rmb == true){
+		GenCont.tip = "roll for perception check";
+	}
+
+	if(r4 == 50 && GameCont.area == 105 && global.options.more_ravens_in_jungle >= 1){
+		GenCont.tip = "birds are singing, flowers are blooming";
+	}
 	
-	//r4 > 46 && r4 < 49
+	//r4 > 50 && r4 < 99
 	
-	if(r4 > 49 && r5 == 1 && (GameCont.area == 1 || GameCont.area == 3) && global.eem > 0){
+	if(r4 > 99 && r5 == 1 && (GameCont.area == 1 || GameCont.area == 3) && global.eem > 0){
 		GenCont.tip = "@wsalamanders@s love the sun";
 	}
 	
-	if(r4 > 49 && r5 == 2 && GameCont.area == 1 && GameCont.loops > 0 && global.options.death_effects == true){
+	if(r4 > 99 && r5 == 2 && GameCont.area == 1 && GameCont.loops > 0 && global.options.death_effects == true){
 		GenCont.tip = "@wthe flies@s are getting louder";
 	}
 	
-	if(r4 > 49 && r5 == 2 && GameCont.area == 2 && global.eem > 0){
+	if(r4 > 99 && r5 == 2 && GameCont.area == 2 && global.eem > 0){
 		GenCont.tip = "the gun godz cameo we deserve";
 	}
 	
-	if(r4 > 49 && r5 == 1 && GameCont.area == 104 && global.options.cursed_caves_rework == true){
+	if(r4 > 99 && r5 == 1 && GameCont.area == 104 && global.options.cursed_caves_rework == true){
 		GenCont.tip = "floor here is made out of @p@qc @qu @qr @qs @qe @qs@s";
 	}
 	
-	if(r4 > 49 && r5 == 2 && GameCont.area == 104){
+	if(r4 > 99 && r5 == 2 && GameCont.area == 104){
 		GenCont.tip = "@ppurple@s suits you better~";
 	}
 	
-	if(r4 > 49 && r5 == 2 && GameCont.subarea == 1 && GameCont.area == 3 && global.options.fix_venus_car == true){
+	if(r4 > 99 && r5 == 2 && GameCont.subarea == 1 && GameCont.area == 3 && global.options.fix_venus_car == true){
 		GenCont.tip = "@wmolefish@s forgot to close the @ycar@s";
 	}
 	
-	if(r4 > 49 && r5 == 1 && GameCont.area == 7 && global.options.add_dark == true){
+	if(r4 > 99 && r5 == 1 && GameCont.area == 7 && global.options.add_dark == true){
 		GenCont.tip = "it's @pdark@s with no lamps or windows";
 	}
 	
-	if(r4 > 49 && r5 == 2 && GameCont.area == 7){
+	if(r4 > 99 && r5 == 2 && GameCont.area == 7){
 		GenCont.tip = "power of @gplutonium@s shines within you!";
 	}
 	
-	if(r4 > 49 && r5 == 1 && GameCont.area == 5 && GameCont.subarea == 1){
+	if(r4 > 99 && r5 == 1 && GameCont.area == 5 && GameCont.subarea == 1){
 		GenCont.tip = "the jungle grows relentless...";
 	}
 	
-	if(r4 > 49 && r5 == 2 && GameCont.area == 5 && global.onetimetip_shown.sans == false){
+	if(r4 > 99 && r5 == 2 && GameCont.area == 5 && global.onetimetip_shown.sans == false){
 		GenCont.tip = "hey. is your refrigerator running?";
 		global.onetimetip_shown.sans = true;
 	}
 	
-	if(r4 > 49 && r5 == 2 && GameCont.area == 105){
+	if(r4 > 99 && r5 == 2 && GameCont.area == 105){
 		GenCont.tip = "28 years in that godforsaken jungle...";
 	}
 	
-	if(r4 > 49 && r5 == 1 && GameCont.area == 105){
-		GenCont.tip = "birds are singing, flowers are blooming";
+	if(r4 > 99 && r5 == 1 && GameCont.area == 105){
+		GenCont.tip = "don't let grass touch you";
 	}
 	
-	if(r4 > 49 && r5 == 1 && GameCont.area == 103 && GameCont.loops < 3 && GameCont.loops > 0 && global.options.enemies_mutations == true){
+	if(r4 > 99 && r5 == 1 && GameCont.area == 103 && GameCont.loops < 3 && GameCont.loops > 0 && global.options.enemies_mutations == true){
 		GenCont.tip = "even @wrockets@s are @ygold!@s";
 	}
 	
-	if(r4 > 49 && r5 == 2 && GameCont.area == 103 && GameCont.loops > 2 && global.options.enemies_mutations == true){
+	if(r4 > 99 && r5 == 2 && GameCont.area == 103 && GameCont.loops > 2 && global.options.enemies_mutations == true){
 		GenCont.tip = "even @wdisks@s are @ygold?!@s";
 	}
 	
-	if(r4 > 49 && r5 == 1 && GameCont.area == 102){
+	if(r4 > 99 && r5 == 1 && GameCont.area == 102){
 		GenCont.tip = "pizza time!";
 	}
 	
-	if(r4 > 49 && r5 == 2 && GameCont.area == 102){
+	if(r4 > 99 && r5 == 2 && GameCont.area == 102){
 		GenCont.tip = "you hear the sounds of @grevelry!@s";
 	}
 	
-	if(r4 > 49 && r5 == 2 && GameCont.area == 101){
+	if(r4 > 99 && r5 == 2 && GameCont.area == 101){
 		GenCont.tip = "it's on the house";
 	}
 	
-	if(r4 > 49 && r5 == 2 && GameCont.area == 6 && GameCont.loops > 1){
+	if(r4 > 99 && r5 == 2 && GameCont.area == 6 && GameCont.loops > 1){
 		GenCont.tip = "they're practicing gemmation";
 	}
 	
-	if(r4 > 49 && r5 == 2 && GameCont.area == 6 && GameCont.loops > 2){
+	if(r4 > 99 && r5 == 2 && GameCont.area == 6 && GameCont.loops > 2){
 		GenCont.tip = "ever tried mitosis? you'd better now";
 	}
 	
@@ -2244,6 +2102,10 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 	
 	if(global.cap_dead == false && ((GameCont.area == 106 && GameCont.subarea == 3 && GameCont.loops > 1) || (GameCont.area == 0 && GameCont.subarea == 1 && GameCont.loops > 4))){
 		GenCont.tip = "last remote";
+	}
+
+	if(r4 > 99 && r5 == 1 && GameCont.area == 107){
+		GenCont.tip = "it's!! tv!! time!!!";
 	}
 	global.tip_shown = true;
 }
@@ -2295,6 +2157,7 @@ if(GameCont.area == 105){
 
 	
 if(global.abd == true && GameCont.area == 1 && global.sprites_swapped == false && instance_exists(BackCont)){
+	//replacing_sprites();
 	sprite_replace(sprBigSkull,"resources/Areas/NightDesert/sprBigSkull_strip1.png",1);
 	sprite_replace(sprBigSkullOpen,"resources/Areas/NightDesert/sprBigSkullOpen_strip1.png",1);
 	sprite_replace(sprBigSkullHurt,"resources/Areas/NightDesert/sprBigSkullHurt_strip3.png",3);
@@ -2515,66 +2378,56 @@ if(GameCont.loops > 0 && global.options.enemies_mutations == true){
 	
 if(GameCont.loops > 2 && global.options.enemies_mutations == true){	
 	with instances_matching(JockRocket,"hitid",98){
-		instance_change(Wind,false);
-		with(instance_create(x,y,Disc)){
-			newprojectile = true;
-			sprite_index = sprGoldDisc;
-			if(instance_exists(Player)){
-				target = instance_nearest(x,y,Player);
-				}
-			else{
-			target = 0;
-			}
-
-			if target > 0{
-				if random(50)<1
-				motion_add(direction+choose(-90,90),3)
-			if speed > random(6)
-				speed = 8
-			motion_add(point_direction(x,y,target.x,target.y),8);
-			image_angle = direction;
-			}
-		}
+		instance_change(Disc,false);
+		newprojectile = true;
+		speed = 8;
+		sprite_index = sprGoldDisc;
+		event_perform(ev_create, 0);
 	}
 	
 	with instances_matching(EnemyBullet4,"hitid",98){
-		instance_change(LHBouncer,true);
+		instance_change(LHBouncer,false);
 		newprojectile = true;
 		speed = 4;
 		team = 1;
 		hitid = 98;
+		event_perform(ev_create, 0);
 	}
 	
 	with instances_matching(EnemyBullet4,"hitid",17){
-		instance_change(LHBouncer,true);
+		instance_change(LHBouncer,false);
 		newprojectile = true;
 		speed = 4;
 		team = 1;
 		hitid = 17;
+		event_perform(ev_create, 0);
 	}
 	
 	with instances_matching(EnemyBullet4,"hitid",26){
-		instance_change(LHBouncer,true);
+		instance_change(LHBouncer,false);
 		newprojectile = true;
 		speed = 4;
 		team = 1;
 		hitid = 26;
+		event_perform(ev_create, 0);
 	}
 	
 	with instances_matching(EnemyBullet4,"hitid",global.SnowSniperHitid){
-		instance_change(LHBouncer,true);
+		instance_change(LHBouncer,false);
 		newprojectile = true;
 		speed = 4;
 		team = 1;
 		hitid = global.SnowSniperHitid;
+		event_perform(ev_create, 0);
 	}
 	
 	with instances_matching(EnemyBullet4,"hitid",global.JungleSniperHitid){
-		instance_change(LHBouncer,true);
+		instance_change(LHBouncer,false);
 		newprojectile = true;
 		speed = 4;
 		team = 1;
 		hitid = global.JungleSniperHitid;
+		event_perform(ev_create, 0);
 	}
 }
 
@@ -2614,7 +2467,8 @@ if(instance_exists(BanditBoss) && global.music_for_bosses == false && GameCont.a
 
 //Makes IDPD seek the player if he holds IDPD Weapon
 with (Player){
-		if((wep == wep_hyper_rifle || wep == wep_hyper_launcher || wep == wep_hyper_slugger || (wep == wep_rogue_rifle && race != "rogue")) && global.idpd_noticed_your_weapon == false && global.options.idpd_seek == 2){
+	//hyper weapons and rogue rifle
+		if((wep == 26 || wep == 54 || wep == 118 || (wep == 81 && race != "rogue")) && global.idpd_noticed_your_weapon == false && global.options.idpd_seek == 2){
 			global.idpd_noticed_your_weapon = true;
 			instance_create(0,0,WantPopo);
 			}
@@ -2653,6 +2507,12 @@ if (global.options.death_effects == true) {
 			}
 		}
 
+		with(SmallGenerator){
+			if("death_effect" not in self){
+				death_effect = true;
+			}
+		}
+
 		with(Salamander){
 			if("death_effect" not in self){
 				death_effect = true;
@@ -2683,8 +2543,7 @@ if (global.options.death_effects == true) {
 					motion_add(irandom_range(5,10),4);
 				}
 			}
-		}
-		
+		}	
 	}
 	
 	if (GameCont.loops > 1) {
@@ -2968,6 +2827,38 @@ with instances_matching_le(instances_matching(LightningCrystal,"death_effect",tr
 			lightning_crystal_death();
 		}
 
+with instances_matching(Corpse, "sprite_index", sprSmallGeneratorDead) {
+			if("generated" not in self){
+				if(global.options.death_effects == true && GameCont.loops > 0){
+					instance_create(x,y,ExploGuardian);
+				}
+				else{
+					instance_create(x,y,Rad);
+				}
+				generated = true;
+			}
+		}
+
+with instances_matching(Corpse, "sprite_index", sprBigGeneratorDead) {
+			if("generated" not in self){
+				if(global.options.death_effects == true && GameCont.loops > 1){
+					if(global.dogguardian_amount < 2){
+						instance_create(x,y,DogGuardian);
+						global.dogguardian_amount = 2;
+					}
+					else{
+						instance_create(x,y,DogGuardian);
+						instance_create(x,y,DogGuardian);
+						global.dogguardian_amount = 1;
+					}
+				}
+				else{
+					instance_create(x,y,Rad);
+				}
+				generated = true;
+			}
+		}
+
 if(GameCont.area == 102 || GameCont.area == "pizza" || GameCont.area == "turtles"){
 	with(HealthChest){
 		sprite_index = sprPizzaChest1;
@@ -3084,6 +2975,11 @@ if((audio_is_playing(sndPortalLightning1) || audio_is_playing(sndPortalLightning
 }
 
 //Fix of when boss is down in palace, nothing plays instead of musBossDead	
+/*if (!(audio_is_playing(mus7) || audio_is_playing(mus7b) || audio_is_playing(mus100b) || audio_is_playing(sndBossWin) || audio_is_playing(musBoss1)) && GameCont.area == 7 && instance_exists(Player) && (GameCont.subarea == 1 || GameCont.subarea == 2)){
+		sound_play_music(musBossDead);
+		global.palace_boss_dead = true;
+	}*/
+
 if (!(audio_is_playing(mus7) || audio_is_playing(mus7b) || audio_is_playing(mus100b) || audio_is_playing(sndBossWin) || audio_is_playing(musBoss1)) && GameCont.area == 7 && instance_exists(Player) && (GameCont.subarea == 1 || GameCont.subarea == 2)){
 		sound_play_music(musBossDead);
 		global.palace_boss_dead = true;
@@ -3097,10 +2993,9 @@ if (global.options.no_jocks != false){
 }
 
 //No Early Shielders	
-with(Shielder){
-	if (GameCont.hard < 10 && global.options.nes == true){
-		instance_create(x,y,Inspector);
-		instance_delete(id);
+if(GameCont.hard < 10 && global.options.nes == true){
+	if(GameCont.popolevel > 4){
+		GameCont.popolevel = 4;
 	}
 }
 
@@ -3153,12 +3048,146 @@ if(!global.vault_torch_transformed && instance_exists(CrownGuardian) && global.o
 }
 
 // LilHunter help
-if(instance_exists(LilHunterDie) && !global.lilhunter_revenged && global.options.lilhunter_revenge == true){
+if(instance_exists(LilHunterDie) && !global.lilhunter_revenged && global.options.death_effects == true){
     instance_create(0,0,VanSpawn);
     global.lilhunter_revenged = true;
 }
+
+#define restoring_sprites
+
+sprite_restore(sprBigSkull);
+sprite_restore(sprBigSkullOpen);
+sprite_restore(sprBigSkullHurt);
+sprite_restore(sprBigSkullOpenHurt);
+sprite_restore(sprBigSkullDead);
+sprite_restore(sprBonePileIdle);
+sprite_restore(sprBonePileHurt);
+sprite_restore(sprBonePileDead);
+sprite_restore(sprBones);
+sprite_restore(sprCactus);
+sprite_restore(sprCactusHurt);
+sprite_restore(sprCactusDead);
+sprite_restore(sprCactus2);
+sprite_restore(sprCactus2Hurt);
+sprite_restore(sprCactus2Dead);
+sprite_restore(sprCactus3);
+sprite_restore(sprCactus3Hurt);
+sprite_restore(sprCactus3Dead);
+sprite_restore(sprCactusB);
+sprite_restore(sprCactusBHurt);
+sprite_restore(sprCactusBDead);
+sprite_restore(sprCactusB2);
+sprite_restore(sprCactusB2Hurt);
+sprite_restore(sprCactusB2Dead);
+sprite_restore(sprCactusB3);
+sprite_restore(sprCactusB3Hurt);
+sprite_restore(sprCactusB3Dead);
+sprite_restore(sprDebris1);
+sprite_restore(sprDesertTopDecal);
+sprite_restore(sprDetail1);
+sprite_restore(sprFloor1);
+sprite_restore(sprFloor1Explo);
+sprite_restore(sprFloor1B);
+sprite_restore(sprMSpawnIdle);
+sprite_restore(sprMSpawnDead);
+sprite_restore(sprMSpawnHurt);
+sprite_restore(sprMSpawnChrg);
+sprite_restore(sprWall1Bot);
+sprite_restore(sprWall1Out);
+sprite_restore(sprWall1Top);
+sprite_restore(sprWall1Trans);
+sprite_restore(sprWind);
+sprite_restore(sprTires);
+sprite_restore(sprTiresDead);
+sprite_restore(sprTiresHurt);
+sprite_restore(sprTopDecalScrapyard);
+sprite_restore(sprFloor3);
+sprite_restore(sprFloor3B);
+sprite_restore(sprWall3Out);
+sprite_restore(sprDetail3);
+sprite_restore(sprWall3Bot);
+sprite_restore(sprWall3Trans);
+sprite_restore(sprWall3Top);
+sprite_restore(sprFloor3Explo);
+sprite_restore(sprDebris3);
+sprite_restore(bak3);
+sprite_restore(sprCarIdle);
+sprite_restore(sprCarHurt);
+sprite_restore(sprCarThrown);
+sprite_restore(sprSnowBotRedCarIdle);
+sprite_restore(sprSnowBotRedCarLift);
+sprite_restore(sprSnowBotRedCarWalk);
+sprite_restore(sprSnowBotRedCarHurt);
+sprite_restore(sprSnowBotRedCarThrow);
+sprite_restore(sprTrap);
+sprite_restore(sprTrapGameover);
+sprite_restore(sprTrapScorchMark);
+sprite_restore(sprRainDrop);
+sprite_restore(sprRainDropSlowmo);
+sprite_restore(sprRainSplash);
+sprite_restore(sprScrapDecal);
+sprite_restore(sprSodaMachine);
+sprite_restore(sprStreetLight);
+sprite_restore(sprIcicle);
+sprite_restore(sprWall5Trans);
+sprite_restore(sprTopDecalCity);
+sprite_restore(sprIceDecal);
+sprite_restore(sprIcicleDead);
+sprite_restore(sprIcicleHurt);
+sprite_restore(sprSodaMachineDead);
+sprite_restore(sprSodaCan);
+sprite_restore(sprStreetLightDead);
+sprite_restore(sprFloor5B);
+sprite_restore(sprFloor5Explo);
+sprite_restore(sprFloor5);
+sprite_restore(sprWall5Out);
+sprite_restore(sprWall5Top);
+sprite_restore(sprDebris5);
+sprite_restore(sprDetail5);
+sprite_restore(sprWall5Bot);
+sprite_restore(sprSodaMachineHurt);
+sprite_restore(sprStreetLightHurt);
+sprite_restore(sprSnowBotCarLift);
+sprite_restore(sprFrozenCar);
+sprite_restore(sprSnowBotCarIdle);
+sprite_restore(sprSnowBotCarWalk);
+sprite_restore(sprSnowBotCarHurt);
+sprite_restore(sprSnowBotCarThrow);
+sprite_restore(sprFrozenCarThrown);
+sprite_restore(sprFrozenCarHurt);
+sprite_restore(sprSnowFlake);
+sprite_restore(sprHydrant);
+sprite_restore(sprHydrantHurt);
+sprite_restore(sprHydrantDead);
+sprite_restore(sprSnowMan);
+sprite_restore(sprSnowManHurt);
+sprite_restore(sprPStat1Idle);
+sprite_restore(sprPStat2Idle);
+sprite_restore(sprSnowManDead);
+sprite_restore(sprPStat1Hurt);
+sprite_restore(sprPStat2Hurt);
+sprite_restore(sprPStatDead);
+sprite_restore(sprSnowManDead);
+sprite_restore(sprSnowBotRedCarLift);
+sprite_restore(sprRainDrop);
+sprite_restore(sprRainDropSlowmo);
+sprite_restore(sprRainSplash);
+sprite_restore(sprBanditBossIdle);
+sprite_restore(sprBanditBossWalk);
+sprite_restore(sprBanditBossFire);
+sprite_restore(sprBanditBossTell);
+sprite_restore(sprBanditBossDash);
+sprite_restore(sprBanditBossStop);
+sprite_restore(sprBanditBossHurt);
+sprite_restore(sprBanditBossDead);
+sprite_restore(sprBossIntro);
+sprite_restore(sprDeskIdle);
+sprite_restore(sprDeskIdleTrans);
+sprite_restore(sprDeskIdleTurn);
+
 #define level_start
 setname();
+
 #define setname
 switch(GameCont.area){
     case(100):  
@@ -3245,7 +3274,9 @@ if(global.options.hamamount == true){
 		}
 	}
 }
+
 #define makeavan_create(timing)
+
 with instance_create(10016,10016,CustomObject){
 	enemies = instance_number(enemy)
 	name = "makeavan"
@@ -3253,6 +3284,7 @@ with instance_create(10016,10016,CustomObject){
 	on_step = script_ref_create(makeavan_step)
 	return id;
 	}
+
 #define makeavan_step
 if (instance_number(enemy) < (enemies/6)*5) && instance_exists(Player)
 	if fork(){
@@ -3398,6 +3430,7 @@ if instance_exists(baby){
 		draw_sprite_ext(global.sprSiren, image_index , x, y-land - .5 *(i + j),image_xscale, image_yscale, image_angle, image_blend, 1);
 			}
 	}
+
 #define vanexplo
 repeat 3
 mod_script_call("mod","enemies","scrPickups",80)
@@ -3750,30 +3783,31 @@ with(Shielder){
 
 if(skill_get(13) && !global.used_skills [0]){
 	global.used_skills [0] = true;
-	return wep_ultra_shovel;
+	return 92;
 }
 if(skill_get(21) && !global.used_skills [1]){
 	global.used_skills [1] = true;
-	return wep_ultra_crossbow;
+	return 94;
 }
 if(skill_get(16) && !global.used_skills [2]){
 	global.used_skills [2] = true;
-	return wep_ultra_revolver;
+	return 86;
 }
 if(skill_get(14) && !global.used_skills [3]){
 	global.used_skills [3] = true;
-	return wep_ultra_grenade_launcher;
+	return 95;
 }
 if(skill_get(17) && !global.used_skills [4]){
 	global.used_skills [4] = true;
-	return wep_ultra_laser_pistol;
+	return 87;
 }
 if(skill_get(15) && !global.used_skills [5]){
 	global.used_skills [5] = true;
-	return wep_ultra_shotgun;
+	return 93;
 }
 with(Player){
-	if(wep == wep_ultra_revoulver || wep == wep_ultra_crossbow || wep == wep_ultra_shovel || wep == wep_ultra_grenade_launcher || wep == wep_ultra_shotgun || wep == wep_ultra_laser_pistol){
+	//all vanilla ultra weapons
+	if(wep == 86 || wep == 94 || wep == 92 || wep == 95 || wep == 93 || wep == 87){
 		if(random(1) < 1){
 			return wep;
 		}
@@ -3782,7 +3816,7 @@ with(Player){
 			return global.ultra_weapons_random [wep_choice];
 		}
 	}
-	if(bwep == wep_ultra_revoulver || bwep == wep_ultra_crossbow || bwep == wep_ultra_shovel || bwep == wep_ultra_grenade_launcher || bwep == wep_ultra_shotgun || bwep == wep_ultra_laser_pistol){
+	if(bwep == 86 || bwep == 94 || bwep == 92 || bwep == 95 || bwep == 93 || bwep == 87){
 		if(random(1) < 1){
 			return bwep;
 		}
@@ -3791,7 +3825,7 @@ with(Player){
 			return global.ultra_weapons_random [wep_choice];
 		}
 	}
-	if((wep == wep_ultra_revoulver || wep == wep_ultra_crossbow || wep == wep_ultra_shovel || wep == wep_ultra_grenade_launcher || wep == wep_ultra_shotgun || wep == wep_ultra_laser_pistol) && (bwep == wep_ultra_revoulver || bwep == wep_ultra_crossbow || bwep == wep_ultra_shovel || bwep == wep_ultra_grenade_launcher || bwep == wep_ultra_shotgun || bwep == wep_ultra_laser_pistol)){
+	if((wep == 86 || wep == 94 || wep == 92 || wep == 95 || wep == 93 || wep == 87) && (bwep == 86 || bwep == 94 || bwep == 92 || bwep == 95 || bwep == 93 || bwep == 87)){
 		if(random(1) < 1){
 			if(random(1) < 1){
 				return wep;
@@ -3809,135 +3843,7 @@ with(Player){
 
 #define cleanup
 
-sprite_restore(sprBigSkull);
-sprite_restore(sprBigSkullOpen);
-sprite_restore(sprBigSkullHurt);
-sprite_restore(sprBigSkullOpenHurt);
-sprite_restore(sprBigSkullDead);
-sprite_restore(sprBonePileIdle);
-sprite_restore(sprBonePileHurt);
-sprite_restore(sprBonePileDead);
-sprite_restore(sprBones);
-sprite_restore(sprCactus);
-sprite_restore(sprCactusHurt);
-sprite_restore(sprCactusDead);
-sprite_restore(sprCactus2);
-sprite_restore(sprCactus2Hurt);
-sprite_restore(sprCactus2Dead);
-sprite_restore(sprCactus3);
-sprite_restore(sprCactus3Hurt);
-sprite_restore(sprCactus3Dead);
-sprite_restore(sprCactusB);
-sprite_restore(sprCactusBHurt);
-sprite_restore(sprCactusBDead);
-sprite_restore(sprCactusB2);
-sprite_restore(sprCactusB2Hurt);
-sprite_restore(sprCactusB2Dead);
-sprite_restore(sprCactusB3);
-sprite_restore(sprCactusB3Hurt);
-sprite_restore(sprCactusB3Dead);
-sprite_restore(sprDebris1);
-sprite_restore(sprDesertTopDecal);
-sprite_restore(sprDetail1);
-sprite_restore(sprFloor1);
-sprite_restore(sprFloor1Explo);
-sprite_restore(sprFloor1B);
-sprite_restore(sprMSpawnIdle);
-sprite_restore(sprMSpawnDead);
-sprite_restore(sprMSpawnHurt);
-sprite_restore(sprMSpawnChrg);
-sprite_restore(sprWall1Bot);
-sprite_restore(sprWall1Out);
-sprite_restore(sprWall1Top);
-sprite_restore(sprWall1Trans);
-sprite_restore(sprWind);
-sprite_restore(sprTires);
-sprite_restore(sprTiresDead);
-sprite_restore(sprTiresHurt);
-sprite_restore(sprTopDecalScrapyard);
-sprite_restore(sprFloor3);
-sprite_restore(sprFloor3B);
-sprite_restore(sprWall3Out);
-sprite_restore(sprDetail3);
-sprite_restore(sprWall3Bot);
-sprite_restore(sprWall3Trans);
-sprite_restore(sprWall3Top);
-sprite_restore(sprFloor3Explo);
-sprite_restore(sprDebris3);
-sprite_restore(bak3);
-sprite_restore(sprCarIdle);
-sprite_restore(sprCarHurt);
-sprite_restore(sprCarThrown);
-sprite_restore(sprSnowBotRedCarIdle);
-sprite_restore(sprSnowBotRedCarLift);
-sprite_restore(sprSnowBotRedCarWalk);
-sprite_restore(sprSnowBotRedCarHurt);
-sprite_restore(sprSnowBotRedCarThrow);
-sprite_restore(sprTrap);
-sprite_restore(sprTrapGameover);
-sprite_restore(sprTrapScorchMark);
-sprite_restore(sprRainDrop);
-sprite_restore(sprRainDropSlowmo);
-sprite_restore(sprRainSplash);
-sprite_restore(sprScrapDecal);
-sprite_restore(sprSodaMachine);
-sprite_restore(sprStreetLight);
-sprite_restore(sprIcicle);
-sprite_restore(sprWall5Trans);
-sprite_restore(sprTopDecalCity);
-sprite_restore(sprIceDecal);
-sprite_restore(sprIcicleDead);
-sprite_restore(sprIcicleHurt);
-sprite_restore(sprSodaMachineDead);
-sprite_restore(sprSodaCan);
-sprite_restore(sprStreetLightDead);
-sprite_restore(sprFloor5B);
-sprite_restore(sprFloor5Explo);
-sprite_restore(sprFloor5);
-sprite_restore(sprWall5Out);
-sprite_restore(sprWall5Top);
-sprite_restore(sprDebris5);
-sprite_restore(sprDetail5);
-sprite_restore(sprWall5Bot);
-sprite_restore(sprSodaMachineHurt);
-sprite_restore(sprStreetLightHurt);
-sprite_restore(sprSnowBotCarLift);
-sprite_restore(sprFrozenCar);
-sprite_restore(sprSnowBotCarIdle);
-sprite_restore(sprSnowBotCarWalk);
-sprite_restore(sprSnowBotCarHurt);
-sprite_restore(sprSnowBotCarThrow);
-sprite_restore(sprFrozenCarThrown);
-sprite_restore(sprFrozenCarHurt);
-sprite_restore(sprSnowFlake);
-sprite_restore(sprHydrant);
-sprite_restore(sprHydrantHurt);
-sprite_restore(sprHydrantDead);
-sprite_restore(sprSnowMan);
-sprite_restore(sprSnowManHurt);
-sprite_restore(sprPStat1Idle);
-sprite_restore(sprPStat2Idle);
-sprite_restore(sprSnowManDead);
-sprite_restore(sprPStat1Hurt);
-sprite_restore(sprPStat2Hurt);
-sprite_restore(sprPStatDead);
-sprite_restore(sprSnowManDead);
-sprite_restore(sprSnowBotRedCarLift);
-sprite_restore(sprRainDrop);
-sprite_restore(sprRainDropSlowmo);
-sprite_restore(sprRainSplash);
-sprite_restore(sprBanditBossIdle);
-sprite_restore(sprBanditBossWalk);
-sprite_restore(sprBanditBossFire);
-sprite_restore(sprBanditBossTell);
-sprite_restore(sprBanditBossDash);
-sprite_restore(sprBanditBossStop);
-sprite_restore(sprBanditBossHurt);
-sprite_restore(sprBanditBossDead);
-sprite_restore(sprBossIntro);
-sprite_restore(sprDeskIdle);
-sprite_restore(sprDeskIdleTrans);
-sprite_restore(sprDeskIdleTurn);
+restoring_sprites();
 
 if global.loaded {
 	// remove the mod from Custom Options
@@ -4072,7 +3978,9 @@ string_save(json_encode(global.options, "  "), global.OPTIONS_FILE);
 if(sprite_index != spr_hurt){
 	sprite_index = spr_idle;
 }
-else if(image_index > 2) sprite_index = spr_idle;
+else if(image_index > 2){
+	sprite_index = spr_idle;
+}
 
 if (my_health <= 0) {
     instance_destroy();
@@ -4141,6 +4049,7 @@ with(GameCont){
 #define portal_exists
 global.tip_shown = false;
 global.inner_chance_proc = false;
+global.enemies_count = 0;
 
 if(global.options.fix_venus_car == true){
 	with(CarVenusFixed){
@@ -4366,12 +4275,14 @@ with(instance_create(x,y,PopoNade)){
 #define suffered_player
 
 with(WepPickup){
-	if(wep = wep_blood_hammer){
+	//blood hammer
+	if(wep = 67){
 		global.is_player_notified = true;
 		with instance_create(Player.x,Player.y,PopupText) text = "@q@rBLOOD HAMMER!!!@s";
 		sound_play(sndBloodHammer);
 	}
-	if(wep != wep_blood_hammer && (wep == wep_blood_cannon || wep == wep_blood_launcher)){
+	//non blood hammer and blood cannon or blood launcher
+	if(wep != 67 && (wep == 107 || wep == 29)){
 		global.is_player_notified = true;
 		with instance_create(Player.x,Player.y,PopupText) text = "@q@rBLOOD WEAPON!!!@s";
 		sound_play(sndBloodLauncher);
@@ -4420,7 +4331,8 @@ global.is_player_notified = false;
 with(WeaponChest){
 	if(global.options.chest_replacments == true && GameCont.area == 102){
 		with(instance_create(x,y,WepPickup)){
-			wep = wep_party_gun;
+			//party gun
+			wep = 82;
 		}
 		instance_delete(self);
 	}
@@ -4429,51 +4341,67 @@ with(WeaponChest){
 if(global.options.protochest_convert == true){
 	with(ProtoChest){
 		switch (wep){
+			//machine gun
 			case 4:
 				wep = 41;
 				break;
+			//screwdriver
 			case 27:
 				wep = 101;
 				break;
+			//crossbow
 			case 6:
 				wep = 43;
 				break;
+			//grenade launcher
 			case 7:
 				wep = 44;
 				break;
+			//shotgun
 			case 5:
 				wep = 42;
 				break;
+			//splinter gun
 			case 30:
 				wep = 100;
 				break;
+			//nuke launcher
 			case 47:
 				wep = 122;
 				break;
+			//disc gun
 			case 18:
 				wep = 123;
 				break;
+			//slugger
 			case 21:
 				wep = 99;
 				break;
+			//bazooka
 			case 14:
 				wep = 102;
 				break;
+			//wrench
 			case 3:
 				wep = 40;
 				break;
+			//laser pistol
 			case 19:
 				wep = 45;
 				break;
+			//plasma gun
 			case 34:
 				wep = 98;
 				break;
+			//assault rifle
 			case 17:
 				wep = 103;
 				break;
+			//revoulver
 			case 1:
 				wep = 39;
 				break;
+			//party gun
 			case 82:
 				wep = irandom(126) + 1;
 				break;
@@ -4555,9 +4483,15 @@ if(GameCont.area == 3 && GameCont.subarea == 3 && GameCont.crown != crwn_none){
 if(global.cap_spawned == true && global.cap_dead == false){
 }
 
-if(GameCont.vaults > 2 && (GameCont.area == 105 || GameCont.area == 103 || GameCont.area == 101 || (GameCont.area == global.crown_guardian_locations && GameCont.subarea == 2))){
+if(GameCont.vaults > 2 && (GameCont.area == 105 || GameCont.area == 103 || GameCont.area == 101)){
 	global.amount_of_crown_guardians += 2;
 	}
+else{
+	for (i=0; i < array_length(global.crown_guardian_locations); i++) { 
+        if(global.crown_guardian_locations[i] == GameCont.area)
+                global.amount_of_crown_guardians += 2;
+    }
+}
 
 if(global.options.hammerhead_time == 2 && GameCont.loops > 0){
 	Player.hammerhead = 20 * GameCont.loops;
@@ -4620,119 +4554,7 @@ if((GameCont.area == 0 || GameCont.area = 7 && GameCont.subarea = 3) && GameCont
 }
 
 if(global.abd == false){
-	sprite_restore(sprBigSkull);
-	sprite_restore(sprBigSkullOpen);
-	sprite_restore(sprBigSkullHurt);
-	sprite_restore(sprBigSkullOpenHurt);
-	sprite_restore(sprBigSkullDead);
-	sprite_restore(sprBonePileIdle);
-	sprite_restore(sprBonePileHurt);
-	sprite_restore(sprBonePileDead);
-	sprite_restore(sprBones);
-	sprite_restore(sprCactus);
-	sprite_restore(sprCactusHurt);
-	sprite_restore(sprCactusDead);
-	sprite_restore(sprCactus2);
-	sprite_restore(sprCactus2Hurt);
-	sprite_restore(sprCactus2Dead);
-	sprite_restore(sprCactus3);
-	sprite_restore(sprCactus3Hurt);
-	sprite_restore(sprCactus3Dead);
-	sprite_restore(sprCactusB);
-	sprite_restore(sprCactusBHurt);
-	sprite_restore(sprCactusBDead);
-	sprite_restore(sprCactusB2);
-	sprite_restore(sprCactusB2Hurt);
-	sprite_restore(sprCactusB2Dead);
-	sprite_restore(sprCactusB3);
-	sprite_restore(sprCactusB3Hurt);
-	sprite_restore(sprCactusB3Dead);
-	sprite_restore(sprDebris1);
-	sprite_restore(sprDesertTopDecal);
-	sprite_restore(sprDetail1);
-	sprite_restore(sprFloor1);
-	sprite_restore(sprFloor1Explo);
-	sprite_restore(sprFloor1B);
-	sprite_restore(sprMSpawnIdle);
-	sprite_restore(sprMSpawnDead);
-	sprite_restore(sprMSpawnHurt);
-	sprite_restore(sprMSpawnChrg);
-	sprite_restore(sprWall1Bot);
-	sprite_restore(sprWall1Out);
-	sprite_restore(sprWall1Top);
-	sprite_restore(sprWall1Trans);
-	sprite_restore(sprWind);
-	sprite_restore(sprTires);
-	sprite_restore(sprTiresDead);
-	sprite_restore(sprTiresHurt);
-	sprite_restore(sprTopDecalScrapyard);
-	sprite_restore(sprFloor3);
-	sprite_restore(sprFloor3B);
-	sprite_restore(sprWall3Out);
-	sprite_restore(sprDetail3);
-	sprite_restore(sprWall3Bot);
-	sprite_restore(sprWall3Trans);
-	sprite_restore(sprWall3Top);
-	sprite_restore(sprFloor3Explo);
-	sprite_restore(sprDebris3);
-	sprite_restore(bak3);
-	sprite_restore(sprCarIdle);
-	sprite_restore(sprCarHurt);
-	sprite_restore(sprCarThrown);
-	sprite_restore(sprSnowBotRedCarIdle);
-	sprite_restore(sprSnowBotRedCarLift);
-	sprite_restore(sprSnowBotRedCarWalk);
-	sprite_restore(sprSnowBotRedCarHurt);
-	sprite_restore(sprSnowBotRedCarThrow);
-	sprite_restore(sprTrap);
-	sprite_restore(sprTrapGameover);
-	sprite_restore(sprTrapScorchMark);
-	sprite_restore(sprRainDrop);
-	sprite_restore(sprRainDropSlowmo);
-	sprite_restore(sprRainSplash);
-	sprite_restore(sprScrapDecal);
-	sprite_restore(sprSodaMachine);
-	sprite_restore(sprStreetLight);
-	sprite_restore(sprIcicle);
-	sprite_restore(sprWall5Trans);
-	sprite_restore(sprTopDecalCity);
-	sprite_restore(sprIceDecal);
-	sprite_restore(sprIcicleDead);
-	sprite_restore(sprIcicleHurt);
-	sprite_restore(sprSodaMachineDead);
-	sprite_restore(sprSodaCan);
-	sprite_restore(sprStreetLightDead);
-	sprite_restore(sprFloor5B);
-	sprite_restore(sprFloor5Explo);
-	sprite_restore(sprFloor5);
-	sprite_restore(sprWall5Out);
-	sprite_restore(sprWall5Top);
-	sprite_restore(sprDebris5);
-	sprite_restore(sprDetail5);
-	sprite_restore(sprWall5Bot);
-	sprite_restore(sprSodaMachineHurt);
-	sprite_restore(sprStreetLightHurt);
-	sprite_restore(sprSnowBotCarLift);
-	sprite_restore(sprFrozenCar);
-	sprite_restore(sprSnowBotCarIdle);
-	sprite_restore(sprSnowBotCarWalk);
-	sprite_restore(sprSnowBotCarHurt);
-	sprite_restore(sprSnowBotCarThrow);
-	sprite_restore(sprFrozenCarThrown);
-	sprite_restore(sprFrozenCarHurt);
-	sprite_restore(sprSnowFlake);
-	sprite_restore(sprHydrant);
-	sprite_restore(sprHydrantHurt);
-	sprite_restore(sprHydrantDead);
-	sprite_restore(sprSnowMan);
-	sprite_restore(sprSnowManHurt);
-	sprite_restore(sprPStat1Idle);
-	sprite_restore(sprPStat2Idle);
-	sprite_restore(sprSnowManDead);
-	sprite_restore(sprPStat1Hurt);
-	sprite_restore(sprPStat2Hurt);
-	sprite_restore(sprPStatDead);
-	sprite_restore(sprSnowManDead);
+	restoring_sprites();
 	}
 
 with(Player){
@@ -4811,6 +4633,7 @@ add_more_enemies();
 global.enemies_on_start = 0;
 with(enemy){
     global.enemies_on_start++;
+	//trace("enemies on start" + string(global.enemies_on_start));
 }
 
 // -----Enemies------ //
@@ -4899,6 +4722,25 @@ if((GameCont.area == 1 || GameCont.area == 2 || GameCont.area == 3 || GameCont.a
 			else{
 				var random_idpd = choose(Grunt,Grunt,Grunt,Inspector,Shielder,EliteGrunt,EliteInspector,EliteShielder);
 				with instance_create(x,y,random_idpd){
+					switch (random_idpd){
+						case EliteInspector:
+							spr_idle = global.sprEliteInspectorRadIdle;
+							spr_walk = global.sprEliteInspectorRadWalk;
+							spr_hurt = global.sprEliteInspectorRadHurt;
+							spr_dead = global.sprEliteInspectorRadDead;
+							hitid = global.RadEliteInspectorHitid;
+							break;
+						case EliteShielder:
+							spr_idle = global.sprEliteShielderRadIdle;
+							spr_walk = global.sprEliteShielderRadWalk;
+							spr_hurt = global.sprEliteShielderRadHurt;
+							spr_dead = global.sprEliteShielderRadDead;
+							hitid = global.RadEliteShielderHitid;
+							break;
+						default:
+							image_blend = make_color_hsv(100,150,255);
+							break;
+					}
 					if(global.options.idpd_mashup == false){
 						raddrop = irandom(24) + 1 + (GameCont.loops * 8);
 					}
@@ -4906,7 +4748,7 @@ if((GameCont.area == 1 || GameCont.area == 2 || GameCont.area == 3 || GameCont.a
 						raddrop = irandom(24) + 1 + (GameCont.loops * 6);
 					}
 					team = 1;
-					image_blend = make_color_hsv(100,150,255);
+					//image_blend = make_color_hsv(100,150,255);
 					my_health = irandom(maxhealth) + 1;
 					RadHolder = 0;
 				}
@@ -4937,9 +4779,6 @@ if((GameCont.area == 1 || GameCont.area == 2 || GameCont.area == 3 || GameCont.a
 				instance_create(x,y,Last);
 				sound_play(sndUseVan);
 				global.cap_spawned = true;
-				sprite_replace(sprDeskIdle,"resources/Enemies/Cap/sprDeskIdle.png",1,16,16);
-				sprite_replace(sprDeskIdleTrans,"resources/Enemies/Cap/sprDeskIdleTrans.png",1,16,16);
-				sprite_replace(sprDeskIdleTurn,"resources/Enemies/Cap/sprDeskIdleTurn.png",6,16,16);
 			}
         }
 		
@@ -5400,6 +5239,7 @@ return {
 }
 
 #define draw_dark
+
 with Pillar{
 	draw_circle(x, y, 40+random(3), false)
 	}

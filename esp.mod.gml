@@ -55,8 +55,8 @@ global.pizza_pool_w = [[0.1]];
 global.mansion_pool =   [[GoldScorpion], [GoldScorpion, GoldSnowTank, Wind, MoneyPile], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
 global.mansion_pool_w = [[0],            [0.05,         0.025,        1,    1],         [0.25,         0.15,         1,        1],             [0.75,         0.6,          1,        1,             0.5],         [1,            1,            1,        1,             0.75,        0.4]];
 // Cursed crystal caves
-global.cursed_crystals_caves_pool =   [[MeleeFake, FireBaller, Scorpion], [MeleeFake, FireBaller, Guardian, ExploGuardian, Scorpion], [MeleeFake, FireBaller, Guardian, ExploGuardian, DogGuardian, BanditBoss, Scorpion]];
-global.cursed_crystals_caves_pool_w = [[0.33,      0.33,       0.33],     [1,         1,          1,        1,             1],        [1,         1,          1,        1,             1,           0.35,       1]];
+global.cursed_crystals_caves_pool =   [[InvCrystal, FireBaller, BonePile], [MeleeFake, FireBaller, Scorpion], [MeleeFake, FireBaller, Guardian, ExploGuardian, Scorpion], [MeleeFake, FireBaller, Guardian, ExploGuardian, DogGuardian, BanditBoss, Scorpion]];
+global.cursed_crystals_caves_pool_w = [[0.33,      0.33,       0.33],     [1,         1,         1],        [1,         1,          1,        1,             1],        [1,         1,          1,        1,             1,           0.35,       1]];
 // Jungle
 global.jungle_pool =   [[Raven, Gator, Exploder, Car], [Raven, Gator, Exploder, SuperFrog, ExploFreak, Car, BuffGator], [Raven, Gator, Exploder, SuperFrog, ExploFreak, Guardian, Sniper, ExploGuardian, Car, BuffGator], [Raven, Gator, Exploder, SuperFrog, ExploFreak, Guardian, Sniper, ExploGuardian, DogGuardian, BanditBoss, Car, BuffGator]];
 global.jungle_pool_w = [[1,     1,     1,        1],   [1,     1,     1,        0.4,       0.6,        1,   0.5],       [1,     1,     1,        1,         1,          1,        1,      1,             1,   1],         [1,     1,     1,        1,         1,          1,        1,      1,             0.5,         0.3,        1,   1]];
@@ -102,7 +102,7 @@ global.enemy_factor = 1;
 global.attmpts_to_add_enemies = 15;
 
 // -----Commands zone------- //
-trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 200625 mod!");
+trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 010725 mod!");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -220,6 +220,10 @@ global.idpd_band = [Grunt, Inspector, Shielder, EliteGrunt, EliteInspector, Elit
 
 global.explosives = [Grenade, Rocket, JockRocket, PopoRocket, Nuke];
 
+global.fsprites_restore = [sprBigSkull, sprBigSkullOpen, sprBigSkullHurt, sprBigSkullOpenHurt, sprBigSkullDead, sprBonePileIdle, sprBonePileHurt, sprBonePileDead, sprBones, sprCactus, sprCactusHurt, sprCactusDead, sprCactus2, sprCactus2Hurt, sprCactus2Dead, sprCactus3, sprCactus3Hurt, sprCactus3Dead, sprCactusB, sprCactusBHurt, sprCactusBDead, sprCactusB2, sprCactusB2Hurt, sprCactusB2Dead, sprCactusB3, sprCactusB3Hurt, sprCactusB3Dead, sprDebris1, sprDesertTopDecal, sprDetail1, sprFloor1, sprFloor1Explo, sprFloor1B, sprMSpawnIdle, sprMSpawnDead, sprMSpawnHurt, sprMSpawnChrg, sprWall1Bot, sprWall1Out, sprWall1Top, sprWall1Trans, sprWind, sprTires, sprTiresDead, sprTiresHurt, sprTopDecalScrapyard, sprFloor3, sprFloor3B, sprWall3Out, sprDetail3, sprWall3Bot, sprWall3Trans, sprWall3Top, sprFloor3Explo, sprDebris3, bak3, sprCarIdle, sprCarHurt, sprCarThrown, sprSnowBotRedCarIdle, sprSnowBotRedCarLift, sprSnowBotRedCarWalk, sprSnowBotRedCarHurt, sprSnowBotRedCarThrow, sprTrap, sprTrapGameover, sprTrapScorchMark, sprRainDrop, sprRainDropSlowmo, sprRainSplash, sprScrapDecal, sprSodaMachine, sprStreetLight, sprIcicle, sprWall5Trans, sprTopDecalCity, sprIceDecal, sprIcicleDead, sprIcicleHurt, sprSodaMachineDead, sprSodaCan, sprStreetLightDead, sprFloor5B, sprFloor5Explo, sprFloor5, sprWall5Out, sprWall5Top, sprDebris5, sprDetail5, sprWall5Bot, sprSodaMachineHurt, sprStreetLightHurt, sprSnowBotCarLift, sprFrozenCar, sprSnowBotCarIdle, sprSnowBotCarWalk, sprSnowBotCarHurt, sprSnowBotCarThrow, sprFrozenCarThrown, sprFrozenCarHurt, sprSnowFlake, sprHydrant, sprHydrantHurt, sprHydrantDead, sprSnowMan, sprSnowManHurt, sprPStat1Idle, sprPStat2Idle, sprSnowManDead, sprPStat1Hurt, sprPStat2Hurt, sprPStatDead, sprSnowManDead, sprSnowBotRedCarLift, sprRainDrop, sprRainDropSlowmo, sprRainSplash, sprBanditBossIdle, sprBanditBossWalk, sprBanditBossFire, sprBanditBossTell, sprBanditBossDash, sprBanditBossStop, sprBanditBossHurt, sprBanditBossDead, sprBossIntro, sprDeskIdle, sprDeskIdleTrans, sprDeskIdleTurn];
+
+global.fsprites_replace = [[sprRainDrop,"resources/Areas/NightScrapyard/sprRainDrop.png",1],[sprRainDropSlowmo,"resources/Areas/NightScrapyard/sprRainDropSlowmo.png",1],[sprRainSplash,"resources/Areas/NightScrapyard/sprRainSplash.png",3],[sprBigSkull,"resources/Areas/NightDesert/sprBigSkull_strip1.png",1],[sprBigSkullOpen,"resources/Areas/NightDesert/sprBigSkullOpen_strip1.png",1],[sprBigSkullHurt,"resources/Areas/NightDesert/sprBigSkullHurt_strip3.png",3],[sprBigSkullOpenHurt,"resources/Areas/NightDesert/sprBigSkullOpenHurt_strip3.png",3],[sprBigSkullDead,"resources/Areas/NightDesert/sprBigSkullDead_strip3.png",3],[sprBonePileIdle,"resources/Areas/NightDesert/sprBonePileIdle_strip1.png",1],[sprBonePileHurt,"resources/Areas/NightDesert/sprBonePileHurt_strip3.png",3],[sprBonePileDead,"resources/Areas/NightDesert/sprBonePileDead_strip4.png",3],[sprBones,"resources/Areas/NightDesert/sprBones_strip2.png",2],[sprCactus,"resources/Areas/NightDesert/sprCactus_strip1.png",1],[sprCactusHurt,"resources/Areas/NightDesert/sprCactusHurt_strip3.png",3],[sprCactusDead,"resources/Areas/NightDesert/sprCactusDead_strip4.png",4],[sprCactus2,"resources/Areas/NightDesert/sprCactus2_strip1.png",1],[sprCactus2Hurt,"resources/Areas/NightDesert/sprCactus2Hurt_strip3.png",3],[sprCactus2Dead,"resources/Areas/NightDesert/sprCactus2Dead_strip4.png",4],[sprCactus3,"resources/Areas/NightDesert/sprCactus3_strip1.png",1],[sprCactus3Hurt,"resources/Areas/NightDesert/sprCactus3Hurt_strip3.png",3],[sprCactus3Dead,"resources/Areas/NightDesert/sprCactus3Dead_strip4.png",4],[sprCactusB,"resources/Areas/NightDesert/sprCactusB_strip1.png",1],[sprCactusBHurt,"resources/Areas/NightDesert/sprCactusBHurt_strip3.png",3],[sprCactusBDead,"resources/Areas/NightDesert/sprCactusBDead_strip4.png",4],[sprCactusB2,"resources/Areas/NightDesert/sprCactusB2_strip1.png",1],[sprCactusB2Hurt,"resources/Areas/NightDesert/sprCactusB2Hurt_strip3.png",3],[sprCactusB2Dead,"resources/Areas/NightDesert/sprCactusB2Dead_strip4.png",4],[sprCactusB3,"resources/Areas/NightDesert/sprCactusB3_strip1.png",1],[sprCactusB3Hurt,"resources/Areas/NightDesert/sprCactusB3Hurt_strip3.png",3],[sprCactusB3Dead,"resources/Areas/NightDesert/sprCactusB3Dead_strip4.png",4],[sprDebris1,"resources/Areas/NightDesert/sprDebris0_strip4.png",4],[sprDesertTopDecal,"resources/Areas/NightDesert/sprDesertTopDecal_strip3.png",3],[sprDetail1,"resources/Areas/NightDesert/sprDetail0_strip5.png",5],[sprFloor1,"resources/Areas/NightDesert/sprFloor1_strip4.png",4],[sprFloor1Explo,"resources/Areas/NightDesert/sprWall0Explo_strip4.png",4],[sprFloor1B,"resources/Areas/NightDesert/sprFloor1B_strip4.png",4],[sprMSpawnIdle,"resources/Areas/NightDesert/sprMSpawnIdle_strip4.png",4],[sprMSpawnDead,"resources/Areas/NightDesert/sprMSpawnDead_strip2.png",2],[sprMSpawnHurt,"resources/Areas/NightDesert/sprMSpawnHurt_strip3.png",3],[sprMSpawnChrg,"resources/Areas/NightDesert/sprMSpawnChrg_strip4.png",4],[sprWall1Bot,"resources/Areas/NightDesert/sprWall0Bot_strip4.png",4],[sprWall1Out,"resources/Areas/NightDesert/sprWall0Out_strip1.png",1],[sprWall1Top,"resources/Areas/NightDesert/sprWall0Top_strip8.png",8],[sprWall1Trans,"resources/Areas/NightDesert/sprWall0Trans_strip8.png",8],[sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9],[sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4],[sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1],[sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6],[sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8],[sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3],[sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5],[sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6],[sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3],[sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1],[sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3],[sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1],[sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3],[sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3],[sprCarIdle,"resources/Areas/NightScrapyard/sprCarIdleNight.png",1],[sprCarHurt,"resources/Areas/NightScrapyard/sprCarHurtNight.png",3],[sprTires,"resources/Areas/NightScrapyard/sprTires.png",1],[sprTiresDead,"resources/Areas/NightScrapyard/sprTiresDead.png",3],[sprTiresHurt,"resources/Areas/NightScrapyard/sprTiresHurt.png",3],[sprTopDecalScrapyard,"resources/Areas/NightScrapyard/sprTopDecalScrapyard.png",3],[sprFloor3,"resources/Areas/NightScrapyard/sprFloor3_strip4.png",4],[sprFloor3B,"resources/Areas/NightScrapyard/sprFloor3B_strip4.png",3],[sprWall3Out,"resources/Areas/NightScrapyard/sprWall3Out.png",3],[sprDetail3,"resources/Areas/NightScrapyard/sprDetail3_strip5.png",5],[sprWall3Bot,"resources/Areas/NightScrapyard/sprWall3Bot_strip4.png",4],[sprWall3Trans,"resources/Areas/NightScrapyard/sprWall3Trans_strip8.png",3],[sprWall3Top,"resources/Areas/NightScrapyard/sprWall3Top_strip8.png",4],[sprFloor3Explo,"resources/Areas/NightScrapyard/sprFloor3Explo_strip4.png",4],[sprDebris3,"resources/Areas/NightScrapyard/sprDebris3_strip4.png",4],[bak3,"resources/Areas/NightScrapyard/bak3.png",1],[sprCarIdle,"resources/Areas/NightScrapyard/sprCarIdleNight.png",1],[sprCarHurt,"resources/Areas/NightScrapyard/sprCarHurtNight.png",3],[sprCarThrown,"resources/Areas/NightScrapyard/sprCarThrown.png",6],[sprSnowBotRedCarIdle,"resources/Areas/NightScrapyard/sprSnowBotRedCarIdle.png",6],[sprSnowBotRedCarLift,"resources/Areas/NightScrapyard/sprSnowBotRedCarLift.png",4],[sprSnowBotRedCarWalk,"resources/Areas/NightScrapyard/sprSnowBotRedCarWalk.png",8],[sprSnowBotRedCarHurt,"resources/Areas/NightScrapyard/sprSnowBotRedCarHurt.png",3],[sprSnowBotRedCarThrow,"resources/Areas/NightScrapyard/sprSnowBotRedCarThrow.png",5],[sprTrap,"resources/Areas/NightScrapyard/sprTrap.png",1],[sprTrapGameover,"resources/Areas/NightScrapyard/sprTrapGameover.png",1],[sprTrapScorchMark,"resources/Areas/NightScrapyard/sprTrapScorchMark.png",1],[sprScrapDecal,"resources/Areas/NightScrapyard/sprScrapDecal.png",2],[sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9],[sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4],[sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1],[sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6],[sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8],[sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3],[sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5],[sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6],[sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3],[sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1],[sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3],[sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1],[sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3],[sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3],[sprSodaMachine,"resources/Areas/NightCity/sprSodaMachine.png",1],[sprStreetLight,"resources/Areas/NightCity/sprStreetLight.png",1],[sprIcicle,"resources/Areas/NightCity/sprIcicle.png",1],[sprWall5Trans,"resources/Areas/NightCity/sprWall5Trans.png",1],[sprTopDecalCity,"resources/Areas/NightCity/sprTopDecalCity.png",3],[sprIceDecal,"resources/Areas/NightCity/sprIceDecal.png",2],[sprIcicleDead,"resources/Areas/NightCity/sprIcicleDead.png",4],[sprIcicleHurt,"resources/Areas/NightCity/sprIcicleHurt.png",3],[sprSodaMachineDead,"resources/Areas/NightCity/sprSodaMachineDead.png",3],[sprSodaCan,"resources/Areas/NightCity/sprSodaCan.png",3],[sprStreetLightDead,"resources/Areas/NightCity/sprStreetLightDead.png",3],[sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8],[sprFloor5Explo,"resources/Areas/NightCity/sprFloor5Explo.png",4],[sprFloor5,"resources/Areas/NightCity/sprFloor5.png",8],[sprWall5Out,"resources/Areas/NightCity/sprWall5Out.png",2],[sprWall5Top,"resources/Areas/NightCity/sprWall5Top.png",4],[sprDebris5,"resources/Areas/NightCity/sprDebris5.png",4],[sprDetail5,"resources/Areas/NightCity/sprDetail5.png",3],[sprWall5Bot,"resources/Areas/NightCity/sprWall5Bot.png",3],[sprSodaMachineHurt,"resources/Areas/NightCity/sprSodaMachineHurt.png",3],[sprStreetLightHurt,"resources/Areas/NightCity/sprStreetLightHurt.png",3],[sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4],[sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1],[sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6],[sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8],[sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3],[sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5],[sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6],[sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprHydrant,"resources/Areas/NightCity/sprHydrant.png",1],[sprHydrantHurt,"resources/Areas/NightCity/sprHydrantHurt.png",3],[sprHydrantDead,"resources/Areas/NightCity/sprHydrantDead.png",3],[sprSnowMan,"resources/Areas/NightCity/sprSnowMan.png",1],[sprSnowManHurt,"resources/Areas/NightCity/sprSnowManHurt.png",3],[sprSnowManDead,"resources/Areas/NightCity/sprSnowManDead.png",3],[sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1],[sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3],[sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1],[sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3],[sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3]];
+
 #macro timer true
 
 global.playercount = max(1,instance_number(Player));
@@ -313,6 +317,11 @@ global.sprEliteShielderRadWalk = sprite_add("resources\Enemies\InfectedIDPD\Elit
 global.sprEliteShielderRadDead = sprite_add("resources\Enemies\InfectedIDPD\EliteShielder\sprEliteShielderRadDead.png",6,12,12);
 global.sprEliteShielderRadHurt = sprite_add("resources\Enemies\InfectedIDPD\EliteShielder\sprEliteShielderRadHurt.png",3,12,12);
 
+global.sprInspectorRadIdle = sprite_add("resources\Enemies\InfectedIDPD\Inspector\sprInspectorRadIdle.png",15,12,12);
+global.sprInspectorRadWalk = sprite_add("resources\Enemies\InfectedIDPD\Inspector\sprInspectorRadWalk.png",6,12,12);
+global.sprInspectorRadDead = sprite_add("resources\Enemies\InfectedIDPD\Inspector\sprInspectorRadDead.png",6,12,12);
+global.sprInspectorRadHurt = sprite_add("resources\Enemies\InfectedIDPD\Inspector\sprInspectorRadHurt.png",3,12,12);
+
 global.OPTIONS_FILE = "options.json";
 
 global.PRESET_FILE = "presets.json";
@@ -390,43 +399,33 @@ if fork() {
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page", {
 		"options": [
 			{
-				"option": "last_enemies_display",
-				"kind": "bool",
-				"name": {
-					"text": "@(global.sprRadFalke:0) Last Enemies Display"
-				},
-				"desc": {
-					"text": "When @rON@s#will show in which directions#last enemies are in when#there is less than 10% of all enemies on area#made by Golden Epsilon#(default ON)"
-				}
-			},
-			{
-				"option": "fix_venus_car",
-				"kind": "bool",
-				"name": {
-					"text": "@(sprVenusCarFixed:0)  Fixed Venus Car"
-				},
-				"desc": {
-					"text": "When @rON@s# @yvenuz car@s will be @wfixed@s from start#+ it will have @winf hp@s #but @wexplodes@s when @pportal@s appears#(default ON)"
-				}
-			},
-			{
 				"option": "deflect_colour",
 				"kind": "bool",
 				"name": {
 					"text": "Paint defelected projectile"
 				},
 				"desc": {
-					"text": "When @rON@s#will paint @wdeflected projectiles@s#(default ON)"
+					"text": "When @rON@s#will paint @wdeflected projectiles@s#(default @wON@s)"
+				}
+			},
+			{
+				"option": "fix_venus_car",
+				"kind": "bool",
+				"name": {
+					"text": "Fixed Venus Car"
+				},
+				"desc": {
+					"text": "When @rON@s# @yvenuz car@s will be @wfixed@s from start#+ it will have @winf hp@s #but @wexplodes@s when @pportal@s appears#(default @wON@s)"
 				}
 			},
 			{
 				"option": "more_ravens_in_jungle",
 				"kind": "slider",
 				"name": {
-					"text": "@(sprRavenIdle:0) jungle ravens"
+					"text": "jungle ravens"
 				},
 				"desc": {
-					"text": "Controls @yspawnrate@s#of @rravens@s in a @gjungle@s#(default x5)"
+					"text": "Controls @yspawnrate@s#of @rravens@s in a @gjungle@s#(default @wx5@s)"
 				},
 				"format": {
 					"display_multiplier": 5
@@ -436,60 +435,70 @@ if fork() {
 				"option": "bonus_loop_max_health",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprHealthChest:0) Potential Bonus Max HP"
+					"text": "Potential Bonus Max HP"
 				},
 				"desc": {
-					"text": "When @rON@s#with each @yloop@s you gain#@w1 potential bonus max health@s#1 picked up @rhealth chest@s =#@w-1 pbmh@s, @g+1 max health@s#(default OFF)"
+					"text": "When @rON@s#with each @yloop@s you gain#@w1 potential bonus max health@s#1 picked up @rhealth chest@s =#@w-1 pbmh@s, @g+1 max health@s#(default @wOFF@s)"
 				}
 			},
 			{
 				"option": "crown_guardian_on_max",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprCrownGuardianIdle:0) Crown Guardians on max"
+					"text": "Crown Guardians on max"
 				},
 				"desc": {
-					"text": "When @rON@s#and after you visited @w3rd@s @gVault@s#on each @wn-2@s stage#will spawn @g2 crown guardians@s#and if @wloop@s is higher than 2#it will spawn @r4 big bandits@s#(except for @ydesert@s)#if you skipped n-2 area#on n-2 will spawn 2 more guardians#(default ON)"
+					"text": "When @rON@s#and after you visited @w3rd@s @gVault@s#on each @wn-2@s stage#will spawn @g2 crown guardians@s#and if @wloop@s is higher than 2#it will spawn @r4 big bandits@s#(except for @ydesert@s)#if you skipped @wn-2@s area#on @wn-2@s will spawn @g2 more guardians@s#(default @wON@s)"
 				}
 			},
 			{
 				"option": "crown_guardian_help",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprTorch:0) Crown Guardians Help"
+					"text": "Crown Guardians Help"
 				},
 				"desc": {
-					"text": "When @rON@s# when you activate @gcrown ped@s#or break @gcrown guardian statue@s#in 1st vault#@gguardians@s will replace @wall torches@s#in 2nd vault#@wturrets@s will come out# and in 3rd one#each @gtorch@s will summon @bIDPD@s#(default ON)"
+					"text": "When @rON@s# when you activate @gcrown ped@s#or break @gcrown guardian statue@s#in @w1st@s vault#@gguardians@s will replace @wall torches@s#in @w2nd@s vault#@wturrets@s will come out# and in @w3rd@s one#each @gtorch@s will summon @bIDPD@s#(default @wON@s)"
 				}
 			},
 			{
 				"option": "cursing_enabled",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprInvSpiderIdle:0) Spreading curse"
+					"text": "Spreading curse"
 				},
 				"desc": {
-					"text": "When @rON@s#@ycrystals@s and @yspiders@s will be @pcursed@s#with @wchance 1/7@s,#if you have @pcursed crown@s#@wchance will be 2/3@s,#if @wno crowns@s#no @pcursed crystals@s and @pspiders@s#(default ON)"
+					"text": "When @rON@s#@ycrystals@s and @yspiders@s will be @pcursed@s#with @wchance 1/7@s,#if you have @pcursed crown@s#@wchance will be 2/3@s,#if @wno crowns@s#no @pcursed crystals@s and @pspiders@s#(default @wON@s)"
 				}
 			},
 			{
 				"option": "cursed_caves_rework",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprCurse:3) Cursed caves rework"
+					"text": "Cursed caves rework"
 				},
 				"desc": {
-					"text": "When @rON@s#@wall weapons@s that touch floor in#@p4-?@s will be @pcursed@s#after leaving @yl1+@s @pcursed crystal caves@s#all curses will be @ylifted@s#(default ON)"
+					"text": "When @rON@s#@wall weapons@s that touch floor in#@p4-?@s will be @pcursed@s#after leaving @yl1+@s @pcursed crystal caves@s#all curses will be @ylifted@s#(default @wON@s)"
 				}
 			},
 			{
 				"option": "no_throne_yell",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprLilHunterWalk:0) No Throne Yell"
+					"text": "No Throne Yell"
 				},
 				"desc": {
-					"text": "When @wON@s#@wmutants will not@s say#anything upon enetering @g7-3@s#(default OFF)"
+					"text": "When @wON@s#@wmutants will not@s say#anything upon enetering @g7-3@s#(default @wOFF@s)"
+				}
+			},
+			{
+				"option": "last_enemies_display",
+				"kind": "bool",
+				"name": {
+					"text": "Last Enemies Display"
+				},
+				"desc": {
+					"text": "When @rON@s#will @wshow@s in which directions#@wlast enemies@s are in when#there is less than#@w10%@s of all enemies on area#or @pportal@s is opened#made by @wGolden Epsilon@s#(default @wON@s)"
 				}
 			},			
 		]
@@ -497,84 +506,84 @@ if fork() {
 	
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page2", {
 		"options": [
-			{
+			/*{
 				"option": "no_floor_changes",
 				"kind": "bool",
 				"name": {
 					"text": "@(sprFloor1:0) No Floor Changes"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wdisable all floor@s changes#from any other options#(default OFF)"
+					"text": "When @rON@s#it will @wdisable all floor@s changes#from any other options#(default @wOFF@s)"
 				}
-			},
+			},*/
 			{
 				"option": "diropf",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprPopoReviveArea:0) Early Popo Freaks Revives"
+					"text": "Early Popo Freaks Revives"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wenable all@s @bPopo Freaks revives@s#before @g3rd loop@s#(default OFF)"
+					"text": "When @rON@s#it will @wenable all@s @bPopo Freaks revives@s#before @g3rd loop@s#(default @wOFF@s)"
 				}
 			},
 			{
 				"option": "add_dark",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprNightCactus) More Darkness"
+					"text": "More Darkness"
 				},
 				"desc": {
-					"text": "When @rON@s#apllies @pdarkness@s on #@wPalace, Jungles and Night Desert@s#+ @y25% Chance for night version of area@s#(default ON)"
+					"text": "When @rON@s#apllies @pdarkness@s on #@wPalace, Jungles and Night Desert@s#+ @y25% Chance for night version of area@s#(default @wON@s)"
 				}
 			},
 			{
 				"option": "fire_explosions",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprDragonFire:0) fire explosions"
+					"text": "fire explosions"
 				},
 				"desc": {
-					"text": "When @rON@s#@rfire@s when @wcontacts@s with#@wany@s @rexplosive projectile@s#destroys the projectile#(default ON)"
+					"text": "When @rON@s#@rfire@s when @wcontacts@s with#@wany@s @rexplosive projectile@s#destroys the projectile#(default @wON@s)"
 				}
 			},
 			{
 				"option": "no_new_tips",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprPortal:0) No New Tips"
+					"text": "No New Tips"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wdisable all new tips@s#(default OFF)"
+					"text": "When @rON@s#it will @wdisable all new tips@s#(default @wOFF@s)"
 				}
 			},
 			{
 				"option": "popups",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprLevelUp:4) popups"
+					"text": "popups"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wshow some new popups@s#(default ON)"
+					"text": "When @rON@s#it will @wshow some new popups@s#(default @wON@s)"
 				}
 			},
 			{
 				"option": "no_jocks",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprJockIdle:0) No Jocks!"
+					"text": "No Jocks!"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @rdelete@s @wall Jocks@s#(default OFF)"
+					"text": "When @rON@s#it will @rdelete@s @wall Jocks@s#(default @wOFF@s)"
 				}
 			},
 			{
 				"option": "enemies_mutations",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprLHBouncer:1) Enemies Mutations"
+					"text": "Enemies Mutations"
 				},
 				"desc": {
-					"text": "When @rON@s#starting from @gL1@s#all @ggators@s @pteleport@s randomly#on @rgetting hit@s#from @bL3@s#@wreplace@s @wsniper and snow tank bullets@s# with @wbouncers@s#and @ygolden tank rockets@s#with @ygolden discs@s#(default ON)"
+					"text": "When @rON@s#starting from @gL1@s#all @ggators@s @pteleport@s randomly#on @rgetting hit@s#from @bL3@s#@wreplace@s @wsniper and snow tank bullets@s# with @wbouncers@s#and @ygolden tank rockets@s#with @ygolden discs@s#@pcursed hyper crystal@s @wrandomly teleports@s#(default @wON@s)"
 				}
 			},
 			{
@@ -584,7 +593,7 @@ if fork() {
 					"text": "Tinted Walls"
 				},
 				"desc": {
-					"text": "When @rON@s#when you come near a wall#may generate a tinted wall#tinted walls have @wrandom@s prizes inside#random prizes are#@g13 rads@s, @yammo pickup@s, @rhp pickup@s#or @wweapon chest@s#amount of tinted walls per stage#scales with each loop#(default OFF)"
+					"text": "When @rON@s#when you come near a wall#may generate a tinted wall#tinted walls have @wrandom@s prizes inside#random prizes are#@g13 rads@s, @yammo pickup@s, @rhp pickup@s#or @wweapon chest@s#amount of tinted walls per stage#scales with each loop#(default @wOFF@s)"
 				}
 			},
 		]
@@ -596,50 +605,50 @@ if fork() {
 				"option": "no_new_parcticles",
 				"kind": "bool",
 				"name": {
-					"text": "@(global.sprRadFalke:0) No New Parctiles"
+					"text": "No New Parctiles"
 				},
 				"desc": {
-					"text": "When @rON@s#@rdisables@s spawn of @gnew parctiles@s#(default OFF)"
+					"text": "When @rON@s#@rdisables@s spawn of @gnew parctiles@s#(default @wOFF@s)"
 				}
 			},
 			{
 				"option": "no_guards",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprGuardianIdle:0) No Ubiquitous Guardians"
+					"text": "No Ubiquitous Guardians"
 				},
 				"desc": {
-					"text": "When @rON@s#it will delete @wall@s @gGuards@s#which have been added by @wesp@s#(default OFF)"
+					"text": "When @rON@s#it will delete @wall@s @gGuards@s#which have been added by @wesp@s#(default @wOFF@s)"
 				}
 			},
 			{
 				"option": "l5cap",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprLastSit:0) L5 Captain"
+					"text": "L5 Captain"
 				},
 				"desc": {
-					"text": "When @rON@s#you will @rfight@s the @bCaptain@s#before @gThrone 2@s on @w0-1 L5@s#(default OFF)"
+					"text": "When @rON@s#you will @rfight@s the @bCaptain@s#before @gThrone 2@s on @w0-1 L5@s#(default @wOFF@s)"
 				}
 			},
 			{
 				"option": "nes",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprShielderIdle:0) No Early Shielders"
+					"text": "No Early Shielders"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wreplace all@s @bshielders@s#with @binspectors@s until you pass#@w10 stages@s#(default ON)"
+					"text": "When @rON@s#it will @wreplace all@s @bshielders@s#with @binspectors@s until you pass#@w10 stages@s#(default @wON@s)"
 				}
 			},
 			{
 				"option": "hammerhead_time",
 				"kind": "choice",
 				"name": {
-					"text": "@(sprSkillIconHUD:26) hammerhead time"
+					"text": "hammerhead time"
 				},
 				"desc": {
-					"text": "When @wYes@s#if you pick @whammerhead@s @gmutation@s#awards with a mutation pick#after looping#if you don't pick hammerhead mut#awards with it after looping#when more#all of the above effects#gives more hammerheads with each loop#(default Yes)"
+					"text": "When @wYes@s#if you pick @whammerhead@s @gmutation@s#awards with a @wmutation pick@s#after looping#if you don't pick @whammerhead mut@s#@wawards@s with it after @wlooping@s#when @wmore@s#@wall@s of the above effects#gives @wmore@s hammerheads with each loop#(default @wYes@s)"
 				},
 				"values": [0, 1, 2],
 				"display": ["No", "Yes", "More"]
@@ -648,52 +657,52 @@ if fork() {
 				"option": "piov",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprVanDrive:3) careful IDPD in labs"
+					"text": "careful IDPD in labs"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wreplace each@s @bvan@s with#@b4 idpd portals@s in @wLabs@s#(default ON)"
+					"text": "When @rON@s#it will @wreplace each@s @bvan@s with#@b4 idpd portals@s in @wLabs@s#(default @wON@s)"
 				}
 			},
 			{
 				"option": "death_effects",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprSalamanderDead) Death Effects"
+					"text": "Death Effects"
 				},
 				"desc": {
-					"text": "When @rON@s#it will enable @weffects@s#which will happen after#@rdeath@s of @wcertain enemies@s#after @wcertain loop@s#(default ON)"
+					"text": "When @rON@s#it will enable @weffects@s#which will happen after#@rdeath@s of @wcertain enemies@s#after @wcertain loop@s#(default @wON@s)"
 				}
 			},
 			{
 				"option": "hardmodemod_3dvans",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprSalamanderDead) 3D Vans from Hardmode mod"
+					"text": "3D Vans from Hardmode mod"
 				},
 				"desc": {
-					"text": "When @rON@s#will make @bvans@s @y3d@s#code by @wblaac@s#sprites by jsburg#(default OFF)"
+					"text": "When @rON@s#will make @bvans@s @y3d@s#code by @wblaac@s#sprites by @yjsburg@s#(default @wOFF@s)"
 				}
 			},			
 			{
 				"option": "idpd_seek",
 				"kind": "choice",
 				"name": {
-					"text": "@(sprPopoPortal:0) IDPD Seek"
+					"text": "IDPD Seek"
 				},
 				"desc": {
-					"text": "Switch between IDPD Seek modes.#@gNo@s# No Addinational @bIDPD@s. #@yYes@s# Adds more @bIDPD@s to #@wSnow Town@s, @wLabs@s and @wPalace@s. #@rMore@s# Adds even more @bIDPD@s to #@wSnow Town@s and @wPalace@s#+ visiting @bHQ@s #or having a @pcrown@s #or killing @bcap@s #will add addinational @bIDPD@s#after passing 10 stages#@wnon elite@s @bidpd@s may carry @gradchests@s#(default Yes)"
+					"text": "Switch between IDPD Seek modes.#@gNo@s# No Addinational @bIDPD@s. #@yYes@s# Adds more @bIDPD@s to #@wSnow Town@s, @wLabs@s and @wPalace@s. #@rMore@s# Adds even more @bIDPD@s to #@wSnow Town@s and @wPalace@s#+ visiting @bHQ@s #or having a @pcrown@s #or killing @bcap@s #will add addinational @bIDPD@s#after passing @w10 stages@s#@wnon elite@s @bidpd@s may carry @gradchests@s#(default @wYes@s)"
 				},
 				"values": [0, 1, 2],
-				"display": ["No", "Yes", "More"]
+				"display": ["No", "Yes", "@gUltra@s"]
 			},
 			{
 				"option": "wild_idpd",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprGruntIdle:0) Wild IDPD"
+					"text": "Wild IDPD"
 				},
 				"desc": {
-					"text": "When @rON@s#@rwild@s @bIDPD@s will spawn on#@wevery area@s except @bHQ@s and @wLabs@s#@yelite@s wild IDPD will#only spawn if @wloop > 0@s#@gwild IDPD@s are @bIDPD@s but on#the @renemy team@s#@weach@s wild IDPD will#have a @wrandom raddrop@s#which ranges from 1 to 25#raddrop floor scales with loops#IDPDmashup slows down floor scaling#if raddrop = 25#wild IDPD becomes a popo freak#(default OFF)"
+					"text": "When @rON@s#@rwild@s @bIDPD@s will spawn on#@wevery area@s except @bHQ@s and @wLabs@s#@yelite@s wild IDPD will#only spawn if @wloop > 0@s#@gwild IDPD@s are @bIDPD@s but on#the @renemy team@s#@weach@s wild IDPD will#have a @wrandom raddrop@s#which ranges from 1 to 25#@graddrop@s floor @wscales@s with loops#@wIDPDmashup@s slows down floor scaling#if @graddrop@s = @w25@s#@bIDPD@s becomes a @rpopo freak@s#(default @wOFF@s)"
 				}
 			},
 		]
@@ -705,80 +714,80 @@ if fork() {
 				"option": "hamamount",
 				"kind": "bool",
 				"name": {
-					"text": "@(global.sprRadFalke:0) Hammerhead display"
+					"text": "Hammerhead display"
 				},
 				"desc": {
-					"text": "When @rON@s#will show @whow many#hammerhead uses you have left#(default ON)"
+					"text": "When @rON@s#will show @whow many#hammerhead uses you have left#(default @wON@s)"
 				}
 			},
 			{
 				"option": "lootable_cars",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprLastSit:0) Lootable Cars"
+					"text": "Lootable Cars"
 				},
 				"desc": {
-					"text": "When @rON@s#when you will come close to#cars, they will give you ammo or hp#(default ON)"
+					"text": "When @rON@s#when you come @wclose@s to#@wcars@s, they will give you @yammo@s or @rhp@s#(default @wON@s)"
 				}
 			},
 			{
 				"option": "chicken_reminder",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprGuardianIdle:0) Blood weapon reminder"
+					"text": "Selfdamage reminder"
 				},
 				"desc": {
-					"text": "When @rON@s#will @wremind@s you if there're#@rblood@s weapon is on floor#P.S. useful when playing#as chicken or when#@wpotential bonus max hp is enabled#(default ON)"
+					"text": "When @rON@s#will @wremind@s you if there're#@rself damage@s weapon on floor#P.S. except for discs and explosions#(default @wON@s)"
 				}
 			},
 			{
 				"option": "protochest_convert",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprShielderIdle:0) Proto Chest Weapon Convert"
+					"text": "Weapon Convert"
 				},
 				"desc": {
-					"text": "When @rON@s#if @gproto chest@s contains a @wweapon@s#that has a @ygolden counterpart@s#turns the said weapon into it's#golden counterpart on @wnext@s @gvault@s @wvisit@s#@pparty gun@s will turn into a @wrandom weapon@s#(default ON)"
+					"text": "When @rON@s#if @gproto chest@s contains a @wweapon@s#that has a @ygolden counterpart@s#turns the said weapon into it's#golden counterpart on @wnext@s @gvault@s @wvisit@s#@pparty gun@s#will turn into a @wrandom weapon@s#same rules applies for @pcurse@s#(default @wON@s)"
 				}
 			},	
 			{
 				"option": "new_weptiers",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprShielderIdle:0) New Weapon Tiers"
+					"text": "New Weapon Tiers"
 				},
 				"desc": {
-					"text": "When @rON@s#will change tiers for @wmost weapons@s#see all changes on a screenshot in resources#(default ON)"
+					"text": "When @rON@s#will change tiers for @wmost weapons@s#see @wall changes@s on a#@wscreenshot@s in resources#(default @wON@s)"
 				}
 			},
 			{
 				"option": "area_display",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprShielderIdle:0) Area Display"
+					"text": "Area Display"
 				},
 				"desc": {
-					"text": "When @rON@s#will show on which @warea and loop@s#you are on#code by @wblaac@s#(and modified by @wSerafimGWS@s)#(default ON)"
+					"text": "When @rON@s#will show on which @warea and loop@s#you are on#code by @wblaac@s#(and modified by @wSerafimGWS@s)#(default @wON@s)"
 				}
 			},
 			{
 				"option": "chest_replacments",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprAmmoChest:0) Chest Replacments"
+					"text": "Chest Replacments"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wreplace some chests@s#@ypizza@s#@wammo chest@s-@ypizza chest@s#@bwinter city@s#@wammo chest@s - @bIDPD Chests@s# in @plabs@s#@wammo chest@s - @wmimic@s#@rhealth chest@s - @rsuper mimic@s#in @bHQ@s#@wammo chests@s - @bIDPD chests@s#@grad chests@s - @rhealth chests@s#(default ON)"
+					"text": "When @rON@s#it will @wreplace some chests@s#@ypizza@s#@wammo chest@s-@ypizza chest@s#@bwinter city@s#@wammo chest@s - @bIDPD Chests@s# in @plabs@s#@wammo chest@s - @wmimic@s#@rhealth chest@s - @rsuper mimic@s#in @bHQ@s#@wammo chests@s - @bIDPD chests@s#@grad chests@s - @rhealth chests@s#(default @wON@s)"
 				}
 			},
 			{
 				"option": "idpd_mashup",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprPopoFreakIdle:0) IDPD Mashup"
+					"text": "IDPD Mashup"
 				},
 				"desc": {
-					"text": "When @rON@s#@yL2@s: @w1/3@s @bportals@s and @bvans@s#will contain @bpopo freaks@s#@gL3@s: @w1/2@s @bportals@s and @bvans@s#will contain @yelites@s#P.S. Vans on L3 can also contain#non elite IDPD#because i can't control#if van will contain elites#(default ON)"
+					"text": "When @rON@s#@yL2@s: @w1/3@s @bportals@s and @bvans@s#will contain @bpopo freaks@s#@gL3@s: @w1/2@s @bportals@s and @bvans@s#will contain @yelites@s#P.S. Vans on L3 can also contain#non elite IDPD#because i can't control#if van will contain elites#(default @wON@s)"
 				}
 			},
 		]
@@ -790,20 +799,20 @@ if fork() {
 				"option": "seed",
 				"kind": "text",
 				"name": {
-					"text": "@(sprTangleSeed:0) seed",
+					"text": "seed",
 				},
 				"desc": {
-					"text": "enter seed to play#the same run endless amount of times"
+					"text": "enter seed to play#the same run endless amount of times#don't work at the moment"
 				}
 			},			
 			{
 				"option": "common_difficulty_multiplier",
 				"kind": "slider",
 				"name": {
-					"text": "@(sprBanditIdle:0) rdm"
+					"text": "rdm"
 				},
 				"desc": {
-					"text": "rdm - @wregular@s @rdifficulty@s @ymultiplier@s#set multiplier from 0 to 2#(default 1)"
+					"text": "rdm - @wregular@s @rdifficulty@s @ymultiplier@s#set multiplier from 0 to 2#(default @w1@s)"
 				},
 				"format": {
 					"display_multiplier": 2
@@ -813,10 +822,10 @@ if fork() {
 				"option": "esp_difficulty_multiplier",
 				"kind": "slider",
 				"name": {
-					"text": "@(sprFireBallerIdle:0) edm"
+					"text": "edm"
 				},
 				"desc": {
-					"text": "edm - @besp@s @rdifficulty@s @ymultiplier@s#set multiplier from 0 to 2#(default 1)"
+					"text": "edm - @besp@s @rdifficulty@s @ymultiplier@s#set multiplier from 0 to 2#(default @w1@s)"
 				},
 				"format": {
 					"display_multiplier": 2
@@ -859,6 +868,10 @@ global.JungleSniperHitid = [global.sprJungleSniperIdle, "Jungle Sniper"];
 global.RadEliteInspectorHitid = [global.sprEliteInspectorRadIdle, "Wild Elite Inspector"];
 
 global.RadEliteShielderHitid = [global.sprEliteShielderRadIdle, "Wild Elite Shielder"];
+
+global.RadInspectorHitid = [global.sprInspectorRadIdle, "Wild Inspector"];
+
+global.RadInspectorDEHitid = [global.sprInspectorRadDead, "Wild Inspector"];
 // -----Tick------ //
 #define game_start
 
@@ -1016,10 +1029,94 @@ if(global.options.reset){
 	}
 }
 
+with(WepPickup){
+	if(global.options.protochest_convert == true && curse >= 1){
+		switch (wep){
+			//machine gun
+			case 4:
+				wep = 41;
+				break;
+			//screwdriver
+			case 27:
+				wep = 101;
+				break;
+			//crossbow
+			case 6:
+				wep = 43;
+				break;
+			//grenade launcher
+			case 7:
+				wep = 44;
+				break;
+			//shotgun
+			case 5:
+				wep = 42;
+				break;
+			//splinter gun
+			case 30:
+				wep = 100;
+				break;
+			//nuke launcher
+			case 47:
+				wep = 122;
+				break;
+			//disc gun
+			case 18:
+				wep = 123;
+				break;
+			//slugger
+			case 21:
+				wep = 99;
+				break;
+			//bazooka
+			case 14:
+				wep = 102;
+				break;
+			//wrench
+			case 3:
+				wep = 40;
+				break;
+			//laser pistol
+			case 19:
+				wep = 45;
+				break;
+			//plasma gun
+			case 34:
+				wep = 98;
+				break;
+			//assault rifle
+			case 17:
+				wep = 103;
+				break;
+			//revoulver
+			case 1:
+				wep = 39;
+				break;
+			//party gun
+			case 82:
+				wep = 29;//blood launhcer
+				break;
+			default:
+				break;
+		}
+	}
+}
+
+if(game_version > 9944){
+	with(BackCont){
+		if("it_is_vault" in self){
+			if(it_is_vault == true){
+				alarm0 = 0;
+			}
+		}
+	}
+}
+
 with(enemy){
 	if("counted" not in self){
 		counted = true;
 		global.enemies_count += 1;
+		global.enemies_on_start += 1;
 		//trace(global.enemies_count);
 	}
 }
@@ -1163,12 +1260,7 @@ if(instance_exists(LastCutscene)){
 
 
 with(Player){
-	var bx1 = x - 213,
-		by1 = y - 120,
-		bx2 = x + 213,
-		by2 = y + 120
-	//on_screen_with_player(bx1,by1,bx2,by2);
-	//NTT 9940 Missing captain speech fix
+
 	if(GameCont.area == 106 && GameCont.subarea == 3){
 		if(snd_cptn != null){
 			if(snd_spch != snd_cptn){
@@ -1210,40 +1302,44 @@ if(global.options.rmb == true){
 		}
 	}
 
-	with(Player){
-		global.target = instance_nearest(x,y,Wall);
-	}
-
-
-	with(global.target){
-		if("goodiescheck" not in self && global.aowb > 0 && GameCont.area != 106 && GameCont.area != 107){
-			if(random(30) < 1){
-				goodiescheck = true;
-				global.aowb -= 1;
-				with(instance_create(x,y,CustomObject)){
+with(Wall){
+	if(instance_exists(Player)){
+		target_x = instance_nearest(x,y,Player).x;
+    	target_y = instance_nearest(x,y,Player).y;
+    	if(point_distance(x,x,target_x,target_x) < 300 && point_distance(y,y,target_y,target_y) < 150){
+			if("goodiescheck" not in self && global.aowb > 0 && GameCont.area != 106 && GameCont.area != 107){
+				if(random(50) < 1){
+					goodiescheck = true;
+					if(global.aowb == 1){
+						with instance_create(Player.x,Player.y,PopupText) text = "@pall stashes found@s";
+					}
+					global.aowb -= 1;
+					with(instance_create(x,y,CustomObject)){
 					//trace("Bonus!");
-					sprite_index = global.sprWallBonus;
-					image_index = irandom(1);
-					if(irandom(2) < 1){
-						image_xscale = -1;
+						sprite_index = global.sprWallBonus;
+						image_index = irandom(1);
+						if(irandom(2) < 1){
+							image_xscale = -1;
+						}
+						else{
+							image_xscale = 1;
+						}
+						if(random(1) > 0){
+							image_yscale = -1;
+						}
+						else{
+							image_yscale = 1;
+						}
+						depth = -7;
+						image_speed = 0;
+						bonus_type = irandom(3);
+						}
 					}
-					else{
-						image_xscale = 1;
+				else{
+					goodiescheck = true;
+					//image_blend = c_purple;
 					}
-					if(random(1) > 0){
-						image_yscale = -1;
-					}
-					else{
-						image_yscale = 1;
-					}
-					depth = -7;
-					image_speed = 0;
-					bonus_type = irandom(3);
 				}
-			}
-			else{
-				goodiescheck = true;
-				//image_blend = c_purple;
 			}
 		}
 	}
@@ -1254,7 +1350,12 @@ with(CustomObject){
 		if("bonus_type" in self){
 			switch (bonus_type){
 				case 0:
-					instance_create(x,y,AmmoPickup);
+					if(GameCont.crown == crwn_guns){
+						instance_create(x,y,WeaponChest);
+					}
+					else{
+						instance_create(x,y,AmmoPickup);
+					}
 					break;
 				case 1:
 					repeat(13) with instance_create(x,y,Rad){
@@ -1263,10 +1364,20 @@ with(CustomObject){
             		}
 					break;
 				case 2:
-					instance_create(x,y,HPPickup);
+					if(GameCont.crown == crwn_life){
+						instance_create(x,y,AmmoPickup);
+					}
+					else{
+						instance_create(x,y,HPPickup);
+					}
 					break;
 				default:
-					instance_create(x,y,WeaponChest);
+					if(GameCont.crown == crwn_love){
+						instance_create(x,y,AmmoChest);
+					}
+					else{
+						instance_create(x,y,WeaponChest);
+					}
 					break;
 			}
 			instance_delete(id);
@@ -1440,7 +1551,7 @@ with (CustomObject){
 			with instance_create(x,y,WepPickup){
 				wep = ultra_weapon();
 				curse = 1;
-				name = "accept @gchallange?@s";
+				name = "accept @gchallenge?@s";
 				rotation = 90;
 				global.ultraweapon_id = id;
 			}
@@ -1630,7 +1741,21 @@ if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont
 	}
 	
 	repeat(9) instance_create(10016,10016,Debris);
-	}
+}
+
+with instances_matching(CustomHitme,"oasis_enter_scrapyard",1){
+	if(sprite_index != spr_hurt){
+	sprite_index = spr_idle;
+}
+if(image_index > 2 && sprite_index == spr_hurt){
+	sprite_index = spr_idle;
+	image_index = 0;
+}
+
+if (my_health <= 0) {
+    instance_destroy();
+}
+}
 
 if(GameCont.area == 105 && instance_exists(Car)){
 	with(Car){
@@ -1909,8 +2034,8 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		GenCont.tip = "the @wrats@s are @gmolting@s";
 	}
 	
-	if(r4 == 28 && GameCont.loops > 1 && global.options.death_effects == true){
-		GenCont.tip = "emerjency @wcluster@s ejection";
+	if(r4 == 28 && GameCont.loops > 1 && GameCont.area == 6 && global.options.death_effects == true){
+		GenCont.tip = "emerjency @rcluster@s ejection";
 	}
 	
 	if(r4 == 29 && GameCont.loops > 1 && global.options.death_effects == true){
@@ -1989,7 +2114,7 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		GenCont.tip = "i wish there would be a @ygolden bomb@s. @woh. wait.@s";
 	}
 
-	if(r4 == 44 && global.options.rmb == true){
+	if(r4 == 44 && global.options.rmb == true && Player.race == "eyes"){
 		GenCont.tip = "@wkeep your eyes@s buttered till the end";
 	}
 
@@ -2016,8 +2141,17 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 	if(r4 == 50 && GameCont.area == 105 && global.options.more_ravens_in_jungle >= 1){
 		GenCont.tip = "birds are singing, flowers are blooming";
 	}
+
+	if(r4 == 51 && GameCont.area == 105 && global.options.more_ravens_in_jungle >= 1){
+		GenCont.tip = "black parrots";
+	}
+
+	if(r4 == 52 && global.options.protochest_convert == true){
+		if(((Player.wep == 1 || Player.wep == 3 || Player.wep == 4 || Player.wep == 5 || Player.wep == 6 || Player.wep == 7 || Player.wep == 17 || Player.wep == 18 || Player.wep == 19 || Player.wep == 21 || Player.wep == 27 || Player.wep == 30 || Player.wep == 34 || Player.wep == 46 || Player.wep == 47 || Player.wep == 82 || Player.wep == 120) && Player.curse > 0) || ((Player.bwep == 1 || Player.bwep == 3 || Player.bwep == 4 || Player.bwep == 5 || Player.bwep == 6 || Player.bwep == 7 || Player.bwep == 17 || Player.bwep == 18 || Player.bwep == 19 || Player.bwep == 21 || Player.bwep == 27 || Player.bwep == 30 || Player.bwep == 34 || Player.bwep == 46 || Player.bwep == 47 || Player.bwep == 82 || Player.bwep == 120) && Player.bcurse > 0) || (((Player.wep == 1 || Player.wep == 3 || Player.wep == 4 || Player.wep == 5 || Player.wep == 6 || Player.wep == 7 || Player.wep == 17 || Player.wep == 18 || Player.wep == 19 || Player.wep == 21 || Player.wep == 27 || Player.wep == 30 || Player.wep == 34 || Player.wep == 46 || Player.wep == 47 || Player.wep == 82 || Player.wep == 120) && Player.curse > 0) && ((Player.bwep == 1 || Player.bwep == 3 || Player.bwep == 4 || Player.bwep == 5 || Player.bwep == 6 || Player.bwep == 7 || Player.bwep == 17 || Player.bwep == 18 || Player.bwep == 19 || Player.bwep == 21 || Player.bwep == 27 || Player.bwep == 30 || Player.bwep == 34 || Player.bwep == 46 || Player.bwep == 47 || Player.bwep == 82 || Player.bwep == 120) && Player.bcurse > 0)))
+		GenCont.tip = "@q@pc@qu@qr@qs@qe@qd @qi@qm@qa@qg@qe";
+	}
 	
-	//r4 > 50 && r4 < 99
+	//r4 > 52 && r4 < 99
 	
 	if(r4 > 99 && r5 == 1 && (GameCont.area == 1 || GameCont.area == 3) && global.eem > 0){
 		GenCont.tip = "@wsalamanders@s love the sun";
@@ -2157,66 +2291,7 @@ if(GameCont.area == 105){
 
 	
 if(global.abd == true && GameCont.area == 1 && global.sprites_swapped == false && instance_exists(BackCont)){
-	//replacing_sprites();
-	sprite_replace(sprBigSkull,"resources/Areas/NightDesert/sprBigSkull_strip1.png",1);
-	sprite_replace(sprBigSkullOpen,"resources/Areas/NightDesert/sprBigSkullOpen_strip1.png",1);
-	sprite_replace(sprBigSkullHurt,"resources/Areas/NightDesert/sprBigSkullHurt_strip3.png",3);
-	sprite_replace(sprBigSkullOpenHurt,"resources/Areas/NightDesert/sprBigSkullOpenHurt_strip3.png",3);
-	sprite_replace(sprBigSkullDead,"resources/Areas/NightDesert/sprBigSkullDead_strip3.png",3);
-	sprite_replace(sprBonePileIdle,"resources/Areas/NightDesert/sprBonePileIdle_strip1.png",1);
-	sprite_replace(sprBonePileHurt,"resources/Areas/NightDesert/sprBonePileHurt_strip3.png",3);
-	sprite_replace(sprBonePileDead,"resources/Areas/NightDesert/sprBonePileDead_strip4.png",3);
-	sprite_replace(sprBones,"resources/Areas/NightDesert/sprBones_strip2.png",2);
-	sprite_replace(sprCactus,"resources/Areas/NightDesert/sprCactus_strip1.png",1);
-	sprite_replace(sprCactusHurt,"resources/Areas/NightDesert/sprCactusHurt_strip3.png",3);
-	sprite_replace(sprCactusDead,"resources/Areas/NightDesert/sprCactusDead_strip4.png",4);
-	sprite_replace(sprCactus2,"resources/Areas/NightDesert/sprCactus2_strip1.png",1);
-	sprite_replace(sprCactus2Hurt,"resources/Areas/NightDesert/sprCactus2Hurt_strip3.png",3);
-	sprite_replace(sprCactus2Dead,"resources/Areas/NightDesert/sprCactus2Dead_strip4.png",4);
-	sprite_replace(sprCactus3,"resources/Areas/NightDesert/sprCactus3_strip1.png",1);
-	sprite_replace(sprCactus3Hurt,"resources/Areas/NightDesert/sprCactus3Hurt_strip3.png",3);
-	sprite_replace(sprCactus3Dead,"resources/Areas/NightDesert/sprCactus3Dead_strip4.png",4);
-	sprite_replace(sprCactusB,"resources/Areas/NightDesert/sprCactusB_strip1.png",1);
-	sprite_replace(sprCactusBHurt,"resources/Areas/NightDesert/sprCactusBHurt_strip3.png",3);
-	sprite_replace(sprCactusBDead,"resources/Areas/NightDesert/sprCactusBDead_strip4.png",4);
-	sprite_replace(sprCactusB2,"resources/Areas/NightDesert/sprCactusB2_strip1.png",1);
-	sprite_replace(sprCactusB2Hurt,"resources/Areas/NightDesert/sprCactusB2Hurt_strip3.png",3);
-	sprite_replace(sprCactusB2Dead,"resources/Areas/NightDesert/sprCactusB2Dead_strip4.png",4);
-	sprite_replace(sprCactusB3,"resources/Areas/NightDesert/sprCactusB3_strip1.png",1);
-	sprite_replace(sprCactusB3Hurt,"resources/Areas/NightDesert/sprCactusB3Hurt_strip3.png",3);
-	sprite_replace(sprCactusB3Dead,"resources/Areas/NightDesert/sprCactusB3Dead_strip4.png",4);
-	sprite_replace(sprDebris1,"resources/Areas/NightDesert/sprDebris0_strip4.png",4);
-	sprite_replace(sprDesertTopDecal,"resources/Areas/NightDesert/sprDesertTopDecal_strip3.png",3);
-	sprite_replace(sprDetail1,"resources/Areas/NightDesert/sprDetail0_strip5.png",5);
-	sprite_replace(sprFloor1,"resources/Areas/NightDesert/sprFloor1_strip4.png",4);
-	sprite_replace(sprFloor1Explo,"resources/Areas/NightDesert/sprWall0Explo_strip4.png",4);
-	sprite_replace(sprFloor1B,"resources/Areas/NightDesert/sprFloor1B_strip4.png",4);
-	sprite_replace(sprMSpawnIdle,"resources/Areas/NightDesert/sprMSpawnIdle_strip4.png",4);
-	sprite_replace(sprMSpawnDead,"resources/Areas/NightDesert/sprMSpawnDead_strip2.png",2);
-	sprite_replace(sprMSpawnHurt,"resources/Areas/NightDesert/sprMSpawnHurt_strip3.png",3);
-	sprite_replace(sprMSpawnChrg,"resources/Areas/NightDesert/sprMSpawnChrg_strip4.png",4);
-	sprite_replace(sprWall1Bot,"resources/Areas/NightDesert/sprWall0Bot_strip4.png",4);
-	sprite_replace(sprWall1Out,"resources/Areas/NightDesert/sprWall0Out_strip1.png",1);
-	sprite_replace(sprWall1Top,"resources/Areas/NightDesert/sprWall0Top_strip8.png",8);
-	sprite_replace(sprWall1Trans,"resources/Areas/NightDesert/sprWall0Trans_strip8.png",8);
-	sprite_replace(sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9);
-	sprite_replace(sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8);
-	sprite_replace(sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3);
-	sprite_replace(sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4);
-	sprite_replace(sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1);
-	sprite_replace(sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6);
-	sprite_replace(sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8);
-	sprite_replace(sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3);
-	sprite_replace(sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5);
-	sprite_replace(sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6);
-	sprite_replace(sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3);
-	sprite_replace(sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1);
-	sprite_replace(sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3);
-	sprite_replace(sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1);
-	sprite_replace(sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3);
-	sprite_replace(sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3);
-	sprite_replace(sprCarIdle,"resources/Areas/NightScrapyard/sprCarIdleNight.png",1);
-	sprite_replace(sprCarHurt,"resources/Areas/NightScrapyard/sprCarHurtNight.png",3);
+	replacing_sprites();
 	background_color = make_color_rgb(106, 122, 175);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
@@ -2225,102 +2300,16 @@ if(global.abd == true && GameCont.area == 1 && global.sprites_swapped == false &
 
 
 if(global.abd == true && GameCont.area == 3 && global.sprites_swapped == false && instance_exists(BackCont)){
-	sprite_replace(sprTires,"resources/Areas/NightScrapyard/sprTires.png",1);
-	sprite_replace(sprTiresDead,"resources/Areas/NightScrapyard/sprTiresDead.png",3);
-	sprite_replace(sprTiresHurt,"resources/Areas/NightScrapyard/sprTiresHurt.png",3);
-	sprite_replace(sprTopDecalScrapyard,"resources/Areas/NightScrapyard/sprTopDecalScrapyard.png",3);
-	sprite_replace(sprFloor3,"resources/Areas/NightScrapyard/sprFloor3_strip4.png",4);
-	sprite_replace(sprFloor3B,"resources/Areas/NightScrapyard/sprFloor3B_strip4.png",3);
-	sprite_replace(sprWall3Out,"resources/Areas/NightScrapyard/sprWall3Out.png",3);
-	sprite_replace(sprDetail3,"resources/Areas/NightScrapyard/sprDetail3_strip5.png",5);
-	sprite_replace(sprWall3Bot,"resources/Areas/NightScrapyard/sprWall3Bot_strip4.png",4);
-	sprite_replace(sprWall3Trans,"resources/Areas/NightScrapyard/sprWall3Trans_strip8.png",3);
-	sprite_replace(sprWall3Top,"resources/Areas/NightScrapyard/sprWall3Top_strip8.png",4);
-	sprite_replace(sprFloor3Explo,"resources/Areas/NightScrapyard/sprFloor3Explo_strip4.png",4);
-	sprite_replace(sprDebris3,"resources/Areas/NightScrapyard/sprDebris3_strip4.png",4);
-	sprite_replace(bak3,"resources/Areas/NightScrapyard/bak3.png",1);
-	sprite_replace(sprCarIdle,"resources/Areas/NightScrapyard/sprCarIdleNight.png",1);
-	sprite_replace(sprCarHurt,"resources/Areas/NightScrapyard/sprCarHurtNight.png",3);
-	sprite_replace(sprCarThrown,"resources/Areas/NightScrapyard/sprCarThrown.png",6);
-	sprite_replace(sprSnowBotRedCarIdle,"resources/Areas/NightScrapyard/sprSnowBotRedCarIdle.png",6);
-	sprite_replace(sprSnowBotRedCarLift,"resources/Areas/NightScrapyard/sprSnowBotRedCarLift.png",4);
-	sprite_replace(sprSnowBotRedCarWalk,"resources/Areas/NightScrapyard/sprSnowBotRedCarWalk.png",8);
-	sprite_replace(sprSnowBotRedCarHurt,"resources/Areas/NightScrapyard/sprSnowBotRedCarHurt.png",3);
-	sprite_replace(sprSnowBotRedCarThrow,"resources/Areas/NightScrapyard/sprSnowBotRedCarThrow.png",5);
-	sprite_replace(sprTrap,"resources/Areas/NightScrapyard/sprTrap.png",1);
-	sprite_replace(sprTrapGameover,"resources/Areas/NightScrapyard/sprTrapGameover.png",1);
-	sprite_replace(sprTrapScorchMark,"resources/Areas/NightScrapyard/sprTrapScorchMark.png",1);
-	sprite_replace(sprScrapDecal,"resources/Areas/NightScrapyard/sprScrapDecal.png",2);
-	sprite_replace(sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9);
-	sprite_replace(sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8);
-	sprite_replace(sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3);
-	sprite_replace(sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4);
-	sprite_replace(sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1);
-	sprite_replace(sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6);
-	sprite_replace(sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8);
-	sprite_replace(sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3);
-	sprite_replace(sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5);
-	sprite_replace(sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6);
-	sprite_replace(sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3);
-	sprite_replace(sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1);
-	sprite_replace(sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3);
-	sprite_replace(sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1);
-	sprite_replace(sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3);
-	sprite_replace(sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3);
+	replacing_sprites();
 	//background_color = make_color_rgb(51, 57, 71);
 	background_color = make_color_rgb(40, 43, 91);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
 	global.sprites_swapped = true;
-	sprite_replace(sprRainDrop,"resources/Areas/NightScrapyard/sprRainDrop.png",1);
-	sprite_replace(sprRainDropSlowmo,"resources/Areas/NightScrapyard/sprRainDropSlowmo.png",1);
-	sprite_replace(sprRainSplash,"resources/Areas/NightScrapyard/sprRainSplash.png",3);
 	}
 	
 if(global.abd == true && GameCont.area == 5 && global.sprites_swapped == false && instance_exists(BackCont)){
-	sprite_replace(sprSodaMachine,"resources/Areas/NightCity/sprSodaMachine.png",1);
-	sprite_replace(sprStreetLight,"resources/Areas/NightCity/sprStreetLight.png",1);
-	sprite_replace(sprIcicle,"resources/Areas/NightCity/sprIcicle.png",1);
-	sprite_replace(sprWall5Trans,"resources/Areas/NightCity/sprWall5Trans.png",1);
-	sprite_replace(sprTopDecalCity,"resources/Areas/NightCity/sprTopDecalCity.png",3);
-	sprite_replace(sprIceDecal,"resources/Areas/NightCity/sprIceDecal.png",2);
-	sprite_replace(sprIcicleDead,"resources/Areas/NightCity/sprIcicleDead.png",4);
-	sprite_replace(sprIcicleHurt,"resources/Areas/NightCity/sprIcicleHurt.png",3);
-	sprite_replace(sprSodaMachineDead,"resources/Areas/NightCity/sprSodaMachineDead.png",3);
-	sprite_replace(sprSodaCan,"resources/Areas/NightCity/sprSodaCan.png",3);
-	sprite_replace(sprStreetLightDead,"resources/Areas/NightCity/sprStreetLightDead.png",3);
-	sprite_replace(sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8);
-	sprite_replace(sprFloor5Explo,"resources/Areas/NightCity/sprFloor5Explo.png",4);
-	sprite_replace(sprFloor5,"resources/Areas/NightCity/sprFloor5.png",8);
-	sprite_replace(sprWall5Out,"resources/Areas/NightCity/sprWall5Out.png",2);
-	sprite_replace(sprWall5Top,"resources/Areas/NightCity/sprWall5Top.png",4);
-	sprite_replace(sprDebris5,"resources/Areas/NightCity/sprDebris5.png",4);
-	sprite_replace(sprDetail5,"resources/Areas/NightCity/sprDetail5.png",3);
-	sprite_replace(sprWall5Bot,"resources/Areas/NightCity/sprWall5Bot.png",3);
-	sprite_replace(sprSodaMachineHurt,"resources/Areas/NightCity/sprSodaMachineHurt.png",3);
-	sprite_replace(sprStreetLightHurt,"resources/Areas/NightCity/sprStreetLightHurt.png",3);
-	sprite_replace(sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4);
-	sprite_replace(sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1);
-	sprite_replace(sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6);
-	sprite_replace(sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8);
-	sprite_replace(sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3);
-	sprite_replace(sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5);
-	sprite_replace(sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6);
-	sprite_replace(sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3);
-	sprite_replace(sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3);
-	sprite_replace(sprHydrant,"resources/Areas/NightCity/sprHydrant.png",1);
-	sprite_replace(sprHydrantHurt,"resources/Areas/NightCity/sprHydrantHurt.png",3);
-	sprite_replace(sprHydrantDead,"resources/Areas/NightCity/sprHydrantDead.png",3);
-	sprite_replace(sprSnowMan,"resources/Areas/NightCity/sprSnowMan.png",1);
-	sprite_replace(sprSnowManHurt,"resources/Areas/NightCity/sprSnowManHurt.png",3);
-	sprite_replace(sprSnowManDead,"resources/Areas/NightCity/sprSnowManDead.png",3);
-	sprite_replace(sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9);
-	sprite_replace(sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3);
-	sprite_replace(sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1);
-	sprite_replace(sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3);
-	sprite_replace(sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1);
-	sprite_replace(sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3);
-	sprite_replace(sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3);	
+	replacing_sprites();	
 	background_color = make_color_rgb(59, 55, 124);
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
@@ -2503,7 +2492,6 @@ if (global.options.death_effects == true) {
 		with(JungleFly){
 			if("death_effect" not in self){
 				death_effect = true;
-				raddrop += 12;
 			}
 		}
 
@@ -2585,7 +2573,7 @@ if (global.options.death_effects == true) {
 		with(Wolf){
 			if("death_effect" not in self){
 				death_effect = true;
-				raddrop += 3;
+				raddrop += 2;
 			}
 		}
 
@@ -2628,7 +2616,7 @@ if (global.options.death_effects == true) {
 			if("death_effect" not in self){
 				if(irandom(2) < 1){
 					death_effect = true;
-					raddrop += 24;
+					raddrop += 12;
 				}
 				else{
 					death_effect = false;
@@ -2657,14 +2645,21 @@ if (global.options.death_effects == true) {
 		with(JungleBandit){
 			if("death_effect" not in self){
 				death_effect = true;
-				raddrop += 3;
+				raddrop += 2;
 			}
 		}
 
 		with(JungleAssassin){
 			if("death_effect" not in self){
 				death_effect = true;
-				raddrop += 3;
+				raddrop += 2;
+			}
+		}
+
+		with instances_matching(Sniper,"hit_id",global.JungleSniperHitid){
+			if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 6;
 			}
 		}
 		
@@ -2857,6 +2852,10 @@ with instances_matching(Corpse, "sprite_index", sprBigGeneratorDead) {
 				}
 				generated = true;
 			}
+		}
+
+with instances_matching_le(instances_matching(instances_matching(Sniper,"hit_id",global.JungleSniperHitid),"death_effect",true), "my_health", 0) {
+			instance_create(x,y,ToxicDelay);
 		}
 
 if(GameCont.area == 102 || GameCont.area == "pizza" || GameCont.area == "turtles"){
@@ -3053,137 +3052,17 @@ if(instance_exists(LilHunterDie) && !global.lilhunter_revenged && global.options
     global.lilhunter_revenged = true;
 }
 
+#define replacing_sprites
+
+for (i = 0; i < array_length(global.fsprites_replace);i++){
+	sprite_replace(global.fsprites_replace[i][0],global.fsprites_replace[i][1],global.fsprites_replace[i][2]);
+}
+
 #define restoring_sprites
 
-sprite_restore(sprBigSkull);
-sprite_restore(sprBigSkullOpen);
-sprite_restore(sprBigSkullHurt);
-sprite_restore(sprBigSkullOpenHurt);
-sprite_restore(sprBigSkullDead);
-sprite_restore(sprBonePileIdle);
-sprite_restore(sprBonePileHurt);
-sprite_restore(sprBonePileDead);
-sprite_restore(sprBones);
-sprite_restore(sprCactus);
-sprite_restore(sprCactusHurt);
-sprite_restore(sprCactusDead);
-sprite_restore(sprCactus2);
-sprite_restore(sprCactus2Hurt);
-sprite_restore(sprCactus2Dead);
-sprite_restore(sprCactus3);
-sprite_restore(sprCactus3Hurt);
-sprite_restore(sprCactus3Dead);
-sprite_restore(sprCactusB);
-sprite_restore(sprCactusBHurt);
-sprite_restore(sprCactusBDead);
-sprite_restore(sprCactusB2);
-sprite_restore(sprCactusB2Hurt);
-sprite_restore(sprCactusB2Dead);
-sprite_restore(sprCactusB3);
-sprite_restore(sprCactusB3Hurt);
-sprite_restore(sprCactusB3Dead);
-sprite_restore(sprDebris1);
-sprite_restore(sprDesertTopDecal);
-sprite_restore(sprDetail1);
-sprite_restore(sprFloor1);
-sprite_restore(sprFloor1Explo);
-sprite_restore(sprFloor1B);
-sprite_restore(sprMSpawnIdle);
-sprite_restore(sprMSpawnDead);
-sprite_restore(sprMSpawnHurt);
-sprite_restore(sprMSpawnChrg);
-sprite_restore(sprWall1Bot);
-sprite_restore(sprWall1Out);
-sprite_restore(sprWall1Top);
-sprite_restore(sprWall1Trans);
-sprite_restore(sprWind);
-sprite_restore(sprTires);
-sprite_restore(sprTiresDead);
-sprite_restore(sprTiresHurt);
-sprite_restore(sprTopDecalScrapyard);
-sprite_restore(sprFloor3);
-sprite_restore(sprFloor3B);
-sprite_restore(sprWall3Out);
-sprite_restore(sprDetail3);
-sprite_restore(sprWall3Bot);
-sprite_restore(sprWall3Trans);
-sprite_restore(sprWall3Top);
-sprite_restore(sprFloor3Explo);
-sprite_restore(sprDebris3);
-sprite_restore(bak3);
-sprite_restore(sprCarIdle);
-sprite_restore(sprCarHurt);
-sprite_restore(sprCarThrown);
-sprite_restore(sprSnowBotRedCarIdle);
-sprite_restore(sprSnowBotRedCarLift);
-sprite_restore(sprSnowBotRedCarWalk);
-sprite_restore(sprSnowBotRedCarHurt);
-sprite_restore(sprSnowBotRedCarThrow);
-sprite_restore(sprTrap);
-sprite_restore(sprTrapGameover);
-sprite_restore(sprTrapScorchMark);
-sprite_restore(sprRainDrop);
-sprite_restore(sprRainDropSlowmo);
-sprite_restore(sprRainSplash);
-sprite_restore(sprScrapDecal);
-sprite_restore(sprSodaMachine);
-sprite_restore(sprStreetLight);
-sprite_restore(sprIcicle);
-sprite_restore(sprWall5Trans);
-sprite_restore(sprTopDecalCity);
-sprite_restore(sprIceDecal);
-sprite_restore(sprIcicleDead);
-sprite_restore(sprIcicleHurt);
-sprite_restore(sprSodaMachineDead);
-sprite_restore(sprSodaCan);
-sprite_restore(sprStreetLightDead);
-sprite_restore(sprFloor5B);
-sprite_restore(sprFloor5Explo);
-sprite_restore(sprFloor5);
-sprite_restore(sprWall5Out);
-sprite_restore(sprWall5Top);
-sprite_restore(sprDebris5);
-sprite_restore(sprDetail5);
-sprite_restore(sprWall5Bot);
-sprite_restore(sprSodaMachineHurt);
-sprite_restore(sprStreetLightHurt);
-sprite_restore(sprSnowBotCarLift);
-sprite_restore(sprFrozenCar);
-sprite_restore(sprSnowBotCarIdle);
-sprite_restore(sprSnowBotCarWalk);
-sprite_restore(sprSnowBotCarHurt);
-sprite_restore(sprSnowBotCarThrow);
-sprite_restore(sprFrozenCarThrown);
-sprite_restore(sprFrozenCarHurt);
-sprite_restore(sprSnowFlake);
-sprite_restore(sprHydrant);
-sprite_restore(sprHydrantHurt);
-sprite_restore(sprHydrantDead);
-sprite_restore(sprSnowMan);
-sprite_restore(sprSnowManHurt);
-sprite_restore(sprPStat1Idle);
-sprite_restore(sprPStat2Idle);
-sprite_restore(sprSnowManDead);
-sprite_restore(sprPStat1Hurt);
-sprite_restore(sprPStat2Hurt);
-sprite_restore(sprPStatDead);
-sprite_restore(sprSnowManDead);
-sprite_restore(sprSnowBotRedCarLift);
-sprite_restore(sprRainDrop);
-sprite_restore(sprRainDropSlowmo);
-sprite_restore(sprRainSplash);
-sprite_restore(sprBanditBossIdle);
-sprite_restore(sprBanditBossWalk);
-sprite_restore(sprBanditBossFire);
-sprite_restore(sprBanditBossTell);
-sprite_restore(sprBanditBossDash);
-sprite_restore(sprBanditBossStop);
-sprite_restore(sprBanditBossHurt);
-sprite_restore(sprBanditBossDead);
-sprite_restore(sprBossIntro);
-sprite_restore(sprDeskIdle);
-sprite_restore(sprDeskIdleTrans);
-sprite_restore(sprDeskIdleTurn);
+for (i = 0; i < array_length(global.fsprites_restore);i++){
+	sprite_restore(global.fsprites_restore[i]);
+}
 
 #define level_start
 setname();
@@ -3850,6 +3729,10 @@ if global.loaded {
 	call(scr.option_remove_mod, mod_current_type, mod_current);
 }
 
+with(SnowFlake){
+	sprite_index = sprSnowFlake;
+}
+
 // save in cleanup, just in case
 CustomOptions_save();
 
@@ -3975,16 +3858,17 @@ string_save(json_encode(global.options, "  "), global.OPTIONS_FILE);
 
 #define enter_to_oasis_step
 	
-if(sprite_index != spr_hurt){
+/*if(sprite_index != spr_hurt){
 	sprite_index = spr_idle;
 }
-else if(image_index > 2){
+if(image_index > 2 && sprite_index == spr_hurt){
 	sprite_index = spr_idle;
+	image_index = 0;
 }
 
 if (my_health <= 0) {
     instance_destroy();
-}
+}*/
 
 
 #define enter_to_oasis_hurt (damage)
@@ -4095,6 +3979,7 @@ with (instance_create(x,y,FlameBall)){
 with (instance_create(x,y,ClusterNade)){
 		team = 1;
 		hitid = [sprTechnoMancerDead, "Techno Mancer"];
+		image_blend = c_red;
 	}
 	
 #define explo_guardian_death
@@ -4212,7 +4097,7 @@ with (instance_create(x,y,IDPDBullet)){
 #define inspector_death
 with (instance_create(x,y,PopoSlug)){
 		newprojectile = true;
-		team = 1;
+		team = 3;
 		hitid = [sprInspectorDead, "Inspector"];
 //Homing bullets
 	if(instance_exists(Player)){
@@ -4287,6 +4172,12 @@ with(WepPickup){
 		with instance_create(Player.x,Player.y,PopupText) text = "@q@rBLOOD WEAPON!!!@s";
 		sound_play(sndBloodLauncher);
 	}
+	//non blood weapon and toxic bow or launcher
+	if(wep != 67 && wep != 107 && wep != 29 && (wep == 31 || wep == 72)){
+		global.is_player_notified = true;
+		with instance_create(Player.x,Player.y,PopupText) text = "@q@gTOXIC WEAPON!!!@s";
+		sound_play(sndToxicBoltGas);
+	}
 }
 
 
@@ -4327,6 +4218,17 @@ global.weapon_deleted = false;
 global.ultrachest_spawned = false;
 
 global.is_player_notified = false;
+
+if(game_version > 9944){
+	with(BackCont){
+		if(global.last_vault == true && global.options.no_new_parcticles == true && it_is_vault != true){
+			it_is_vault = true;
+		}
+		else{
+			it_is_vault = false;
+		}
+	}
+}
 
 with(WeaponChest){
 	if(global.options.chest_replacments == true && GameCont.area == 102){
@@ -4631,10 +4533,6 @@ add_more_enemies();
 
 // Считаем сколько врагов на локации
 global.enemies_on_start = 0;
-with(enemy){
-    global.enemies_on_start++;
-	//trace("enemies on start" + string(global.enemies_on_start));
-}
 
 // -----Enemies------ //
 #define add_more_enemies
@@ -4711,9 +4609,21 @@ if((GameCont.area == 1 || GameCont.area == 2 || GameCont.area == 3 || GameCont.a
 					var random_idpd = choose(Grunt,Grunt,Grunt,Inspector,Shielder);
 				}
 				with instance_create(x,y,random_idpd){
+					switch (random_idpd){
+						case Inspector:
+							spr_idle = global.sprInspectorRadIdle;
+							spr_walk = global.sprInspectorRadWalk;
+							spr_hurt = global.sprInspectorRadHurt;
+							spr_dead = global.sprInspectorRadDead;
+							hitid = global.RadInspectorHitid;
+							break;
+						default:
+							image_blend = make_color_hsv(100,150,255);
+							break;
+					}
 					raddrop = irandom(24) + 1;
 					team = 1;
-					image_blend = make_color_hsv(100,150,255);
+					//image_blend = make_color_hsv(100,150,255);
 					my_health = irandom(maxhealth) + 1;
 					RadHolder = 0;
 				}
@@ -4736,6 +4646,13 @@ if((GameCont.area == 1 || GameCont.area == 2 || GameCont.area == 3 || GameCont.a
 							spr_hurt = global.sprEliteShielderRadHurt;
 							spr_dead = global.sprEliteShielderRadDead;
 							hitid = global.RadEliteShielderHitid;
+							break;
+						case Inspector:
+							spr_idle = global.sprInspectorRadIdle;
+							spr_walk = global.sprInspectorRadWalk;
+							spr_hurt = global.sprInspectorRadHurt;
+							spr_dead = global.sprInspectorRadDead;
+							hitid = global.RadInspectorHitid;
 							break;
 						default:
 							image_blend = make_color_hsv(100,150,255);
@@ -5278,8 +5195,9 @@ with BigGuardianBullet{
 	draw_circle(x, y, 100+random(3), false)
 	}	
 	
-with NothingBeam{
-	draw_circle(x, y, 60+random(3), false)
+with(NothingBeam){
+    draw_rectangle(creator.x-32,creator.y+64,x+32,y+32,false);
+    draw_circle(creator.x+16,creator.y+64,24,false);
 	}
 	
 with Nothing{
@@ -5448,6 +5366,12 @@ with Player{
 	}
 }
 
+if(skill_get(19)){	
+	with Player{
+		draw_circle(x, y, 350+random(3), false)
+	}
+}
+
 #define draw_dark_end
 with Pillar{
 	draw_circle(x, y, 20+random(3), false)
@@ -5487,8 +5411,9 @@ with BigGuardianBullet{
 	draw_circle(x, y, 50+random(3), false)
 	}	
 	
-with NothingBeam{
-	draw_circle(x, y, 30+random(3), false)
+with(NothingBeam){
+    draw_rectangle(creator.x-16,creator.y+32,x+16,y+16,false);
+    draw_circle(creator.x,creator.y+32,16,false);
 	}
 	
 with Nothing{
@@ -5647,6 +5572,16 @@ with Salamander{
 	draw_circle(x, y, 20+random(3), false)
 	}
 
+with instances_matching(GameObject,"sprite_index",sprNothingBeamStretch){
+	draw_circle(x, y, 20+random(3), false)
+	}
+
 with StreetLight{
 	draw_circle(x, y, 15+random(3), false)
 	}
+
+if(skill_get(19) || ((GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5) && global.last_vault == false)){	
+	with Player{
+		if(race == "eyes")	draw_circle(x, y, 350+random(3), false);
+	}
+}

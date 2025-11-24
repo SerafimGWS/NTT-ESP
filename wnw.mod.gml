@@ -102,7 +102,7 @@ global.enemy_factor = 1;
 global.attmpts_to_add_enemies = 15;
 
 // -----Commands zone------- //
-trace("Thanks for installing the Extended Spawn Pools 2.0 Beta Build 250725 mod!");
+trace("Thanks for installing the Whole New World 1.0 Beta mod! Build 241125");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -126,7 +126,7 @@ global.throne2_spawned = false;
 global.cap_spawned = false;
 
 global.no_idpd_for_cap = false;
-
+//idpd seek ultra - idpd noticed your hyper weapon/rogue rifle
 global.idpd_noticed_your_weapon = false;
 
 global.music_for_bosses = false;
@@ -217,12 +217,14 @@ global.areaSwitch = 0;
 global.enemies_count = 0;
 
 global.weapon_areas = ds_map_create();
-
+//big throne generator death effect
 global.dogguardian_amount = 0;
 
 global.player1wep = 0;
 
 global.player2wep = 0;
+//HammerHeadTimeInterface
+global.hhti = false;
 
 global.idpd_band = [Grunt, Inspector, Shielder, EliteGrunt, EliteInspector, EliteShielder];
 
@@ -277,7 +279,7 @@ global.onetimetip_shown = {
 	"dof": false,
 }
 
-//Sprites
+//Resources
 global.SnowSniperIdle = sprite_add("resources/Enemies/SnowSnipers/sprSnowSniperIdle.png", 4, 12, 12);
 global.SnowSniperWalk = sprite_add("resources/Enemies/SnowSnipers/sprSnowSniperWalk.png", 6, 12, 12);
 global.SnowSniperHurt = sprite_add("resources/Enemies/SnowSnipers/sprSnowSniperHurt.png", 3, 12, 12);
@@ -325,14 +327,30 @@ global.sprEliteShielderRadWalk = sprite_add("resources\Enemies\InfectedIDPD\Elit
 global.sprEliteShielderRadDead = sprite_add("resources\Enemies\InfectedIDPD\EliteShielder\sprEliteShielderRadDead.png",6,12,12);
 global.sprEliteShielderRadHurt = sprite_add("resources\Enemies\InfectedIDPD\EliteShielder\sprEliteShielderRadHurt.png",3,12,12);
 
+global.sprEliteGruntRadIdle = sprite_add("resources\Enemies\InfectedIDPD\EliteGrunt\sprEliteGruntRadIdle.png",15,12,12);
+global.sprEliteGruntRadWalk = sprite_add("resources\Enemies\InfectedIDPD\EliteGrunt\sprEliteGruntRadWalk.png",6,12,12);
+global.sprEliteGruntRadDead = sprite_add("resources\Enemies\InfectedIDPD\EliteGrunt\sprEliteGruntRadDead.png",6,12,12);
+global.sprEliteGruntRadHurt = sprite_add("resources\Enemies\InfectedIDPD\EliteGrunt\sprEliteGruntRadHurt.png",3,12,12);
+
 global.sprInspectorRadIdle = sprite_add("resources\Enemies\InfectedIDPD\Inspector\sprInspectorRadIdle.png",15,12,12);
 global.sprInspectorRadWalk = sprite_add("resources\Enemies\InfectedIDPD\Inspector\sprInspectorRadWalk.png",6,12,12);
 global.sprInspectorRadDead = sprite_add("resources\Enemies\InfectedIDPD\Inspector\sprInspectorRadDead.png",6,12,12);
 global.sprInspectorRadHurt = sprite_add("resources\Enemies\InfectedIDPD\Inspector\sprInspectorRadHurt.png",3,12,12);
 
+global.sprShielderRadIdle = sprite_add("resources\Enemies\InfectedIDPD\Shielder\sprShielderRadIdle.png",15,12,12);
+global.sprShielderRadWalk = sprite_add("resources\Enemies\InfectedIDPD\Shielder\sprShielderRadWalk.png",6,12,12);
+global.sprShielderRadDead = sprite_add("resources\Enemies\InfectedIDPD\Shielder\sprShielderRadDead.png",6,12,12);
+global.sprShielderRadHurt = sprite_add("resources\Enemies\InfectedIDPD\Shielder\sprShielderRadHurt.png",3,12,12);
+
+global.sprGruntRadIdle = sprite_add("resources\Enemies\InfectedIDPD\Grunt\sprGruntRadIdle.png",15,12,12);
+global.sprGruntRadWalk = sprite_add("resources\Enemies\InfectedIDPD\Grunt\sprGruntRadWalk.png",6,12,12);
+global.sprGruntRadDead = sprite_add("resources\Enemies\InfectedIDPD\Grunt\sprGruntRadDead.png",6,12,12);
+global.sprGruntRadHurt = sprite_add("resources\Enemies\InfectedIDPD\Grunt\sprGruntRadHurt.png",3,12,12);
+
 global.OPTIONS_FILE = "options.json";
 
 global.PRESET_FILE = "presets.json";
+//Resources
 
 mod_current_type = script_ref_create(0)[0];
 
@@ -379,7 +397,7 @@ global.options = {
 	"lootable_cars": true,
 	"protochest_convert": true,
 	"new_weptiers": true,
-	"area_display": true,
+	"area_display": false,
 	"last_enemies_display": true,
 };
 
@@ -803,7 +821,7 @@ if fork() {
 
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page5", {
 		"options": [
-			{
+			/*{
 				"option": "seed",
 				"kind": "text",
 				"name": {
@@ -812,7 +830,7 @@ if fork() {
 				"desc": {
 					"text": "enter seed to play#the same run endless amount of times#don't work at the moment"
 				}
-			},			
+			},*/			
 			{
 				"option": "common_difficulty_multiplier",
 				"kind": "slider",
@@ -830,10 +848,10 @@ if fork() {
 				"option": "esp_difficulty_multiplier",
 				"kind": "slider",
 				"name": {
-					"text": "edm"
+					"text": "espdm"
 				},
 				"desc": {
-					"text": "edm - @besp@s @rdifficulty@s @ymultiplier@s#set multiplier from 0 to 2#(default @w1@s)"
+					"text": "espdm - @bextended spawn pools@s @rdifficulty@s @ymultiplier@s#set multiplier from 0 to 2#(default @w1@s)"
 				},
 				"format": {
 					"display_multiplier": 2
@@ -857,7 +875,7 @@ if fork() {
 		]
 	});
 	
-	call(scr.option_set_mod_display_name, mod_current_type, mod_current, "   ESP#SETTINGS");
+	call(scr.option_set_mod_display_name, mod_current_type, mod_current, "   WNW#SETTINGS");
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page", "CONFIG PAGE I");
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page2", "CONFIG PAGE II");
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page3", "CONFIG PAGE III");
@@ -873,11 +891,17 @@ global.SnowSniperHitid = [global.SnowSniperIdle, "Snow Sniper"];
 
 global.JungleSniperHitid = [global.sprJungleSniperIdle, "Jungle Sniper"];
 
+global.RadEliteGruntHitid = [global.sprEliteGruntRadIdle, "Wild Elite Grunt"];
+
 global.RadEliteInspectorHitid = [global.sprEliteInspectorRadIdle, "Wild Elite Inspector"];
 
 global.RadEliteShielderHitid = [global.sprEliteShielderRadIdle, "Wild Elite Shielder"];
 
+global.RadGruntHitid = [global.sprGruntRadIdle, "Wild Grunt"];
+
 global.RadInspectorHitid = [global.sprInspectorRadIdle, "Wild Inspector"];
+
+global.RadShielderHitid = [global.sprShielderRadIdle, "Wild Shielder"];
 
 global.RadInspectorDEHitid = [global.sprInspectorRadDead, "Wild Inspector"];
 // -----Tick------ //
@@ -888,10 +912,13 @@ global.RadInspectorDEHitid = [global.sprInspectorRadDead, "Wild Inspector"];
 	trace(`Seed ${global.options.seed}, RNG ${irandom($ffFFffFF)}`);
 }*/
 
+//last enemies display
 global.enemies_count = 0;
+//last enemies display
 
 global.playercount = max(1,instance_number(Player));
 
+//new weapons tiers
 if(global.options.new_weptiers == true){
 	global.weapon_areas = ds_map_create();
 
@@ -924,14 +951,19 @@ else{
     }
     if ds_map_valid(global.weapon_areas) ds_map_destroy(global.weapon_areas); 
 }
+//new weapons tiers
 
-global.aowb = 10 + (GameCont.hard / 2);
+//amount of wall bonuses
+global.aowb = 2 + (GameCont.hard / 2);
+//amount of wall bonuses
 
+//reset of showed status for onetime tips
 global.onetimetip_shown = {
 	"chicken": false,
 	"sans": false,
 	"dof": false,
 }
+//reset of showed status for onetime tips
 
 global.cap_spawned = false;
 global.tip_shown = false;
@@ -1006,14 +1038,19 @@ global.popup_shown = {
 #define step
 
 global.attmpts_to_add_enemies = 15 * (GameCont.loops + 1);
+//times by time because slider is actually range from 0 to 1, and i want it to be from 0 to 2
 global.cem = global.options.common_difficulty_multiplier * 2;
 global.eem = global.options.esp_difficulty_multiplier * 2;
+//times by time because slider is actually range from 0 to 1, and i want it to be from 0 to 2
 
+//area display
 with instances_matching(GenCont,"areadisplay",null){
     level_start()
     areadisplay = true;
 }
+//area display
 
+//options preset
 if(global.options.reset){
 	if (fork()) {
 	wait(file_load(global.PRESET_FILE) + 1);
@@ -1034,7 +1071,9 @@ if(global.options.reset){
 		}
 	}
 }
+//options preset
 
+//onfire corpses
 with(Corpse){
 	if(global.options.fire_explosions == true && place_meeting(x,y,Flame)){
 		if("onfire" not in self){
@@ -1068,7 +1107,9 @@ with(Corpse){
 with instances_matching(Smoke,"from_corpse",1){
 	y -= 1;
 }
+//onfire corpses
 
+//new wep tiers
 //robot ultra defined taste
 if(ultra_get(8,1)){
 	with(Player){
@@ -1088,17 +1129,21 @@ else{
 		weapon_set_area(global.goldenweps[g],-1)
 	}
 }
+//new wep tiers
 
 with(WepPickup){
 
-	for (var c=0;c<array_length(global.goldenweps);++c){
+	//cursed gun gun
+	/*for (var c=0;c<array_length(global.goldenweps);++c){
 		if(global.player1wep == global.goldenweps[c] || global.player2wep == global.goldenweps[c] || (global.player1wep == global.goldenweps[c] && global.player2wep == global.goldenweps[c])){
 			if((wep == global.player1wep || wep == global.player2wep) && curse >= 1){
 				wep = 125;
 			}
 		}
-	}
+	}*/
+	//cursed gun gun
 
+	//cursed wep convert
 	if(global.options.protochest_convert == true && curse >= 1){
 		switch (wep){
 			//machine gun
@@ -1173,9 +1218,11 @@ with(WepPickup){
 				break;
 		}
 	}
+	//cursed wep convert
 
 }
 
+//no weather in vault
 if(game_version > 9944){
 	with(BackCont){
 		if("it_is_vault" in self){
@@ -1185,7 +1232,9 @@ if(game_version > 9944){
 		}
 	}
 }
+//no weather in vault
 
+//last enemies display
 with(enemy){
 	if("counted" not in self){
 		counted = true;
@@ -1199,7 +1248,9 @@ with instances_matching_le(instances_matching(enemy,"counted",true), "my_health"
 			global.enemies_count -= 1;
 			//trace(global.enemies_count);
 }
+//last enemies display
 
+//cursed hyper crystall recolour
 if(global.areaSwitch != GameCont.area){
 	if(GameCont.area == 104){
 		sprite_replace_base64(sprHyperCrystalIdle, "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", 6);
@@ -1223,9 +1274,11 @@ if(global.areaSwitch != GameCont.area){
 		sprite_restore(sprBossIntro);
 	}
 }
+//cursed hyper crystall recolour
 
 global.areaSwitch = GameCont.area;
 
+//wild idpd
 if(global.options.wild_idpd == true){
 	for (i = 0; i < array_length(global.idpd_band);i++){
 		with (global.idpd_band[i]){
@@ -1236,7 +1289,9 @@ if(global.options.wild_idpd == true){
 		}
 	}
 }
+//wild idpd
 
+//lootable cars
 if(global.options.lootable_cars == true && instance_exists(Player)){
 	with(Car){
 		if(place_meeting(x,y,Player)){
@@ -1254,7 +1309,9 @@ if(global.options.lootable_cars == true && instance_exists(Player)){
 		}
 	}
 }
+//lootable cars
 
+//chicken reminder
 if(global.options.chicken_reminder == true){
 	if(instance_exists(Portal) && instance_exists(Player) && instance_exists(WepPickup)){
 		with (Player){
@@ -1268,7 +1325,9 @@ if(global.options.chicken_reminder == true){
 		global.is_player_notified = false
 	}
 }
+//chicken reminder
 
+//hardmode mod vans
 if(global.options.hardmodemod_3dvans == true){
 	with Van{
 		with instance_create(x,y,CustomObject){
@@ -1316,25 +1375,32 @@ if(global.options.hardmodemod_3dvans == true){
 		instance_delete(id)
 	}
 }
+//hardmode mod vans
 
+//bugfix to prevent unwanted addinational guardians on crown pickup/statue destroyment
 with(Torch){
 	if(place_meeting(x,y,GuardianStatue)){
 		instance_delete(self);
 	}
 }
+//bugfix to prevent unwanted addinational guardians on crown pickup/statue destroyment
 
+//increased ESP enemies factor
 if(GameCont.crown == crwn_blood && global.enemy_factor != 1.5){
 	global.enemy_factor = 1.5;
 }
+//increased ESP enemies factor
 
 //Potential fix of idpd spawning in first ending
 if(instance_exists(LastCutscene)){
 	instance_delete(IDPDSpawn);
 }
+//Potential fix of idpd spawning in first ending
 
 
 with(Player){
 
+	//cursed gun gun
 	if(race != "steroids"){
 		if(global.player1wep != wep){
 			global.player1wep = wep;
@@ -1343,7 +1409,9 @@ with(Player){
 			global.player2wep = bwep;
 		}
 	}
+	//cursed gun gun
 
+	//captain speech if it is unused
 	if(GameCont.area == 106 && GameCont.subarea == 3){
 		if(snd_cptn != null){
 			if(snd_spch != snd_cptn){
@@ -1351,6 +1419,7 @@ with(Player){
 			}
 		}
 	}
+	//captain speech if it is unused
 
 	if(snd_idpd != null){
 		if(audio_is_playing(snd_idpd) && global.idpdyell_playing == false){
@@ -1362,6 +1431,7 @@ with(Player){
 	}
 }
 
+//projectile changes colours on deflect
 if(global.options.deflect_colour == true){
 	with(projectile){
     	if(hitid == 58){
@@ -1374,8 +1444,11 @@ if(global.options.deflect_colour == true){
 		}
 	}
 }
+//projectile changes colours on deflect
 
+//range meta buff
 if(global.options.rmb == true){
+	//too many rads
 	if(instance_exists(enemy) && global.options.idpd_seek == 2 && GameCont.hard > 9 && global.options.wild_idpd == true){
 		with(enemy){
 			if("lessrads" not in self && "raddrop" in self){
@@ -1384,9 +1457,10 @@ if(global.options.rmb == true){
 			}
 		}
 	}
+	//too many rads
 
 with(Wall){
-	if(instance_exists(Player)){
+	if(instance_exists(Player) && GameCont.area != 0){
 		target_x = instance_nearest(x,y,Player).x;
     	target_y = instance_nearest(x,y,Player).y;
     	if(point_distance(x,x,target_x,target_x) < 300 && point_distance(y,y,target_y,target_y) < 150){
@@ -1467,7 +1541,9 @@ with(CustomObject){
 		}
 	}
 }
+//range meta buff
 
+//idpd seek nerf of ultra option
 if(global.options.idpd_seek == 2 && GameCont.hard > 9){
 	with(Grunt){
     	if("RadHolder" not in self){
@@ -1609,18 +1685,22 @@ with(Shielder){
         }
 	}
 }
+//idpd seek nerf of ultra option
 
 //We are in a game so sprites after we come back in menu will restore
 if(!instance_exists(MenuGen)){
 	global.srim = false;
 }
+//We are in a game so sprites after we come back in menu will restore
 
 //We are in a menu and we need to restore sprites which was replaced
 if(instance_exists(MenuGen) && global.srim == false){
 	restoring_sprites();
 	global.srim = true;
 }
+//We are in a menu and we need to restore sprites which was replaced
 
+//ultra chest
 with (CustomObject){
 	if("UltraChest" in self){
 		global.ultrachest_id = id;
@@ -1662,6 +1742,7 @@ with (CustomObject){
 		}
 	}
 }
+//ultra chest
 
 /*with(WepPickup){
 	if(place_meeting(x,y,global.ultrachest_id) && id != global.ultraweapon_id && global.ultrachest_frame > 2 && global.weapon_deleted == false){
@@ -1670,12 +1751,15 @@ with (CustomObject){
 	}
 }*/
 
+//nerf of lightning crystal death effect
 with(Lightning){
 	if(team == 1){
 		damage = 5;
 	}
 }
+//nerf of lightning crystal death effect
 
+//replacing enemy fire proj with correct one
 with (Flame){
 	if(team == 1){
 		instance_change(TrapFire,false);
@@ -1683,12 +1767,16 @@ with (Flame){
 		event_perform(ev_create, 0);
 	}
 }
+//replacing enemy fire proj with correct one
 
+//fire explosions
 if(global.options.fire_explosions == true){
 	
+	//flares will not selfdetonate
 	with instances_matching(Grenade,"sprite_index",sprFlare){
 		fireproof = true;
 	}
+	//flares will not selfdetonate
 
 	for (i = 0; i < array_length(global.explosives);i++){
 		if(instance_exists(global.explosives[i])){
@@ -1710,18 +1798,42 @@ if(global.options.fire_explosions == true){
 		}
 	}
 }
+//fire explosions
 
+//hammerhead time
 if(global.options.hammerhead_time > 0){
 	if(GameCont.loops > 0 && global.early_hammerhead_compensation == false){
-		if(skill_get(26)){
-			GameCont.skillpoints += 1;
-		}
-		else{
-			skill_set(26, 1);
+		GameCont.skillpoints += 1;
+		if(!skill_get(26)){
+			global.hhti = true;
 		}
 		global.early_hammerhead_compensation = true;
 	}
 }
+
+//hammerhead time interface
+if(global.hhti == true){
+	with (SkillIcon){
+    	if(num > 0){
+        	instance_delete(self);
+    	}
+    	else{
+        	skill = 26;
+        	image_index = 26;
+        	name = "you will need it";
+        	text = "can disable in @wsettings@s#";
+        	LevCont.maxselect = 0;
+        	loc_set("LevCont:LevelUp","HAMMERHEAD TIME");
+        	loc_set("LevCont:SelectMutations","YOU WILL NEED IT");
+        	loc_set("LevCont:SelectMutations:1","YOU WILL NEED IT");
+        	loc_set("LevCont:InstallUpdates","YOU WILL NEED IT");
+        	loc_set("LevCont:InstallUpdates:1","YOU WILL NEED IT");
+    	}
+	}
+	global.hhti = false;
+}
+//hammerhead time interface
+//hammerhead time
 
 if(GameCont.area == 107){
 	global.rest_room = true;
@@ -1743,18 +1855,23 @@ if(GameCont.area == 100){
 		}
 	}*/
 
+//snow big bandit hitid
 if(GameCont.area == 5){
 	with(BanditBoss){
 		hitid = [sprBanditBossIdle,"Snow Big Bandit"];
-		}
 	}
+}
+//snow big bandit hitid	
 
+//jungle big bandit hitid
 if(GameCont.area == 105){
 	with(BanditBoss){
 		hitid = [sprBanditBossIdle,"Jungle Big Bandit"];
-		}
 	}
+}
+//jungle big bandit hitid
 
+//slowdown for new projectiles which isn't affected by euphoria (like some death effect projectiles)
 if(skill_get(12)){
 	with instances_matching(projectile,"newprojectile",true){
 		if("slowed" not in self){
@@ -1763,7 +1880,9 @@ if(skill_get(12)){
 		}
 	}
 }
+//slowdown for new projectiles which isn't affected by euphoria (like some death effect projectiles)
 
+//healthdown for new enemies health of which were reweritten by this mod
 if(skill_get(11)){
 	with instances_matching(Inspector,"IDPDTurret",1){
 		if("scared" not in self){
@@ -1773,8 +1892,10 @@ if(skill_get(11)){
 		}
 	}
 }
+//healthdown for new enemies health of which were reweritten by this mod
 
 //Just in case, i don't know any mods which gives you the possibility to escape the captain office legally (like it's supposed to be escapable) before L3 and which gaves you possibility to eneter HQ on later loops
+//captain dissappear because she is dead
 if(GameCont.area == 106 && GameCont.subarea == 3 && instance_exists(Player) && GameCont.loops == 3 && global.cap_dead == true){
 	if(instance_exists(LastIntro)){
 		wait 5;
@@ -1803,11 +1924,16 @@ if(GameCont.area == 106 && GameCont.subarea == 3 && instance_exists(Player) && G
 		instance_destroy();
 	}
 }
+//captain dissappear because she is dead
 
+//scrapyard osasis enter
+//scrapyard osasis enter dosen't move on inch
 with instances_matching(CustomHitme,"oasis_enter_scrapyard",1){
 	speed = 0;
 	}
+//scrapyard osasis enter dosen't move on inch
 
+//scrapyard osasis enter spawn
 if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont.area == 3 && GameCont.subarea == 1 && global.rest_room == false){
 	global.jungle_enabler_spawned = true;
 	wait 20;
@@ -1833,30 +1959,37 @@ if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont
 	
 	repeat(9) instance_create(10016,10016,Debris);
 }
+//scrapyard osasis enter spawn
 
 with instances_matching(CustomHitme,"oasis_enter_scrapyard",1){
+	//my attempt to fix blinking sprite after taking damage
 	if(sprite_index != spr_hurt){
-	sprite_index = spr_idle;
-}
-if(image_index > 2 && sprite_index == spr_hurt){
-	sprite_index = spr_idle;
-	image_index = 0;
-}
+		sprite_index = spr_idle;
+	}
+	if(image_index > 2 && sprite_index == spr_hurt){
+		sprite_index = spr_idle;
+		image_index = 0;
+	}
+	//my attempt to fix blinking sprite after taking damage
 
-if (my_health <= 0) {
-    instance_destroy();
+	if (my_health <= 0) {
+    	instance_destroy();
+	}
 }
-}
+//scrapyard osasis enter
 
+//jungle car sprites
 if(GameCont.area == 105 && instance_exists(Car)){
 	with(Car){
 		if(spr_idle != global.sprJungleCarIdle){
 			spr_idle = global.sprJungleCarIdle;
 			spr_hurt = global.sprJungleCarHurt;
-			}
 		}
 	}
+}
+//jungle car sprites
 
+//sand parcticles
 if(GameCont.area == 1 && global.options.no_new_parcticles == false && global.last_vault == false){
 	if(global.snowspawn_controller_created == false){
 		with(instance_create(10016,10016,CustomObject)){
@@ -1894,7 +2027,9 @@ if(GameCont.area == 1 && global.options.no_new_parcticles == false && global.las
 					}
 	}
 }
-	
+//sand parcticles
+
+//rad parcticles	
 if(GameCont.area == 7 && global.options.no_new_parcticles == false && global.last_vault == false){
 	if(global.snowspawn_controller_created == false){
 		with(instance_create(10016,10016,CustomObject)){
@@ -1922,7 +2057,9 @@ if(GameCont.area == 7 && global.options.no_new_parcticles == false && global.las
 					}
 	}
 }
+//rad parcticles
 
+//parctilces resprites
 with(SnowFlake){
 	if("sand" in self){
 		y -= 1;
@@ -1946,7 +2083,9 @@ with(SnowFlake){
 		y -= 3;
 	}
 }
-	
+//parctilces resprites
+
+//free jungles for winter city (i need to add random spawn point near player but away from portal and on floor)	
 if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont.area == 5 && GameCont.subarea == 1 && global.rest_room == false){
 	global.jungle_enabler_spawned = true;
 	wait 20;
@@ -1959,11 +2098,13 @@ if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont
 		}
 	sound_play(sndWallBreakJungle);
 	}
+//free jungles for winter city
 	
 //Salamander sound fix
 if(!instance_exists(Salamander) && audio_is_playing(sndSalamanderFireLoop)){
 	sound_stop(sndSalamanderFireLoop);
 	}
+//Salamander sound fix	
 	
 //Tips
 if(global.inner_chance_proc == false){
@@ -1979,8 +2120,12 @@ var r4 = irandom(200);
 
 if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip_shown == false){
 
-	if(r4 == 0 && Player.race == "horror"){
-		GenCont.tip = "are you feeling it? ";
+	if(r4 == 0){
+		with(Player){
+			if(race == "horror"){
+				GenCont.tip = "are you feeling it? ";
+			}
+		}
 	}
 
 	if(r4 == 1){
@@ -2004,7 +2149,7 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 	}
 	
 	if(r4 == 6 && (GameCont.area == 2 || (GameCont.area == 7 && global.eem > 0) || (GameCont.loops > 0 && (GameCont.area == 3 || GameCont.area == 4 || (GameCont.area == 6 || GameCont.area == 101 || GameCont.area == 105) && global.eem > 0)))){
-		GenCont.tip = "eat flakes, not flaks";
+		GenCont.tip = "eat @yflakes@s, not @rflaks@s";
 	}
 
 	if(r4 == 7 && GameCont.seenhq == 1){
@@ -2024,8 +2169,12 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		GenCont.tip = "zuigerphobia";
 	}*/
 	
-	if(r4 == 8 && Player.race == "venuz" && global.options.fix_venus_car == true){
-		GenCont.tip = "they fixed the best @ycar!@s";
+	if(r4 == 8 && global.options.fix_venus_car == true){
+		with(Player){
+			if(race == "venuz"){
+				GenCont.tip = "they fixed the best @ycar!@s";
+			}
+		}
 	}
 	
 	if(r4 == 9 && global.options.l5cap != false && global.cap_spawned == false && GameCont.loops == 4){
@@ -2049,7 +2198,7 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 	}
 
 	if(r4 == 14 && (GameCont.area == 4 || GameCont.area == 104)){
-		GenCont.tip = "Generating Cobweb";
+		GenCont.tip = "generating @wcobweb@s";
 	}
 	
 	//ultra shovel
@@ -2086,31 +2235,52 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 	}
 	
 	//ultra crossbow
-	if(Player.wep == 94 && Player.race == "chicken" && global.onetimetip_shown.chicken == false){
-		GenCont.tip = "why did the chicken @gultracross@s the road";
-		global.onetimetip_shown.chicken = true;
+	with(Player){
+		if(wep == 94 && race == "chicken" && global.onetimetip_shown.chicken == false){
+			GenCont.tip = "why did the chicken @gultracross@s the road";
+			global.onetimetip_shown.chicken = true;
+		}
 	}
+	//ultra crossbow
 	
 	if(r4 == 20 && GameCont.loops > 2){
 		GenCont.tip = "not the freaks!";
 	}
 	
 	//all golden weapons
-	if(r4 == 21 && (Player.wep == 39 || Player.wep == 40 || Player.wep == 41 || Player.wep == 42 || Player.wep == 43 || Player.wep == 44 || Player.wep == 45|| Player.wep == 98 || Player.wep == 99 || Player.wep == 100 || Player.wep == 101 || Player.wep == 102 || Player.wep == 103 || Player.wep == 122 || Player.wep == 123 || Player.wep == 127)){
-		GenCont.tip = "you are filled with a sense of @yjuandice@s";
+	if(r4 == 21){
+		with(Player){
+			if(wep == 39 || wep == 40 || wep == 41 || wep == 42 || wep == 43 || wep == 44 || wep == 45|| wep == 98 || wep == 99 || wep == 100 || wep == 101 || wep == 102 || wep == 103 || wep == 122 || wep == 123 || wep == 127){
+				GenCont.tip = "you are filled with a sense of @yjuandice@s";
+			}
+		}
 	}
+	//all golden weapons
 	
-	if(r4 == 22 && Player.race == "eyes" && skill_get(mut_throne_butt) == 1){
-		GenCont.tip = "2attractive4em";
+	if(r4 == 22 && skill_get(mut_throne_butt) == 1){
+		with(Player){
+			if(race == "eyes"){
+				GenCont.tip = "2attractive4em";
+			}
+		}
 	}
 	
 	//laser cannon
-	if(r4 == 23 && Player.wep == 55 && skill_get(mut_laser_brain) == 1){
-		GenCont.tip = "ama firin' mah @glasor@s. @qblaaarg!@s";
+	if(r4 == 23 && skill_get(mut_laser_brain) == 1){
+		with(Player){
+			if(wep == 55){
+				GenCont.tip = "ama firin' mah @glasor@s. @qblaaarg!@s";
+			}
+		}
 	}
+	//laser cannon
 	
-	if(r4 == 24 && Player.race == "skeleton"){
-		GenCont.tip = "call an @rambulance@s... but not for me!";
+	if(r4 == 24){
+		with(Player){
+			if(race == "skeleton"){
+				GenCont.tip = "call an @rambulance@s... but not for me!";
+			}
+		}
 	}
 	
 	if(r4 == 25 && GameCont.loops > 0 && global.options.death_effects == true){
@@ -2133,11 +2303,12 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		GenCont.tip = "spawning season";
 	}
 
-	if(r4 == 30 && GameCont.hard < 10 && global.options.nes == true){
+	//it`s part of a history ;)
+	/*if(r4 == 30 && GameCont.hard < 10 && global.options.nes == true){
 		GenCont.tip = "@bshielder@s jumpscare";
-	}
+	}*/
 
-	if(r4 == 31 && (GameCont.area == 5 || GameCont.area == 6 || ((GameCont.area == 7 || GameCont.area == 106) && GameCont.loops == 2)) && global.options.diropf == true && global.eem > 0){
+	if(r4 == 31 && ((GameCont.area == 5 || GameCont.area == 6 || ((GameCont.area == 7 || GameCont.area == 106) && GameCont.loops == 2)) || global.options.wild_idpd == true) && global.options.diropf == true && global.eem > 0){
 		GenCont.tip = "@bthey@s will @wsleep...@s @rforever...@s";
 	}
 
@@ -2163,15 +2334,20 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 	}
 
 	if(r4 == 36){
-		if(global.options.diropf == true){
-			if(GameCont.loops > 2){
-				GenCont.tip = "@bthe dead@s are @rrestless!@s";
+		if(global.options.wild_idpd == false){
+			if(global.options.diropf == true){
+				if(GameCont.loops > 2){
+					GenCont.tip = "@bthe dead@s are @rrestless!@s";
+				}
+			}
+			else{
+				if(((GameCont.area == 5 || GameCont.area == 6 || ((GameCont.area == 7 || GameCont.area == 106) && GameCont.loops > 1)) && global.eem > 0) || (global.options.idpd_mashup == true && GameCont.loops > 1) || GameCont.loops > 2){
+					GenCont.tip = "@bthe dead@s are @rrestless!@s";
+				}
 			}
 		}
 		else{
-			if(((GameCont.area == 5 || GameCont.area == 6 || ((GameCont.area == 7 || GameCont.area == 106) && GameCont.loops > 1)) && global.eem > 0) || (global.options.idpd_mashup == true && GameCont.loops > 1) || GameCont.loops > 2){
-				GenCont.tip = "@bthe dead@s are @rrestless!@s";
-			}
+			GenCont.tip = "@bthe dead@s are @rrestless!@s";
 		}
 	}
 
@@ -2179,46 +2355,80 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		GenCont.tip = "did you enable @radblock?@s";
 	}
 
-	if(r4 == 38 && Player.race == "robot"){
-		GenCont.tip = "every line of code written with love";
+	if(r4 == 38){
+		with (Player){
+			if(race == "robot"){
+				GenCont.tip = "every line of code written with love";
+			}
+		}
 	}
 
+	//@TRUEcoiness, что это за подсказка я забыл (хоть это написанно в шуточной манере, я серьёзно забыл)
 	if(r4 == 39 && GameCont.area == 7 && GameCont.subarea == 1){
 		GenCont.tip = "you feel a burst of excitement!";
 	}
+	//@TRUEcoiness, что это за подсказка я забыл (хоть это написанно в шуточной манере, я серьёзно забыл)
 
 	//party gun
-	if(r4 == 40 && Player.wep == 82){
-		GenCont.tip = "you feel strangely at peace";
+	if(r4 == 40){
+		with(Player){
+			if(wep == 82){
+				GenCont.tip = "you feel strangely at peace";
+			}
+		}
 	}
+	//party gun
 
-	if(r4 == 41 && Player.chickendeaths > 0){
-		GenCont.tip = "why i am @wfelling@s @rhunger?@s";
+	if(r4 == 41){
+		with(Player){
+			if(chickendeaths > 0){
+				GenCont.tip = "why i am @wfelling@s @rhunger?@s";
+			}
+		}
 	}
 
 	if(r4 == 42 && global.options.rmb == true){
 		GenCont.tip = "could be here a crawlspace?";
 	}
 
+	if(r4 == 43 && global.options.rmb == true){
+		with(Player){
+			if(race == "eyes"){
+				GenCont.tip = "@wkeep your eyes@s buttered till the end";
+			}
+		}
+	}
+
 	//golden grenade launcher
-	if(r4 == 43 && global.options.rmb == true && Player.wep == 44){
-		GenCont.tip = "i wish there would be a @ygolden bomb@s. @woh. wait.@s";
+	if(r4 == 44 && global.options.rmb == true){
+		with(Player){
+			if(wep == 44){
+				GenCont.tip = "i wish there would be a @ygolden bomb@s. @woh. wait.@s";
+			}
+		}
+	}
+	//golden grenade launcher
+
+	if(r4 == 45 && GameCont.area == 103){
+		with(Player){
+			if(race == "venuz"){
+				GenCont.tip = "@yb@s movie";
+			}
+		}
 	}
 
-	if(r4 == 44 && global.options.rmb == true && Player.race == "eyes"){
-		GenCont.tip = "@wkeep your eyes@s buttered till the end";
-	}
-
-	if(r4 == 45 && GameCont.area == 103 && Player.race == "venuz"){
-		GenCont.tip = "@yb@s move i";
-	}
-
+	//@TRUEcoiness, что это за подсказка я забыл (хоть это написанно в шуточной манере, я серьёзно забыл)
 	if(r4 == 46 && GameCont.area == 103 && GameCont.loops > 0){
 		GenCont.tip = "@ybusiness@s is @rbooming@s";
 	}
+	//@TRUEcoiness, что это за подсказка я забыл (хоть это написанно в шуточной манере, я серьёзно забыл)
 
-	if(r4 == 47 && Player.race == "robot"){
-		GenCont.tip = "sample text";
+	if(r4 == 47){
+		with(Player){
+			if(race == "robot"){
+				GenCont.tip = "sample text";
+			}
+		}
 	}
 
 	if(r4 == 48 && global.options.wild_idpd == true){
@@ -2382,6 +2592,7 @@ if(GameCont.area == 105){
 
 	
 if(global.abd == true && GameCont.area == 1 && global.sprites_swapped == false && instance_exists(BackCont)){
+	sound_play_music(mus1b);
 	replacing_sprites();
 	background_color = make_color_rgb(106, 122, 175);
 	BackCont.shadcol = c_black;
@@ -2391,6 +2602,7 @@ if(global.abd == true && GameCont.area == 1 && global.sprites_swapped == false &
 
 
 if(global.abd == true && GameCont.area == 3 && global.sprites_swapped == false && instance_exists(BackCont)){
+	sound_play_music(mus3b);
 	replacing_sprites();
 	//background_color = make_color_rgb(51, 57, 71);
 	background_color = make_color_rgb(40, 43, 91);
@@ -2400,6 +2612,7 @@ if(global.abd == true && GameCont.area == 3 && global.sprites_swapped == false &
 	}
 	
 if(global.abd == true && GameCont.area == 5 && global.sprites_swapped == false && instance_exists(BackCont)){
+	sound_play_music(mus5b);
 	replacing_sprites();	
 	background_color = make_color_rgb(59, 55, 124);
 	BackCont.shadcol = c_black;
@@ -2512,21 +2725,51 @@ if(GameCont.loops > 2 && global.options.enemies_mutations == true){
 }
 
 if(global.iattbd == false){
-	if(irandom(4) < 1 && global.options.add_dark == true && (GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5 || GameCont.area == 103)){
-		global.iattbd = true;
-		TopCont.darkness = 1;
-		if(GameCont.area == 1){
-			sound_play_music(mus1b);
+	if(global.options.add_dark == true){
+		if(GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5){
+			if(GameCont.subarea == GameCont.loops){
+				if(GameCont.loops < 4 && GameCont.loops > 0){
+					TopCont.darkness = 1;
+					global.abd = true;
+				}
 			}
-		if(GameCont.area == 3){
-			sound_play_music(mus3b);
+			if(GameCont.loops > GameCont.subarea){
+				if(GameCont.loops == 4){
+					if(GameCont.subarea < 3){
+						TopCont.darkness = 1;
+						global.abd = true;
+					}
+				}
+				if(GameCont.loops == 5){
+					if(GameCont.subarea == 1 || GameCont.subarea == 3){
+						TopCont.darkness = 1;
+						global.abd = true;
+					}
+				}
+				if(GameCont.loops == 6){
+					if(GameCont.subarea > 1){
+						TopCont.darkness = 1;
+						global.abd = true;
+					}
+				}
+				if(GameCont.loops == 7){
+					TopCont.darkness = 1;
+					global.abd = true;
+				}
+				if(GameCont.loops > 7){
+					if(irandom(2) < 1){
+						TopCont.darkness = 1;
+						global.abd = true;
+					}
+				}
 			}
-		if(GameCont.area == 5){
-			sound_play_music(mus5b);
+		}
+		if(GameCont.area == 101 || GameCont.area == 103){
+			if(irandom(3) < 1){
+				TopCont.darkness = 1;
+				global.abd = true;
 			}
-		global.abd = true;
-	}
-	else{
+		}
 		global.iattbd = true;
 	}
 }
@@ -4147,7 +4390,7 @@ if(GameCont.nochest > 0){
 }
 
 
-global.aowb = 10 + (GameCont.hard / 2);
+global.aowb = 2 + (GameCont.hard / 2);
 
 
 if(GameCont.area != 7 && GameCont.area != 5 && global.options.no_guards == true){
@@ -4433,12 +4676,26 @@ if((GameCont.area == 1 || GameCont.area == 2 || GameCont.area == 3 || GameCont.a
 				}
 				with instance_create(x,y,random_idpd){
 					switch (random_idpd){
+						case Grunt:
+							spr_idle = global.sprGruntRadIdle;
+							spr_walk = global.sprGruntRadWalk;
+							spr_hurt = global.sprGruntRadHurt;
+							spr_dead = global.sprGruntRadDead;
+							hitid = global.RadGruntHitid;
+							break;
 						case Inspector:
 							spr_idle = global.sprInspectorRadIdle;
 							spr_walk = global.sprInspectorRadWalk;
 							spr_hurt = global.sprInspectorRadHurt;
 							spr_dead = global.sprInspectorRadDead;
 							hitid = global.RadInspectorHitid;
+							break;
+						case Shielder:
+							spr_idle = global.sprShielderRadIdle;
+							spr_walk = global.sprShielderRadWalk;
+							spr_hurt = global.sprShielderRadHurt;
+							spr_dead = global.sprShielderRadDead;
+							hitid = global.RadShielderHitid;
 							break;
 						default:
 							image_blend = make_color_hsv(100,150,255);
@@ -4456,6 +4713,13 @@ if((GameCont.area == 1 || GameCont.area == 2 || GameCont.area == 3 || GameCont.a
 				var random_idpd = choose(Grunt,Grunt,Grunt,Inspector,Shielder,EliteGrunt,EliteInspector,EliteShielder);
 				with instance_create(x,y,random_idpd){
 					switch (random_idpd){
+						case EliteGrunt:
+							spr_idle = global.sprEliteGruntRadIdle;
+							spr_walk = global.sprEliteGruntRadWalk;
+							spr_hurt = global.sprEliteGruntRadHurt;
+							spr_dead = global.sprEliteGruntRadDead;
+							hitid = global.RadEliteGruntHitid;
+							break;
 						case EliteInspector:
 							spr_idle = global.sprEliteInspectorRadIdle;
 							spr_walk = global.sprEliteInspectorRadWalk;
@@ -4470,12 +4734,26 @@ if((GameCont.area == 1 || GameCont.area == 2 || GameCont.area == 3 || GameCont.a
 							spr_dead = global.sprEliteShielderRadDead;
 							hitid = global.RadEliteShielderHitid;
 							break;
+						case Grunt:
+							spr_idle = global.sprGruntRadIdle;
+							spr_walk = global.sprGruntRadWalk;
+							spr_hurt = global.sprGruntRadHurt;
+							spr_dead = global.sprGruntRadDead;
+							hitid = global.RadGruntHitid;
+							break;
 						case Inspector:
 							spr_idle = global.sprInspectorRadIdle;
 							spr_walk = global.sprInspectorRadWalk;
 							spr_hurt = global.sprInspectorRadHurt;
 							spr_dead = global.sprInspectorRadDead;
 							hitid = global.RadInspectorHitid;
+							break;
+						case Shielder:
+							spr_idle = global.sprShielderRadIdle;
+							spr_walk = global.sprShielderRadWalk;
+							spr_hurt = global.sprShielderRadHurt;
+							spr_dead = global.sprShielderRadDead;
+							hitid = global.RadShielderHitid;
 							break;
 						default:
 							image_blend = make_color_hsv(100,150,255);

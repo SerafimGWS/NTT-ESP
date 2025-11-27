@@ -1467,9 +1467,9 @@ with(Wall){
 			if("goodiescheck" not in self && global.aowb > 0 && GameCont.area != 106 && GameCont.area != 107){
 				if(random(50) < 1){
 					goodiescheck = true;
-					if(global.aowb != 0 && global.aowb <= 1){
+					/*if(global.aowb != 0 && global.aowb <= 1){
 						with instance_create(Player.x,Player.y,PopupText) text = "@pall stashes found@s";
-					}
+					}*/
 					global.aowb -= 1;
 					with(instance_create(x,y,CustomObject)){
 					//trace("Bonus!");
@@ -1503,7 +1503,7 @@ with(Wall){
 }
 
 with(CustomObject){
-	if(!place_meeting(x,y,Wall)){
+	if(place_meeting(x,y,FloorExplo)){
 		if("bonus_type" in self){
 			switch (bonus_type){
 				case 0:
@@ -1803,6 +1803,17 @@ if(global.options.fire_explosions == true){
 //hammerhead time
 if(global.options.hammerhead_time > 0){
 	if(GameCont.loops > 0 && global.early_hammerhead_compensation == false){
+		if(skill_get(26)){
+			GameCont.skillpoints += 1;
+		}
+		else{
+			skill_set(26, 1);
+		}
+		global.early_hammerhead_compensation = true;
+	}
+}
+/*if(global.options.hammerhead_time > 0){
+	if(GameCont.loops > 0 && global.early_hammerhead_compensation == false){
 		GameCont.skillpoints += 1;
 		if(!skill_get(26)){
 			global.hhti = true;
@@ -1831,7 +1842,7 @@ if(global.hhti == true){
     	}
 	}
 	global.hhti = false;
-}
+}*/
 //hammerhead time interface
 //hammerhead time
 
@@ -2363,11 +2374,11 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		}
 	}
 
-	//@TRUEcoiness, что это за подсказка я забыл (хоть это написанно в шуточной манере, я серьёзно забыл)
+	//TRUEКонь: Отсылка на spelunky 2 и город золота, легендарное место
 	if(r4 == 39 && GameCont.area == 7 && GameCont.subarea == 1){
 		GenCont.tip = "you feel a burst of excitement!";
 	}
-	//@TRUEcoiness, что это за подсказка я забыл (хоть это написанно в шуточной манере, я серьёзно забыл)
+	//TRUEКонь: Отсылка на spelunky 2 и город золота, легендарное место
 
 	//party gun
 	if(r4 == 40){
@@ -2417,11 +2428,11 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		}
 	}
 
-	//@TRUEcoiness, что это за подсказка я забыл (хоть это написанно в шуточной манере, я серьёзно забыл)
+	//TRUEКонь: Кроме просто шутки я ничего не помню
 	if(r4 == 46 && GameCont.area == 103 && GameCont.loops > 0){
 		GenCont.tip = "@ybusiness@s is @rbooming@s";
 	}
-	//@TRUEcoiness, что это за подсказка я забыл (хоть это написанно в шуточной манере, я серьёзно забыл)
+	//TRUEКонь: Кроме просто шутки я ничего не помню
 
 	if(r4 == 47){
 		with(Player){
@@ -2447,10 +2458,15 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 		GenCont.tip = "black parrots";
 	}
 
-	if(r4 == 52 && global.options.protochest_convert == true){
-		if(((Player.wep == 1 || Player.wep == 3 || Player.wep == 4 || Player.wep == 5 || Player.wep == 6 || Player.wep == 7 || Player.wep == 17 || Player.wep == 18 || Player.wep == 19 || Player.wep == 21 || Player.wep == 27 || Player.wep == 30 || Player.wep == 34 || Player.wep == 46 || Player.wep == 47 || Player.wep == 82 || Player.wep == 120) && Player.curse > 0) || ((Player.bwep == 1 || Player.bwep == 3 || Player.bwep == 4 || Player.bwep == 5 || Player.bwep == 6 || Player.bwep == 7 || Player.bwep == 17 || Player.bwep == 18 || Player.bwep == 19 || Player.bwep == 21 || Player.bwep == 27 || Player.bwep == 30 || Player.bwep == 34 || Player.bwep == 46 || Player.bwep == 47 || Player.bwep == 82 || Player.bwep == 120) && Player.bcurse > 0) || (((Player.wep == 1 || Player.wep == 3 || Player.wep == 4 || Player.wep == 5 || Player.wep == 6 || Player.wep == 7 || Player.wep == 17 || Player.wep == 18 || Player.wep == 19 || Player.wep == 21 || Player.wep == 27 || Player.wep == 30 || Player.wep == 34 || Player.wep == 46 || Player.wep == 47 || Player.wep == 82 || Player.wep == 120) && Player.curse > 0) && ((Player.bwep == 1 || Player.bwep == 3 || Player.bwep == 4 || Player.bwep == 5 || Player.bwep == 6 || Player.bwep == 7 || Player.bwep == 17 || Player.bwep == 18 || Player.bwep == 19 || Player.bwep == 21 || Player.bwep == 27 || Player.bwep == 30 || Player.bwep == 34 || Player.bwep == 46 || Player.bwep == 47 || Player.bwep == 82 || Player.bwep == 120) && Player.bcurse > 0)))
-		GenCont.tip = "@q@pc@qu@qr@qs@qe@qd @qi@qm@qa@qg@qe";
+	//cursed non golden versions of golden weapons with weapon convertions option
+	if(global.options.protochest_convert == true){
+		with(Player){
+			if(((wep == 1 || wep == 3 || wep == 4 || wep == 5 || wep == 6 || wep == 7 || wep == 17 || wep == 18 || wep == 19 || wep == 21 || wep == 27 || wep == 30 || wep == 34 || wep == 46 || wep == 47 || wep == 82 || wep == 120) && curse > 0) || ((bwep == 1 || bwep == 3 || bwep == 4 || bwep == 5 || bwep == 6 || bwep == 7 || bwep == 17 || bwep == 18 || bwep == 19 || bwep == 21 || bwep == 27 || bwep == 30 || bwep == 34 || bwep == 46 || bwep == 47 || bwep == 82 || bwep == 120) && bcurse > 0) || (((wep == 1 || wep == 3 || wep == 4 || wep == 5 || wep == 6 || wep == 7 || wep == 17 || wep == 18 || wep == 19 || wep == 21 || wep == 27 || wep == 30 || wep == 34 || wep == 46 || wep == 47 || wep == 82 || wep == 120) && curse > 0) && ((bwep == 1 || bwep == 3 || bwep == 4 || bwep == 5 || bwep == 6 || bwep == 7 || bwep == 17 || bwep == 18 || bwep == 19 || bwep == 21 || bwep == 27 || bwep == 30 || bwep == 34 || bwep == 46 || bwep == 47 || bwep == 82 || bwep == 120) && bcurse > 0))){
+				GenCont.tip = "@q@pc@qu@qr@qs@qe@qd @qi@qm@qa@qg@qe";
+			}
+		}
 	}
+	//cursed non golden versions of golden weapons with weapon convertions option
 	
 	//r4 > 52 && r4 < 99
 	
@@ -2544,6 +2560,7 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 	}
 	global.tip_shown = true;
 }
+//Tips
 
 if(instance_exists(BigMaggot)){
 	if(GameCont.area != 1  && GameCont.area != 101 && GameCont.area != 105 && GameCont.area != 0 && GameCont.area != "banditcamp" && GameCont.area != "jungle" && GameCont.area != "night_desert" && GameCont.area != "oasis" && GameCont.area != "scorpionboss" && GameCont.area != "coast"){
@@ -2567,7 +2584,8 @@ if(!instance_exists(Player) && instance_exists(EnemyHorror) && global.horror_tau
 	global.horror_taunted = true;
 	wait 20;
 	sound_play(sndMutant11Thrn);
-	}
+}
+//Horror taunting
 
 //Changing sprites
 if(GameCont.area == 5){
@@ -2577,8 +2595,8 @@ if(GameCont.area == 5){
 		spr_hurt = global.SnowSniperHurt;
 		spr_dead = global.SnowSniperDead;
 		hitid = global.SnowSniperHitid;
-		}
 	}
+}
 	
 if(GameCont.area == 105){
 	with(Sniper){
@@ -2587,9 +2605,8 @@ if(GameCont.area == 105){
 		spr_hurt = global.sprJungleSniperHurt;
 		spr_dead = global.sprJungleSniperDead;
 		hitid = global.JungleSniperHitid;
-		}
 	}
-
+}
 	
 if(global.abd == true && GameCont.area == 1 && global.sprites_swapped == false && instance_exists(BackCont)){
 	sound_play_music(mus1b);
@@ -2598,7 +2615,7 @@ if(global.abd == true && GameCont.area == 1 && global.sprites_swapped == false &
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
 	global.sprites_swapped = true;
-	}
+}
 
 
 if(global.abd == true && GameCont.area == 3 && global.sprites_swapped == false && instance_exists(BackCont)){
@@ -2609,7 +2626,7 @@ if(global.abd == true && GameCont.area == 3 && global.sprites_swapped == false &
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
 	global.sprites_swapped = true;
-	}
+}
 	
 if(global.abd == true && GameCont.area == 5 && global.sprites_swapped == false && instance_exists(BackCont)){
 	sound_play_music(mus5b);
@@ -2618,15 +2635,18 @@ if(global.abd == true && GameCont.area == 5 && global.sprites_swapped == false &
 	BackCont.shadcol = c_black;
 	TopCont.fog = sprFog2;
 	global.sprites_swapped = true;
-	}
+}
+//Changing sprites
 
-
+//guaranteed escape from hq
 if(GameCont.area == 106 && GameCont.subarea = 3){
 	with(Van){
 		freak = 0;
-		}
 	}
+}
+//guaranteed escape from hq
 
+//enemies mutations
 if(GameCont.loops > 0 && global.options.enemies_mutations == true){
 
 	if(instance_exists(Gator) || instance_exists(BuffGator)){
@@ -2723,9 +2743,22 @@ if(GameCont.loops > 2 && global.options.enemies_mutations == true){
 		event_perform(ev_create, 0);
 	}
 }
+//enemies mutations
 
+//night areas
+//area tries to became dark
 if(global.iattbd == false){
-	if(global.options.add_dark == true){
+	if(irandom(4) < 1 && global.options.add_dark == true && (GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5 || GameCont.area == 103)){
+		global.iattbd = true;
+		TopCont.darkness = 1;
+		global.abd = true;
+	}
+	else{
+		global.iattbd = true;
+	}
+}
+//area tries to became dark
+	/*if(global.options.add_dark == true){
 		if(GameCont.area == 1 || GameCont.area == 3 || GameCont.area == 5){
 			if(GameCont.subarea == GameCont.loops){
 				if(GameCont.loops < 4 && GameCont.loops > 0){
@@ -2772,30 +2805,34 @@ if(global.iattbd == false){
 		}
 		global.iattbd = true;
 	}
-}
-	
+}*/
+//night areas
+
+//music for bosses	
 if(instance_exists(Last) && !audio_is_playing(musBoss8)){
 	sound_play_music(musBoss8);
-	}
+}
 	
 if(instance_exists(CrownGuardian) && global.music_for_bosses == false && GameCont.area != 100){
 	sound_play_music(mus100b);
 	global.music_for_bosses = true;
-	}
+}
 	
 if(instance_exists(BanditBoss) && global.music_for_bosses == false && GameCont.area != 1){
 	sound_play_music(musBoss1);
 	global.music_for_bosses = true;
-	}
+}
+//music for bosses
 
 //Makes IDPD seek the player if he holds IDPD Weapon
 with (Player){
 	//hyper weapons and rogue rifle
-		if((wep == 26 || wep == 54 || wep == 118 || (wep == 81 && race != "rogue")) && global.idpd_noticed_your_weapon == false && global.options.idpd_seek == 2){
-			global.idpd_noticed_your_weapon = true;
-			instance_create(0,0,WantPopo);
-			}
-	}	
+	if((wep == 26 || wep == 54 || wep == 118 || (wep == 81 && race != "rogue")) && global.idpd_noticed_your_weapon == false && global.options.idpd_seek == 2){
+		global.idpd_noticed_your_weapon = true;
+		instance_create(0,0,WantPopo);
+	}
+}
+//Makes IDPD seek the player if he holds IDPD Weapon	
 
 //Makes weapons cursed in cursed crystal caves
 if(GameCont.area == 104 && global.options.cursed_caves_rework == true){
@@ -2806,6 +2843,7 @@ if(GameCont.area == 104 && global.options.cursed_caves_rework == true){
 	global.ccc = true;
 	}
 }
+//Makes weapons cursed in cursed crystal caves
 
 //Uncurse your weapons after exiting cursed crystal caves on L1+ 
 if(GameCont.area != 104 && global.ccc == true){
@@ -2818,9 +2856,12 @@ if(GameCont.area != 104 && global.ccc == true){
 		}
 	}
 }
+//Uncurse your weapons after exiting cursed crystal caves on L1+ 
 		
 //Death effects
+//Giving death effect tags and some stat changes
 if (global.options.death_effects == true) {
+	//L1+
 	if(GameCont.loops > 0){
 
 		with(JungleFly){
@@ -2867,7 +2908,9 @@ if (global.options.death_effects == true) {
 			}
 		}	
 	}
-	
+	//L1+
+
+	//L2+
 	if (GameCont.loops > 1) {
 
 		with(Jock){
@@ -2943,7 +2986,9 @@ if (global.options.death_effects == true) {
 			}
 		}
 	}
-	
+	//L2+
+
+	//L3+
 	if (GameCont.loops > 2) {
 
 		with(DogGuardian){
@@ -2997,15 +3042,14 @@ if (global.options.death_effects == true) {
 			}
 		}
 		
-		/*if(GameCont.area == 105){
-			with instances_matching_le(BanditBoss,"my_health", 0) {
-				instance_create(x,y,ToxicDelay);
-				sound_play(sndToxicBoltGas);
-				instance_create(x + irandom(20),y + irandom(20),Rad);
-				instance_create(x + irandom(20),y + irandom(20),Rad);
-				instance_create(x + irandom(20),y + irandom(20),BigRad);
+		if(GameCont.area == 105){
+			with (BanditBoss) {
+				if("death_effect" not in self){
+				death_effect = true;
+				raddrop += 12;
 				}
-			}*/
+			}
+		}
 
 		with(EliteGrunt){
 			if("death_effect" not in self){
@@ -3013,7 +3057,9 @@ if (global.options.death_effects == true) {
 			}
 		}
 	}
-	
+	//L3+
+
+	//L4+
 	if (GameCont.loops > 3) {
 
 		with(LightningCrystal){
@@ -3056,8 +3102,11 @@ if (global.options.death_effects == true) {
 				}
 			}
 	}
+	//L4+
 }
+//Giving death effect tags and some stat changes
 
+//what does enemy does after death
 with instances_matching_le(Last, "my_health", 0) {
 			global.cap_dead = true;
 		}
@@ -3066,6 +3115,7 @@ with instances_matching_le(instances_matching(JungleFly,"death_effect",true), "m
 			instance_create(x,y,MaggotExplosion);
 		}
 
+//fire cannon explosion
 with instances_matching_le(instances_matching(Salamander,"death_effect",true), "my_health", 0) {
 			salamander_death();
 		}
@@ -3094,16 +3144,19 @@ with instances_matching_le(instances_matching(Van,"death_effect",true), "my_heal
 			instance_create(x,y,RogueStrike);
 		}
 
+//shoots bullet in direction of player
 with instances_matching_le(instances_matching(Bandit,"death_effect",true), "my_health", 0) {
 			bandit_death();
 			sound_play(sndEnemyFire);
 		}
 
+//shoots 3 bullets in direction of player
 with instances_matching_le(instances_matching(Wolf,"death_effect",true), "my_health", 0) {
 			wolf_death();
 			sound_play(sndEnemyFire);
 		}
 
+//shoots 5 pellets in direction of player
 with instances_matching_le(instances_matching(Molesarge,"death_effect",true), "my_health", 0) {
 			molesarge_death();
 			sound_play(sndMolesargeFire);
@@ -3113,11 +3166,13 @@ with instances_matching_le(instances_matching(OasisBoss,"death_effect",true), "m
 			repeat (5) instance_create(x + irandom(20),y + irandom(20),BoneFish);
 		}
 
+//shoots bullet in direction of player
 with instances_matching_le(instances_matching(Grunt,"death_effect",true), "my_health", 0) {
 			grunt_death();
 			sound_play(sndRogueRifle)
 		}
 
+//shoots slug in direction of player
 with instances_matching_le(instances_matching(Inspector,"death_effect",true), "my_health", 0) {
 			inspector_death();
 			sound_play(sndRogueRifle);
@@ -3128,6 +3183,7 @@ with instances_matching_le(instances_matching(Last,"death_effect",true), "my_hea
 			global.cap_spawned = true;
 		}
 
+//big guardian bullet explosion
 with instances_matching_le(instances_matching(DogGuardian,"death_effect",true), "my_health", 0) {
 			dog_guardian_death();
 		}
@@ -3137,6 +3193,7 @@ with instances_matching_le(instances_matching(Turret,"death_effect",true), "my_h
 			sound_play(sndExplosion);
 		}
 
+//spawns ultra grenade
 with instances_matching_le(instances_matching(ExploGuardian,"death_effect",true), "my_health", 0) {
 			explo_guardian_death();
 			sound_play(sndUltraGrenade);
@@ -3152,12 +3209,19 @@ with instances_matching_le(instances_matching(JungleAssassin,"death_effect",true
 			sound_play(sndToxicBoltGas);
 		}
 
+//spawns idpd grenade
 with instances_matching_le(instances_matching(EliteGrunt,"death_effect",true), "my_health", 0) {
 			elite_grunt_death();
 		}
 
+//lightning cannon ball explosion
 with instances_matching_le(instances_matching(LightningCrystal,"death_effect",true), "my_health", 0) {
 			lightning_crystal_death();
+		}
+
+with instances_matching_le(instances_matching(BanditBoss,"death_effect",true),"my_health", 0) {
+			instance_create(x,y,ToxicDelay);
+			sound_play(sndToxicBoltGas);
 		}
 
 with instances_matching(Corpse, "sprite_index", sprSmallGeneratorDead) {
@@ -3192,29 +3256,38 @@ with instances_matching(Corpse, "sprite_index", sprBigGeneratorDead) {
 			}
 		}
 
+//jungle sniper death effect
 with instances_matching_le(instances_matching(instances_matching(Sniper,"hit_id",global.JungleSniperHitid),"death_effect",true), "my_health", 0) {
 			instance_create(x,y,ToxicDelay);
 		}
+//what does enemy does after death
+//Death effects
 
+//pizza chest instead of hp chest in pizza sewers
 if(GameCont.area == 102 || GameCont.area == "pizza" || GameCont.area == "turtles"){
 	with(HealthChest){
 		sprite_index = sprPizzaChest1;
 		spr_dead = sprPizzaChestOpen;
-		}
 	}
+}
+//pizza chest instead of hp chest in pizza sewers
 
 //No IDPD Portals for Captain
 if(GameCont.area == 106 && GameCont.subarea == 3){
 	global.no_idpd_for_cap = true;
 }
+//No IDPD Portals for Captain
 
 //Disabling Darkness when Throne 2 appears
 if(instance_exists(Nothing2)){
 	TopCont.darkness = 0;
 	global.throne2_spawned = true;
 }
+//Disabling Darkness when Throne 2 appears
 
+//idpd mashup
 if(global.options.idpd_mashup == true){
+	//1-1 L2 - 0-1 L3
 	if((GameCont.area != 0 && GameCont.loops == 2) || (GameCont.area == 0 && GameCont.loops == 3)){
 
 		if(instance_exists(IDPDSpawn)){
@@ -3249,7 +3322,9 @@ if(global.options.idpd_mashup == true){
 			}
 		}
 	}
+	//1-1 L2 - 0-1 L3
 
+	//1-1 L3 - 0-1 L4
 	if((GameCont.area != 0 && GameCont.loops == 3) || (GameCont.area == 0 && GameCont.loops == 4)){
 
 		if(instance_exists(IDPDSpawn)){
@@ -3285,7 +3360,9 @@ if(global.options.idpd_mashup == true){
 			}
 		}
 	}
+	//1-1 L3 - 0-1 L4
 }
+//idpd mashup
 
 //QOL thing. When musBossDead playing and next area will be same b theme will play
 if((audio_is_playing(sndPortalLightning1) || audio_is_playing(sndPortalLightning2) || audio_is_playing(sndPortalLightning3) || audio_is_playing(sndPortalLightning4) || audio_is_playing(sndPortalLightning5) || audio_is_playing(sndPortalLightning6) || audio_is_playing(sndPortalLightning7) || audio_is_playing(sndPortalLightning8))){
@@ -3304,12 +3381,12 @@ if((audio_is_playing(sndPortalLightning1) || audio_is_playing(sndPortalLightning
 		global.playing_b_theme = true;
 	}
 
-
 	if (audio_is_playing(musBossDead) && GameCont.area == 7 && GameCont.subarea > 1){
 		sound_play_music(mus7b);
 		global.playing_b_theme = true;
 	}
 }
+//QOL thing. When musBossDead playing and next area will be same b theme will play
 
 //Fix of when boss is down in palace, nothing plays instead of musBossDead	
 if(GameCont.area == 7 && GameCont.subarea < 3){
@@ -3321,6 +3398,7 @@ if(GameCont.area == 7 && GameCont.subarea < 3){
 		global.palace_boss_dead = false;
 	}
 }
+//Fix of when boss is down in palace, nothing plays instead of musBossDead	
 
 //No Jocks
 if (global.options.no_jocks != false){
@@ -3328,6 +3406,7 @@ if (global.options.no_jocks != false){
 		instance_delete(id);
 	}
 }
+//No Jocks
 
 //No Early Shielders	
 if(GameCont.hard < 10 && global.options.nes == true){
@@ -3335,6 +3414,7 @@ if(GameCont.hard < 10 && global.options.nes == true){
 		GameCont.popolevel = 4;
 	}
 }
+//No Early Shielders
 
 //4 IDPD Portals instead of van in Labs
 with(WantVan){
@@ -3344,6 +3424,7 @@ with(WantVan){
 		instance_delete(id);
 	}
 }
+//4 IDPD Portals instead of van in Labs
 
 //No early Popo Freak revives
 with(WantRevivePopoFreak){
@@ -3351,6 +3432,7 @@ with(WantRevivePopoFreak){
 		instance_delete(id);
 	}
 }
+//No early Popo Freak revives
 
 // -------------------------------
 
@@ -3383,12 +3465,14 @@ if(!global.vault_torch_transformed && instance_exists(CrownGuardian) && global.o
     }
     global.vault_torch_transformed = true;
 }
+// Help in vault for CrownGuardian
 
 // LilHunter help
 if(instance_exists(LilHunterDie) && !global.lilhunter_revenged && global.options.death_effects == true){
     instance_create(0,0,VanSpawn);
     global.lilhunter_revenged = true;
 }
+// LilHunter help
 
 #define replacing_sprites
 
@@ -3402,6 +3486,7 @@ for (i = 0; i < array_length(global.fsprites_restore);i++){
 	sprite_restore(global.fsprites_restore[i]);
 }
 
+//area name display
 #define level_start
 setname();
 
@@ -3436,7 +3521,9 @@ switch(GameCont.area){
 		}
         
 }
+//area name display
 
+//last enemies display
 #define draw
 
 if(global.options.last_enemies_display == true && global.enemies_count <= (global.enemies_on_start / 10) && (GameCont.area != 7 && GameCont.subarea != 3) && GameCont.area != 0){
@@ -3459,7 +3546,9 @@ if(global.options.last_enemies_display == true && global.enemies_count <= (globa
 		}
 	}
 }
+//last enemies display
 
+//area name display
 #define draw_gui
 
 if (instance_exists(Player) && global.options.area_display == true){
@@ -3491,7 +3580,9 @@ if(global.options.hamamount == true){
 		}
 	}
 }
+//area name display
 
+//hardmode mod van
 #define makeavan_create(timing)
 
 with instance_create(10016,10016,CustomObject){
@@ -3663,7 +3754,9 @@ image_yscale = 3
 }
 repeat(10)
 instance_create(x+random_range(-30,30),x+random_range(-30,30),BlueFlame)
+//hardmode mod van
 
+//monster style for inspectors with rad chests
 #define rad_inspector
 
 with Player {
@@ -3671,7 +3764,9 @@ with Player {
 		motion_add(point_direction(other.x, other.y, x, y), 0.4)
 		}
 	}
+//monster style for inspectors with rad chests
 
+//drawing telekenesis
 #define telekenesis
 
 with(Inspector){
@@ -3681,7 +3776,9 @@ with(Inspector){
         }
     }
 }
+//drawing telekenesis
 
+//drawing rad chests
 #define radchestback
 
 with(Grunt){
@@ -3707,7 +3804,9 @@ with(Shielder){
         }
     }
 }
+//drawing rad chests
 
+//which ultra weapon you will get on ultra chest
 #define ultra_weapon
 
 if(skill_get(13) && !global.used_skills [0]){
@@ -3773,7 +3872,7 @@ with(Player){
 		return global.ultra_weapons_random [wep_choice];
 	}
 }
-
+//which ultra weapon you will get on ultra chest
 #define cleanup
 
 restoring_sprites();
@@ -3852,6 +3951,7 @@ string_save(json_encode(global.options, "  "), global.OPTIONS_FILE);
         next_floor  = instance_nearest(next_x, next_y, Floor);
 		
     // teleport to floor:
+	//fx
 	repeat(5) with instance_create(x + random_range(-10, 10), y + random_range(-10, 10), CaveSparkle){
 			image_angle = random(360);
 			image_index = 2;
@@ -3874,10 +3974,12 @@ string_save(json_encode(global.options, "  "), global.OPTIONS_FILE);
 				exit;
 				}
 			}
+	//fx
     x = next_floor.x + 16;
     y = next_floor.y + 16;
 	sound_play(global.sndGatorTeleport);
 	
+	//fx
 	repeat(5) with instance_create(x + random_range(-10, 10), y + random_range(-10, 10), CaveSparkle){
 				image_angle = random(360);
 				image_index = 2;
@@ -3900,6 +4002,7 @@ string_save(json_encode(global.options, "  "), global.OPTIONS_FILE);
 					exit;
 				}
 			}
+	//fx
 
     // clear walls around floor to avoid getting stuck in some cases:
     with(instance_create(x, y, PortalClear)){
@@ -4010,7 +4113,8 @@ if(global.options.popups == true){
 		}
 	}
 }
-	
+
+//death effects	
 #define dog_guardian_death
 with (instance_create(x,y,BigGuardianBullet)){
 		team = 1;
@@ -4210,6 +4314,7 @@ with(instance_create(x,y,PopoNade)){
 	team = 3;
 	hitid = [sprEliteGruntDead, "Elite Grunt"];
 }
+//death effects
 
 #define suffered_player
 
@@ -4382,13 +4487,14 @@ with(Player){
 	}
 }
 
+//fix of cursed 3-3 chest
 if(global.temp_skippedchests > 0){
 GameCont.nochest = global.temp_skippedchests;
 }
 if(GameCont.nochest > 0){
 	global.temp_skippedchests = 0;
 }
-
+//fix of cursed 3-3 chest
 
 global.aowb = 2 + (GameCont.hard / 2);
 
@@ -4408,11 +4514,11 @@ if(GameCont.area == 5 && global.options.no_guards == true){
 if(GameCont.loops == 1 && global.eem > 0){
 	if(GameCont.area == 1 || GameCont.area == 7){
 		with(Sniper) instance_delete(self);
-		}
+	}
 	if(GameCont.area == 5){
 		with(DogGuardian) instance_delete(self);
-		}
 	}
+}
 
 if(GameCont.area == 3 && GameCont.subarea == 3 && GameCont.crown != crwn_none){
 	if(GameCont.nochest > 0){
@@ -4435,14 +4541,16 @@ if(GameCont.area == 3 && GameCont.subarea == 3 && GameCont.crown != crwn_none){
 				default:
 					image_blend = c_purple;
 					break;
-				}
 			}
-		curse = 1;
 		}
+	curse = 1;
 	}
+}
 
+//i forgot what supposed to happen here
 if(global.cap_spawned == true && global.cap_dead == false){
 }
+//i forgot what supposed to happen here
 
 if(GameCont.vaults > 2 && (GameCont.area == 105 || GameCont.area == 103 || GameCont.area == 101)){
 	global.amount_of_crown_guardians += 2;
@@ -4458,7 +4566,7 @@ if(global.options.hammerhead_time == 2 && GameCont.loops > 0){
 	Player.hammerhead = 20 * GameCont.loops;
 	}
 
-if(random(2) < 1){
+if(irandom(1) == 1){
 	global.wind_left = true;
 	}
 else{

@@ -102,7 +102,7 @@ global.enemy_factor = 1;
 global.attmpts_to_add_enemies = 15;
 
 // -----Commands zone------- //
-trace("Thanks for installing the Whole New World 1.0 Beta mod! Build 291125");
+trace("Thanks for installing the Whole New World 1.0 Beta mod! Build 021225");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -422,6 +422,10 @@ if fork() {
 	// add options with `option_add` and `option_add_page`
 	// see `api.txt` for the API and `fields.txt` for the fields of each option type
 	
+	call(scr.option_add_page, mod_current_type, mod_current, "options", "credits", {
+			"reference": script_ref_create(page_credits_draw)
+	});
+
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page", {
 		/*GML Raw
 Red - 4929511
@@ -883,6 +887,7 @@ Purple - 15156919
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page3", "REBALANCE");
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page4", "CHALLENGE");
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page5", "MAJOR CHALLENGE");
+	call(scr.option_set_page_display_name, mod_current_type, mod_current, "credits", "CREDITS");
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "options_reset", "OPTIONS RESET");
 	
 	exit;
@@ -1975,14 +1980,15 @@ if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont
 //scrapyard osasis enter spawn
 
 with instances_matching(CustomHitme,"oasis_enter_scrapyard",1){
+	draw_self()
 	//my attempt to fix blinking sprite after taking damage
-	if(sprite_index != spr_hurt){
+	/*if(sprite_index != spr_hurt){
 		sprite_index = spr_idle;
 	}
 	if(image_index > 2 && sprite_index == spr_hurt){
 		sprite_index = spr_idle;
 		image_index = 0;
-	}
+	}*/
 	//my attempt to fix blinking sprite after taking damage
 
 	if (my_health <= 0) {
@@ -3875,6 +3881,66 @@ with(Player){
 	}
 }
 //which ultra weapon you will get on ultra chest
+
+#define page_credits_draw
+	#macro spec_x screen_center_x - 150
+	#macro spec_y screen_center_y - 60
+	#macro cred_x screen_center_x + 20 
+	#macro cred_y screen_center_y - 64 // -48
+	
+	var _halign = draw_get_halign(),
+		_valign = draw_get_valign();
+	
+	draw_set_valign(0)	
+	draw_set_halign(0)
+	
+	 // SPECIAL THANKS
+	 // these guys did something at some point that was helpful, thanks!
+	/*draw_text_nt(cred_x, spec_y,			"-SPECIAL THANKS-");
+	draw_text_nt(cred_x, spec_y + 11,		"@sAEVUSONIAN");
+	draw_text_nt(cred_x, spec_y + 22,		"CRINGERHOMBUS");
+	draw_text_nt(cred_x, spec_y + 33,		"@sDRAGONSTRIVE");
+	draw_text_nt(cred_x, spec_y + 44,		"GECKOBONE");
+	draw_text_nt(cred_x, spec_y + 55,		"@sGOLDEN EPSILON");
+	draw_text_nt(cred_x, spec_y + 66,		"JSBURG");
+	draw_text_nt(cred_x, spec_y + 77,		"@sMCCHOMK");
+	draw_text_nt(cred_x, spec_y + 88,		"SANIBLUES");
+	draw_text_nt(cred_x, spec_y + 99,		"@sSQUIDDY");
+	draw_text_nt(cred_x, spec_y + 110,		"YOKIN");*/
+
+	draw_text_nt(spec_x, cred_y,		"   SERAFIMGWS");
+	draw_set_font(fntChat)
+	draw_text_nt(spec_x - 4, cred_y + 10,		"@(color:65280)     MOD IDEA, MOST IDEAS,#CODE, TESTING AND QUALITY CONTROL");
+	draw_set_font(fntM);
+
+	draw_text_nt(spec_x - 5, cred_y + 35,		"   TRUECOINESS");
+	draw_set_font(fntChat)
+	draw_text_nt(spec_x + 5, cred_y + 45,		"@(color:30719)   MOST IDEAS, A LOT OF#TESTING AND QUALITY CONTROL");
+	draw_set_font(fntM);
+
+	draw_text_nt(spec_x + 5, cred_y + 70,		"   SUPERMANY");
+	draw_set_font(fntChat)
+	draw_text_nt(spec_x + 16, cred_y + 81,		"@(color:16749678)EXTENDED SPAWN POOLS,#MOD START IN GENERAL,#SPRITES FOR WILD IPDP# AND CODE ASSISTANCE");
+	draw_set_font(fntM);
+
+	draw_text_nt(cred_x + 4, cred_y,		"    BLAAC");
+	draw_set_font(fntChat)
+	draw_text_nt(cred_x - 4, cred_y + 10,		"@(color:16767324)        INSPIRATION,#3D VAN AND JUNGLE ENTER CODE,# SPRITES FOR SNOW SNIPERS#  AND BIG JUNGLE BANDITS");
+	draw_set_font(fntM);
+
+	draw_text_nt(cred_x, cred_y + 60,		"    SQUIDDY");
+	draw_set_font(fntChat)
+	draw_text_nt(cred_x, cred_y + 70,		"@(color:4974406)    CUSTOM OPTIONS MOD");
+	draw_set_font(fntM);
+
+	draw_text_nt(cred_x + 4, cred_y + 83,		"NUCLEAR THRONE#DISCORD SERVER");
+	draw_set_font(fntChat)
+	draw_text_nt(cred_x, cred_y + 98,		"@g      CODE ASSISTANCE");
+	draw_set_font(fntM);
+	
+	draw_set_halign(_halign);
+	draw_set_valign(_valign);	
+
 #define cleanup
 
 restoring_sprites();
@@ -3939,6 +4005,10 @@ if (fork()) {
 }*/
 string_save(json_encode(global.options, "  "), global.OPTIONS_FILE);
 //trace(`${mod_current}.${mod_current_type}::CustomOptions_save`);
+	#macro screen_center_x					(game_width / 2)
+	#macro screen_center_y 					(game_height / 2)
+	#macro screen_x 						view_xview_nonsync + (game_width / 2)
+	#macro screen_y 						view_yview_nonsync + (game_height / 2)
 
 #define gator_tp()
   if("tele_health" not in self){
@@ -4016,19 +4086,16 @@ string_save(json_encode(global.options, "  "), global.OPTIONS_FILE);
   tele_health = my_health;
 
 #define enter_to_oasis_step
-	
-/*if(sprite_index != spr_hurt){
+
+if(nexthurt > current_frame){
+	sprite_index = spr_hurt;
+	if(image_index > 0){
+		image_index = 0;
+	}
+}
+else{
 	sprite_index = spr_idle;
 }
-if(image_index > 2 && sprite_index == spr_hurt){
-	sprite_index = spr_idle;
-	image_index = 0;
-}
-
-if (my_health <= 0) {
-    instance_destroy();
-}*/
-
 
 #define enter_to_oasis_hurt (damage)
 
@@ -4036,8 +4103,8 @@ nexthurt = current_frame + 6;
 sound_play(sndOasisHurt);
 my_health -= damage;
 
-sprite_index = spr_hurt;
-image_index = 0;
+//sprite_index = spr_hurt;
+//image_index = 0;
 
 #define enter_to_oasis_destroy
 repeat (3) instance_create(x + random_range(-1, 1), y + random_range(-1, 1), Explosion);

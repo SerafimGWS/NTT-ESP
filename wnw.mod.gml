@@ -102,7 +102,7 @@ global.enemy_factor = 1;
 global.attmpts_to_add_enemies = 15;
 
 // -----Commands zone------- //
-trace("Thanks for installing the Whole New World 1.0 Beta mod! Build 241125");
+trace("Thanks for installing the Whole New World 1.0 Beta mod! Build 291125");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -423,115 +423,195 @@ if fork() {
 	// see `api.txt` for the API and `fields.txt` for the fields of each option type
 	
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page", {
+		/*GML Raw
+Red - 4929511
+Yellow - 4508129
+Green - 4974406
+Purple - 15156919
+*/
 		"options": [
 			{
 				"option": "deflect_colour",
 				"kind": "bool",
 				"name": {
-					"text": "Paint defelected projectile"
+					"text": "@(color:4974406)*@wPaint deflected projectile@s"
 				},
 				"desc": {
 					"text": "When @rON@s#will paint @wdeflected projectiles@s#(default @wON@s)"
 				}
 			},
-			{
+            {
 				"option": "fix_venus_car",
 				"kind": "bool",
 				"name": {
-					"text": "Fixed Venus Car"
+					"text": "@(color:4974406)*@wFixed Venus Car@s"
 				},
 				"desc": {
 					"text": "When @rON@s# @yvenuz car@s will be @wfixed@s from start#+ it will have @winf hp@s #but @wexplodes@s when @pportal@s appears#(default @wON@s)"
 				}
 			},
-			{
-				"option": "more_ravens_in_jungle",
-				"kind": "slider",
-				"name": {
-					"text": "jungle ravens"
-				},
-				"desc": {
-					"text": "Controls @yspawnrate@s#of @rravens@s in a @gjungle@s#(default @wx5@s)"
-				},
-				"format": {
-					"display_multiplier": 5
-				}
-			},
-			{
+            {
 				"option": "bonus_loop_max_health",
 				"kind": "bool",
 				"name": {
-					"text": "Potential Bonus Max HP"
+					"text": "@(color:4974406)*@wPotential Bonus Max HP@s"
 				},
 				"desc": {
 					"text": "When @rON@s#with each @yloop@s you gain#@w1 potential bonus max health@s#1 picked up @rhealth chest@s =#@w-1 pbmh@s, @g+1 max health@s#(default @wOFF@s)"
 				}
 			},
-			{
-				"option": "crown_guardian_on_max",
-				"kind": "bool",
-				"name": {
-					"text": "Crown Guardians on max"
-				},
-				"desc": {
-					"text": "When @rON@s#and after you visited @w3rd@s @gVault@s#on each @wn-2@s stage#will spawn @g2 crown guardians@s#and if @wloop@s is higher than 2#it will spawn @r4 big bandits@s#(except for @ydesert@s)#if you skipped @wn-2@s area#on @wn-2@s will spawn @g2 more guardians@s#(default @wON@s)"
-				}
-			},
-			{
-				"option": "crown_guardian_help",
-				"kind": "bool",
-				"name": {
-					"text": "Crown Guardians Help"
-				},
-				"desc": {
-					"text": "When @rON@s# when you activate @gcrown ped@s#or break @gcrown guardian statue@s#in @w1st@s vault#@gguardians@s will replace @wall torches@s#in @w2nd@s vault#@wturrets@s will come out# and in @w3rd@s one#each @gtorch@s will summon @bIDPD@s#(default @wON@s)"
-				}
-			},
-			{
-				"option": "cursing_enabled",
-				"kind": "bool",
-				"name": {
-					"text": "Spreading curse"
-				},
-				"desc": {
-					"text": "When @rON@s#@ycrystals@s and @yspiders@s will be @pcursed@s#with @wchance 1/7@s,#if you have @pcursed crown@s#@wchance will be 2/3@s,#if @wno crowns@s#no @pcursed crystals@s and @pspiders@s#(default @wON@s)"
-				}
-			},
-			{
-				"option": "cursed_caves_rework",
-				"kind": "bool",
-				"name": {
-					"text": "Cursed caves rework"
-				},
-				"desc": {
-					"text": "When @rON@s#@wall weapons@s that touch floor in#@p4-?@s will be @pcursed@s#after leaving @yl1+@s @pcursed crystal caves@s#all curses will be @ylifted@s#(default @wON@s)"
-				}
-			},
-			{
-				"option": "no_throne_yell",
-				"kind": "bool",
-				"name": {
-					"text": "No Throne Yell"
-				},
-				"desc": {
-					"text": "When @wON@s#@wmutants will not@s say#anything upon enetering @g7-3@s#(default @wOFF@s)"
-				}
-			},
-			{
+            {
 				"option": "last_enemies_display",
 				"kind": "bool",
 				"name": {
-					"text": "Last Enemies Display"
+					"text": "@(color:4974406)*@wLast Enemies Display"
 				},
 				"desc": {
 					"text": "When @rON@s#will @wshow@s in which directions#@wlast enemies@s are in when#there is less than#@w10%@s of all enemies on area#or @pportal@s is opened#made by @wGolden Epsilon@s#(default @wON@s)"
 				}
-			},			
+			},
+            {
+				"option": "popups",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4974406)*@wpopups"
+				},
+				"desc": {
+					"text": "When @rON@s#it will @wshow some new popups@s#(default @wON@s)"
+				}
+			},
+            {
+				"option": "no_jocks",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4974406)*@wNo Jocks!"
+				},
+				"desc": {
+					"text": "When @rON@s#it will @rdelete@s @wall Jocks@s#(default @wOFF@s)"
+				}
+			},
+            {
+				"option": "rmb",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4974406)*@wTinted Walls"
+				},
+				"desc": {
+					"text": "When @rON@s#when you come near a wall#may generate a tinted wall#tinted walls have @wrandom@s prizes inside#random prizes are#@g13 rads@s, @yammo pickup@s, @rhp pickup@s#or @wweapon chest@s#amount of tinted walls per stage#scales with each loop#(default @wOFF@s)"
+				}
+			},
+			{
+				"option": "hammerhead_time",
+				"kind": "choice",
+				"name": {
+					"text": "@(color:4974406)*@whammerhead time"
+				},
+				"desc": {
+					"text": "When @wYes@s#if you pick @whammerhead@s @gmutation@s#awards with a @wmutation pick@s#after looping#if you don't pick @whammerhead mut@s#@wawards@s with it after @wlooping@s#when @ymore@s#@wall@s of the above effects#gives @wmore@s hammerheads with each loop#(default @wYes@s)"
+				},
+				"values": [0, 1, 2],
+				"display": ["No", "Yes", "@yMore@s"]
+			},
+		]
+	});
+
+	call(scr.option_add_page, mod_current_type, mod_current, "options", "assist_page2", {
+		"options": [
+			 {
+				"option": "nes",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4974406)*@wNo Early Shielders"
+				},
+				"desc": {
+					"text": "When @rON@s#it will @wreplace all@s @bshielders@s#with @binspectors@s until you pass#@w10 stages@s#(default @wON@s)"
+				}
+			},
+			{
+				"option": "no_guards",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4974406)*@wNo Ubiquitous Guardians"
+				},
+				"desc": {
+					"text": "When @rON@s#it will delete @wall@s @gGuards@s#which have been added by @wesp@s#(default @wOFF@s)"
+				}
+			},
+            {
+				"option": "hamamount",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4974406)*@wHammerhead display"
+				},
+				"desc": {
+					"text": "When @rON@s#will show @whow many#hammerhead uses you have left#(default @wON@s)"
+				}
+			},
+			{
+				"option": "lootable_cars",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4974406)*@wLootable Cars"
+				},
+				"desc": {
+					"text": "When @rON@s#when you come @wclose@s to#@wcars@s, they will give you @yammo@s or @rhp@s#(default @wON@s)"
+				}
+			},
+			{
+				"option": "chicken_reminder",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4974406)*@wSelfdamage reminder"
+				},
+				"desc": {
+					"text": "When @rON@s#will @wremind@s you if there're#@rself damage@s weapon on floor#P.S. except for discs and explosions#(default @wON@s)"
+				}
+			},
+			{
+				"option": "protochest_convert",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4974406)*@wWeapon Convert"
+				},
+				"desc": {
+					"text": "When @rON@s#if @gproto chest@s contains a @wweapon@s#that has a @ygolden counterpart@s#turns the said weapon into it's#golden counterpart on @wnext@s @gvault@s @wvisit@s#@pparty gun@s#will turn into a @wrandom weapon@s#same rules applies for @pcurse@s#(default @wON@s)"
+				}
+			},
 		]
 	});
 	
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page2", {
 		"options": [
+			{
+				"option": "no_throne_yell",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:15156919)*@wNo Throne Yell"
+				},
+				"desc": {
+					"text": "When @rON@s#@wmutants will not@s say#anything upon enetering @g7-3@s#(default @wOFF@s)"
+				}
+			},
+			{
+				"option": "no_new_tips",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:15156919)*@wNo New Tips"
+				},
+				"desc": {
+					"text": "When @rON@s#it will @wdisable all new tips@s#(default @wOFF@s)"
+				}
+			},
+			{
+				"option": "no_new_parcticles",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:15156919)*@wNo New Parctiles"
+				},
+				"desc": {
+					"text": "When @rON@s#@rdisables@s spawn of @gnew parctiles@s#(default @wOFF@s)"
+				}
+			},
 			/*{
 				"option": "no_floor_changes",
 				"kind": "bool",
@@ -542,300 +622,66 @@ if fork() {
 					"text": "When @rON@s#it will @wdisable all floor@s changes#from any other options#(default @wOFF@s)"
 				}
 			},*/
-			{
-				"option": "diropf",
-				"kind": "bool",
-				"name": {
-					"text": "Early Popo Freaks Revives"
-				},
-				"desc": {
-					"text": "When @rON@s#it will @wenable all@s @bPopo Freaks revives@s#before @g3rd loop@s#(default @wOFF@s)"
-				}
-			},
-			{
-				"option": "add_dark",
-				"kind": "bool",
-				"name": {
-					"text": "More Darkness"
-				},
-				"desc": {
-					"text": "When @rON@s#apllies @pdarkness@s on #@wPalace, Jungles and Night Desert@s#+ @y25% Chance for night version of area@s#(default @wON@s)"
-				}
-			},
-			{
-				"option": "fire_explosions",
-				"kind": "bool",
-				"name": {
-					"text": "fire explosions"
-				},
-				"desc": {
-					"text": "When @rON@s#@rfire@s when @wcontacts@s with#@wany@s @rexplosive projectile@s#destroys the projectile#(default @wON@s)"
-				}
-			},
-			{
-				"option": "no_new_tips",
-				"kind": "bool",
-				"name": {
-					"text": "No New Tips"
-				},
-				"desc": {
-					"text": "When @rON@s#it will @wdisable all new tips@s#(default @wOFF@s)"
-				}
-			},
-			{
-				"option": "popups",
-				"kind": "bool",
-				"name": {
-					"text": "popups"
-				},
-				"desc": {
-					"text": "When @rON@s#it will @wshow some new popups@s#(default @wON@s)"
-				}
-			},
-			{
-				"option": "no_jocks",
-				"kind": "bool",
-				"name": {
-					"text": "No Jocks!"
-				},
-				"desc": {
-					"text": "When @rON@s#it will @rdelete@s @wall Jocks@s#(default @wOFF@s)"
-				}
-			},
-			{
-				"option": "enemies_mutations",
-				"kind": "bool",
-				"name": {
-					"text": "Enemies Mutations"
-				},
-				"desc": {
-					"text": "When @rON@s#starting from @gL1@s#all @ggators@s @pteleport@s randomly#on @rgetting hit@s#from @bL3@s#@wreplace@s @wsniper and snow tank bullets@s# with @wbouncers@s#and @ygolden tank rockets@s#with @ygolden discs@s#@pcursed hyper crystal@s @wrandomly teleports@s#(default @wON@s)"
-				}
-			},
-			{
-				"option": "rmb",
-				"kind": "bool",
-				"name": {
-					"text": "Tinted Walls"
-				},
-				"desc": {
-					"text": "When @rON@s#when you come near a wall#may generate a tinted wall#tinted walls have @wrandom@s prizes inside#random prizes are#@g13 rads@s, @yammo pickup@s, @rhp pickup@s#or @wweapon chest@s#amount of tinted walls per stage#scales with each loop#(default @wOFF@s)"
-				}
-			},
 		]
 	});
 			
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page3", {
 		"options": [
 			{
-				"option": "no_new_parcticles",
+				"option": "fire_explosions",
 				"kind": "bool",
 				"name": {
-					"text": "No New Parctiles"
+					"text": "@w*fire explosions"
 				},
 				"desc": {
-					"text": "When @rON@s#@rdisables@s spawn of @gnew parctiles@s#(default @wOFF@s)"
+					"text": "When @rON@s#@rfire@s when @wcontacts@s with#@wany@s @rexplosive projectile@s#destroys the projectile#(default @wON@s)"
 				}
 			},
 			{
-				"option": "no_guards",
+				"option": "cursed_caves_rework",
 				"kind": "bool",
 				"name": {
-					"text": "No Ubiquitous Guardians"
+					"text": "@w*Cursed caves rework"
 				},
 				"desc": {
-					"text": "When @rON@s#it will delete @wall@s @gGuards@s#which have been added by @wesp@s#(default @wOFF@s)"
+					"text": "When @rON@s#@wall weapons@s that touch floor in#@p4-?@s will be @pcursed@s#after leaving @yl1+@s @pcursed crystal caves@s#all curses will be @ylifted@s#(default @wON@s)"
 				}
-			},
-			{
-				"option": "l5cap",
-				"kind": "bool",
-				"name": {
-					"text": "L5 Captain"
-				},
-				"desc": {
-					"text": "When @rON@s#you will @rfight@s the @bCaptain@s#before @gThrone 2@s on @w0-1 L5@s#(default @wOFF@s)"
-				}
-			},
-			{
-				"option": "nes",
-				"kind": "bool",
-				"name": {
-					"text": "No Early Shielders"
-				},
-				"desc": {
-					"text": "When @rON@s#it will @wreplace all@s @bshielders@s#with @binspectors@s until you pass#@w10 stages@s#(default @wON@s)"
-				}
-			},
-			{
-				"option": "hammerhead_time",
-				"kind": "choice",
-				"name": {
-					"text": "hammerhead time"
-				},
-				"desc": {
-					"text": "When @wYes@s#if you pick @whammerhead@s @gmutation@s#awards with a @wmutation pick@s#after looping#if you don't pick @whammerhead mut@s#@wawards@s with it after @wlooping@s#when @wmore@s#@wall@s of the above effects#gives @wmore@s hammerheads with each loop#(default @wYes@s)"
-				},
-				"values": [0, 1, 2],
-				"display": ["No", "Yes", "More"]
 			},
 			{
 				"option": "piov",
 				"kind": "bool",
 				"name": {
-					"text": "careful IDPD in labs"
+					"text": "@w*careful IDPD in labs"
 				},
 				"desc": {
 					"text": "When @rON@s#it will @wreplace each@s @bvan@s with#@b4 idpd portals@s in @wLabs@s#(default @wON@s)"
 				}
 			},
 			{
-				"option": "death_effects",
-				"kind": "bool",
-				"name": {
-					"text": "Death Effects"
-				},
-				"desc": {
-					"text": "When @rON@s#it will enable @weffects@s#which will happen after#@rdeath@s of @wcertain enemies@s#after @wcertain loop@s#(default @wON@s)"
-				}
-			},
-			{
-				"option": "hardmodemod_3dvans",
-				"kind": "bool",
-				"name": {
-					"text": "3D Vans from Hardmode mod"
-				},
-				"desc": {
-					"text": "When @rON@s#will make @bvans@s @y3d@s#code by @wblaac@s#sprites by @yjsburg@s#(default @wOFF@s)"
-				}
-			},			
-			{
-				"option": "idpd_seek",
-				"kind": "choice",
-				"name": {
-					"text": "IDPD Seek"
-				},
-				"desc": {
-					"text": "Switch between IDPD Seek modes.#@gNo@s# No Addinational @bIDPD@s. #@yYes@s# Adds more @bIDPD@s to #@wSnow Town@s, @wLabs@s and @wPalace@s. #@rMore@s# Adds even more @bIDPD@s to #@wSnow Town@s and @wPalace@s#+ visiting @bHQ@s #or having a @pcrown@s #or killing @bcap@s #will add addinational @bIDPD@s#after passing @w10 stages@s#@wnon elite@s @bidpd@s may carry @gradchests@s#(default @wYes@s)"
-				},
-				"values": [0, 1, 2],
-				"display": ["No", "Yes", "@gUltra@s"]
-			},
-			{
-				"option": "wild_idpd",
-				"kind": "bool",
-				"name": {
-					"text": "Wild IDPD"
-				},
-				"desc": {
-					"text": "When @rON@s#@rwild@s @bIDPD@s will spawn on#@wevery area@s except @bHQ@s and @wLabs@s#@yelite@s wild IDPD will#only spawn if @wloop > 0@s#@gwild IDPD@s are @bIDPD@s but on#the @renemy team@s#@weach@s wild IDPD will#have a @wrandom raddrop@s#which ranges from 1 to 25#@graddrop@s floor @wscales@s with loops#@wIDPDmashup@s slows down floor scaling#if @graddrop@s = @w25@s#@bIDPD@s becomes a @rpopo freak@s#(default @wOFF@s)"
-				}
-			},
-		]
-	});
-
-	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page4", {
-		"options": [
-			{
-				"option": "hamamount",
-				"kind": "bool",
-				"name": {
-					"text": "Hammerhead display"
-				},
-				"desc": {
-					"text": "When @rON@s#will show @whow many#hammerhead uses you have left#(default @wON@s)"
-				}
-			},
-			{
-				"option": "lootable_cars",
-				"kind": "bool",
-				"name": {
-					"text": "Lootable Cars"
-				},
-				"desc": {
-					"text": "When @rON@s#when you come @wclose@s to#@wcars@s, they will give you @yammo@s or @rhp@s#(default @wON@s)"
-				}
-			},
-			{
-				"option": "chicken_reminder",
-				"kind": "bool",
-				"name": {
-					"text": "Selfdamage reminder"
-				},
-				"desc": {
-					"text": "When @rON@s#will @wremind@s you if there're#@rself damage@s weapon on floor#P.S. except for discs and explosions#(default @wON@s)"
-				}
-			},
-			{
-				"option": "protochest_convert",
-				"kind": "bool",
-				"name": {
-					"text": "Weapon Convert"
-				},
-				"desc": {
-					"text": "When @rON@s#if @gproto chest@s contains a @wweapon@s#that has a @ygolden counterpart@s#turns the said weapon into it's#golden counterpart on @wnext@s @gvault@s @wvisit@s#@pparty gun@s#will turn into a @wrandom weapon@s#same rules applies for @pcurse@s#(default @wON@s)"
-				}
-			},	
-			{
 				"option": "new_weptiers",
 				"kind": "bool",
 				"name": {
-					"text": "New Weapon Tiers"
+					"text": "@w*New Weapon Tiers"
 				},
 				"desc": {
 					"text": "When @rON@s#will change tiers for @wmost weapons@s#see @wall changes@s on a#@wscreenshot@s in resources#(default @wON@s)"
 				}
 			},
 			{
-				"option": "area_display",
-				"kind": "bool",
-				"name": {
-					"text": "Area Display"
-				},
-				"desc": {
-					"text": "When @rON@s#will show on which @warea and loop@s#you are on#code by @wblaac@s#(and modified by @wSerafimGWS@s)#(default @wON@s)"
-				}
-			},
-			{
 				"option": "chest_replacments",
 				"kind": "bool",
 				"name": {
-					"text": "Chest Replacments"
+					"text": "@w*Chest Replacments"
 				},
 				"desc": {
 					"text": "When @rON@s#it will @wreplace some chests@s#@ypizza@s#@wammo chest@s-@ypizza chest@s#@bwinter city@s#@wammo chest@s - @bIDPD Chests@s# in @plabs@s#@wammo chest@s - @wmimic@s#@rhealth chest@s - @rsuper mimic@s#in @bHQ@s#@wammo chests@s - @bIDPD chests@s#@grad chests@s - @rhealth chests@s#(default @wON@s)"
 				}
 			},
 			{
-				"option": "idpd_mashup",
-				"kind": "bool",
-				"name": {
-					"text": "IDPD Mashup"
-				},
-				"desc": {
-					"text": "When @rON@s#@yL2@s: @w1/3@s @bportals@s and @bvans@s#will contain @bpopo freaks@s#@gL3@s: @w1/2@s @bportals@s and @bvans@s#will contain @yelites@s#P.S. Vans on L3 can also contain#non elite IDPD#because i can't control#if van will contain elites#(default @wON@s)"
-				}
-			},
-		]
-	});
-
-	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page5", {
-		"options": [
-			/*{
-				"option": "seed",
-				"kind": "text",
-				"name": {
-					"text": "seed",
-				},
-				"desc": {
-					"text": "enter seed to play#the same run endless amount of times#don't work at the moment"
-				}
-			},*/			
-			{
 				"option": "common_difficulty_multiplier",
 				"kind": "slider",
 				"name": {
-					"text": "rdm"
+					"text": "@w*rdm"
 				},
 				"desc": {
 					"text": "rdm - @wregular@s @rdifficulty@s @ymultiplier@s#set multiplier from 0 to 2#(default @w1@s)"
@@ -848,13 +694,168 @@ if fork() {
 				"option": "esp_difficulty_multiplier",
 				"kind": "slider",
 				"name": {
-					"text": "espdm"
+					"text": "@w*espdm"
 				},
 				"desc": {
-					"text": "espdm - @bextended spawn pools@s @rdifficulty@s @ymultiplier@s#set multiplier from 0 to 2#(default @w1@s)"
+					"text": "espdm - @bextended spawn pools@s#@rdifficulty @ymultiplier@s#set multiplier from 0 to 2#(default @w1@s)"
 				},
 				"format": {
 					"display_multiplier": 2
+				}
+			},
+		]
+	});
+
+	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page4", {
+		"options": [	
+			{
+				"option": "more_ravens_in_jungle",
+				"kind": "slider",
+				"name": {
+					"text": "@(color:4508129)*@wjungle ravens@s"
+				},
+				"desc": {
+					"text": "Controls @yspawnrate@s#of @rravens@s in a @gjungle@s#(default @wx5@s)"
+				},
+				"format": {
+					"display_multiplier": 5
+				}
+			},
+			{
+				"option": "diropf",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4508129)*@wEarly Popo Freaks Revives"
+				},
+				"desc": {
+					"text": "When @rON@s#it will @wenable all@s @bPopo Freaks revives@s#before @g3rd loop@s#(default @wOFF@s)"
+				}
+			},
+			{
+				"option": "add_dark",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4508129)*@wMore Darkness"
+				},
+				"desc": {
+					"text": "When @rON@s#apllies @pdarkness@s on #@wPalace, Jungles and Night Desert@s#+ @y25% Chance for night version of area@s#(default @wON@s)"
+				}
+			},
+			{
+				"option": "cursing_enabled",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4508129)*@wSpreading curse"
+				},
+				"desc": {
+					"text": "When @rON@s#@ycrystals@s and @yspiders@s will be @pcursed@s#with @wchance 1/7@s,#if you have @pcursed crown@s#@wchance will be 2/3@s,#if @wno crowns@s#no @pcursed crystals@s and @pspiders@s#(default @wON@s)"
+				}
+			},
+			{
+				"option": "crown_guardian_help",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4508129)*@wCrown Guardians Help"
+				},
+				"desc": {
+					"text": "When @rON@s# when you activate @gcrown ped@s#or break @gcrown guardian statue@s#in @w1st@s vault#@gguardians@s will replace @wall torches@s#in @w2nd@s vault#@wturrets@s will come out# and in @w3rd@s one#each @gtorch@s will summon @bIDPD@s#(default @wON@s)"
+				}
+			},
+			{
+				"option": "crown_guardian_on_max",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4508129)*@wCrown Guardians on max@s"
+				},
+				"desc": {
+					"text": "When @rON@s#and after you visited @w3rd@s @gVault@s#on each @wn-2@s stage#will spawn @g2 crown guardians@s#and if @wloop@s is higher than 2#it will spawn @r4 big bandits@s#(except for @ydesert@s)#if you skipped @wn-2@s area#on @wn-2@s will spawn @g2 more guardians@s#(default @wON@s)"
+				}
+			},
+			{
+				"option": "enemies_mutations",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4508129)*@wEnemies Mutations"
+				},
+				"desc": {
+					"text": "When @rON@s#starting from @gL1@s#all @ggators@s @pteleport@s randomly#on @rgetting hit@s#from @bL3@s#@wreplace@s @wsniper and snow tank bullets@s# with @wbouncers@s#and @ygolden tank rockets@s#with @ygolden discs@s#@pcursed hyper crystal@s @wrandomly teleports@s#(default @wON@s)"
+				}
+			},
+			/*{ i left it in case i will make wnw compatible with v9940 and 9944
+				"option": "area_display",
+				"kind": "bool",
+				"name": {
+					"text": "Area Display"
+				},
+				"desc": {
+					"text": "When @rON@s#will show on which @warea and loop@s#you are on#code by @wblaac@s#(and modified by @wSerafimGWS@s)#(default @wON@s)"
+				}
+			},*/
+		]
+	});
+
+	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page5", {
+		"options": [
+			{
+				"option": "l5cap",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4929511)*@wL5 Captain"
+				},
+				"desc": {
+					"text": "When @rON@s#you will @rfight@s the @bCaptain@s#before @gThrone 2@s on @w0-1 L5@s#(default @wOFF@s)"
+				}
+			},
+			{
+				"option": "hardmodemod_3dvans",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4929511)*@w3D Vans from Hardmode mod"
+				},
+				"desc": {
+					"text": "When @rON@s#will make @bvans@s @y3d@s and# @wact@s as in @rhardmode mod@s#code by @wblaac@s#sprites by @yjsburg@s#(default @wOFF@s)"
+				}
+			},
+			{
+				"option": "death_effects",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4929511)*@wDeath Effects"
+				},
+				"desc": {
+					"text": "When @rON@s#it will enable @weffects@s#which will happen after#@rdeath@s of @wcertain enemies@s#after @wcertain loop@s#(default @wON@s)"
+				}
+			},	
+			{
+				"option": "idpd_mashup",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4929511)*@wIDPD Mashup"
+				},
+				"desc": {
+					"text": "When @rON@s#@yL2@s: @w1/3@s @bportals@s and @bvans@s#will contain @bpopo freaks@s#@gL3@s: @w1/2@s @bportals@s and @bvans@s#will contain @yelites@s#P.S. Vans on L3 can also contain#non elite IDPD#because i can't control#if van will contain elites#(default @wON@s)"
+				}
+			},		
+			{
+				"option": "idpd_seek",
+				"kind": "choice",
+				"name": {
+					"text": "@(color:4929511)*@wIDPD Seek"
+				},
+				"desc": {
+					"text": "Switch between IDPD Seek modes.#@gNo@s# No Addinational @bIDPD@s. #@yYes@s# Adds more @bIDPD@s to #@wSnow Town@s, @wLabs@s and @wPalace@s. #@gUltra@s# Adds even more @bIDPD@s to #@wSnow Town@s and @wPalace@s#+ visiting @bHQ@s #or having a @pcrown@s #or killing @bcap@s #will add addinational @bIDPD@s#after passing @w10 stages@s#@wnon elite@s @bidpd@s may carry @gradchests@s#(default @wYes@s)"
+				},
+				"values": [0, 1, 2],
+				"display": ["No", "Yes", "@gUltra@s"]
+			},
+			{
+				"option": "wild_idpd",
+				"kind": "bool",
+				"name": {
+					"text": "@(color:4929511)*@wWild IDPD"
+				},
+				"desc": {
+					"text": "When @rON@s#@rwild@s @bIDPD@s will spawn on#@wevery area@s except @bHQ@s and @wLabs@s#@yelite@s wild IDPD will#only spawn if @wloop > 0@s#@gwild IDPD@s are @bIDPD@s but on#the @renemy team@s#@weach@s wild IDPD will#have a @wrandom raddrop@s#which ranges from 1 to 25#@graddrop@s floor @wscales@s with loops#@wIDPDmashup@s slows down floor scaling#if @graddrop@s = @w25@s#@bIDPD@s becomes a @rpopo freak@s#(default @wOFF@s)"
 				}
 			},
 		]
@@ -876,11 +877,12 @@ if fork() {
 	});
 	
 	call(scr.option_set_mod_display_name, mod_current_type, mod_current, "   WNW#SETTINGS");
-	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page", "CONFIG PAGE I");
-	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page2", "CONFIG PAGE II");
-	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page3", "CONFIG PAGE III");
-	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page4", "CONFIG PAGE IV");
-	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page5", "CONFIG PAGE V");
+	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page", "ASSISTANCE I");
+	call(scr.option_set_page_display_name, mod_current_type, mod_current, "assist_page2", "ASSISTANCE II");
+	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page2", "COSMETICS");
+	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page3", "REBALANCE");
+	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page4", "CHALLENGE");
+	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page5", "MAJOR CHALLENGE");
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "options_reset", "OPTIONS RESET");
 	
 	exit;

@@ -1,3 +1,4 @@
 /loadmod wnw
 /loadmod custom_options
 /loadmod options
+/loadmod shards\mutpoolcontrol

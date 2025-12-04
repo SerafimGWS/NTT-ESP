@@ -102,7 +102,7 @@ global.enemy_factor = 1;
 global.attmpts_to_add_enemies = 15;
 
 // -----Commands zone------- //
-trace("Thanks for installing the Whole New World 1.0 Beta mod! Build 021225");
+trace("Thanks for installing the Whole New World 1.0 Beta mod! Build 051225");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -230,7 +230,7 @@ global.idpd_band = [Grunt, Inspector, Shielder, EliteGrunt, EliteInspector, Elit
 
 global.explosives = [Grenade, Rocket, JockRocket, PopoRocket, Nuke];
 
-global.fsprites_restore = [sprBigSkull, sprBigSkullOpen, sprBigSkullHurt, sprBigSkullOpenHurt, sprBigSkullDead, sprBonePileIdle, sprBonePileHurt, sprBonePileDead, sprBones, sprCactus, sprCactusHurt, sprCactusDead, sprCactus2, sprCactus2Hurt, sprCactus2Dead, sprCactus3, sprCactus3Hurt, sprCactus3Dead, sprCactusB, sprCactusBHurt, sprCactusBDead, sprCactusB2, sprCactusB2Hurt, sprCactusB2Dead, sprCactusB3, sprCactusB3Hurt, sprCactusB3Dead, sprDebris1, sprDesertTopDecal, sprDetail1, sprFloor1, sprFloor1Explo, sprFloor1B, sprMSpawnIdle, sprMSpawnDead, sprMSpawnHurt, sprMSpawnChrg, sprWall1Bot, sprWall1Out, sprWall1Top, sprWall1Trans, sprWind, sprTires, sprTiresDead, sprTiresHurt, sprTopDecalScrapyard, sprFloor3, sprFloor3B, sprWall3Out, sprDetail3, sprWall3Bot, sprWall3Trans, sprWall3Top, sprFloor3Explo, sprDebris3, bak3, sprCarIdle, sprCarHurt, sprCarThrown, sprSnowBotRedCarIdle, sprSnowBotRedCarLift, sprSnowBotRedCarWalk, sprSnowBotRedCarHurt, sprSnowBotRedCarThrow, sprTrap, sprTrapGameover, sprTrapScorchMark, sprRainDrop, sprRainDropSlowmo, sprRainSplash, sprScrapDecal, sprSodaMachine, sprStreetLight, sprIcicle, sprWall5Trans, sprTopDecalCity, sprIceDecal, sprIcicleDead, sprIcicleHurt, sprSodaMachineDead, sprSodaCan, sprStreetLightDead, sprFloor5B, sprFloor5Explo, sprFloor5, sprWall5Out, sprWall5Top, sprDebris5, sprDetail5, sprWall5Bot, sprSodaMachineHurt, sprStreetLightHurt, sprSnowBotCarLift, sprFrozenCar, sprSnowBotCarIdle, sprSnowBotCarWalk, sprSnowBotCarHurt, sprSnowBotCarThrow, sprFrozenCarThrown, sprFrozenCarHurt, sprSnowFlake, sprHydrant, sprHydrantHurt, sprHydrantDead, sprSnowMan, sprSnowManHurt, sprPStat1Idle, sprPStat2Idle, sprSnowManDead, sprPStat1Hurt, sprPStat2Hurt, sprPStatDead, sprSnowManDead, sprSnowBotRedCarLift, sprRainDrop, sprRainDropSlowmo, sprRainSplash, sprBanditBossIdle, sprBanditBossWalk, sprBanditBossFire, sprBanditBossTell, sprBanditBossDash, sprBanditBossStop, sprBanditBossHurt, sprBanditBossDead, sprBossIntro, sprDeskIdle, sprDeskIdleTrans, sprDeskIdleTurn, sprDebris7, sprFloor7, sprFloor7B, sprFloor7Explo, sprNuclearPillar, sprNuclearPillarDead, sprNuclearPillarHurt, sprPalaceTopDecal, sprSmallGenerator, sprSmallGeneratorDead, sprSmallGeneratorHurt, sprWall7Bot, sprWall7Out, sprWall7Top, sprWall7Trans, sprThroneStatueDead, sprThroneStatue, sprNothingSwitchOn, sprNothingDeathLoop, sprNothingDeath, sprNothingRight, sprNothingPipes, sprNothingOn, sprNothingOff, sprNothingMiddle, sprNothingLeft];
+global.fsprites_restore = [sprBigSkull, sprBigSkullOpen, sprBigSkullHurt, sprBigSkullOpenHurt, sprBigSkullDead, sprBonePileIdle, sprBonePileHurt, sprBonePileDead, sprBones, sprCactus, sprCactusHurt, sprCactusDead, sprCactus2, sprCactus2Hurt, sprCactus2Dead, sprCactus3, sprCactus3Hurt, sprCactus3Dead, sprCactusB, sprCactusBHurt, sprCactusBDead, sprCactusB2, sprCactusB2Hurt, sprCactusB2Dead, sprCactusB3, sprCactusB3Hurt, sprCactusB3Dead, sprDebris1, sprDesertTopDecal, sprDetail1, sprFloor1, sprFloor1Explo, sprFloor1B, sprMSpawnIdle, sprMSpawnDead, sprMSpawnHurt, sprMSpawnChrg, sprWall1Bot, sprWall1Out, sprWall1Top, sprWall1Trans, sprWind, sprTires, sprTiresDead, sprTiresHurt, sprTopDecalScrapyard, sprFloor3, sprFloor3B, sprWall3Out, sprDetail3, sprWall3Bot, sprWall3Trans, sprWall3Top, sprFloor3Explo, sprDebris3, bak3, sprCarIdle, sprCarHurt, sprCarThrown, sprSnowBotRedCarIdle, sprSnowBotRedCarLift, sprSnowBotRedCarWalk, sprSnowBotRedCarHurt, sprSnowBotRedCarThrow, sprTrap, sprTrapGameover, sprTrapScorchMark, sprRainDrop, sprRainDropSlowmo, sprRainSplash, sprScrapDecal, sprSodaMachine, sprStreetLight, sprIcicle, sprWall5Trans, sprTopDecalCity, sprIceDecal, sprIcicleDead, sprIcicleHurt, sprSodaMachineDead, sprSodaCan, sprStreetLightDead, sprFloor5B, sprFloor5Explo, sprFloor5, sprWall5Out, sprWall5Top, sprDebris5, sprDetail5, sprWall5Bot, sprSodaMachineHurt, sprStreetLightHurt, sprSnowBotCarLift, sprFrozenCar, sprSnowBotCarIdle, sprSnowBotCarWalk, sprSnowBotCarHurt, sprSnowBotCarThrow, sprFrozenCarThrown, sprFrozenCarHurt, sprSnowFlake, sprHydrant, sprHydrantHurt, sprHydrantDead, sprSnowMan, sprSnowManHurt, sprPStat1Idle, sprPStat2Idle, sprSnowManDead, sprPStat1Hurt, sprPStat2Hurt, sprPStatDead, sprSnowManDead, sprSnowBotRedCarLift, sprRainDrop, sprRainDropSlowmo, sprRainSplash, sprBanditBossIdle, sprBanditBossWalk, sprBanditBossFire, sprBanditBossTell, sprBanditBossDash, sprBanditBossStop, sprBanditBossHurt, sprBanditBossDead, sprBossIntro, sprDebris7, sprFloor7, sprFloor7B, sprFloor7Explo, sprNuclearPillar, sprNuclearPillarDead, sprNuclearPillarHurt, sprPalaceTopDecal, sprSmallGenerator, sprSmallGeneratorDead, sprSmallGeneratorHurt, sprWall7Bot, sprWall7Out, sprWall7Top, sprWall7Trans, sprThroneStatueDead, sprThroneStatue, sprNothingSwitchOn, sprNothingDeathLoop, sprNothingDeath, sprNothingRight, sprNothingPipes, sprNothingOn, sprNothingOff, sprNothingMiddle, sprNothingLeft];
 
 global.fsprites_replace = [[sprRainDrop,"resources/Areas/NightScrapyard/sprRainDrop.png",1],[sprRainDropSlowmo,"resources/Areas/NightScrapyard/sprRainDropSlowmo.png",1],[sprRainSplash,"resources/Areas/NightScrapyard/sprRainSplash.png",3],[sprBigSkull,"resources/Areas/NightDesert/sprBigSkull_strip1.png",1],[sprBigSkullOpen,"resources/Areas/NightDesert/sprBigSkullOpen_strip1.png",1],[sprBigSkullHurt,"resources/Areas/NightDesert/sprBigSkullHurt_strip3.png",3],[sprBigSkullOpenHurt,"resources/Areas/NightDesert/sprBigSkullOpenHurt_strip3.png",3],[sprBigSkullDead,"resources/Areas/NightDesert/sprBigSkullDead_strip3.png",3],[sprBonePileIdle,"resources/Areas/NightDesert/sprBonePileIdle_strip1.png",1],[sprBonePileHurt,"resources/Areas/NightDesert/sprBonePileHurt_strip3.png",3],[sprBonePileDead,"resources/Areas/NightDesert/sprBonePileDead_strip4.png",3],[sprBones,"resources/Areas/NightDesert/sprBones_strip2.png",2],[sprCactus,"resources/Areas/NightDesert/sprCactus_strip1.png",1],[sprCactusHurt,"resources/Areas/NightDesert/sprCactusHurt_strip3.png",3],[sprCactusDead,"resources/Areas/NightDesert/sprCactusDead_strip4.png",4],[sprCactus2,"resources/Areas/NightDesert/sprCactus2_strip1.png",1],[sprCactus2Hurt,"resources/Areas/NightDesert/sprCactus2Hurt_strip3.png",3],[sprCactus2Dead,"resources/Areas/NightDesert/sprCactus2Dead_strip4.png",4],[sprCactus3,"resources/Areas/NightDesert/sprCactus3_strip1.png",1],[sprCactus3Hurt,"resources/Areas/NightDesert/sprCactus3Hurt_strip3.png",3],[sprCactus3Dead,"resources/Areas/NightDesert/sprCactus3Dead_strip4.png",4],[sprCactusB,"resources/Areas/NightDesert/sprCactusB_strip1.png",1],[sprCactusBHurt,"resources/Areas/NightDesert/sprCactusBHurt_strip3.png",3],[sprCactusBDead,"resources/Areas/NightDesert/sprCactusBDead_strip4.png",4],[sprCactusB2,"resources/Areas/NightDesert/sprCactusB2_strip1.png",1],[sprCactusB2Hurt,"resources/Areas/NightDesert/sprCactusB2Hurt_strip3.png",3],[sprCactusB2Dead,"resources/Areas/NightDesert/sprCactusB2Dead_strip4.png",4],[sprCactusB3,"resources/Areas/NightDesert/sprCactusB3_strip1.png",1],[sprCactusB3Hurt,"resources/Areas/NightDesert/sprCactusB3Hurt_strip3.png",3],[sprCactusB3Dead,"resources/Areas/NightDesert/sprCactusB3Dead_strip4.png",4],[sprDebris1,"resources/Areas/NightDesert/sprDebris0_strip4.png",4],[sprDesertTopDecal,"resources/Areas/NightDesert/sprDesertTopDecal_strip3.png",3],[sprDetail1,"resources/Areas/NightDesert/sprDetail0_strip5.png",5],[sprFloor1,"resources/Areas/NightDesert/sprFloor1_strip4.png",4],[sprFloor1Explo,"resources/Areas/NightDesert/sprWall0Explo_strip4.png",4],[sprFloor1B,"resources/Areas/NightDesert/sprFloor1B_strip4.png",4],[sprMSpawnIdle,"resources/Areas/NightDesert/sprMSpawnIdle_strip4.png",4],[sprMSpawnDead,"resources/Areas/NightDesert/sprMSpawnDead_strip2.png",2],[sprMSpawnHurt,"resources/Areas/NightDesert/sprMSpawnHurt_strip3.png",3],[sprMSpawnChrg,"resources/Areas/NightDesert/sprMSpawnChrg_strip4.png",4],[sprWall1Bot,"resources/Areas/NightDesert/sprWall0Bot_strip4.png",4],[sprWall1Out,"resources/Areas/NightDesert/sprWall0Out_strip1.png",1],[sprWall1Top,"resources/Areas/NightDesert/sprWall0Top_strip8.png",8],[sprWall1Trans,"resources/Areas/NightDesert/sprWall0Trans_strip8.png",8],[sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9],[sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4],[sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1],[sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6],[sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8],[sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3],[sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5],[sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6],[sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3],[sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1],[sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3],[sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1],[sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3],[sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3],[sprCarIdle,"resources/Areas/NightScrapyard/sprCarIdleNight.png",1],[sprCarHurt,"resources/Areas/NightScrapyard/sprCarHurtNight.png",3],[sprTires,"resources/Areas/NightScrapyard/sprTires.png",1],[sprTiresDead,"resources/Areas/NightScrapyard/sprTiresDead.png",3],[sprTiresHurt,"resources/Areas/NightScrapyard/sprTiresHurt.png",3],[sprTopDecalScrapyard,"resources/Areas/NightScrapyard/sprTopDecalScrapyard.png",3],[sprFloor3,"resources/Areas/NightScrapyard/sprFloor3_strip4.png",4],[sprFloor3B,"resources/Areas/NightScrapyard/sprFloor3B_strip4.png",3],[sprWall3Out,"resources/Areas/NightScrapyard/sprWall3Out.png",3],[sprDetail3,"resources/Areas/NightScrapyard/sprDetail3_strip5.png",5],[sprWall3Bot,"resources/Areas/NightScrapyard/sprWall3Bot_strip4.png",4],[sprWall3Trans,"resources/Areas/NightScrapyard/sprWall3Trans_strip8.png",3],[sprWall3Top,"resources/Areas/NightScrapyard/sprWall3Top_strip8.png",4],[sprFloor3Explo,"resources/Areas/NightScrapyard/sprFloor3Explo_strip4.png",4],[sprDebris3,"resources/Areas/NightScrapyard/sprDebris3_strip4.png",4],[bak3,"resources/Areas/NightScrapyard/bak3.png",1],[sprCarIdle,"resources/Areas/NightScrapyard/sprCarIdleNight.png",1],[sprCarHurt,"resources/Areas/NightScrapyard/sprCarHurtNight.png",3],[sprCarThrown,"resources/Areas/NightScrapyard/sprCarThrown.png",6],[sprSnowBotRedCarIdle,"resources/Areas/NightScrapyard/sprSnowBotRedCarIdle.png",6],[sprSnowBotRedCarLift,"resources/Areas/NightScrapyard/sprSnowBotRedCarLift.png",4],[sprSnowBotRedCarWalk,"resources/Areas/NightScrapyard/sprSnowBotRedCarWalk.png",8],[sprSnowBotRedCarHurt,"resources/Areas/NightScrapyard/sprSnowBotRedCarHurt.png",3],[sprSnowBotRedCarThrow,"resources/Areas/NightScrapyard/sprSnowBotRedCarThrow.png",5],[sprTrap,"resources/Areas/NightScrapyard/sprTrap.png",1],[sprTrapGameover,"resources/Areas/NightScrapyard/sprTrapGameover.png",1],[sprTrapScorchMark,"resources/Areas/NightScrapyard/sprTrapScorchMark.png",1],[sprScrapDecal,"resources/Areas/NightScrapyard/sprScrapDecal.png",2],[sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9],[sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4],[sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1],[sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6],[sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8],[sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3],[sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5],[sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6],[sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3],[sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1],[sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3],[sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1],[sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3],[sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3],[sprSodaMachine,"resources/Areas/NightCity/sprSodaMachine.png",1],[sprStreetLight,"resources/Areas/NightCity/sprStreetLight.png",1],[sprIcicle,"resources/Areas/NightCity/sprIcicle.png",1],[sprWall5Trans,"resources/Areas/NightCity/sprWall5Trans.png",1],[sprTopDecalCity,"resources/Areas/NightCity/sprTopDecalCity.png",3],[sprIceDecal,"resources/Areas/NightCity/sprIceDecal.png",2],[sprIcicleDead,"resources/Areas/NightCity/sprIcicleDead.png",4],[sprIcicleHurt,"resources/Areas/NightCity/sprIcicleHurt.png",3],[sprSodaMachineDead,"resources/Areas/NightCity/sprSodaMachineDead.png",3],[sprSodaCan,"resources/Areas/NightCity/sprSodaCan.png",3],[sprStreetLightDead,"resources/Areas/NightCity/sprStreetLightDead.png",3],[sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8],[sprFloor5Explo,"resources/Areas/NightCity/sprFloor5Explo.png",4],[sprFloor5,"resources/Areas/NightCity/sprFloor5.png",8],[sprWall5Out,"resources/Areas/NightCity/sprWall5Out.png",2],[sprWall5Top,"resources/Areas/NightCity/sprWall5Top.png",4],[sprDebris5,"resources/Areas/NightCity/sprDebris5.png",4],[sprDetail5,"resources/Areas/NightCity/sprDetail5.png",3],[sprWall5Bot,"resources/Areas/NightCity/sprWall5Bot.png",3],[sprSodaMachineHurt,"resources/Areas/NightCity/sprSodaMachineHurt.png",3],[sprStreetLightHurt,"resources/Areas/NightCity/sprStreetLightHurt.png",3],[sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4],[sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1],[sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6],[sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8],[sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3],[sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5],[sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6],[sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprHydrant,"resources/Areas/NightCity/sprHydrant.png",1],[sprHydrantHurt,"resources/Areas/NightCity/sprHydrantHurt.png",3],[sprHydrantDead,"resources/Areas/NightCity/sprHydrantDead.png",3],[sprSnowMan,"resources/Areas/NightCity/sprSnowMan.png",1],[sprSnowManHurt,"resources/Areas/NightCity/sprSnowManHurt.png",3],[sprSnowManDead,"resources/Areas/NightCity/sprSnowManDead.png",3],[sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1],[sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3],[sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1],[sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3],[sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3],[sprDebris7,"resources/Areas/DarkPalace/sprDebris7_strip4.png",4],[sprFloor7,"resources/Areas/DarkPalace/sprFloor7_strip8.png",8],[sprFloor7B,"resources/Areas/DarkPalace/sprFloor7B_strip4.png",4],[sprFloor7Explo,"resources/Areas/DarkPalace/sprFloor7Explo_strip4.png",4],[sprNuclearPillar,"resources/Areas/DarkPalace/sprNuclearPillar_strip11.png",11],[sprNuclearPillarDead,"resources/Areas/DarkPalace/sprNuclearPillarDead_strip3.png",3],[sprNuclearPillarHurt,"resources/Areas/DarkPalace/sprNuclearPillarHurt_strip3.png",3],[sprPalaceTopDecal,"resources/Areas/DarkPalace/sprPalaceTopDecal_strip2.png",2],[sprSmallGenerator,"resources/Areas/DarkPalace/sprSmallGenerator_strip11.png",11],[sprSmallGeneratorDead,"resources/Areas/DarkPalace/sprSmallGeneratorDead_strip3.png",3],[sprSmallGeneratorHurt,"resources/Areas/DarkPalace/sprSmallGeneratorHurt_strip3.png",3],[sprWall7Bot,"resources/Areas/DarkPalace/sprWall7Bot.png",8],[sprWall7Out,"resources/Areas/DarkPalace/sprWall7Out_strip1.png",1],[sprWall7Top,"resources/Areas/DarkPalace/sprWall7Top.png",8],[sprWall7Trans,"resources/Areas/DarkPalace/sprWall7Trans.png",8],[sprThroneStatueDead,"resources/Areas/DarkPalace/sprThroneStatueDead.png",13],[sprThroneStatue,"resources/Areas/DarkPalace/sprThroneStatue.png",14],[sprNothingSwitchOn,"resources/Areas/DarkPalace/sprNothingSwitchOn.png",8],[sprNothingDeathLoop,"resources/Areas/DarkPalace/sprNothingDeathLoop.png",2],[sprNothingDeath,"resources/Areas/DarkPalace/sprNothingDeath.png",7],[sprNothingLeft,"resources/Areas/DarkPalace/sprNothingLeft.png",1],[sprNothingPipes,"resources/Areas/DarkPalace/sprNothingPipes.png",1],[sprNothingRight,"resources/Areas/DarkPalace/sprNothingRight.png",1],[sprNothingMiddle,"resources/Areas/DarkPalace/sprNothingMiddle.png",1],[sprNothingOn,"resources/Areas/DarkPalace/sprNothingOn.png",1],[sprNothingOff,"resources/Areas/DarkPalace/sprNothingOff.png",1]];
 
@@ -501,7 +501,7 @@ Purple - 15156919
 					"text": "@(color:4974406)*@wTinted Walls"
 				},
 				"desc": {
-					"text": "When @rON@s#when you come near a wall#may generate a tinted wall#tinted walls have @wrandom@s prizes inside#random prizes are#@g13 rads@s, @yammo pickup@s, @rhp pickup@s#or @wweapon chest@s#amount of tinted walls per stage#scales with each loop#(default @wOFF@s)"
+					"text": "When @rON@s#when you come near a wall#may generate a tinted wall#tinted walls have @wrandom@s prizes inside#random prizes are#@g13 rads@s, @yammo pickup@s, @rhp pickup@s#or @wweapon chest@s#amount of tinted walls per stage#scales with each loop#(default @wON@s)"
 				}
 			},
 			{
@@ -593,7 +593,7 @@ Purple - 15156919
 					"text": "@(color:15156919)*@wNo Throne Yell"
 				},
 				"desc": {
-					"text": "When @rON@s#@wmutants will not@s say#anything upon enetering @g7-3@s#(default @wOFF@s)"
+					"text": "When @rON@s#@wmutants will not@s say#anything upon entering @g7-3@s#(default @wOFF@s)"
 				}
 			},
 			{
@@ -613,7 +613,7 @@ Purple - 15156919
 					"text": "@(color:15156919)*@wNo New Parctiles"
 				},
 				"desc": {
-					"text": "When @rON@s#@rdisables@s spawn of @gnew parctiles@s#(default @wOFF@s)"
+					"text": "When @rON@s#@rdisables@s spawn of @gnew particles@s#(default @wOFF@s)"
 				}
 			},
 			/*{
@@ -638,7 +638,7 @@ Purple - 15156919
 					"text": "@w*fire explosions"
 				},
 				"desc": {
-					"text": "When @rON@s#@rfire@s when @wcontacts@s with#@wany@s @rexplosive projectile@s#destroys the projectile#(default @wON@s)"
+					"text": "When @rON@s#when @rfire@s @wcontacts@s with#@wany@s @rexplosive projectile@s or corpse#destroys it#corpses needs some time to explode#(default @wON@s)"
 				}
 			},
 			{
@@ -719,7 +719,7 @@ Purple - 15156919
 					"text": "@(color:4508129)*@wjungle ravens@s"
 				},
 				"desc": {
-					"text": "Controls @yspawnrate@s#of @rravens@s in a @gjungle@s#(default @wx5@s)"
+					"text": "Controls @yspawnrate@s#of @rravens@s in @gjungle@s#(default @wx5@s)"
 				},
 				"format": {
 					"display_multiplier": 5
@@ -914,6 +914,13 @@ global.RadInspectorDEHitid = [global.sprInspectorRadDead, "Wild Inspector"];
 // -----Tick------ //
 #define game_start
 
+sprite_restore(sprDeskIdle);
+sprite_restore(sprDeskIdleTrans);
+sprite_restore(sprDeskIdleWait);
+sprite_restore(sprDeskIdleTurn);
+sprite_restore(sprLastSit);
+
+restoring_sprites();
 /*if (is_int64(global.options.seed)) {
 	game_set_seed(global.options.seed);
 	trace(`Seed ${global.options.seed}, RNG ${irandom($ffFFffFF)}`);
@@ -1470,7 +1477,7 @@ with(Wall){
 	if(instance_exists(Player) && GameCont.area != 0){
 		target_x = instance_nearest(x,y,Player).x;
     	target_y = instance_nearest(x,y,Player).y;
-    	if(point_distance(x,x,target_x,target_x) < 300 && point_distance(y,y,target_y,target_y) < 150){
+    	if(point_distance(x,x,target_x,target_x) < 300 && point_distance(y,y,target_y,target_y) < 150 && !point_in_circle(x,y,10016,10016, 75)){
 			if("goodiescheck" not in self && global.aowb > 0 && GameCont.area != 106 && GameCont.area != 107){
 				if(random(50) < 1){
 					goodiescheck = true;
@@ -1482,7 +1489,7 @@ with(Wall){
 					//trace("Bonus!");
 						sprite_index = global.sprWallBonus;
 						image_index = irandom(1);
-						if(irandom(2) < 1){
+						if(irandom(1) < 1){
 							image_xscale = -1;
 						}
 						else{
@@ -3117,6 +3124,11 @@ if (global.options.death_effects == true) {
 //what does enemy does after death
 with instances_matching_le(Last, "my_health", 0) {
 			global.cap_dead = true;
+			sprite_replace(sprDeskIdle,"resources/Enemies/Cap/sprDeskIdle.png",1);
+			sprite_replace(sprDeskIdleTrans,"resources/Enemies/Cap/sprDeskIdle.png",1);
+			sprite_replace(sprDeskIdleTurn,"resources/Enemies/Cap/sprDeskIdle.png",1);
+			sprite_replace(sprDeskIdleWait,"resources/Enemies/Cap/sprDeskIdle.png",1);
+			sprite_replace(sprLastSit,"resources/Enemies/Cap/sprLastSit.png",1);
 		}
 
 with instances_matching_le(instances_matching(JungleFly,"death_effect",true), "my_health", 0) {
@@ -3189,6 +3201,12 @@ with instances_matching_le(instances_matching(Inspector,"death_effect",true), "m
 with instances_matching_le(instances_matching(Last,"death_effect",true), "my_health", 0) {
 			instance_create(0,0,VanSpawn);
 			global.cap_spawned = true;
+			global.cap_dead = true;
+			sprite_replace(sprDeskIdle,"resources/Enemies/Cap/sprDeskIdle.png",1);
+			sprite_replace(sprDeskIdleTrans,"resources/Enemies/Cap/sprDeskIdle.png",1);
+			sprite_replace(sprDeskIdleTurn,"resources/Enemies/Cap/sprDeskIdle.png",1);
+			sprite_replace(sprDeskIdleWait,"resources/Enemies/Cap/sprDeskIdle.png",1);
+			sprite_replace(sprLastSit,"resources/Enemies/Cap/sprLastSit.png",1);
 		}
 
 //big guardian bullet explosion
@@ -3945,6 +3963,12 @@ with(Player){
 
 restoring_sprites();
 
+sprite_restore(sprDeskIdle);
+sprite_restore(sprDeskIdleTrans);
+sprite_restore(sprDeskIdleWait);
+sprite_restore(sprDeskIdleTurn);
+sprite_restore(sprLastSit);
+
 if global.loaded {
 	// remove the mod from Custom Options
 	call(scr.option_remove_mod, mod_current_type, mod_current);
@@ -4170,14 +4194,14 @@ if(global.options.fix_venus_car == true){
 if(global.options.popups == true){
 	if(instance_exists(Player)){
 		if(GameCont.area == 3 && GameCont.subarea == 1 && global.popup_shown._oasis == false){
-			with instance_create(Player.x,Player.y,PopupText) text = "CHECK OUT SPAWN"
+			with instance_create(Player.x,Player.y,PopupText) text = "@yCHECK OUT SPAWN"
 			global.popup_shown._oasis = true;
 		}
 	}
 	
 	if(instance_exists(Player)){
 		if(GameCont.area == 5 && GameCont.subarea == 1 && global.popup_shown._jungle == false){
-			with instance_create(Player.x,Player.y,PopupText) text = "CHECK OUT SPAWN"
+			with instance_create(Player.x,Player.y,PopupText) text = "@yCHECK OUT SPAWN"
 			global.popup_shown._jungle = true;
 		}
 	}
@@ -4446,6 +4470,11 @@ global.weapon_deleted = false;
 global.ultrachest_spawned = false;
 
 global.is_player_notified = false;
+
+with (instance_create(10016,10016,FloorMiddle)){
+	//wall bonus spawn block
+	image_alpha = 0;
+}
 
 if(game_version > 9944){
 	with(BackCont){
@@ -5445,7 +5474,7 @@ with SmallGenerator{
 	
 if (instance_exists(Nothing)){
 with Generator{
-	draw_circle(x-16, y-16, 120+random(3), false)
+	draw_circle(x+(11*image_xscale), y+7, 120+random(3), false)
 	}
 }
 
@@ -5665,7 +5694,7 @@ with SmallGenerator{
 	
 if (instance_exists(Nothing)){
 with Generator{
-	draw_circle(x-16, y-16, 60+random(3), false)
+	draw_circle(x+(11*image_xscale), y+7, 60+random(3), false)
 	}
 }
 

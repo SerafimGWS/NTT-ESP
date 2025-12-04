@@ -1593,10 +1593,10 @@ if !selected {
 	exit;
 }
 
-if MENU.region[p].paused && game_version != 0 {
+/*if MENU.region[p].paused && game_version != 0 {
 	trace_color("Due to limitations in v100, Custom Options cannot open during a run.", c_red);
 	exit;
-}
+}*/
 
 with OptionMenuButton {
 	instance_destroy();

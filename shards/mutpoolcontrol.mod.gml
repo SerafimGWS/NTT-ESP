@@ -809,7 +809,7 @@ CustomOptions_save();
 
 #define CustomOptions_init
 // a script that runs when Custom Options loads, if this mod exists first
-trace(`${mod_current}.${mod_current_type}::CustomOptions_init`);
+//trace(`${mod_current}.${mod_current_type}::CustomOptions_init`);
 
 #define CustomOptions_open
 // a script that runs when a user selects your mod through Custom Options' GUI

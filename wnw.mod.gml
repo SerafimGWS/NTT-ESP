@@ -102,7 +102,7 @@ global.enemy_factor = 1;
 global.attmpts_to_add_enemies = 15;
 
 // -----Commands zone------- //
-trace("Thanks for installing the Whole New World 1.0 Beta mod! Build 051225");
+trace("Thanks for installing the Whole New World 1.0 Beta mod! Build 071225");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -312,6 +312,9 @@ global.sprUltraChest = sprite_add("resources/OtherObjects/UltraChest/ultrachest.
 
 global.sprWallBonus = sprite_add("resources/OtherObjects/WallBonus/sprWallBonus.png",2,12,12);
 
+global.sprCrabDeadS = sprite_add("resources/Enemies/Crab/sprCrabDead_3.png",10,12,12);
+global.sprCrabDeadSN = sprite_add("resources/Enemies/Crab/sprCrabDead_3b.png",10,12,12);
+
 global.sprVan = sprite_add_base64("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",18,38.5,19.5)
 global.sprSiren = sprite_add_base64("iVBORw0KGgoAAAANSUhEUgAAAPkAAAAyCAYAAACeYH3nAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QYREwgufEY9MwAAAelJREFUeNrt3UFOwzAURdG6Ys6iWDeLYgVmBEiFAUnsxH3/XKmTSkiN7Ztnfyem3Qrz+t7743cfb63dgBn03+Pt1uaPt0buvyE7psp9ouyN4ETHxYJPFr0RnOhYQPCJojeCEx2LCD5J9LveALIpkVBHUlya49QUn5DmkhwIh+QAyQE8My+awJpxOk09g+SL81RFt7MFHvWbkm4ErbWV+iFa8hFVdWJfcA2S/6c9BrRFI/iTp3gPvZEliD6qbw62RSN4wDQ9TfSkJF9A9EbwgHV4gvDJU/SLRVd4S5F7y0BQXb+mTy66AUdJXqbQRrqa9N739J2HYYBwSA6QHADJAZD8DI5Wxr0zjqlcVPCU5MAzsWMbjuRSHOFpHiX53n1ygiM5ze/VBQfSMV0HSJ6f4mYBIDkAkgM4iY0Veq+aVsSrpjXaneQG0lK/Kf1GcOHBERHT9fL73L33749rIPjjn6W0Y9ljnxzkSPAqkhOd4JF940hmoscIn7gmX+S/mzqSueJaX3W9lOSR1fUvOT3JRjp4GOaUGQFAcgAkB8otiwYtq0gOSHIAp6fxwOJofJX1SPHMsVAYxpbttMG7H5IcWCnRJ2xvlkiqPWkuxXFqqk98dqHMQN4iOsERNYmodLH/EZ3gIHmo7ORGKp/+TvJjblGySAAAAABJRU5ErkJggg==",3,38.5,23.5)
 global.sprOutline = sprite_add_base64("iVBORw0KGgoAAAANSUhEUgAABXwAAAAnCAYAAAC8AIDIAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QYYBBMNE3Z9pAAABaVJREFUeNrt3TFvE3ccx+HfVRlAlUBeSmEgQokAKQuvoZAORGJiqkRfQodMfQmdMvQNIIHUiQkpLJT3AEMkQIlEGECwWIlUOdt1AJPYxMn5Yvv/v/PzLOCQYOUT27l8dbGL+KKMtIpoJt2a162pzVK202z+mqXo1oZms+7Wlmaz7NamZrPq1rZmAADQegsSQDN01p5Ed/O+EOA+2qpmEaHbGBbXDzfe3Q1b7CQ6TlKv+y4+P7wmMAAASeUy+E7zDJViwteT009XpWatbZZTtyY1y6WdZvPRLHW3pjbL8XtDU45p2trNmcr5Hjun+no1TaGX21kmj2O61Xvs163e90vd6h1j6OY3yGZiHs7wdWdK3Oz8uQvRO9jXTDf3Tc0008znplk2djcKt4djrP/xV2zvbMXTzcdiQIPMyc9cE+3Vp1v1VkfpVq2TbpNzb+3Bd29bXlpp/edd97is8ANQ7Wa6VX/gK4Ye1HSr100799NZNdNNN/fTzLtdfFHG3m2D5Rnuq253I9y6eaeIiHj5+t9R76JbtduXXvWb6Vaj2dfBV7eKzYYGX91OaHbC4KvbkWZjDL661TzD99bNO60J8Ln7vvL7/tS5etJx2UgLQ7Hd8OrdSHXTbZbtdHN70y3jbv2DPQdz1V18UX476DNijt9NMwAAaJ7//nkz8t9+/O3Gmf5vL9oGAAAAAFBR9+7z6Dxbrf3xHz69LeP26JOd9yLiyqXrtZ/v+AdfIgAAAACA03XvPh/4M0cGXwAAAACAUwyPvLmOvgZfAAAAAIATHB13jz6dQ46jr+fwBQAAYBYKCTTTTDPNqOPq0uWBy8tLK1O9vu2drYHLr248+vb3/tjbebY68PQOZ3lO30kz+AIAAAAA2Xq6+TjZdS+ul9/+Pjzq5jr6GnwBAICqiogoZdBrms6fu1D0DvZ10023zLtFRHQu/jyT6/vw6W2p23y3S2XU2Ht03M1x9PUcvgAAAABkyWCpXSonjb1H/xz17ykZfAEAAADIjsFSu1ROG3v7b8t19DX4AgAAAJAVg6V2qVQde3MefQ2+AAAAAGTDYKldKlXH3uH3yW30NfgCAAAAkAWDpXapjDv2Dr9vTqOvwRcAAACA5AyW2qVSd+wd/phcRl+DLwAAAADJXbl0vVBBu1k769g7/LE5jL4GXwAAAACSc5aqdinsbhxu5ceNtVWH2uMG4lHj77QZfAEAAABIzlmq2qVy1tE3p7E3wuALAAAAQCYMl9qlUnf0zW3sjTD4AgAAAJARw6V2qYw7+uY49kYYfAEAAADIjOFSu1Sqjr65jr0RBl8AAAAAMmS41C6VqqNvjmNvhMEXAAAAgEwZLrVL5bTRN9exNyJiwZcPAACoqJRAr2nrHezrpptuDenWO9gXQ7dW290oYnH9y8NE9+7zRoy9EQZfAAAAACBj99YeDFxeXlqZ6vVt72wdXnjze7y68SgiBkff/uW+XMbeCIMvAAAAs9E/k9KvGGummWaaMZb3Ox9PvDxtnZ3VgRdr6zxbzXbsjfAcvgAAAAAAJ2rCmb19Bl8AAAAAgFMMj7s5jr0RBl8AAAAAgEqOe+G23Bh8AQAAAAAqynnsjTh80bbSl6oW3XTTTjPdGOjWO9hXYUx7twu3N90AAGBuXLl0faov+LcgMTRDZ+1JdDfvCwHuo61qFhG6jWFx/evGuxmxJ8eZOu5ueFHt4/zy653Y3tmKl6+1AADycXXp8ndvW15aaf3nXfe4bB4G36NH886ESdBsTs52m/jtbA66uW9qpplmKT+3adGsIc0W18uJf2697rv4/PBaNLnZxt9/ehSEBvIbRnpppVPbPd18LMIYchl8i5ZdT5u6aaaZZpppphmaaaaZr5deuummG7rpRsNuaKUbfC26Na9b0x9cS800a2m3thz4lJpl3a1tB9ilZgAAwLD/AdkDabCK+NMTAAAAAElFTkSuQmCC",18,38.5,19.5)
@@ -421,10 +424,6 @@ if fork() {
 	
 	// add options with `option_add` and `option_add_page`
 	// see `api.txt` for the API and `fields.txt` for the fields of each option type
-	
-	call(scr.option_add_page, mod_current_type, mod_current, "options", "credits", {
-			"reference": script_ref_create(page_credits_draw)
-	});
 
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page", {
 		/*GML Raw
@@ -887,7 +886,8 @@ Purple - 15156919
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page3", "REBALANCE");
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page4", "CHALLENGE");
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "global_page5", "MAJOR CHALLENGE");
-	call(scr.option_set_page_display_name, mod_current_type, mod_current, "credits", "CREDITS");
+	call(scr.option_set_page_display_name, mod_current_type, mod_current, "credits", "CREDITS I");
+	call(scr.option_set_page_display_name, mod_current_type, mod_current, "credits_2", "CREDITS II");
 	call(scr.option_set_page_display_name, mod_current_type, mod_current, "options_reset", "OPTIONS RESET");
 	
 	exit;
@@ -1086,6 +1086,23 @@ if(global.options.reset){
 	}
 }
 //options preset
+
+//fix of crab dead sprites
+if(GameCont.area == 3 || GameCont.area == "junkyard" || GameCont.area == "ravenboss"){
+	with(Crab){
+		if(global.options.add_dark != true && global.abd != true){
+			if(spr_dead != global.sprCrabDeadS){
+				spr_dead = global.sprCrabDeadS;
+			}
+		}
+		else{
+			if(spr_dead != global.sprCrabDeadSN){
+				spr_dead = global.sprCrabDeadSN;
+			}
+		}
+	}
+}
+//fix of crab dead sprites
 
 //onfire corpses
 with(Corpse){
@@ -1987,17 +2004,6 @@ if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont
 //scrapyard osasis enter spawn
 
 with instances_matching(CustomHitme,"oasis_enter_scrapyard",1){
-	draw_self()
-	//my attempt to fix blinking sprite after taking damage
-	/*if(sprite_index != spr_hurt){
-		sprite_index = spr_idle;
-	}
-	if(image_index > 2 && sprite_index == spr_hurt){
-		sprite_index = spr_idle;
-		image_index = 0;
-	}*/
-	//my attempt to fix blinking sprite after taking damage
-
 	if (my_health <= 0) {
     	instance_destroy();
 	}
@@ -3911,20 +3917,6 @@ with(Player){
 	
 	draw_set_valign(0)	
 	draw_set_halign(0)
-	
-	 // SPECIAL THANKS
-	 // these guys did something at some point that was helpful, thanks!
-	/*draw_text_nt(cred_x, spec_y,			"-SPECIAL THANKS-");
-	draw_text_nt(cred_x, spec_y + 11,		"@sAEVUSONIAN");
-	draw_text_nt(cred_x, spec_y + 22,		"CRINGERHOMBUS");
-	draw_text_nt(cred_x, spec_y + 33,		"@sDRAGONSTRIVE");
-	draw_text_nt(cred_x, spec_y + 44,		"GECKOBONE");
-	draw_text_nt(cred_x, spec_y + 55,		"@sGOLDEN EPSILON");
-	draw_text_nt(cred_x, spec_y + 66,		"JSBURG");
-	draw_text_nt(cred_x, spec_y + 77,		"@sMCCHOMK");
-	draw_text_nt(cred_x, spec_y + 88,		"SANIBLUES");
-	draw_text_nt(cred_x, spec_y + 99,		"@sSQUIDDY");
-	draw_text_nt(cred_x, spec_y + 110,		"YOKIN");*/
 
 	draw_text_nt(spec_x, cred_y,		"   SERAFIMGWS");
 	draw_set_font(fntChat)
@@ -3957,7 +3949,52 @@ with(Player){
 	draw_set_font(fntM);
 	
 	draw_set_halign(_halign);
-	draw_set_valign(_valign);	
+	draw_set_valign(_valign);
+
+#define page_credits_draw_2
+	#macro spec_x screen_center_x - 150
+	#macro spec_y screen_center_y - 60
+	#macro cred_x screen_center_x + 20 
+	#macro cred_y screen_center_y - 64 // -48
+	
+	var _halign = draw_get_halign(),
+		_valign = draw_get_valign();
+	
+	draw_set_valign(0)	
+	draw_set_halign(0)
+
+	draw_text_nt(spec_x + 3, cred_y,		"    LUKLAKA");
+	draw_set_font(fntChat)
+	draw_text_nt(spec_x - 4, cred_y + 10,		"@pMISSING NIGHT AREAS SPRITES AND#   SNOW BIG BANDIT SPRITES");
+	draw_set_font(fntM);
+
+	draw_text_nt(spec_x - 5, cred_y + 35,		"     CZIMBALA");
+	draw_set_font(fntChat)
+	draw_text_nt(spec_x + 5, cred_y + 45,		"@s   DARK PALACE SPRITES");
+	draw_set_font(fntM);
+
+	draw_text_nt(spec_x + 3, cred_y + 60,		" YELLOWAFTERLIFE");
+	draw_set_font(fntChat)
+	draw_text_nt(spec_x - 5, cred_y + 71,		"@y        SPECIAL THANKS FOR#CREATING NUCLEAR THRONE TOGETHER");
+	draw_set_font(fntM);
+
+	draw_text_nt(cred_x, cred_y,		"   VLAMBEER");
+	draw_set_font(fntChat)
+	draw_text_nt(cred_x, cred_y + 10,		"@b   SPECIAL THANKS FOR#CREATING NUCLEAR THRONE");
+	draw_set_font(fntM);
+
+	draw_text_nt(cred_x - 2, cred_y + 35,		" E.O. LISSANDR");
+	draw_set_font(fntChat)
+	draw_text_nt(cred_x + 4, cred_y + 45,		"@(color:31231)     SOME TESTING,#   MORAL SUPPORT AND# FUN DEEPLOOP COOP RUNS");
+	draw_set_font(fntM);
+
+	draw_text_nt(cred_x + 4, cred_y + 83,		"     MXI");
+	draw_set_font(fntChat)
+	draw_text_nt(cred_x - 4, cred_y + 93,		"@(color:4508129)SOME GITHUB HELP AND TESTING");
+	draw_set_font(fntM);
+	
+	draw_set_halign(_halign);
+	draw_set_valign(_valign);		
 
 #define cleanup
 
@@ -4725,7 +4762,7 @@ if(global.abd == false){
 	}
 
 with(Player){
-	if((irandom(my_health) + 1) == 1 && GameCont.area == 106 && GameCont.subarea == 1){
+	if((irandom(my_health) + 1) <= 2 && GameCont.area == 106 && GameCont.subarea == 1){
 		sound_play_music(mus106b);
 	}
 }
@@ -4785,7 +4822,7 @@ else{
 	restoring_sprites();
 }
 
-if(GameCont.area == 106 && GameCont.subarea == 2){
+if(GameCont.area == 106 && GameCont.subarea == 2 && global.options.add_dark == true){
 	sound_play_music(mus106b);
 	}
 

@@ -22,71 +22,71 @@ enum areas {
 }
 
 // Desert
-global.desert_pool =   [[FireBaller, Salamander], [FireBaller, Salamander, Guardian, ExploGuardian, Wind], [Salamander, Guardian, ExploGuardian, SuperFireBaller, DogGuardian, FireBaller], [Salamander, Guardian, ExploGuardian, SuperFireBaller, DogGuardian, FireBaller]];
-global.desert_pool_w = [[0.03,       0.03],       [0.8,        0.2,        0.2,      0.2,           1],    [1,          1,        1,             0.6,             0.4,         1],          [1,          1,        1,             1,               1,           1]];
+global.desert_pool =   [/*L0*/[FireBaller, Salamander]/*L0*/, /*L1*/[FireBaller, Salamander, Guardian, ExploGuardian, Wind]/*L1*/, /*L2*/[Salamander, Guardian, ExploGuardian, SuperFireBaller, DogGuardian, FireBaller]/*L2*/, /*L3*/[Salamander, Guardian, ExploGuardian, SuperFireBaller, DogGuardian, FireBaller]/*L3*/];
+global.desert_pool_w = [      [0.03,       0.03],                   [0.8,        0.2,        0.2,      0.2,           1],                [1,          1,        1,             0.6,             0.4,         1],                      [1,          1,        1,             1,               1,           1]];
 // Sewers
-global.sewers_pool =   [[Turtle, FireBaller], [Turtle, FireBaller, JungleBandit, Spider], [Turtle, FireBaller, Spider, JungleFly, JungleBandit, JungleAssassinHide, RatkingRage], [Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, JungleAssassinHide, JungleBandit, RatkingRage, RhinoFreak], [Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, Guardian, ExploGuardian, JungleBandit, RatkingRage, RhinoFreak, JungleAssassinHide], [Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, Guardian, ExploGuardian, DogGuardian, BanditBoss, RatkingRage, RhinoFreak, JungleAssassinHide, JungleBandit], [Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, Guardian, ExploGuardian, DogGuardian, BanditBoss, RatkingRage, RhinoFreak, JungleAssassinHide, JungleBandit]];
-global.sewers_pool_w = [[0.25,    0.25],      [1,      1,          1,            1],      [1,      1,          1,      1,         1,            1,                  1],           [1,           1,      1,           1,     1,         1,                1,                  1,            1,           1],          [1,           1,      1,          1,      1,         1,                1,        1,             1,            1,           1,          1],                  [1,           1,      1,          1,      1,         1,                1,        1,             0.6,         0.25,       1,           1,          1,                  1],            [1,           1,      1,          1,      1,         1,                1,        1,             0.9,         0.35,       1,           1,          1,                  1]];
+global.sewers_pool =   [/*L0*/[Turtle, FireBaller]/*L0*/, /*L1*/[Turtle, FireBaller, JungleBandit, Spider]/*L1*/, /*L2*/[Turtle, FireBaller, Spider, JungleFly, JungleBandit, JungleAssassinHide, RatkingRage]/*L2*/, /*L3*/[Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, JungleAssassinHide, JungleBandit, RatkingRage, RhinoFreak]/*L3*/, /*L4*/[Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, Guardian, ExploGuardian, JungleBandit, RatkingRage, RhinoFreak, JungleAssassinHide]/*L4*/, /*L5*/[Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, Guardian, ExploGuardian, DogGuardian, BanditBoss, RatkingRage, RhinoFreak, JungleAssassinHide, JungleBandit]/*L5*/, /*L6*/[Necromancer, Turtle, FireBaller, Spider, JungleFly, LightningCrystal, Guardian, ExploGuardian, DogGuardian, BanditBoss, RatkingRage, RhinoFreak, JungleAssassinHide, JungleBandit]/*L6*/];
+global.sewers_pool_w = [      [0.25,    0.25],                  [1,      1,          1,            1],                  [1,      1,          1,      1,         1,            1,                  1],                       [1,           1,      1,           1,     1,         1,                1,                  1,            1,           1],                      [1,           1,      1,          1,      1,         1,                1,        1,             1,            1,           1,          1],                              [1,           1,      1,          1,      1,         1,                1,        1,             0.6,         0.25,       1,           1,          1,                  1],                        [1,           1,      1,          1,      1,         1,                1,        1,             0.9,         0.35,       1,           1,          1,                  1]];
 // Scrapyard
-global.scrapyard_pool =   [[Wolf, Tires, Wind], [Crab, Wolf, Jock], [ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret], [ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret, Guardian, BecomeTurret, Ratking, RatkingRage], [ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret, Guardian, ExploGuardian, DogGuardian, TechnoMancer, BecomeTurret, BanditBoss, Ratking, RatkingRage], [ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret, Guardian, ExploGuardian, DogGuardian, TechnoMancer, BecomeTurret, BanditBoss, Ratking, RatkingRage]];
-global.scrapyard_pool_w = [[0.25,  0.03, 1],    [0.125,0.125,0.125],[0.2,         1,    1,    0.2,  1,        1],      [0.2,         1,    0.2,  1,    1,        1,      1,        1,            1,       1],           [0.2,         1,    1,    0.2,  1,        1,      1,        1,             0.75,        0.25,         1,            0.2,        1,       1],           [0.2,         1,    1,    0.2,  1,        1,      1,        1,             1,           0.35,         1,            0.35,       1,       1]];
+global.scrapyard_pool =   [/*L0*/[Wolf, Tires, Wind]/*L0*/, /*L1*/[Crab, Wolf, Jock]/*L1*/, /*L2*/[ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret]/*L2*/, /*L3*/[ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret, Guardian, BecomeTurret, Ratking, RatkingRage]/*L3*/, /*L4*/[ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret, Guardian, ExploGuardian, DogGuardian, BecomeTurret, Ratking, RatkingRage]/*L4*/, /*L5*/[ToxicBarrel, Crab, Wolf, Jock, SnowTank, Turret, Guardian, ExploGuardian, DogGuardian, TechnoMancer, BecomeTurret, BanditBoss, Ratking, RatkingRage]]/*L5*/;
+global.scrapyard_pool_w = [      [0.25,  0.03, 1],                [0.125,0.125,0.125],            [0.2,         1,    1,    0.2,  1,        1],                  [0.2,         1,    0.2,  1,    1,        1,      1,        1,            1,       1],                       [0.2,         1,    1,    0.2,  1,        1,      1,        1,             0.75,        1,            1,       1],                       [0.2,         1,    1,    0.2,  1,        1,      1,        1,             1,           0.35,         1,            0.35,       1,       1]];
 // Crystal caves 
-global.crystals_caves_pool =   [[Molesarge, CrystalProp], [Molesarge, GoldScorpion, SuperFireBaller], [Necromancer, Guardian, SuperFireBaller, ExploGuardian, GoldScorpion, Molesarge], [Necromancer, Guardian, SuperFireBaller, ExploGuardian, DogGuardian, BanditBoss, Molesarge,	GoldScorpion], [Necromancer, Guardian, SuperFireBaller, ExploGuardian, DogGuardian, BanditBoss, Molesarge, GoldScorpion]];
-global.crystals_caves_pool_w = [[0.05,      0.3],           [0.65,      0.1,            0.1],           [1,           1,        0.6,             1,             0.3,            1],         [1,           1,        1,               1,             0.5,         0.25,       1,          1],              [1,           1,        1,               1,             0.9,         0.35,       1,         1]];
+global.crystals_caves_pool =   [/*L0*/[Molesarge, CrystalProp]/*L0*/, /*L1*/[Molesarge, GoldScorpion, SuperFireBaller]/*L1*/, /*L2*/[Necromancer, Guardian, SuperFireBaller, GoldScorpion, Molesarge]/*L2*/, /*L3*/[Necromancer, Guardian, SuperFireBaller, ExploGuardian, DogGuardian, Molesarge, GoldScorpion]/*L3*/, /*L4*/[Necromancer, Guardian, SuperFireBaller, ExploGuardian, DogGuardian, BanditBoss, Molesarge, GoldScorpion]/*L4*/];
+global.crystals_caves_pool_w = [      [0.05,      0.3],                     [0.65,      0.1,            0.1],                       [1,           1,        0.6,             0.3,          1],                     [1,           1,        1,               1,             0.5,         1,         1],                        [1,           1,        1,               1,             0.9,         0.35,       1,         1]];
 // Winter
-global.winter_pool =   [[PopoFreak, StreetLight, Wind], [Jock, Sniper, PopoFreak], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer], [Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer]];
-global.winter_pool_w = [[0.005,     0.25,        1],    [0.25, 0.25,   0.1],       [0.25, 1,      0.4,       1,      1,            1],        [1,    1,      1,         1,      1,            1,        0.1],          [1,    1,      1,         1,      1,            1,        0.35]];
+global.winter_pool =   [/*L0*/[PopoFreak, StreetLight, Wind, Molesarge]/*L0*/, /*L1*/[Jock, Sniper, PopoFreak, Molesarge]/*L1*/, /*L2*/[Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, Molesarge]/*L2*/, /*L3*/[Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer, Molesarge]/*L3*/, /*L4*/[Jock, Sniper, PopoFreak, Turret, BecomeTurret, Guardian, TechnoMancer, Molesarge]/*L4*/];
+global.winter_pool_w = [      [0.005,     0.25,        1,    0.25],                  [0.25, 0.25,   0.1,       1],                     [0.25, 1,      0.4,       1,      1,            1,        1],                     [1,    1,      1,         1,      1,            1,        0.1,          1],                     [1,    1,      1,         1,      1,            1,        0.35,         1]];
 // Labs
-global.labs_pool =   [[PopoFreak, BigMaggot, FrogEgg, Rat], [PopoFreak, JungleFly, FrogEgg, Exploder, BuffGator, BigMaggot], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, SuperFrog, LightningCrystal, RatkingRage, Exploder, BigMaggot], [PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage, DogGuardian, BigMaggot, Exploder]];
-global.labs_pool_w = [[0.25,      0.4,       1,       1],   [0.35,      0.35,      1,       0.25,      0.2,       0.3],      [1,         1,         1,       1,         1,         1,        0.8,       0.4,              1,           1,        1],         [1,         1,         1,       1,         1,         1,        1,             0.4,              1,           0.8,         1,         1]];
+global.labs_pool =   [/*L0*/[PopoFreak, BigMaggot, FrogEgg, Rat, Maggot]/*L0*/, /*L1*/[PopoFreak, JungleFly, FrogEgg, Exploder, BigMaggot, Rat, Gator, Bandit, RadMaggot, Maggot]/*L1*/, /*L2*/[PopoFreak, JungleFly, FrogEgg, BuffGator, LightningCrystal, RatkingRage, Exploder, BigMaggot, Rat, Gator, Bandit, Maggot, RadMaggot]/*L2*/, /*L3*/[PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, Bandit, LightningCrystal, RatkingRage, BigMaggot, Exploder, Rat, Gator, Maggot, RadMaggot, MaggotSpawn]/*L3*/, /*L4*/[PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage, DogGuardian, BigMaggot, Exploder, Bandit, Rat, Gator, Maggot, RadMaggot, RadMaggotChest, MaggotSpawn]/*L4*/, /*L5*/[PopoFreak, JungleFly, FrogEgg, SuperFrog, BuffGator, Guardian, ExploGuardian, LightningCrystal, RatkingRage, DogGuardian, BigMaggot, Exploder, BanditBoss, Bandit, Rat, Gator, Maggot, RadMaggot, RadMaggotChest, MaggotSpawn]/*L5*/];
+global.labs_pool_w = [      [0.25,      0.4,       1,       1,   1],                  [0.35,      0.35,      1,       0.25,     0.3,       1,   1,     1,      1,         1],                  [1,         1,         1,       0.4,         0.4,            0.4,         1,        1,         1,   1,     1,      1,      1],                     [1,         1,         1,       1,         1,         1,        1,      0.4,              1,           1,         1,        1,   1,     1,      1,         1],                       [1,         1,         1,       1,         1,         1,        1,             0.4,              1,           1,           1,         1,        1,      1,   1,     1,      1,         1,              1],                       [1,         1,         1,       1,         1,         1,        1,             1,                1,           1,           1,         1,        1,          1,      1,   1,     1,      1,         1,              1]];
 // Palace
-global.palace_pool =   [[Gator, GatorSmoke, Pillar, SmallGenerator, BuffGator], [Gator, JungleAssassin, BuffGator, GatorSmoke], [Gator, JungleAssassin, PopoFreak, Turret, BuffGator], [Gator, JungleAssassin, PopoFreak, Turret, BecomeTurret, BuffGator]];
-global.palace_pool_w = [[0.3,   0.3,        0.3,    0.3,       0.05],      [1,     0.5,            0.3,       1],          [1,     1,              1,         1,      0.25],      [1,     1,              1,         1,      1,            1]];
+global.palace_pool =   [/*L0*/[Gator, GatorSmoke, Pillar, SmallGenerator, BuffGator]/*L0*/, /*L1*/[Gator, JungleAssassin, BuffGator, GatorSmoke]/*L1*/, /*L2*/[Gator, JungleAssassin, PopoFreak, Turret, BuffGator]/*L2*/, /*L3*/[Gator, JungleAssassin, PopoFreak, Turret, BecomeTurret, BuffGator]/*L3*/];
+global.palace_pool_w = [      [0.3,   0.3,        0.3,    0.3,       0.05],                       [1,     0.5,            0.3,       1],                      [1,     1,              1,         1,      0.25],                  [1,     1,              1,         1,      1,            1]];
 // Vault
 global.vault_pool = [[Torch]];
 global.vault_pool_w = [[1]];
 // Oasis
-global.oasis_pool =   [[Turtle, Exploder, Gator, Freak], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, Guardian, ExploGuardian], [Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, OasisBoss, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
-global.oasis_pool_w = [[0.5,    1,        1,     1],     [1,      1,        1,     1,     0.3,       0.3],       [1,      1,        1,     1,     1,         1,         1,        1],             [1,      1,        1,     1,     1,         1,         1,         1,        1,             1,           0.4]];
+global.oasis_pool =   [/*L0*/[Turtle, Exploder, Gator, Freak]/*L0*/, /*L1*/[Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog]/*L1*/, /*L2*/[Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, Guardian, ExploGuardian]/*L2*/, /*L3*/[Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, OasisBoss, Guardian, ExploGuardian, DogGuardian]/*L3*/, /*L4*/[Turtle, Exploder, Gator, Freak, BuffGator, SuperFrog, OasisBoss, Guardian, ExploGuardian, DogGuardian, BanditBoss]/*L4*/];
+global.oasis_pool_w = [      [0.5,    1,        1,     1],                 [1,      1,        1,     1,     0.3,       0.3],                   [1,      1,        1,     1,     1,         1,         1,        1],                         [1,      1,        1,     1,     1,         1,         1,         1,        1,             1],                       [1,      1,        1,     1,     1,         1,         1,         1,        1,             1,           0.4]];
 // PIZZA!
 global.pizza_pool = [[Spider]];
 global.pizza_pool_w = [[0.1]];
 // Mansion
-global.mansion_pool =   [[GoldScorpion], [GoldScorpion, GoldSnowTank, Wind, MoneyPile], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian], [GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
-global.mansion_pool_w = [[0],            [0.05,         0.025,        1,    1],         [0.25,         0.15,         1,        1],             [0.75,         0.6,          1,        1,             0.5],         [1,            1,            1,        1,             0.75,        0.4]];
+global.mansion_pool =   [/*L0*/[MoneyPile]/*L0*/, /*L1*/[GoldScorpion, GoldSnowTank, Wind, MoneyPile]/*L1*/, /*L2*/[GoldScorpion, GoldSnowTank, Guardian, ExploGuardian]/*L2*/, /*L3*/[GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian]/*L3*/, /*L4*/[GoldScorpion, GoldSnowTank, Guardian, ExploGuardian, DogGuardian, BanditBoss]/*L4*/];
+global.mansion_pool_w = [      [0],                     [0.05,         0.025,        1,    1],                     [0.25,         0.15,         1,        1],                         [0.75,         0.6,          1,        1,             0.5],                     [1,            1,            1,        1,             0.75,        0.4]];
 // Cursed crystal caves
-global.cursed_crystals_caves_pool =   [[InvCrystal, FireBaller, BonePile], [MeleeFake, FireBaller, Scorpion], [MeleeFake, FireBaller, Guardian, ExploGuardian, Scorpion], [MeleeFake, FireBaller, Guardian, ExploGuardian, DogGuardian, BanditBoss, Scorpion]];
-global.cursed_crystals_caves_pool_w = [[0.33,      0.33,       0.33],     [1,         1,         1],        [1,         1,          1,        1,             1],        [1,         1,          1,        1,             1,           0.35,       1]];
+global.cursed_crystals_caves_pool =   [/*L0*/[InvCrystal, FireBaller, BonePile]/*L0*/, /*L1*/[MeleeFake, FireBaller, Scorpion]/*L1*/, /*L2*/[MeleeFake, FireBaller, Guardian, ExploGuardian, Scorpion]/*L2*/, /*L3*/[MeleeFake, FireBaller, Guardian, ExploGuardian, DogGuardian, BanditBoss, Scorpion]/*L3*/];
+global.cursed_crystals_caves_pool_w = [      [0.33,      0.33,       0.33],                  [1,         1,         1],                     [1,         1,          1,        1,             1],                    [1,         1,          1,        1,             1,           0.35,       1]];
 // Jungle
-global.jungle_pool =   [[Raven, Gator, Exploder, Car], [Raven, Gator, Exploder, SuperFrog, ExploFreak, Car, BuffGator], [Raven, Gator, Exploder, SuperFrog, ExploFreak, Guardian, Sniper, ExploGuardian, Car, BuffGator], [Raven, Gator, Exploder, SuperFrog, ExploFreak, Guardian, Sniper, ExploGuardian, DogGuardian, BanditBoss, Car, BuffGator]];
-global.jungle_pool_w = [[1,     1,     1,        1],   [1,     1,     1,        0.4,       0.6,        1,   0.5],       [1,     1,     1,        1,         1,          1,        1,      1,             1,   1],         [1,     1,     1,        1,         1,          1,        1,      1,             0.5,         0.3,        1,   1]];
+global.jungle_pool =   [/*L0*/[Raven, Gator, Exploder, Car]/*L0*/, /*L1*/[Raven, Gator, Exploder, SuperFrog, Car, BuffGator]/*L1*/, /*L2*/[Raven, Gator, Exploder, SuperFrog, ExploFreak, Sniper, Car, BuffGator]/*L2*/, /*L3*/[Raven, Gator, Exploder, SuperFrog, ExploFreak, Guardian, Sniper, ExploGuardian, Car, BuffGator]/*L3*/,/*L4*/[Raven, Gator, Exploder, SuperFrog, ExploFreak, Guardian, Sniper, ExploGuardian, Car, BuffGator, DogGuardian, BanditBoss]/*L4*/];
+global.jungle_pool_w = [      [1,     1,     1,        1],               [1,     1,     1,        0.4,       1,   0.5],                   [1,     1,     1,        1,         1,          1,      1,   1],                     [1,     1,     1,        1,         1,          1,        1,      1,             1,   1],                    [1,     1,     1,        1,         1,          1,        1,      1,             1,   1,         1,           1]];
 // IDPD palace
-global.IDPD_pool =   [[Turret],[Turret, BecomeTurret],[Turret, BecomeTurret, PopoFreak]];
-global.IDPD_pool_w = [[0],     [0.25,   0.25],        [0.5,    0.5,          0.25]];
+global.IDPD_pool =   [/*L0*/[Turret]/*L0*/,/*L1*/[Turret, BecomeTurret]/*L1*/,/*L2*/[Turret, BecomeTurret, PopoFreak]/*L2*/];
+global.IDPD_pool_w = [      [0],                 [0.25,   0.25],                    [0.5,    0.5,          0.25]];
 // Vacation
 global.vacation_pool = [[GoldChest]];
 global.vacation_pool_w = [[1]];
 // Coast
-global.nttecoast_pool =   [[Bandit, Maggot, BigMaggot, MaggotSpawn], [Bandit, Maggot, BigMaggot, MaggotSpawn, Salamander, JungleFly], [Bandit, Maggot, BigMaggot, MaggotSpawn, Salamander, JungleFly, Guardian, ExploGuardian], [Bandit, Maggot, BigMaggot, MaggotSpawn, Salamander, JungleFly, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
-global.nttecoast_pool_w = [[1,      1,      0.25,      0.5],         [1,      1,      1,         1,           0.3,        0.5],       [1,      1,      1,         1,           1,          1,         0.5,      0.5],           [1,      1,      1,         1,           1,          1,         1,        1,             0.4,         0.25]];
+global.nttecoast_pool =   [/*L0*/[Bandit, Maggot, BigMaggot, MaggotSpawn]/*L0*/, /*L1*/[Bandit, Maggot, BigMaggot, MaggotSpawn, Salamander, JungleFly]/*L1*/, /*L2*/[Bandit, Maggot, BigMaggot, MaggotSpawn, Salamander, JungleFly, Guardian, ExploGuardian]/*L2*/, /*L3*/[Bandit, Maggot, BigMaggot, MaggotSpawn, Salamander, JungleFly, Guardian, ExploGuardian, DogGuardian, BanditBoss]/*L3*/];
+global.nttecoast_pool_w = [      [1,      1,      0.25,      0.5],                     [1,      1,      1,         1,           0.3,        0.5],                   [1,      1,      1,         1,           1,          1,         0.5,      0.5],                       [1,      1,      1,         1,           1,          1,         1,        1,             0.4,         0.25]];
 // Abbyss
-global.nttetrench_pool =   [[Freak, Freak, BoneFish, MeleeFake], [Freak, Freak, BoneFish, MeleeFake, Guardian, OasisBoss], [Freak, Freak, BoneFish, MeleeFake, Guardian, OasisBoss, ExploGuardian, DogGuardian]];
-global.nttetrench_pool_w = [[1,     1,     1,        1],         [1,     1,     1,        1,         0.3,      0.1],       [1,     1,     1,        1,         1,        0.25,      1,             0.4]];
+global.nttetrench_pool =   [/*L0*/[Freak, Freak, BoneFish, MeleeFake]/*L0*/, /*L1*/[Freak, Freak, BoneFish, MeleeFake, Guardian, ExploGuardian]/*L1*/, /*L2*/[Freak, Freak, BoneFish, MeleeFake, Guardian, ExploGuardian, DogGuardian]/*L2*/, /*L3*/[Freak, Freak, BoneFish, MeleeFake, Guardian, ExploGuardian, DogGuardian, OasisBoss]/*L3*/];
+global.nttetrench_pool_w = [      [1,     1,     1,        1],                     [1,     1,     1,        1,         0.3,      0.1],                       [1,     1,     1,        1,         1,        1,             0.4],                     [1,     1,     1,        1,         1,        1,             0.4,         1]];
 // Red
-global.nttered_pool =   [[Molefish], [Molefish, ExploFreak, SuperFireBaller], [Molefish, ExploFreak, SuperFireBaller, Guardian, ExploGuardian], [Molefish, ExploFreak, SuperFireBaller, Guardian, ExploGuardian, DogGuardian, BanditBoss]];
-global.nttered_pool_w = [[1],        [1,        0.25,       0.2],             [1,        0.5,        0.4,             0.5,      0.4],           [1,        0.8,        1,               1,        1,             0.4,         0.25]];
+global.nttered_pool =   [/*L0*/[Molefish]/*L0*/, /*L1*/[Molefish, ExploFreak, SuperFireBaller]/*L1*/, /*L2*/[Molefish, ExploFreak, SuperFireBaller, Guardian, ExploGuardian]/*L2*/, /*L3*/[Molefish, ExploFreak, SuperFireBaller, Guardian, ExploGuardian, DogGuardian, BanditBoss]/*L3*/];
+global.nttered_pool_w = [      [1],                    [1,        0.25,       0.2],                         [1,        0.5,        0.4,             0.5,      0.4],                       [1,        0.8,        1,               1,        1,             0.4,         0.25]];
 // Ice Caves
-global.hmicecaves_pool =   [[Jock, Necromancer], [Jock, Necromancer, Guardian], [Jock, Necromancer, Guardian, ExploGuardian, DogGuardian]];
-global.hmicecaves_pool_w = [[0.2,  0.1],         [0.5,  0.5,         0.5],      [1,    1,           1,        1,             1]];
+global.hmicecaves_pool =   [/*L0*/[Jock, Necromancer]/*L0*/, /*L1*/[Jock, Necromancer, Guardian]/*L1*/, /*L2*/[Jock, Necromancer, Guardian, ExploGuardian, DogGuardian]/*L2*/];
+global.hmicecaves_pool_w = [      [0.2,  0.1],                     [0.5,  0.5,         0.5],                  [1,    1,           1,        1,             1]];
 // Hive
-global.hive_pool =   [[Spider, LaserCrystal], [Spider, LaserCrystal, JungleFly, Molesarge], [Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, Guardian], [Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, Guardian, ExploGuardian, DogGuardian, ExploFreak]];
-global.hive_pool_w = [[0.125,  0.025],        [1,      0.75,         0.5,       1],         [1,      1,            1,         1,          0.5,       1,            1],        [1,      1,            1,         1,          1,         1,            1,        0.6,           0.5,         1]];
+global.hive_pool =   [/*L0*/[Spider, LaserCrystal, Bandit]/*L0*/, /*L1*/[Spider, LaserCrystal, JungleFly, Molesarge, Bandit]/*L1*/, /*L2*/[Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, Bandit]/*L2*/, /*L3*/[Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, GoldScorpion, ExploFreak, Bandit]/*L3*/, /*L4*/[Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, GoldScorpion, ExploFreak, Bandit, Guardian, ExploGuardian]/*L4*/, /*L5*/[Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, GoldScorpion, ExploFreak, Bandit, Guardian, ExploGuardian, DogGuardian, BanditBoss]/*L5*/];
+global.hive_pool_w = [      [0.125,  0.025,        1],                  [1,      0.75,         0.5,       1,         1],                  [1,      1,            1,         1,          1,         0.5,          1],                  [1,      1,            1,         1,          1,         1,            1,            1,          1],                  [1,      1,            1,         1,          1,         1,            1,            1,          1,      1,        1],                         [1,      1,            1,         1,          1,         1,            1,            1,          1,      1,        1,             1,           1]];
 // Undergrowth
-global.undergrowth_pool =   [[Salamander, FireBaller], [Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin], [Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak, Guardian], [Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak, Guardian, ExploGuardian, DogGuardian]];
-global.undergrowth_pool_w = [[0.07,       0.2],        [0.6,        1,          0.3,             0.5,          0.3],            [1,          1,          0.8,             1,            1,              0.5,        1],        [1,          1,          1,               1,            1,              0.8,        1,        1,             0.4]];
+global.undergrowth_pool =   [/*L0*/[Salamander, FireBaller]/*L0*/, /*L1*/[Salamander, FireBaller, JungleBandit, JungleAssassin]/*L1*/, /*L2*/[Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak]/*L2*/, /*L3*/[Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak, Guardian, ExploGuardian]/*L3*/,/*L4*/[Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak, Guardian, ExploGuardian, DogGuardian]/*L4*/];
+global.undergrowth_pool_w = [      [0.07,       0.2],                    [0.6,        1,          0.5,          0.3],                        [1,          1,          0.8,             1,            1,              0.5],                    [1,          1,          1,               1,            1,              0.8,        1,        1],                        [1,          1,          1,               1,            1,              1,          1,        1,             1]];
 // Moon
-global.moon_pool =   [[SnowTank], [SnowTank], [SnowTank, PopoFreak, Guardian], [SnowTank, PopoFreak, Guardian, ExploGuardian, DogGuardian], [SnowTank, PopoFreak, Guardian, ExploGuardian, DogGuardian]];
-global.moon_pool_w = [[0.125],    [0.25],     [0.5,      0.5,       0.5],      [1,        1,         1,        1,             0.4],         [1,        1,         1,        1,             0.8]];
+global.moon_pool =   [/*L0*/[SnowTank]/*L0*/, /*L1*/[SnowTank, PopoFreak]/*L1*/, /*L2*/[SnowTank, PopoFreak, Guardian]/*L2*/, /*L3*/[SnowTank, PopoFreak, Guardian, ExploGuardian]/*L3*/, /*L4*/[SnowTank, PopoFreak, Guardian, ExploGuardian, DogGuardian]/*L4*/];
+global.moon_pool_w = [      [0.125],                [0.125,    0.125],                 [0.25,     0.25,      0.25],                 [0.5,      0.5,       0.5,      0.5],                       [1,        1,         1,        1,             0.8]];
 // Empty
 global.empty_pool = [[Wind]];
 global.empty_pool_w = [[0]];
@@ -102,7 +102,7 @@ global.enemy_factor = 1;
 global.attmpts_to_add_enemies = 15;
 
 // -----Commands zone------- //
-trace("Thanks for installing the Whole New World 1.0 Beta mod! Build 071225");
+trace("Thanks for installing the Whole New World 1.0 Beta mod! Build 101225");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -206,11 +206,13 @@ global.loop_check = GameCont.loops;
 
 global.is_player_notified = false;
 
-global.newwepareasarrays = [[16,69,50],[17,71,30,52],[21,6,7,8,20,72],[61,57],[18,112,70,58],[89,28,59,65],[66,15,78,117,55,90,67,36],[124,74],[26,22,113,64,84,106,85,96,118,115],[107,49,73,125,25,11,77,33],[97,51],[119,60,12],[83,54,105]];
+global.newwepareasarrays = [[16,69,50],[17,71,30,52],[21,6,7,8,20,72],[61,57,18],[112,70,58],[89,28,59,65],[66,15,78,117,55,90,67,36],[124,74],[26,22,113,64,84,106,85,96,118,115],[107,49,73,125,25,11,77,33],[97,51],[119,60,12]];
 
 global.goldenweps = [40,41,42,43,44,45,98,99,100,101,102,103,122,123];
 
 global.weps = [3,4,5,6,7,19,34,21,30,27,14,17,47,18];
+
+global.remind_weps = [0];
 
 global.areaSwitch = 0;
 
@@ -230,9 +232,9 @@ global.idpd_band = [Grunt, Inspector, Shielder, EliteGrunt, EliteInspector, Elit
 
 global.explosives = [Grenade, Rocket, JockRocket, PopoRocket, Nuke];
 
-global.fsprites_restore = [sprBigSkull, sprBigSkullOpen, sprBigSkullHurt, sprBigSkullOpenHurt, sprBigSkullDead, sprBonePileIdle, sprBonePileHurt, sprBonePileDead, sprBones, sprCactus, sprCactusHurt, sprCactusDead, sprCactus2, sprCactus2Hurt, sprCactus2Dead, sprCactus3, sprCactus3Hurt, sprCactus3Dead, sprCactusB, sprCactusBHurt, sprCactusBDead, sprCactusB2, sprCactusB2Hurt, sprCactusB2Dead, sprCactusB3, sprCactusB3Hurt, sprCactusB3Dead, sprDebris1, sprDesertTopDecal, sprDetail1, sprFloor1, sprFloor1Explo, sprFloor1B, sprMSpawnIdle, sprMSpawnDead, sprMSpawnHurt, sprMSpawnChrg, sprWall1Bot, sprWall1Out, sprWall1Top, sprWall1Trans, sprWind, sprTires, sprTiresDead, sprTiresHurt, sprTopDecalScrapyard, sprFloor3, sprFloor3B, sprWall3Out, sprDetail3, sprWall3Bot, sprWall3Trans, sprWall3Top, sprFloor3Explo, sprDebris3, bak3, sprCarIdle, sprCarHurt, sprCarThrown, sprSnowBotRedCarIdle, sprSnowBotRedCarLift, sprSnowBotRedCarWalk, sprSnowBotRedCarHurt, sprSnowBotRedCarThrow, sprTrap, sprTrapGameover, sprTrapScorchMark, sprRainDrop, sprRainDropSlowmo, sprRainSplash, sprScrapDecal, sprSodaMachine, sprStreetLight, sprIcicle, sprWall5Trans, sprTopDecalCity, sprIceDecal, sprIcicleDead, sprIcicleHurt, sprSodaMachineDead, sprSodaCan, sprStreetLightDead, sprFloor5B, sprFloor5Explo, sprFloor5, sprWall5Out, sprWall5Top, sprDebris5, sprDetail5, sprWall5Bot, sprSodaMachineHurt, sprStreetLightHurt, sprSnowBotCarLift, sprFrozenCar, sprSnowBotCarIdle, sprSnowBotCarWalk, sprSnowBotCarHurt, sprSnowBotCarThrow, sprFrozenCarThrown, sprFrozenCarHurt, sprSnowFlake, sprHydrant, sprHydrantHurt, sprHydrantDead, sprSnowMan, sprSnowManHurt, sprPStat1Idle, sprPStat2Idle, sprSnowManDead, sprPStat1Hurt, sprPStat2Hurt, sprPStatDead, sprSnowManDead, sprSnowBotRedCarLift, sprRainDrop, sprRainDropSlowmo, sprRainSplash, sprBanditBossIdle, sprBanditBossWalk, sprBanditBossFire, sprBanditBossTell, sprBanditBossDash, sprBanditBossStop, sprBanditBossHurt, sprBanditBossDead, sprBossIntro, sprDebris7, sprFloor7, sprFloor7B, sprFloor7Explo, sprNuclearPillar, sprNuclearPillarDead, sprNuclearPillarHurt, sprPalaceTopDecal, sprSmallGenerator, sprSmallGeneratorDead, sprSmallGeneratorHurt, sprWall7Bot, sprWall7Out, sprWall7Top, sprWall7Trans, sprThroneStatueDead, sprThroneStatue, sprNothingSwitchOn, sprNothingDeathLoop, sprNothingDeath, sprNothingRight, sprNothingPipes, sprNothingOn, sprNothingOff, sprNothingMiddle, sprNothingLeft];
+global.fsprites_restore = [sprBigSkull, sprBigSkullOpen, sprBigSkullHurt, sprBigSkullOpenHurt, sprBigSkullDead, sprBonePileIdle, sprBonePileHurt, sprBonePileDead, sprBones, sprCactus, sprCactusHurt, sprCactusDead, sprCactus2, sprCactus2Hurt, sprCactus2Dead, sprCactus3, sprCactus3Hurt, sprCactus3Dead, sprCactusB, sprCactusBHurt, sprCactusBDead, sprCactusB2, sprCactusB2Hurt, sprCactusB2Dead, sprCactusB3, sprCactusB3Hurt, sprCactusB3Dead, sprDebris1, sprDesertTopDecal, sprDetail1, sprFloor1, sprFloor1Explo, sprFloor1B, sprMSpawnIdle, sprMSpawnDead, sprMSpawnHurt, sprMSpawnChrg, sprWall1Bot, sprWall1Out, sprWall1Top, sprWall1Trans, sprWind, sprTires, sprTiresDead, sprTiresHurt, sprTopDecalScrapyard, sprFloor3, sprFloor3B, sprWall3Out, sprDetail3, sprWall3Bot, sprWall3Trans, sprWall3Top, sprFloor3Explo, sprDebris3, bak3, sprCarIdle, sprCarHurt, sprCarThrown, sprSnowBotRedCarIdle, sprSnowBotRedCarLift, sprSnowBotRedCarWalk, sprSnowBotRedCarHurt, sprSnowBotRedCarThrow, sprTrap, sprTrapGameover, sprTrapScorchMark, sprRainDrop, sprRainDropSlowmo, sprRainSplash, sprScrapDecal, sprSodaMachine, sprStreetLight, sprIcicle, sprWall5Trans, sprTopDecalCity, sprIceDecal, sprIcicleDead, sprIcicleHurt, sprSodaMachineDead, sprSodaCan, sprStreetLightDead, sprFloor5B, sprFloor5Explo, sprFloor5, sprWall5Out, sprWall5Top, sprDebris5, sprDetail5, sprWall5Bot, sprSodaMachineHurt, sprStreetLightHurt, sprSnowBotCarLift, sprFrozenCar, sprSnowBotCarIdle, sprSnowBotCarWalk, sprSnowBotCarHurt, sprSnowBotCarThrow, sprFrozenCarThrown, sprFrozenCarHurt, sprSnowFlake, sprHydrant, sprHydrantHurt, sprHydrantDead, sprSnowMan, sprSnowManHurt, sprPStat1Idle, sprPStat2Idle, sprSnowManDead, sprPStat1Hurt, sprPStat2Hurt, sprPStatDead, sprSnowManDead, sprSnowBotRedCarLift, sprRainDrop, sprRainDropSlowmo, sprRainSplash, sprBanditBossIdle, sprBanditBossWalk, sprBanditBossFire, sprBanditBossTell, sprBanditBossDash, sprBanditBossStop, sprBanditBossHurt, sprBanditBossDead, sprBossIntro, sprDebris7, sprFloor7, sprFloor7B, sprFloor7Explo, sprNuclearPillar, sprNuclearPillarDead, sprNuclearPillarHurt, sprPalaceTopDecal, sprSmallGenerator, sprSmallGeneratorDead, sprSmallGeneratorHurt, sprWall7Bot, sprWall7Out, sprWall7Top, sprWall7Trans, sprThroneStatueDead, sprThroneStatue, sprNothingSwitchOn, sprNothingDeathLoop, sprNothingDeath, sprNothingRight, sprNothingPipes, sprNothingOn, sprNothingOff, sprNothingMiddle, sprNothingLeft, sprCarpet, sprBigGeneratorInactive, sprBigGeneratorHurt, sprBigGeneratorDead, sprBigGeneratorActivate, sprBigGenerator, sprNothingActivate];
 
-global.fsprites_replace = [[sprRainDrop,"resources/Areas/NightScrapyard/sprRainDrop.png",1],[sprRainDropSlowmo,"resources/Areas/NightScrapyard/sprRainDropSlowmo.png",1],[sprRainSplash,"resources/Areas/NightScrapyard/sprRainSplash.png",3],[sprBigSkull,"resources/Areas/NightDesert/sprBigSkull_strip1.png",1],[sprBigSkullOpen,"resources/Areas/NightDesert/sprBigSkullOpen_strip1.png",1],[sprBigSkullHurt,"resources/Areas/NightDesert/sprBigSkullHurt_strip3.png",3],[sprBigSkullOpenHurt,"resources/Areas/NightDesert/sprBigSkullOpenHurt_strip3.png",3],[sprBigSkullDead,"resources/Areas/NightDesert/sprBigSkullDead_strip3.png",3],[sprBonePileIdle,"resources/Areas/NightDesert/sprBonePileIdle_strip1.png",1],[sprBonePileHurt,"resources/Areas/NightDesert/sprBonePileHurt_strip3.png",3],[sprBonePileDead,"resources/Areas/NightDesert/sprBonePileDead_strip4.png",3],[sprBones,"resources/Areas/NightDesert/sprBones_strip2.png",2],[sprCactus,"resources/Areas/NightDesert/sprCactus_strip1.png",1],[sprCactusHurt,"resources/Areas/NightDesert/sprCactusHurt_strip3.png",3],[sprCactusDead,"resources/Areas/NightDesert/sprCactusDead_strip4.png",4],[sprCactus2,"resources/Areas/NightDesert/sprCactus2_strip1.png",1],[sprCactus2Hurt,"resources/Areas/NightDesert/sprCactus2Hurt_strip3.png",3],[sprCactus2Dead,"resources/Areas/NightDesert/sprCactus2Dead_strip4.png",4],[sprCactus3,"resources/Areas/NightDesert/sprCactus3_strip1.png",1],[sprCactus3Hurt,"resources/Areas/NightDesert/sprCactus3Hurt_strip3.png",3],[sprCactus3Dead,"resources/Areas/NightDesert/sprCactus3Dead_strip4.png",4],[sprCactusB,"resources/Areas/NightDesert/sprCactusB_strip1.png",1],[sprCactusBHurt,"resources/Areas/NightDesert/sprCactusBHurt_strip3.png",3],[sprCactusBDead,"resources/Areas/NightDesert/sprCactusBDead_strip4.png",4],[sprCactusB2,"resources/Areas/NightDesert/sprCactusB2_strip1.png",1],[sprCactusB2Hurt,"resources/Areas/NightDesert/sprCactusB2Hurt_strip3.png",3],[sprCactusB2Dead,"resources/Areas/NightDesert/sprCactusB2Dead_strip4.png",4],[sprCactusB3,"resources/Areas/NightDesert/sprCactusB3_strip1.png",1],[sprCactusB3Hurt,"resources/Areas/NightDesert/sprCactusB3Hurt_strip3.png",3],[sprCactusB3Dead,"resources/Areas/NightDesert/sprCactusB3Dead_strip4.png",4],[sprDebris1,"resources/Areas/NightDesert/sprDebris0_strip4.png",4],[sprDesertTopDecal,"resources/Areas/NightDesert/sprDesertTopDecal_strip3.png",3],[sprDetail1,"resources/Areas/NightDesert/sprDetail0_strip5.png",5],[sprFloor1,"resources/Areas/NightDesert/sprFloor1_strip4.png",4],[sprFloor1Explo,"resources/Areas/NightDesert/sprWall0Explo_strip4.png",4],[sprFloor1B,"resources/Areas/NightDesert/sprFloor1B_strip4.png",4],[sprMSpawnIdle,"resources/Areas/NightDesert/sprMSpawnIdle_strip4.png",4],[sprMSpawnDead,"resources/Areas/NightDesert/sprMSpawnDead_strip2.png",2],[sprMSpawnHurt,"resources/Areas/NightDesert/sprMSpawnHurt_strip3.png",3],[sprMSpawnChrg,"resources/Areas/NightDesert/sprMSpawnChrg_strip4.png",4],[sprWall1Bot,"resources/Areas/NightDesert/sprWall0Bot_strip4.png",4],[sprWall1Out,"resources/Areas/NightDesert/sprWall0Out_strip1.png",1],[sprWall1Top,"resources/Areas/NightDesert/sprWall0Top_strip8.png",8],[sprWall1Trans,"resources/Areas/NightDesert/sprWall0Trans_strip8.png",8],[sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9],[sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4],[sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1],[sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6],[sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8],[sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3],[sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5],[sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6],[sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3],[sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1],[sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3],[sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1],[sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3],[sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3],[sprCarIdle,"resources/Areas/NightScrapyard/sprCarIdleNight.png",1],[sprCarHurt,"resources/Areas/NightScrapyard/sprCarHurtNight.png",3],[sprTires,"resources/Areas/NightScrapyard/sprTires.png",1],[sprTiresDead,"resources/Areas/NightScrapyard/sprTiresDead.png",3],[sprTiresHurt,"resources/Areas/NightScrapyard/sprTiresHurt.png",3],[sprTopDecalScrapyard,"resources/Areas/NightScrapyard/sprTopDecalScrapyard.png",3],[sprFloor3,"resources/Areas/NightScrapyard/sprFloor3_strip4.png",4],[sprFloor3B,"resources/Areas/NightScrapyard/sprFloor3B_strip4.png",3],[sprWall3Out,"resources/Areas/NightScrapyard/sprWall3Out.png",3],[sprDetail3,"resources/Areas/NightScrapyard/sprDetail3_strip5.png",5],[sprWall3Bot,"resources/Areas/NightScrapyard/sprWall3Bot_strip4.png",4],[sprWall3Trans,"resources/Areas/NightScrapyard/sprWall3Trans_strip8.png",3],[sprWall3Top,"resources/Areas/NightScrapyard/sprWall3Top_strip8.png",4],[sprFloor3Explo,"resources/Areas/NightScrapyard/sprFloor3Explo_strip4.png",4],[sprDebris3,"resources/Areas/NightScrapyard/sprDebris3_strip4.png",4],[bak3,"resources/Areas/NightScrapyard/bak3.png",1],[sprCarIdle,"resources/Areas/NightScrapyard/sprCarIdleNight.png",1],[sprCarHurt,"resources/Areas/NightScrapyard/sprCarHurtNight.png",3],[sprCarThrown,"resources/Areas/NightScrapyard/sprCarThrown.png",6],[sprSnowBotRedCarIdle,"resources/Areas/NightScrapyard/sprSnowBotRedCarIdle.png",6],[sprSnowBotRedCarLift,"resources/Areas/NightScrapyard/sprSnowBotRedCarLift.png",4],[sprSnowBotRedCarWalk,"resources/Areas/NightScrapyard/sprSnowBotRedCarWalk.png",8],[sprSnowBotRedCarHurt,"resources/Areas/NightScrapyard/sprSnowBotRedCarHurt.png",3],[sprSnowBotRedCarThrow,"resources/Areas/NightScrapyard/sprSnowBotRedCarThrow.png",5],[sprTrap,"resources/Areas/NightScrapyard/sprTrap.png",1],[sprTrapGameover,"resources/Areas/NightScrapyard/sprTrapGameover.png",1],[sprTrapScorchMark,"resources/Areas/NightScrapyard/sprTrapScorchMark.png",1],[sprScrapDecal,"resources/Areas/NightScrapyard/sprScrapDecal.png",2],[sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9],[sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4],[sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1],[sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6],[sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8],[sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3],[sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5],[sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6],[sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3],[sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1],[sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3],[sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1],[sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3],[sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3],[sprSodaMachine,"resources/Areas/NightCity/sprSodaMachine.png",1],[sprStreetLight,"resources/Areas/NightCity/sprStreetLight.png",1],[sprIcicle,"resources/Areas/NightCity/sprIcicle.png",1],[sprWall5Trans,"resources/Areas/NightCity/sprWall5Trans.png",1],[sprTopDecalCity,"resources/Areas/NightCity/sprTopDecalCity.png",3],[sprIceDecal,"resources/Areas/NightCity/sprIceDecal.png",2],[sprIcicleDead,"resources/Areas/NightCity/sprIcicleDead.png",4],[sprIcicleHurt,"resources/Areas/NightCity/sprIcicleHurt.png",3],[sprSodaMachineDead,"resources/Areas/NightCity/sprSodaMachineDead.png",3],[sprSodaCan,"resources/Areas/NightCity/sprSodaCan.png",3],[sprStreetLightDead,"resources/Areas/NightCity/sprStreetLightDead.png",3],[sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8],[sprFloor5Explo,"resources/Areas/NightCity/sprFloor5Explo.png",4],[sprFloor5,"resources/Areas/NightCity/sprFloor5.png",8],[sprWall5Out,"resources/Areas/NightCity/sprWall5Out.png",2],[sprWall5Top,"resources/Areas/NightCity/sprWall5Top.png",4],[sprDebris5,"resources/Areas/NightCity/sprDebris5.png",4],[sprDetail5,"resources/Areas/NightCity/sprDetail5.png",3],[sprWall5Bot,"resources/Areas/NightCity/sprWall5Bot.png",3],[sprSodaMachineHurt,"resources/Areas/NightCity/sprSodaMachineHurt.png",3],[sprStreetLightHurt,"resources/Areas/NightCity/sprStreetLightHurt.png",3],[sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4],[sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1],[sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6],[sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8],[sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3],[sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5],[sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6],[sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprHydrant,"resources/Areas/NightCity/sprHydrant.png",1],[sprHydrantHurt,"resources/Areas/NightCity/sprHydrantHurt.png",3],[sprHydrantDead,"resources/Areas/NightCity/sprHydrantDead.png",3],[sprSnowMan,"resources/Areas/NightCity/sprSnowMan.png",1],[sprSnowManHurt,"resources/Areas/NightCity/sprSnowManHurt.png",3],[sprSnowManDead,"resources/Areas/NightCity/sprSnowManDead.png",3],[sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1],[sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3],[sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1],[sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3],[sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3],[sprDebris7,"resources/Areas/DarkPalace/sprDebris7_strip4.png",4],[sprFloor7,"resources/Areas/DarkPalace/sprFloor7_strip8.png",8],[sprFloor7B,"resources/Areas/DarkPalace/sprFloor7B_strip4.png",4],[sprFloor7Explo,"resources/Areas/DarkPalace/sprFloor7Explo_strip4.png",4],[sprNuclearPillar,"resources/Areas/DarkPalace/sprNuclearPillar_strip11.png",11],[sprNuclearPillarDead,"resources/Areas/DarkPalace/sprNuclearPillarDead_strip3.png",3],[sprNuclearPillarHurt,"resources/Areas/DarkPalace/sprNuclearPillarHurt_strip3.png",3],[sprPalaceTopDecal,"resources/Areas/DarkPalace/sprPalaceTopDecal_strip2.png",2],[sprSmallGenerator,"resources/Areas/DarkPalace/sprSmallGenerator_strip11.png",11],[sprSmallGeneratorDead,"resources/Areas/DarkPalace/sprSmallGeneratorDead_strip3.png",3],[sprSmallGeneratorHurt,"resources/Areas/DarkPalace/sprSmallGeneratorHurt_strip3.png",3],[sprWall7Bot,"resources/Areas/DarkPalace/sprWall7Bot.png",8],[sprWall7Out,"resources/Areas/DarkPalace/sprWall7Out_strip1.png",1],[sprWall7Top,"resources/Areas/DarkPalace/sprWall7Top.png",8],[sprWall7Trans,"resources/Areas/DarkPalace/sprWall7Trans.png",8],[sprThroneStatueDead,"resources/Areas/DarkPalace/sprThroneStatueDead.png",13],[sprThroneStatue,"resources/Areas/DarkPalace/sprThroneStatue.png",14],[sprNothingSwitchOn,"resources/Areas/DarkPalace/sprNothingSwitchOn.png",8],[sprNothingDeathLoop,"resources/Areas/DarkPalace/sprNothingDeathLoop.png",2],[sprNothingDeath,"resources/Areas/DarkPalace/sprNothingDeath.png",7],[sprNothingLeft,"resources/Areas/DarkPalace/sprNothingLeft.png",1],[sprNothingPipes,"resources/Areas/DarkPalace/sprNothingPipes.png",1],[sprNothingRight,"resources/Areas/DarkPalace/sprNothingRight.png",1],[sprNothingMiddle,"resources/Areas/DarkPalace/sprNothingMiddle.png",1],[sprNothingOn,"resources/Areas/DarkPalace/sprNothingOn.png",1],[sprNothingOff,"resources/Areas/DarkPalace/sprNothingOff.png",1]];
+global.fsprites_replace = [[sprRainDrop,"resources/Areas/NightScrapyard/sprRainDrop.png",1],[sprRainDropSlowmo,"resources/Areas/NightScrapyard/sprRainDropSlowmo.png",1],[sprRainSplash,"resources/Areas/NightScrapyard/sprRainSplash.png",3],[sprBigSkull,"resources/Areas/NightDesert/sprBigSkull_strip1.png",1],[sprBigSkullOpen,"resources/Areas/NightDesert/sprBigSkullOpen_strip1.png",1],[sprBigSkullHurt,"resources/Areas/NightDesert/sprBigSkullHurt_strip3.png",3],[sprBigSkullOpenHurt,"resources/Areas/NightDesert/sprBigSkullOpenHurt_strip3.png",3],[sprBigSkullDead,"resources/Areas/NightDesert/sprBigSkullDead_strip3.png",3],[sprBonePileIdle,"resources/Areas/NightDesert/sprBonePileIdle_strip1.png",1],[sprBonePileHurt,"resources/Areas/NightDesert/sprBonePileHurt_strip3.png",3],[sprBonePileDead,"resources/Areas/NightDesert/sprBonePileDead_strip4.png",3],[sprBones,"resources/Areas/NightDesert/sprBones_strip2.png",2],[sprCactus,"resources/Areas/NightDesert/sprCactus_strip1.png",1],[sprCactusHurt,"resources/Areas/NightDesert/sprCactusHurt_strip3.png",3],[sprCactusDead,"resources/Areas/NightDesert/sprCactusDead_strip4.png",4],[sprCactus2,"resources/Areas/NightDesert/sprCactus2_strip1.png",1],[sprCactus2Hurt,"resources/Areas/NightDesert/sprCactus2Hurt_strip3.png",3],[sprCactus2Dead,"resources/Areas/NightDesert/sprCactus2Dead_strip4.png",4],[sprCactus3,"resources/Areas/NightDesert/sprCactus3_strip1.png",1],[sprCactus3Hurt,"resources/Areas/NightDesert/sprCactus3Hurt_strip3.png",3],[sprCactus3Dead,"resources/Areas/NightDesert/sprCactus3Dead_strip4.png",4],[sprCactusB,"resources/Areas/NightDesert/sprCactusB_strip1.png",1],[sprCactusBHurt,"resources/Areas/NightDesert/sprCactusBHurt_strip3.png",3],[sprCactusBDead,"resources/Areas/NightDesert/sprCactusBDead_strip4.png",4],[sprCactusB2,"resources/Areas/NightDesert/sprCactusB2_strip1.png",1],[sprCactusB2Hurt,"resources/Areas/NightDesert/sprCactusB2Hurt_strip3.png",3],[sprCactusB2Dead,"resources/Areas/NightDesert/sprCactusB2Dead_strip4.png",4],[sprCactusB3,"resources/Areas/NightDesert/sprCactusB3_strip1.png",1],[sprCactusB3Hurt,"resources/Areas/NightDesert/sprCactusB3Hurt_strip3.png",3],[sprCactusB3Dead,"resources/Areas/NightDesert/sprCactusB3Dead_strip4.png",4],[sprDebris1,"resources/Areas/NightDesert/sprDebris0_strip4.png",4],[sprDesertTopDecal,"resources/Areas/NightDesert/sprDesertTopDecal_strip3.png",3],[sprDetail1,"resources/Areas/NightDesert/sprDetail0_strip5.png",5],[sprFloor1,"resources/Areas/NightDesert/sprFloor1_strip4.png",4],[sprFloor1Explo,"resources/Areas/NightDesert/sprWall0Explo_strip4.png",4],[sprFloor1B,"resources/Areas/NightDesert/sprFloor1B_strip4.png",4],[sprMSpawnIdle,"resources/Areas/NightDesert/sprMSpawnIdle_strip4.png",4],[sprMSpawnDead,"resources/Areas/NightDesert/sprMSpawnDead_strip2.png",2],[sprMSpawnHurt,"resources/Areas/NightDesert/sprMSpawnHurt_strip3.png",3],[sprMSpawnChrg,"resources/Areas/NightDesert/sprMSpawnChrg_strip4.png",4],[sprWall1Bot,"resources/Areas/NightDesert/sprWall0Bot_strip4.png",4],[sprWall1Out,"resources/Areas/NightDesert/sprWall0Out_strip1.png",1],[sprWall1Top,"resources/Areas/NightDesert/sprWall0Top_strip8.png",8],[sprWall1Trans,"resources/Areas/NightDesert/sprWall0Trans_strip8.png",8],[sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9],[sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4],[sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1],[sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6],[sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8],[sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3],[sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5],[sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6],[sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3],[sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1],[sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3],[sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1],[sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3],[sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3],[sprCarIdle,"resources/Areas/NightScrapyard/sprCarIdleNight.png",1],[sprCarHurt,"resources/Areas/NightScrapyard/sprCarHurtNight.png",3],[sprTires,"resources/Areas/NightScrapyard/sprTires.png",1],[sprTiresDead,"resources/Areas/NightScrapyard/sprTiresDead.png",3],[sprTiresHurt,"resources/Areas/NightScrapyard/sprTiresHurt.png",3],[sprTopDecalScrapyard,"resources/Areas/NightScrapyard/sprTopDecalScrapyard.png",3],[sprFloor3,"resources/Areas/NightScrapyard/sprFloor3_strip4.png",4],[sprFloor3B,"resources/Areas/NightScrapyard/sprFloor3B_strip4.png",3],[sprWall3Out,"resources/Areas/NightScrapyard/sprWall3Out.png",3],[sprDetail3,"resources/Areas/NightScrapyard/sprDetail3_strip5.png",5],[sprWall3Bot,"resources/Areas/NightScrapyard/sprWall3Bot_strip4.png",4],[sprWall3Trans,"resources/Areas/NightScrapyard/sprWall3Trans_strip8.png",3],[sprWall3Top,"resources/Areas/NightScrapyard/sprWall3Top_strip8.png",4],[sprFloor3Explo,"resources/Areas/NightScrapyard/sprFloor3Explo_strip4.png",4],[sprDebris3,"resources/Areas/NightScrapyard/sprDebris3_strip4.png",4],[bak3,"resources/Areas/NightScrapyard/bak3.png",1],[sprCarIdle,"resources/Areas/NightScrapyard/sprCarIdleNight.png",1],[sprCarHurt,"resources/Areas/NightScrapyard/sprCarHurtNight.png",3],[sprCarThrown,"resources/Areas/NightScrapyard/sprCarThrown.png",6],[sprSnowBotRedCarIdle,"resources/Areas/NightScrapyard/sprSnowBotRedCarIdle.png",6],[sprSnowBotRedCarLift,"resources/Areas/NightScrapyard/sprSnowBotRedCarLift.png",4],[sprSnowBotRedCarWalk,"resources/Areas/NightScrapyard/sprSnowBotRedCarWalk.png",8],[sprSnowBotRedCarHurt,"resources/Areas/NightScrapyard/sprSnowBotRedCarHurt.png",3],[sprSnowBotRedCarThrow,"resources/Areas/NightScrapyard/sprSnowBotRedCarThrow.png",5],[sprTrap,"resources/Areas/NightScrapyard/sprTrap.png",1],[sprTrapGameover,"resources/Areas/NightScrapyard/sprTrapGameover.png",1],[sprTrapScorchMark,"resources/Areas/NightScrapyard/sprTrapScorchMark.png",1],[sprScrapDecal,"resources/Areas/NightScrapyard/sprScrapDecal.png",2],[sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9],[sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4],[sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1],[sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6],[sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8],[sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3],[sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5],[sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6],[sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3],[sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1],[sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3],[sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1],[sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3],[sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3],[sprSodaMachine,"resources/Areas/NightCity/sprSodaMachine.png",1],[sprStreetLight,"resources/Areas/NightCity/sprStreetLight.png",1],[sprIcicle,"resources/Areas/NightCity/sprIcicle.png",1],[sprWall5Trans,"resources/Areas/NightCity/sprWall5Trans.png",1],[sprTopDecalCity,"resources/Areas/NightCity/sprTopDecalCity.png",3],[sprIceDecal,"resources/Areas/NightCity/sprIceDecal.png",2],[sprIcicleDead,"resources/Areas/NightCity/sprIcicleDead.png",4],[sprIcicleHurt,"resources/Areas/NightCity/sprIcicleHurt.png",3],[sprSodaMachineDead,"resources/Areas/NightCity/sprSodaMachineDead.png",3],[sprSodaCan,"resources/Areas/NightCity/sprSodaCan.png",3],[sprStreetLightDead,"resources/Areas/NightCity/sprStreetLightDead.png",3],[sprFloor5B,"resources/Areas/NightCity/sprFloor5B.png",8],[sprFloor5Explo,"resources/Areas/NightCity/sprFloor5Explo.png",4],[sprFloor5,"resources/Areas/NightCity/sprFloor5.png",8],[sprWall5Out,"resources/Areas/NightCity/sprWall5Out.png",2],[sprWall5Top,"resources/Areas/NightCity/sprWall5Top.png",4],[sprDebris5,"resources/Areas/NightCity/sprDebris5.png",4],[sprDetail5,"resources/Areas/NightCity/sprDetail5.png",3],[sprWall5Bot,"resources/Areas/NightCity/sprWall5Bot.png",3],[sprSodaMachineHurt,"resources/Areas/NightCity/sprSodaMachineHurt.png",3],[sprStreetLightHurt,"resources/Areas/NightCity/sprStreetLightHurt.png",3],[sprSnowBotCarLift,"resources/Areas/NightCity/sprSnowBotCarLift.png",4],[sprFrozenCar,"resources/Areas/NightCity/sprFrozenCar.png",1],[sprSnowBotCarIdle,"resources/Areas/NightCity/sprSnowBotCarIdle.png",6],[sprSnowBotCarWalk,"resources/Areas/NightCity/sprSnowBotCarWalk.png",8],[sprSnowBotCarHurt,"resources/Areas/NightCity/sprSnowBotCarHurt.png",3],[sprSnowBotCarThrow,"resources/Areas/NightCity/sprSnowBotCarThrow.png",5],[sprFrozenCarThrown,"resources/Areas/NightCity/sprFrozenCarThrown.png",6],[sprFrozenCarHurt,"resources/Areas/NightCity/sprFrozenCarHurt.png",3],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprHydrant,"resources/Areas/NightCity/sprHydrant.png",1],[sprHydrantHurt,"resources/Areas/NightCity/sprHydrantHurt.png",3],[sprHydrantDead,"resources/Areas/NightCity/sprHydrantDead.png",3],[sprSnowMan,"resources/Areas/NightCity/sprSnowMan.png",1],[sprSnowManHurt,"resources/Areas/NightCity/sprSnowManHurt.png",3],[sprSnowManDead,"resources/Areas/NightCity/sprSnowManDead.png",3],[sprWind,"resources/Areas/NightDesert/sprWind_strip9.png",9],[sprSnowFlake,"resources/Areas/NightCity/sprSnowFlake.png",3],[sprPStat1Idle,"resources/Areas/Night/sprPStat1Idle.png",1],[sprPStat1Hurt,"resources/Areas/Night/sprPStat1Hurt.png",3],[sprPStat2Idle,"resources/Areas/Night/sprPStat2Idle.png",1],[sprPStat2Hurt,"resources/Areas/Night/sprPStat2Hurt.png",3],[sprPStatDead,"resources/Areas/Night/sprPStatDead.png",3],[sprDebris7,"resources/Areas/DarkPalace/sprDebris7_strip4.png",4],[sprFloor7,"resources/Areas/DarkPalace/sprFloor7_strip8.png",8],[sprFloor7B,"resources/Areas/DarkPalace/sprFloor7B_strip4.png",4],[sprFloor7Explo,"resources/Areas/DarkPalace/sprFloor7Explo_strip4.png",4],[sprNuclearPillar,"resources/Areas/DarkPalace/sprNuclearPillar_strip11.png",11],[sprNuclearPillarDead,"resources/Areas/DarkPalace/sprNuclearPillarDead_strip3.png",3],[sprNuclearPillarHurt,"resources/Areas/DarkPalace/sprNuclearPillarHurt_strip3.png",3],[sprPalaceTopDecal,"resources/Areas/DarkPalace/sprPalaceTopDecal_strip2.png",2],[sprSmallGenerator,"resources/Areas/DarkPalace/sprSmallGenerator_strip11.png",11],[sprSmallGeneratorDead,"resources/Areas/DarkPalace/sprSmallGeneratorDead_strip3.png",3],[sprSmallGeneratorHurt,"resources/Areas/DarkPalace/sprSmallGeneratorHurt_strip3.png",3],[sprWall7Bot,"resources/Areas/DarkPalace/sprWall7Bot.png",8],[sprWall7Out,"resources/Areas/DarkPalace/sprWall7Out_strip1.png",1],[sprWall7Top,"resources/Areas/DarkPalace/sprWall7Top.png",8],[sprWall7Trans,"resources/Areas/DarkPalace/sprWall7Trans.png",8],[sprThroneStatueDead,"resources/Areas/DarkPalace/sprThroneStatueDead.png",13],[sprThroneStatue,"resources/Areas/DarkPalace/sprThroneStatue.png",14],[sprNothingSwitchOn,"resources/Areas/DarkPalace/sprNothingSwitchOn.png",8],[sprNothingDeathLoop,"resources/Areas/DarkPalace/sprNothingDeathLoop.png",2],[sprNothingDeath,"resources/Areas/DarkPalace/sprNothingDeath.png",7],[sprNothingLeft,"resources/Areas/DarkPalace/sprNothingLeft.png",1],[sprNothingPipes,"resources/Areas/DarkPalace/sprNothingPipes.png",1],[sprNothingRight,"resources/Areas/DarkPalace/sprNothingRight.png",1],[sprNothingMiddle,"resources/Areas/DarkPalace/sprNothingMiddle.png",1],[sprNothingOn,"resources/Areas/DarkPalace/sprNothingOn.png",1],[sprNothingOff,"resources/Areas/DarkPalace/sprNothingOff.png",1],[sprBigGeneratorInactive,"resources/Areas/DarkPalace/sprBigGeneratorInactive.png",1],[sprCarpet,"resources/Areas/DarkPalace/sprCarpet.png",1],[sprBigGeneratorHurt,"resources/Areas/DarkPalace/sprBigGeneratorHurt.png",3],[sprBigGeneratorDead,"resources/Areas/DarkPalace/sprBigGeneratorDead.png",3],[sprBigGeneratorActivate,"resources/Areas/DarkPalace/sprBigGeneratorActivate.png",7],[sprBigGenerator,"resources/Areas/DarkPalace/sprBigGenerator.png",11],[sprNothingActivate,"resources/Areas/DarkPalace/sprNothingActivate.png",20]];
 
 #macro timer true
 
@@ -864,6 +866,14 @@ Purple - 15156919
 		]
 	});
 
+	call(scr.option_add_page, mod_current_type, mod_current, "options", "credits", {
+			"reference": script_ref_create(page_credits_draw)
+	});
+
+	call(scr.option_add_page, mod_current_type, mod_current, "options", "credits_2", {
+			"reference": script_ref_create(page_credits_draw_2)
+	});
+
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "options_reset", {
 		"options": [
 			{
@@ -932,6 +942,8 @@ global.enemies_count = 0;
 
 global.playercount = max(1,instance_number(Player));
 
+array_set(global.remind_weps, 0, 0);
+
 //new weapons tiers
 if(global.options.new_weptiers == true){
 	global.weapon_areas = ds_map_create();
@@ -941,6 +953,7 @@ if(global.options.new_weptiers == true){
     }
 
 	weapon_set_area(91,-1);
+	weapon_set_area(105,13);
 	weapon_set_area(111,14);
 	//weapon_set_area(121,15);
 	weapon_set_area(35,17);
@@ -2420,7 +2433,7 @@ if(instance_exists(GenCont) && global.options.no_new_tips == false && global.tip
 	}
 
 	if(r4 == 42 && global.options.rmb == true){
-		GenCont.tip = "could be here a crawlspace?";
+		GenCont.tip = "could a crawlspace be there?";
 	}
 
 	if(r4 == 43 && global.options.rmb == true){
@@ -4449,24 +4462,121 @@ with(instance_create(x,y,PopoNade)){
 #define suffered_player
 
 with(WepPickup){
-	//blood hammer
-	if(wep = 67){
-		global.is_player_notified = true;
-		with instance_create(Player.x,Player.y,PopupText) text = "@q@rBLOOD HAMMER!!!@s";
-		sound_play(sndBloodHammer);
+	if(global.remind_weps[0] == 0){
+		switch (wep){
+			case 67:
+				array_set(global.remind_weps, 0, wep);
+				trace(global.remind_weps[0]);
+				break;
+			case 107:
+				array_set(global.remind_weps, 0, wep);
+				trace(global.remind_weps[0]);
+				break;
+			case 29:
+				array_set(global.remind_weps, 0, wep);
+				trace(global.remind_weps[0]);
+				break;
+			case 31:
+				array_set(global.remind_weps, 0, wep);
+				trace(global.remind_weps[0]);
+				break;
+			case 72:
+				array_set(global.remind_weps, 0, wep);
+				trace(global.remind_weps[0]);
+				break;
+			default:
+				break;				
+		}
 	}
-	//non blood hammer and blood cannon or blood launcher
-	if(wep != 67 && (wep == 107 || wep == 29)){
-		global.is_player_notified = true;
-		with instance_create(Player.x,Player.y,PopupText) text = "@q@rBLOOD WEAPON!!!@s";
-		sound_play(sndBloodLauncher);
+	else{
+		if(wep == global.remind_weps[0]){
+			switch (wep){
+				case 67:
+					with instance_create(Player.x,Player.y,PopupText) text = "@q@rBLOOD HAMMER!!!@s";
+					sound_play(sndBloodHammer);
+					global.is_player_notified = true;
+					break;
+				case 107:
+					with instance_create(Player.x,Player.y,PopupText) text = "@q@rBLOOD WEAPON!!!@s";
+					sound_play(sndBloodLauncher);
+					global.is_player_notified = true;
+					break;
+				case 29:
+					with instance_create(Player.x,Player.y,PopupText) text = "@q@rBLOOD WEAPON!!!@s";
+					sound_play(sndBloodLauncher);
+					global.is_player_notified = true;
+					break;
+				case 31:
+					with instance_create(Player.x,Player.y,PopupText) text = "@q@gTOXIC WEAPON!!!@s";
+					sound_play(sndToxicBoltGas);
+					global.is_player_notified = true;
+					break;
+				case 72:
+					with instance_create(Player.x,Player.y,PopupText) text = "@q@gTOXIC WEAPON!!!@s";
+					sound_play(sndToxicBoltGas);
+					global.is_player_notified = true;
+					break;
+				default:
+					break;
+			}
+		}
 	}
-	//non blood weapon and toxic bow or launcher
-	if(wep != 67 && wep != 107 && wep != 29 && (wep == 31 || wep == 72)){
-		global.is_player_notified = true;
-		with instance_create(Player.x,Player.y,PopupText) text = "@q@gTOXIC WEAPON!!!@s";
-		sound_play(sndToxicBoltGas);
-	}
+	/*for (i=0; i < array_length(global.remind_weps); i++) {
+		if(wep == global.remind_weps[i]){
+			switch (wep){
+				case 67:
+					with instance_create(Player.x,Player.y,PopupText) text = "@q@rBLOOD HAMMER!!!@s";
+					sound_play(sndBloodHammer);
+					global.is_player_notified = true;
+					break;
+				case 107:
+					with instance_create(Player.x,Player.y,PopupText) text = "@q@rBLOOD WEAPON!!!@s";
+					sound_play(sndBloodLauncher);
+					global.is_player_notified = true;
+					break;
+				case 29:
+					with instance_create(Player.x,Player.y,PopupText) text = "@q@rBLOOD WEAPON!!!@s";
+					sound_play(sndBloodLauncher);
+					global.is_player_notified = true;
+					break;
+				case 31:
+					with instance_create(Player.x,Player.y,PopupText) text = "@q@gTOXIC WEAPON!!!@s";
+					sound_play(sndToxicBoltGas);
+					global.is_player_notified = true;
+					break;
+				case 72:
+					with instance_create(Player.x,Player.y,PopupText) text = "@q@gTOXIC WEAPON!!!@s";
+					sound_play(sndToxicBoltGas);
+					global.is_player_notified = true;
+					break;
+				default:
+					break;
+			}
+		}
+	}*/
+	/*for (i=0; i < array_length(global.remind_weps); i++) {
+		if(global.remind_weps[i] == 67){
+			if(wep == global.remind_weps[i]){
+				with instance_create(Player.x,Player.y,PopupText) text = "@q@rBLOOD HAMMER!!!@s";
+				sound_play(sndBloodHammer);
+				global.is_player_notified = true;
+			}
+		}
+		if(global.remind_weps[i] == 107 || global.remind_weps[i] == 29){
+			if(wep == global.remind_weps[i]){
+				with instance_create(Player.x,Player.y,PopupText) text = "@q@rBLOOD WEAPON!!!@s";
+				sound_play(sndBloodLauncher);
+				global.is_player_notified = true;
+			}
+		}
+		if(global.remind_weps[i] == 31 || global.remind_weps[i] == 72){
+			if(wep == global.remind_weps[i]){
+				with instance_create(Player.x,Player.y,PopupText) text = "@q@gTOXIC WEAPON!!!@s";
+				sound_play(sndToxicBoltGas);
+				global.is_player_notified = true;
+			}
+		}
+    }*/
 }
 
 
@@ -4507,6 +4617,8 @@ global.weapon_deleted = false;
 global.ultrachest_spawned = false;
 
 global.is_player_notified = false;
+
+array_set(global.remind_weps, 0, 0);
 
 with (instance_create(10016,10016,FloorMiddle)){
 	//wall bonus spawn block
@@ -4601,9 +4713,13 @@ if(global.options.protochest_convert == true){
 			case 65:
 				wep = 32;
 				break;
-			//devastator into ion cannon
-			case 97:
+			//laser cannon into ion cannon
+			case 55:
 				wep = 48;
+				break;
+			//chikcen sword becomes black
+			case 46:
+				wep = 121;
 				break;
 			//party gun
 			case 82:

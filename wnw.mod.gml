@@ -82,8 +82,8 @@ global.hmicecaves_pool_w = [      [0.2,  0.1],                     [0.5,  0.5,  
 global.hive_pool =   [/*L0*/[Spider, LaserCrystal, Bandit]/*L0*/, /*L1*/[Spider, LaserCrystal, JungleFly, Molesarge, Bandit]/*L1*/, /*L2*/[Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, Bandit]/*L2*/, /*L3*/[Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, GoldScorpion, ExploFreak, Bandit]/*L3*/, /*L4*/[Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, GoldScorpion, ExploFreak, Bandit, Guardian, ExploGuardian]/*L4*/, /*L5*/[Spider, LaserCrystal, JungleFly, RhinoFreak, Molesarge, GoldSnowTank, GoldScorpion, ExploFreak, Bandit, Guardian, ExploGuardian, DogGuardian, BanditBoss]/*L5*/];
 global.hive_pool_w = [      [0.125,  0.025,        1],                  [1,      0.75,         0.5,       1,         1],                  [1,      1,            1,         1,          1,         0.5,          1],                  [1,      1,            1,         1,          1,         1,            1,            1,          1],                  [1,      1,            1,         1,          1,         1,            1,            1,          1,      1,        1],                         [1,      1,            1,         1,          1,         1,            1,            1,          1,      1,        1,             1,           1]];
 // Undergrowth
-global.undergrowth_pool =   [/*L0*/[Salamander, FireBaller]/*L0*/, /*L1*/[Salamander, FireBaller, JungleBandit, JungleAssassin]/*L1*/, /*L2*/[Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak]/*L2*/, /*L3*/[Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak, Guardian, ExploGuardian]/*L3*/,/*L4*/[Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak, Guardian, ExploGuardian, DogGuardian]/*L4*/];
-global.undergrowth_pool_w = [      [0.07,       0.2],                    [0.6,        1,          0.5,          0.3],                        [1,          1,          0.8,             1,            1,              0.5],                    [1,          1,          1,               1,            1,              0.8,        1,        1],                        [1,          1,          1,               1,            1,              1,          1,        1,             1]];
+global.undergrowth_pool =   [/*L0*/[Salamander, FireBaller]/*L0*/, /*L1*/[Salamander, FireBaller, JungleBandit, JungleAssassin]/*L1*/, /*L2*/[Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak]/*L2*/, /*L3*/[Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak, Guardian, ExploGuardian]/*L3*/,/*L4*/[Salamander, FireBaller, SuperFireBaller, JungleBandit, JungleAssassin, ExploFreak, Guardian, ExploGuardian, DogGuardian, BanditBoss]/*L4*/];
+global.undergrowth_pool_w = [      [0.07,       0.2],                    [0.6,        1,          0.5,          0.3],                        [1,          1,          0.8,             1,            1,              0.5],                    [1,          1,          1,               1,            1,              0.8,        1,        1],                        [1,          1,          1,               1,            1,              1,          1,        1,             1,           1]];
 // Moon
 global.moon_pool =   [/*L0*/[SnowTank]/*L0*/, /*L1*/[SnowTank, PopoFreak]/*L1*/, /*L2*/[SnowTank, PopoFreak, Guardian]/*L2*/, /*L3*/[SnowTank, PopoFreak, Guardian, ExploGuardian]/*L3*/, /*L4*/[SnowTank, PopoFreak, Guardian, ExploGuardian, DogGuardian]/*L4*/];
 global.moon_pool_w = [      [0.125],                [0.125,    0.125],                 [0.25,     0.25,      0.25],                 [0.5,      0.5,       0.5,      0.5],                       [1,        1,         1,        1,             0.8]];
@@ -298,6 +298,8 @@ global.sprJungleCarHurt = sprite_add("resources/OtherObjects/JungleCar/sprJungle
 
 global.sprOasisEnterIdle = sprite_add("resources/OtherObjects/OasisEnter/sprOasisScrapyardEnterIdle.png",1,16,16);
 global.sprOasisEnterHurt = sprite_add("resources/OtherObjects/OasisEnter/sprOasisScrapyardEnterHurt.png",3,16,16);
+global.sprOasisEnterIdleNight = sprite_add("resources/OtherObjects/OasisEnter/sprOasisScrapyardEnterIdleNight.png",1,16,16);
+global.sprOasisEnterHurtNight = sprite_add("resources/OtherObjects/OasisEnter/sprOasisScrapyardEnterHurtNight.png",3,16,16);
 global.sprOasisEnterDead = sprite_add("resources/OtherObjects/OasisEnter/sprOasisScrapyardEnterDeadpng.png",1,8,8);
 global.sndOasisEnterAppears = sound_add("resources/OtherObjects/OasisEnter/sndWaterMineLand.ogg");
 
@@ -1995,8 +1997,14 @@ if(global.jungle_enabler_spawned == false && instance_exists(Portal) && GameCont
 	with(instance_create(10016,10016,CustomHitme)){
 		oasis_enter_scrapyard = 1;
 		sprite_index = spr_idle;
-		spr_idle = global.sprOasisEnterIdle;
-		spr_hurt = global.sprOasisEnterHurt;
+		if(global.abd == true && global.options.add_dark == true){
+			spr_idle = global.sprOasisEnterIdleNight;
+			spr_hurt = global.sprOasisEnterHurtNight;
+		}
+		else{
+			spr_idle = global.sprOasisEnterIdle;
+			spr_hurt = global.sprOasisEnterHurt;
+		}
 		spr_dead = global.sprOasisEnterDead;
 		spr_shadow = mskNone;
 		my_health = 250;

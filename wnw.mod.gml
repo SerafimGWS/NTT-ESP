@@ -354,9 +354,6 @@ global.sprGruntRadWalk = sprite_add("resources\Enemies\InfectedIDPD\Grunt\sprGru
 global.sprGruntRadDead = sprite_add("resources\Enemies\InfectedIDPD\Grunt\sprGruntRadDead.png",6,12,12);
 global.sprGruntRadHurt = sprite_add("resources\Enemies\InfectedIDPD\Grunt\sprGruntRadHurt.png",3,12,12);
 
-global.OPTIONS_FILE = "options.json";
-
-global.PRESET_FILE = "presets.json";
 //Resources
 
 mod_current_type = script_ref_create(0)[0];
@@ -392,8 +389,7 @@ global.options = {
 	"esp_difficulty_multiplier": 0.5,
 	"no_floor_changes": false,
 	"bonus_loop_max_health": false,
-	"special_code": "insert your code here",
-	"seed": "",
+	"special_code": "to be done",
 	"reset": false,
 	"rmb": true,
 	"deflect_colour": true,
@@ -404,7 +400,6 @@ global.options = {
 	"lootable_cars": true,
 	"protochest_convert": true,
 	"new_weptiers": true,
-	"area_display": false,
 	"last_enemies_display": true,
 };
 
@@ -428,96 +423,134 @@ if fork() {
 	
 	// add options with `option_add` and `option_add_page`
 	// see `api.txt` for the API and `fields.txt` for the fields of each option type
+	//GML Raw
+	//Red - 4929511
+	//Yellow - 4508129
+	//Green - 4974406
+	//Purple - 15156919
 
 	call(scr.option_add_page, mod_current_type, mod_current, "options", "global_page", {
-		/*GML Raw
-Red - 4929511
-Yellow - 4508129
-Green - 4974406
-Purple - 15156919
-*/
 		"options": [
 			{
 				"option": "deflect_colour",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4974406)*@wPaint deflected projectile@s"
+					"text": "@(color:4974406)*@wPAINT DEFLECTED PROJECTILE@s"
 				},
 				"desc": {
-					"text": "When @rON@s#will paint @wdeflected projectiles@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#WILL PAINT @wDEFLECTED PROJECTILES@s
+							#(DEFAULT @wON@s)"
 				}
 			},
             {
 				"option": "fix_venus_car",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4974406)*@wFixed Venus Car@s"
+					"text": "@(color:4974406)*@wFIXED VENUS CAR@s"
 				},
 				"desc": {
-					"text": "When @rON@s# @yvenuz car@s will be @wfixed@s from start#+ it will have @winf hp@s #but @wexplodes@s when @pportal@s appears#(default @wON@s)"
+					"text": "WHEN @rON@s
+							# @yVENUZ CAR@s WILL BE @wFIXED@s FROM START
+							#+ IT WILL HAVE @wINF HP@s 
+							#BUT @wEXPLODES@s WHEN @pPORTAL@s APPEARS
+							#(DEFAULT @wON@s)"
 				}
 			},
             {
 				"option": "bonus_loop_max_health",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4974406)*@wPotential Bonus Max HP@s"
+					"text": "@(color:4974406)*@wPOTENTIAL BONUS MAX HP@s"
 				},
 				"desc": {
-					"text": "When @rON@s#with each @yloop@s you gain#@w1 potential bonus max health@s#1 picked up @rhealth chest@s =#@w-1 pbmh@s, @g+1 max health@s#(default @wOFF@s)"
+					"text": "WHEN @rON@s
+							#WITH EACH @yLOOP@s YOU GAIN
+							#@w1 POTENTIAL BONUS MAX HEALTH@s
+							#1 PICKED UP @rHEALTH CHEST@s =
+							#@w-1 PBMH@s, @g+1 MAX HEALTH@s
+							#(DEFAULT @wOFF@s)"
 				}
 			},
             {
 				"option": "last_enemies_display",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4974406)*@wLast Enemies Display"
+					"text": "@(color:4974406)*@wLAST ENEMIES DISPLAY"
 				},
 				"desc": {
-					"text": "When @rON@s#will @wshow@s in which directions#@wlast enemies@s are in when#there is less than#@w10%@s of all enemies on area#or @pportal@s is opened#made by @wGolden Epsilon@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#WILL @wSHOW@s IN WHICH DIRECTIONS
+							#@wLAST ENEMIES@s ARE IN WHEN
+							#THERE IS LESS THAN
+							#@w10%@s OF ALL ENEMIES ON AREA
+							#OR @pPORTAL@s IS OPENED
+							#MADE BY @wGOLDEN EPSILON@s
+							#(DEFAULT @wON@s)"
 				}
 			},
             {
 				"option": "popups",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4974406)*@wpopups"
+					"text": "@(color:4974406)*@wPOPUPS"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wshow some new popups@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#IT WILL @wSHOW SOME NEW POPUPS@s
+							#(DEFAULT @wON@s)"
 				}
 			},
             {
 				"option": "no_jocks",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4974406)*@wNo Jocks!"
+					"text": "@(color:4974406)*@wNO JOCKS!"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @rdelete@s @wall Jocks@s#(default @wOFF@s)"
+					"text": "WHEN @rON@s
+							#IT WILL @rDELETE@s @wALL JOCKS@s
+							#(default @wOFF@s)"
 				}
 			},
             {
 				"option": "rmb",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4974406)*@wTinted Walls"
+					"text": "@(color:4974406)*@wTINTED WALLS"
 				},
 				"desc": {
-					"text": "When @rON@s#when you come near a wall#may generate a tinted wall#tinted walls have @wrandom@s prizes inside#random prizes are#@g13 rads@s, @yammo pickup@s, @rhp pickup@s#or @wweapon chest@s#amount of tinted walls per stage#scales with each loop#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#WHEN YOU COME NEAR A WALL
+							#MAY GENERATE A TINTED WALL
+							#TINTED WALLS HAVE @wRANDOM@s PRIZES INSIDE
+							#RANDOM PRIZES ARE
+							#@g13 RADS@s, @yAMMO PICKUP@s, @rHP PICKUP@s
+							#OR @wWEAPON CHEST@s
+							#AMOUNT OF TINTED WALLS PER STAGE
+							#SCALES WITH EACH STAGE
+							#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "hammerhead_time",
 				"kind": "choice",
 				"name": {
-					"text": "@(color:4974406)*@whammerhead time"
+					"text": "@(color:4974406)*@wHAMMERHEAD TIME"
 				},
 				"desc": {
-					"text": "When @wYes@s#if you pick @whammerhead@s @gmutation@s#awards with a @wmutation pick@s#after looping#if you don't pick @whammerhead mut@s#@wawards@s with it after @wlooping@s#when @ymore@s#@wall@s of the above effects#gives @wmore@s hammerheads with each loop#(default @wYes@s)"
+					"text": "WHEN @wYES@s
+							#IF YOU PICK @wHAMMERHEAD@s @gMUTATION@s
+							#AWARDS WITH A @wMUTATION PICK@s
+							#AFTER LOOPING
+							#IF YOU DON'T PICK @wHAMMERHEAD MUT@s
+							#@wAWARDS@s WITH IT AFTER @wLOOPING@s
+							#WHEN @yMORE@s#@wALL@s OF THE ABOVE EFFECTS
+							#GIVES @wMORE@s HAMMERHEADS WITH EACH LOOP
+							#(DEFAULT @wYES@s)"
 				},
 				"values": [0, 1, 2],
-				"display": ["No", "Yes", "@yMore@s"]
+				"display": ["NO", "YES", "@yMORE@s"]
 			},
 		]
 	});
@@ -528,60 +561,84 @@ Purple - 15156919
 				"option": "nes",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4974406)*@wNo Early Shielders"
+					"text": "@(color:4974406)*@wNO EARLY SHIELDERS"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wreplace all@s @bshielders@s#with @binspectors@s until you pass#@w10 stages@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#IT WILL @wREPLACE ALL@s @bSHIELDERS@s
+							#WITH @bINSPECTORS@s UNTIL YOU PASS
+							#@w10 STAGES@s#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "no_guards",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4974406)*@wNo Ubiquitous Guardians"
+					"text": "@(color:4974406)*@wNO UBIQUITOUS GUARDIANS"
 				},
 				"desc": {
-					"text": "When @rON@s#it will delete @wall@s @gGuards@s#which have been added by @wesp@s#(default @wOFF@s)"
+					"text": "WHEN @rON@s
+							#IT WILL DELETE @wALL@s @gGUARDS@s
+							#WHICH HAVE BEEN ADDED BY @wESP@s
+							#(DEFAULT @wOFF@s)"
 				}
 			},
             {
 				"option": "hamamount",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4974406)*@wHammerhead display"
+					"text": "@(color:4974406)*@wHAMMERHEAD DISPLAY"
 				},
 				"desc": {
-					"text": "When @rON@s#will show @whow many#hammerhead uses you have left#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#WILL SHOW @wHOW MANY
+							#HAMMERHEAD USES YOU HAVE LEFT
+							#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "lootable_cars",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4974406)*@wLootable Cars"
+					"text": "@(color:4974406)*@wLOOTABLE CARS"
 				},
 				"desc": {
-					"text": "When @rON@s#when you come @wclose@s to#@wcars@s, they will give you @yammo@s or @rhp@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#WHEN YOU COME @wCLOSE@s TO
+							#@wCARS@s, THEY WILL GIVE YOU @yAMMO@s OR @rHP@s
+							#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "chicken_reminder",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4974406)*@wSelfdamage reminder"
+					"text": "@(color:4974406)*@wSELFDAMAGE REMINDER"
 				},
 				"desc": {
-					"text": "When @rON@s#will @wremind@s you if there're#@rself damage@s weapon on floor#P.S. except for discs and explosions#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#WILL @wREMIND@s YOU IF THERE'RE
+							#@rSELF DAMAGE@s WEAPON ON FLOOR
+							#P.S. EXCEPT FOR DISCS AND EXPLOSIONS
+							#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "protochest_convert",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4974406)*@wWeapon Convert"
+					"text": "@(color:4974406)*@wWEAPON CONVERT"
 				},
 				"desc": {
-					"text": "When @rON@s#if @gproto chest@s contains a @wweapon@s#that has a @ygolden counterpart@s#turns the said weapon into it's#golden counterpart on @wnext@s @gvault@s @wvisit@s#@pparty gun@s#will turn into a @wrandom weapon@s#same rules applies for @pcurse@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#IF @gPROTO CHEST@s CONTAINS A @wWEAPON@s
+							#THAT HAS A @yGOLDEN COUNTERPART@s
+							#TURNS THE SAID WEAPON INTO IT'S
+							#GOLDEN COUNTERPART ON @wNEXT@s @gVAULT@s @wVISIT@s
+							#@pPARTY GUN@s
+							#WILL TURN INTO A @wRANDOM WEAPON@s
+							#SAME RULES APPLIES FOR @pCURSE@s
+							#(DEFAULT @wON@s)"
 				}
 			},
 		]
@@ -593,40 +650,50 @@ Purple - 15156919
 				"option": "no_throne_yell",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:15156919)*@wNo Throne Yell"
+					"text": "@(color:15156919)*@wNO THRONE YELL"
 				},
 				"desc": {
-					"text": "When @rON@s#@wmutants will not@s say#anything upon entering @g7-3@s#(default @wOFF@s)"
+					"text": "WHEN @rON@s
+							#@wMUTANTS WILL NOT@s SAY
+							#ANYTHING UPON ENTERING @g7-3@s
+							#(DEFAULT @wOFF@s)"
 				}
 			},
 			{
 				"option": "no_new_tips",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:15156919)*@wNo New Tips"
+					"text": "@(color:15156919)*@wNO NEW TIPS"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wdisable all new tips@s#(default @wOFF@s)"
+					"text": "WHEN @rON@s
+							#IT WILL @wDISABLE ALL NEW TIPS@s
+							#(DEFAULT @wOFF@s)"
 				}
 			},
 			{
 				"option": "no_new_parcticles",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:15156919)*@wNo New Parctiles"
+					"text": "@(color:15156919)*@wNO NEW PARCTILES"
 				},
 				"desc": {
-					"text": "When @rON@s#@rdisables@s spawn of @gnew particles@s#(default @wOFF@s)"
+					"text": "WHEN @rON@s
+							#@rDISABLES@s SPAWN OF @gNEW PARTICLES@s
+							#(DEFAULT @wOFF@s)"
 				}
 			},
 			/*{
 				"option": "no_floor_changes",
 				"kind": "bool",
 				"name": {
-					"text": "@(sprFloor1:0) No Floor Changes"
+					"text": "@(sprFloor1:0) NO FLOOR CHANGES"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wdisable all floor@s changes#from any other options#(default @wOFF@s)"
+					"text": "WHEN @rON@s
+							#IT WILL @wDISABLE ALL FLOOR@s CHANGES
+							#FROM ANY OTHER OPTIONS
+							#(DEFAULT @wOFF@s)"
 				}
 			},*/
 		]
@@ -638,60 +705,91 @@ Purple - 15156919
 				"option": "fire_explosions",
 				"kind": "bool",
 				"name": {
-					"text": "@w*fire explosions"
+					"text": "@w*FIRE EXPLOSIONS"
 				},
 				"desc": {
-					"text": "When @rON@s#when @rfire@s @wcontacts@s with#@wany@s @rexplosive projectile@s or corpse#destroys it#corpses needs some time to explode#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#WHEN @rFIRE@s @wCONTACTS@s WITH
+							#@wANY@s @rEXPLOSIVE PROJECTILE@s OR CORPSE
+							#DESTROYS IT
+							#CORPSES NEEDS SOME TIME TO EXPLODE
+							#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "cursed_caves_rework",
 				"kind": "bool",
 				"name": {
-					"text": "@w*Cursed caves rework"
+					"text": "@w*CURSED CAVES REWORK"
 				},
 				"desc": {
-					"text": "When @rON@s#@wall weapons@s that touch floor in#@p4-?@s will be @pcursed@s#after leaving @yl1+@s @pcursed crystal caves@s#all curses will be @ylifted@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#@wALL WEAPONS@s THAT TOUCH FLOOR IN
+							#@p4-?@s WILL BE @pCURSED@s
+							#AFTER LEAVING @yL1+@s @pCURSED CRYSTAL CAVES@s
+							#ALL CURSES WILL BE @yLIFTED@s
+							#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "piov",
 				"kind": "bool",
 				"name": {
-					"text": "@w*careful IDPD in labs"
+					"text": "@w*CAREFUL IDPD IN LABS"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wreplace each@s @bvan@s with#@b4 idpd portals@s in @wLabs@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#IT WILL @wREPLACE EACH@s @bVAN@s WITH
+							#@b4 IDPD PORTALS@s IN @wLABS@s
+							#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "new_weptiers",
 				"kind": "bool",
 				"name": {
-					"text": "@w*New Weapon Tiers"
+					"text": "@w*NEW WEAPON TIERS"
 				},
 				"desc": {
-					"text": "When @rON@s#will change tiers for @wmost weapons@s#see @wall changes@s on a#@wscreenshot@s in resources#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#WILL CHANGE TIERS FOR @wMOST WEAPONS@s
+							#SEE @wALL CHANGES@s ON A
+							#@wSCREENSHOT@s IN RESOURCES
+							#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "chest_replacments",
 				"kind": "bool",
 				"name": {
-					"text": "@w*Chest Replacments"
+					"text": "@w*CHEST REPLACMENTS"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wreplace some chests@s#@ypizza@s#@wammo chest@s-@ypizza chest@s#@bwinter city@s#@wammo chest@s - @bIDPD Chests@s# in @plabs@s#@wammo chest@s - @wmimic@s#@rhealth chest@s - @rsuper mimic@s#in @bHQ@s#@wammo chests@s - @bIDPD chests@s#@grad chests@s - @rhealth chests@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#IT WILL @wREPLACE SOME CHESTS@s
+							#@yPIZZA@s
+							#@wAMMO CHEST@s-@yPIZZA CHEST@s
+							#@bWINTER CITY@s
+							#@wAMMO CHEST@s - @bIDPD CHESTS@s
+							# IN @pLABS@s
+							#@wAMMO CHEST@s - @wMIMIC@s
+							#@rHEALTH CHEST@s - @rSUPER MIMIC@s
+							#IN @bHQ@s
+							#@wAMMO CHESTS@s - @bIDPD CHESTS@s
+							#@gRAD CHESTS@s - @rHEALTH CHESTS@s
+							#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "common_difficulty_multiplier",
 				"kind": "slider",
 				"name": {
-					"text": "@w*rdm"
+					"text": "@w*RDM"
 				},
 				"desc": {
-					"text": "rdm - @wregular@s @rdifficulty@s @ymultiplier@s#set multiplier from 0 to 2#(default @w1@s)"
+					"text": "RDM - @wREGULAR@s @rDIFFICULTY@s @yMULTIPLIER@s
+							#SET MULTIPLIER FROM 0 TO 2
+							#(DEFAULT @w1@s)"
 				},
 				"format": {
 					"display_multiplier": 2
@@ -701,10 +799,13 @@ Purple - 15156919
 				"option": "esp_difficulty_multiplier",
 				"kind": "slider",
 				"name": {
-					"text": "@w*espdm"
+					"text": "@w*ESPDM"
 				},
 				"desc": {
-					"text": "espdm - @bextended spawn pools@s#@rdifficulty @ymultiplier@s#set multiplier from 0 to 2#(default @w1@s)"
+					"text": "ESPDM - @bEXTENDED SPAWN POOLS@s
+							#@rDIFFICULTY @yMULTIPLIER@s
+							#SET MULTIPLIER FROM 0 TO 2
+							#(DEFAULT @w1@s)"
 				},
 				"format": {
 					"display_multiplier": 2
@@ -719,10 +820,12 @@ Purple - 15156919
 				"option": "more_ravens_in_jungle",
 				"kind": "slider",
 				"name": {
-					"text": "@(color:4508129)*@wjungle ravens@s"
+					"text": "@(color:4508129)*@wJUNGLE RAVENS@s"
 				},
 				"desc": {
-					"text": "Controls @yspawnrate@s#of @rravens@s in @gjungle@s#(default @wx5@s)"
+					"text": "CONTROLS @ySPAWNRATE@s
+							#OF @rRAVENS@s IN @gJUNGLE@s
+							#(DEFAULT @wx5@s)"
 				},
 				"format": {
 					"display_multiplier": 5
@@ -732,70 +835,117 @@ Purple - 15156919
 				"option": "diropf",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4508129)*@wEarly Popo Freaks Revives"
+					"text": "@(color:4508129)*@wEARLY POPO FREAKS REVIVES"
 				},
 				"desc": {
-					"text": "When @rON@s#it will @wenable all@s @bPopo Freaks revives@s#before @g3rd loop@s#(default @wOFF@s)"
+					"text": "WHEN @rON@s
+							#IT WILL @wENABLE ALL@s @bPOPO FREAKS REVIVES@s
+							#BEFORE @g3RD LOOP@s
+							#(DEFAULT @wOFF@s)"
 				}
 			},
 			{
 				"option": "add_dark",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4508129)*@wMore Darkness"
+					"text": "@(color:4508129)*@wMORE DARKNESS"
 				},
 				"desc": {
-					"text": "When @rON@s#apllies @pdarkness@s on #@wPalace, Jungles and Night Desert@s#+ @y25% Chance for night version of area@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#APLLIES @pDARKNESS@s ON 
+							#@wPALACE, JUNGLES AND NIGHT DESERT@s
+							#+ @y25% CHANCE FOR NIGHT VERSION OF AREA@s
+							#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "cursing_enabled",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4508129)*@wSpreading curse"
+					"text": "@(color:4508129)*@wSPREADING CURSE"
 				},
 				"desc": {
-					"text": "When @rON@s#@ycrystals@s and @yspiders@s will be @pcursed@s#with @wchance 1/7@s,#if you have @pcursed crown@s#@wchance will be 2/3@s,#if @wno crowns@s#no @pcursed crystals@s and @pspiders@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#@yCRYSTALS@s AND @ySPIDERS@s WILL BE @pCURSED@s
+							#WITH @wCHANCE 1/7@s,
+							#IF YOU HAVE @pCURSED CROWN@s
+							#@wCHANCE WILL BE 2/3@s,
+							#IF @wNO CROWNS@s
+							#NO @pCURSED CRYSTALS@s AND @pSPIDERS@s
+							#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "crown_guardian_help",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4508129)*@wCrown Guardians Help"
+					"text": "@(color:4508129)*@wCROWN GUARDIANS HELP"
 				},
 				"desc": {
-					"text": "When @rON@s# when you activate @gcrown ped@s#or break @gcrown guardian statue@s#in @w1st@s vault#@gguardians@s will replace @wall torches@s#in @w2nd@s vault#@wturrets@s will come out# and in @w3rd@s one#each @gtorch@s will summon @bIDPD@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							# WHEN YOU ACTIVATE @gCROWN PED@s
+							#OR BREAK @gCROWN GUARDIAN STATUE@s
+							#IN @w1ST@s VAULT
+							#@gGUARDIANS@s WILL REPLACE @wALL TORCHES@s
+							#IN @w2ND@s VAULT
+							#@wTURRETS@s WILL COME OUT
+							# AND IN @w3RD@s ONE
+							#EACH @gTORCH@s WILL SUMMON @bIDPD@s
+							#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "crown_guardian_on_max",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4508129)*@wCrown Guardians on max@s"
+					"text": "@(color:4508129)*@wCROWN GUARDIANS ON MAX@s"
 				},
 				"desc": {
-					"text": "When @rON@s#and after you visited @w3rd@s @gVault@s#on each @wn-2@s stage#will spawn @g2 crown guardians@s#and if @wloop@s is higher than 2#it will spawn @r4 big bandits@s#(except for @ydesert@s)#if you skipped @wn-2@s area#on @wn-2@s will spawn @g2 more guardians@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#AND AFTER YOU VISITED @w3RD@s @gVAULT@s
+							#ON EACH @wN-2@s STAGE
+							#WILL SPAWN @g2 CROWN GUARDIANS@s
+							#AND IF @wLOOP@s IS HIGHER THAN 2
+							#IT WILL SPAWN @r4 BIG BANDITS@s
+							#(EXCEPT FOR @yDESERT@s)
+							#IF YOU SKIPPED @wN-2@s AREA
+							#ON @wN-2@s WILL SPAWN @g2 MORE GUARDIANS@s
+							#(DEFAULT @wON@s)"
 				}
 			},
 			{
 				"option": "enemies_mutations",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4508129)*@wEnemies Mutations"
+					"text": "@(color:4508129)*@wENEMIES MUTATIONS"
 				},
 				"desc": {
-					"text": "When @rON@s#starting from @gL1@s#all @ggators@s @pteleport@s randomly#on @rgetting hit@s#from @bL3@s#@wreplace@s @wsniper and snow tank bullets@s# with @wbouncers@s#and @ygolden tank rockets@s#with @ygolden discs@s#@pcursed hyper crystal@s @wrandomly teleports@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#STARTING FROM @gL1@s
+							#ALL @gGATORS@s @pTELEPORT@s RANDOMLY
+							#ON @rGETTING HIT@s
+							#FROM @bL3@s
+							#@wREPLACE@s @wSNIPER AND SNOW TANK BULLETS@s
+							# WITH @wBOUNCERS@s
+							#AND @yGOLDEN TANK ROCKETS@s
+							#WITH @yGOLDEN DISCS@s
+							#@pCURSED HYPER CRYSTAL@s @wRANDOMLY TELEPORTS@s
+							#(DEFAULT @wON@s)"
 				}
 			},
 			/*{ i left it in case i will make wnw compatible with v9940 and 9944
 				"option": "area_display",
 				"kind": "bool",
 				"name": {
-					"text": "Area Display"
+					"text": "AREA DISPLAY"
 				},
 				"desc": {
-					"text": "When @rON@s#will show on which @warea and loop@s#you are on#code by @wblaac@s#(and modified by @wSerafimGWS@s)#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#WILL SHOW ON WHICH @wAREA AND LOOP@s
+							#YOU ARE ON
+							#CODE BY @wBLAAC@s
+							#(AND MODIFIED BY @wSERAFIMGWS@s)
+							#(DEFAULT @wON@s)"
 				}
 			},*/
 		]
@@ -807,62 +957,113 @@ Purple - 15156919
 				"option": "l5cap",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4929511)*@wL5 Captain"
+					"text": "@(color:4929511)*@wL5 CAPTAIN"
 				},
 				"desc": {
-					"text": "When @rON@s#you will @rfight@s the @bCaptain@s#before @gThrone 2@s on @w0-1 L5@s#(default @wOFF@s)"
+					"text": "WHEN @rON@s
+							#YOU WILL @rFIGHT@s THE @bCAPTAIN@s
+							#BEFORE @gTHRONE 2@s ON @w0-1 L5@s
+							#(DEFAULT @wOFF@s)"
 				}
 			},
 			{
 				"option": "hardmodemod_3dvans",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4929511)*@w3D Vans from Hardmode mod"
+					"text": "@(color:4929511)*@w3D VANS FROM HARDMODE MOD"
 				},
 				"desc": {
-					"text": "When @rON@s#will make @bvans@s @y3d@s and# @wact@s as in @rhardmode mod@s#code by @wblaac@s#sprites by @yjsburg@s#(default @wOFF@s)"
+					"text": "WHEN @rON@s
+							#WILL MAKE @bVANS@s @y3D@s AND
+							# @wACT@s AS IN @rHARDMODE MOD@s
+							#CODE BY @wBLAAC@s
+							#SPRITES BY @yJSBURG@s
+							#(DEFAULT @wOFF@s)"
 				}
 			},
 			{
 				"option": "death_effects",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4929511)*@wDeath Effects"
+					"text": "@(color:4929511)*@wDEATH EFFECTS"
 				},
 				"desc": {
-					"text": "When @rON@s#it will enable @weffects@s#which will happen after#@rdeath@s of @wcertain enemies@s#after @wcertain loop@s#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#IT WILL ENABLE @wEFFECTS@s
+							#WHICH WILL HAPPEN AFTER
+							#@rDEATH@s OF @wCERTAIN ENEMIES@s
+							#AFTER @wCERTAIN LOOP@s
+							#(DEFAULT @wON@s)"
 				}
 			},	
 			{
 				"option": "idpd_mashup",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4929511)*@wIDPD Mashup"
+					"text": "@(color:4929511)*@wIDPD MASHUP"
 				},
 				"desc": {
-					"text": "When @rON@s#@yL2@s: @w1/3@s @bportals@s and @bvans@s#will contain @bpopo freaks@s#@gL3@s: @w1/2@s @bportals@s and @bvans@s#will contain @yelites@s#P.S. Vans on L3 can also contain#non elite IDPD#because i can't control#if van will contain elites#(default @wON@s)"
+					"text": "WHEN @rON@s
+							#@yL2@s: @w1/3@s @bPORTALS@s AND @bVANS@s
+							#WILL CONTAIN @bPOPO FREAKS@s
+							#@gL3@s: @w1/2@s @bPORTALS@s AND @bVANS@s
+							#WILL CONTAIN @yELITES@s
+							#P.S. VANS ON L3 CAN ALSO CONTAIN
+							#NON ELITE IDPD
+							#BECAUSE I CAN'T CONTROL
+							#IF VAN WILL CONTAIN ELITES
+							#(DEFAULT @wON@s)"
 				}
 			},		
 			{
 				"option": "idpd_seek",
 				"kind": "choice",
 				"name": {
-					"text": "@(color:4929511)*@wIDPD Seek"
+					"text": "@(color:4929511)*@wIDPD SEEK"
 				},
 				"desc": {
-					"text": "Switch between IDPD Seek modes.#@gNo@s# No Addinational @bIDPD@s. #@yYes@s# Adds more @bIDPD@s to #@wSnow Town@s, @wLabs@s and @wPalace@s. #@gUltra@s# Adds even more @bIDPD@s to #@wSnow Town@s and @wPalace@s#+ visiting @bHQ@s #or having a @pcrown@s #or killing @bcap@s #will add addinational @bIDPD@s#after passing @w10 stages@s#@wnon elite@s @bidpd@s may carry @gradchests@s#(default @wYes@s)"
+					"text": "SWITCH BETWEEN IDPD SEEK MODES.
+							#@wNO@s
+							# NO ADDINATIONAL @bIDPD@s. 
+							#@yYES@s
+							# ADDS MORE @bIDPD@s TO 
+							#@wSNOW TOWN@s, @wLABS@s AND @wPALACE@s. 
+							#@gULTRA@s
+							# ADDS EVEN MORE @bIDPD@s TO 
+							#@wSNOW TOWN@s AND @wPALACE@s
+							#+ VISITING @bHQ@s 
+							#OR HAVING A @pCROWN@s 
+							#OR KILLING @bCAP@s 
+							#WILL ADD ADDINATIONAL @bIDPD@s
+							#AFTER PASSING @w10 STAGES@s
+							#@wNON ELITE@s @bIDPD@s MAY CARRY @gRADCHESTS@s
+							#(DEFAULT @wYes@s)"
 				},
 				"values": [0, 1, 2],
-				"display": ["No", "Yes", "@gUltra@s"]
+				"display": ["NO", "YES", "@gULTRA@s"]
 			},
 			{
 				"option": "wild_idpd",
 				"kind": "bool",
 				"name": {
-					"text": "@(color:4929511)*@wWild IDPD"
+					"text": "@(color:4929511)*@wWILD IDPD"
 				},
 				"desc": {
-					"text": "When @rON@s#@rwild@s @bIDPD@s will spawn on#@wevery area@s except @bHQ@s and @wLabs@s#@yelite@s wild IDPD will#only spawn if @wloop > 0@s#@gwild IDPD@s are @bIDPD@s but on#the @renemy team@s#@weach@s wild IDPD will#have a @wrandom raddrop@s#which ranges from 1 to 25#@graddrop@s floor @wscales@s with loops#@wIDPDmashup@s slows down floor scaling#if @graddrop@s = @w25@s#@bIDPD@s becomes a @rpopo freak@s#(default @wOFF@s)"
+					"text": "WHEN @rON@s
+							#@rWILD@s @bIDPD@s WILL SPAWN ON
+							#@wEVERY AREA@s EXCEPT @bHQ@s AND @wLABS@s
+							#@yELITE@s WILD IDPD WILL
+							#ONLY SPAWN IF @wLOOP > 0@s
+							#@gWILD IDPD@s ARE @bIDPD@s BUT ON
+							#THE @rENEMY TEAM@s
+							#@wEACH@s WILD IDPD WILL
+							#HAVE A @wRANDOM RADDROP@s
+							#WHICH RANGES FROM 1 TO 25
+							#@gRADDROP@s FLOOR @wSCALES@s WITH LOOPS
+							#@wIDPDMASHUP@s SLOWS DOWN FLOOR SCALING
+							#IF @gRADDROP@s = @w25@s
+							#@bIDPD@s BECOMES A @rPOPO FREAK@s
+							#(DEFAULT @wOFF@s)"
 				}
 			},
 		]
@@ -882,10 +1083,11 @@ Purple - 15156919
 				"option": "reset",
 				"kind": "bool",
 				"name": {
-					"text": "Options Reset"
+					"text": "OPTIONS RESET"
 				},
 				"desc": {
-					"text": "When @rON@s#loads presets"
+					"text": "WHEN @rON@s
+							#LOADS PRESETS"
 				}
 			},		
 		]
@@ -904,6 +1106,8 @@ Purple - 15156919
 	
 	exit;
 }
+
+CustomOptions_load();
 
 //death messages for checking
 global.SnowSniperHitid = [global.SnowSniperIdle, "Snow Sniper"];
@@ -933,10 +1137,6 @@ sprite_restore(sprDeskIdleTurn);
 sprite_restore(sprLastSit);
 
 restoring_sprites();
-/*if (is_int64(global.options.seed)) {
-	game_set_seed(global.options.seed);
-	trace(`Seed ${global.options.seed}, RNG ${irandom($ffFFffFF)}`);
-}*/
 
 //last enemies display
 global.enemies_count = 0;
@@ -1081,24 +1281,49 @@ with instances_matching(GenCont,"areadisplay",null){
 
 //options preset
 if(global.options.reset){
-	if (fork()) {
-	wait(file_load(global.PRESET_FILE) + 1);
-
-	if (file_exists(global.PRESET_FILE)) {
-		var _options = json_decode(string_load(global.PRESET_FILE));
-        var option_count = lq_size(global.options);
-    
-        for (var i = 0; option_count > i; i++) {
-            if (!lq_exists(_options, lq_get_key(global.options, i))) {
-                lq_set(_options, lq_get_key(global.options, i), lq_get_value(global.options, i));
-            }
-        }
-
-        global.options = _options;
-		global.options.reset = false;
-		call(scr.options_refresh)
-		}
-	}
+	global.options = {
+		"fix_venus_car": true, 
+		"more_ravens_in_jungle": 1, 
+		"crown_guardian_on_max": true, 
+		"cursing_enabled": true, 
+		"nes": true, 
+		"piov": true, 
+		"diropf": false, 
+		"add_dark": true, 
+		"idpd_mashup": true, 
+		"no_jocks": false, 
+		"l5cap": false,
+		"fire_explosions": true,	
+		"no_throne_yell": false, 
+		"hammerhead_time": 1,
+		"death_effects": true, 
+		"no_new_tips": false, 
+		"no_new_parcticles": false, 
+		"no_guards": false,
+		"chest_replacments": true,
+		"cursed_caves_rework": true,
+		"enemies_mutations": true,
+		"crown_guardian_help": true,
+		"popups": true,
+		"idpd_seek": 1,
+		"common_difficulty_multiplier": 0.5,
+		"esp_difficulty_multiplier": 0.5,
+		"no_floor_changes": false,
+		"bonus_loop_max_health": false,
+		"special_code": "to be done",
+		"reset": false,
+		"rmb": true,
+		"deflect_colour": true,
+		"wild_idpd": false,
+		"hardmodemod_3dvans": false,
+		"hamamount": true,
+		"chicken_reminder": true,
+		"lootable_cars": true,
+		"protochest_convert": true,
+		"new_weptiers": true,
+		"last_enemies_display": true,
+	};
+	call(scr.options_refresh)
 }
 //options preset
 
@@ -3604,7 +3829,7 @@ if(global.options.last_enemies_display == true && global.enemies_count <= (globa
 //area name display
 #define draw_gui
 
-if (instance_exists(Player) && global.options.area_display == true){
+/*if (instance_exists(Player) && global.options.area_display == true){
     switch(global.playercount){
         case(1):
             draw_set_halign(fa_right);
@@ -3620,8 +3845,8 @@ if (instance_exists(Player) && global.options.area_display == true){
             break;
     }
     draw_set_halign(fa_left);
-}
-
+}*/
+//area name display
 if(global.options.hamamount == true){
 	with (Player) {
 		if(hammerhead != 0){
@@ -3633,7 +3858,7 @@ if(global.options.hamamount == true){
 		}
 	}
 }
-//area name display
+
 
 //hardmode mod van
 #define makeavan_create(timing)
@@ -3941,22 +4166,30 @@ with(Player){
 
 	draw_text_nt(spec_x, cred_y,		"   SERAFIMGWS");
 	draw_set_font(fntChat)
-	draw_text_nt(spec_x - 4, cred_y + 10,		"@(color:65280)     MOD IDEA, MOST IDEAS,#CODE, TESTING AND QUALITY CONTROL");
+	draw_text_nt(spec_x - 4, cred_y + 10,		"@(color:65280)     MOD IDEA, MOST IDEAS,
+												#CODE, TESTING AND QUALITY CONTROL");
 	draw_set_font(fntM);
 
 	draw_text_nt(spec_x - 5, cred_y + 35,		"   TRUECOINESS");
 	draw_set_font(fntChat)
-	draw_text_nt(spec_x + 5, cred_y + 45,		"@(color:30719)   MOST IDEAS, A LOT OF#TESTING AND QUALITY CONTROL");
+	draw_text_nt(spec_x + 5, cred_y + 45,		"@(color:30719)   MOST IDEAS, A LOT OF
+												#TESTING AND QUALITY CONTROL");
 	draw_set_font(fntM);
 
 	draw_text_nt(spec_x + 5, cred_y + 70,		"   SUPERMANY");
 	draw_set_font(fntChat)
-	draw_text_nt(spec_x + 16, cred_y + 81,		"@(color:16749678)EXTENDED SPAWN POOLS,#MOD START IN GENERAL,#SPRITES FOR WILD IPDP# AND CODE ASSISTANCE");
+	draw_text_nt(spec_x + 16, cred_y + 81,		"@(color:16749678)EXTENDED SPAWN POOLS,
+												#MOD START IN GENERAL,
+												#SPRITES FOR WILD IPDP
+												# AND CODE ASSISTANCE");
 	draw_set_font(fntM);
 
 	draw_text_nt(cred_x + 4, cred_y,		"    BLAAC");
 	draw_set_font(fntChat)
-	draw_text_nt(cred_x - 4, cred_y + 10,		"@(color:16767324)        INSPIRATION,#3D VAN AND JUNGLE ENTER CODE,# SPRITES FOR SNOW SNIPERS#  AND BIG JUNGLE BANDITS");
+	draw_text_nt(cred_x - 4, cred_y + 10,		"@(color:16767324)        INSPIRATION,
+												#3D VAN AND JUNGLE ENTER CODE,
+												# SPRITES FOR SNOW SNIPERS
+												#  AND BIG JUNGLE BANDITS");
 	draw_set_font(fntM);
 
 	draw_text_nt(cred_x, cred_y + 60,		"    SQUIDDY");
@@ -3986,7 +4219,8 @@ with(Player){
 
 	draw_text_nt(spec_x + 3, cred_y,		"    LUKLAKA");
 	draw_set_font(fntChat)
-	draw_text_nt(spec_x - 4, cred_y + 10,		"@pMISSING NIGHT AREAS SPRITES AND#   SNOW BIG BANDIT SPRITES");
+	draw_text_nt(spec_x - 4, cred_y + 10,		"@pMISSING NIGHT AREAS SPRITES AND
+												#   SNOW BIG BANDIT SPRITES");
 	draw_set_font(fntM);
 
 	draw_text_nt(spec_x - 5, cred_y + 35,		"     CZIMBALA");
@@ -3994,10 +4228,17 @@ with(Player){
 	draw_text_nt(spec_x + 5, cred_y + 45,		"@s   DARK PALACE SPRITES");
 	draw_set_font(fntM);
 
-	draw_text_nt(spec_x + 3, cred_y + 60,		" YELLOWAFTERLIFE");
+	draw_text_nt(spec_x + 3, cred_y + 60,		"  WIGGLERCOLA");
+	draw_set_font(fntChat)
+	draw_text_nt(spec_x + 2, cred_y + 71,		"       @yGATOR TP CODE,
+												#   SAVE SYSTEM FOR OPTIONS
+												# AND CREDITS PAGE REFERENCE");
+	draw_set_font(fntM);
+
+	/*draw_text_nt(spec_x + 3, cred_y + 60,		" YELLOWAFTERLIFE");
 	draw_set_font(fntChat)
 	draw_text_nt(spec_x - 5, cred_y + 71,		"@y        SPECIAL THANKS FOR#CREATING NUCLEAR THRONE TOGETHER");
-	draw_set_font(fntM);
+	draw_set_font(fntM);*/
 
 	draw_text_nt(cred_x, cred_y,		"   VLAMBEER");
 	draw_set_font(fntChat)
@@ -4044,17 +4285,103 @@ CustomOptions_save();
 
 #macro mod_current_type global.mod_current_type
 
-#define draw_back_button
-//draw_sprite_ext(sprBackButton, 0, 0, 0, 1, 1, 0, c_white, 1);
-draw_sprite_ext(sprMutant3Sit, sprite_get_number(sprMutant3Sit) - 3, game_width / 2, game_height / 2, 5, 5, 0, c_white, 1);
+#define ExternalOptions_load
+	var _options = global.options;
+    	
+     // Main:
+	mod_variable_set("mod", "wnw", "deflect_colour", 						_options.deflect_colour);
+	mod_variable_set("mod", "wnw", "fix_venus_car", 						_options.fix_venus_car);
+	mod_variable_set("mod", "wnw", "bonus_loop_max_health", 				_options.bonus_loop_max_health);
+	mod_variable_set("mod", "wnw", "last_enemies_display", 					_options.last_enemies_display);
+	mod_variable_set("mod", "wnw", "popups", 								_options.popups);
+	mod_variable_set("mod", "wnw", "no_jocks", 								_options.no_jocks);
+	mod_variable_set("mod", "wnw", "rmb", 									_options.rmb);
+	mod_variable_set("mod", "wnw", "hammerhead_time", 						_options.hammerhead_time);
+	mod_variable_set("mod", "wnw", "nes", 									_options.nes);
+	mod_variable_set("mod", "wnw", "no_guards", 							_options.no_guards);
+	mod_variable_set("mod", "wnw", "hamamount", 							_options.hamamount);
+	mod_variable_set("mod", "wnw", "lootable_cars", 						_options.lootable_cars);
+	mod_variable_set("mod", "wnw", "chicken_reminder", 						_options.chicken_reminder);
+	mod_variable_set("mod", "wnw", "protochest_convert", 					_options.protochest_convert);
+
+	mod_variable_set("mod", "wnw", "no_throne_yell", 						_options.no_throne_yell);
+	mod_variable_set("mod", "wnw", "no_new_tips", 							_options.no_new_tips);
+	mod_variable_set("mod", "wnw", "no_new_parcticles", 					_options.no_new_parcticles);
+
+	mod_variable_set("mod", "wnw", "fire_explosions", 						_options.fire_explosions);
+	mod_variable_set("mod", "wnw", "cursed_caves_rework", 					_options.cursed_caves_rework);
+	mod_variable_set("mod", "wnw", "piov", 									_options.piov);
+	mod_variable_set("mod", "wnw", "new_weptiers", 							_options.new_weptiers);
+	mod_variable_set("mod", "wnw", "chest_replacments", 					_options.chest_replacments);
+	mod_variable_set("mod", "wnw", "common_difficulty_multiplier", 			_options.common_difficulty_multiplier);
+	mod_variable_set("mod", "wnw", "esp_difficulty_multiplier", 			_options.esp_difficulty_multiplier);
+
+	mod_variable_set("mod", "wnw", "more_ravens_in_jungle", 				_options.more_ravens_in_jungle);
+	mod_variable_set("mod", "wnw", "diropf", 								_options.diropf);
+	mod_variable_set("mod", "wnw", "add_dark", 								_options.add_dark);
+	mod_variable_set("mod", "wnw", "cursing_enabled", 						_options.cursing_enabled);
+	mod_variable_set("mod", "wnw", "crown_guardian_help", 					_options.crown_guardian_help);
+	mod_variable_set("mod", "wnw", "crown_guardian_on_max", 				_options.crown_guardian_on_max);
+	mod_variable_set("mod", "wnw", "enemies_mutations", 					_options.enemies_mutations);
+
+	mod_variable_set("mod", "wnw", "l5cap", 								_options.l5cap);
+	mod_variable_set("mod", "wnw", "hardmodemod_3dvans", 					_options.hardmodemod_3dvans);
+	mod_variable_set("mod", "wnw", "death_effects", 						_options.death_effects);
+	mod_variable_set("mod", "wnw", "idpd_mashup", 							_options.idpd_mashup);
+	mod_variable_set("mod", "wnw", "idpd_seek", 							_options.idpd_seek);
+	mod_variable_set("mod", "wnw", "wild_idpd", 							_options.wild_idpd);
 
 #define CustomOptions_init
 // a script that runs when Custom Options loads, if this mod exists first
 
+#define CustomOptions_load
+
+	if (fork()){
+    	var _path = CONFIG_FILE;
+    	
+    	file_load(_path);
+    	
+    	while (!file_loaded(_path)){
+    		wait(0);
+    	}
+    	
+    	if (file_exists(_path)){
+    		var _options = json_decode(string_load(_path));
+    		
+    		if (_options == json_error){
+    			trace(json_error_text);
+    			exit;
+    		}
+    		
+    		var option_count = lq_size(global.options);
+    		
+    		var _obj = {};
+    		
+    		for (var i = 0; option_count > i; i ++){
+    			var _key = lq_get_key(global.options, i);
+    			lq_set(_obj, _key, lq_defget(_options, _key, lq_get(global.options, _key)));
+    		}
+    		
+    		global.options = _obj;
+    	}
+    	
+    	else{
+    		CustomOptions_save();
+    	}
+    	
+    	file_unload(_path);
+    	
+    	global.loaded = true;
+    	
+    	exit;
+    }
+
+	ExternalOptions_load();
+
 #define CustomOptions_open
 // a script that runs when a user selects your mod through Custom Options' GUI
 // you can load your options file here or in `#define init`
-if (fork()) {
+/*if (fork()) {
 	wait(file_load(global.OPTIONS_FILE) + 1);
 
 	if (file_exists(global.OPTIONS_FILE)) {
@@ -4072,21 +4399,20 @@ if (fork()) {
 		string_save(json_encode(global.options, "   "), global.OPTIONS_FILE);
 		string_save(json_encode(global.options, "   "), global.PRESET_FILE);
 	}
-}
+}*/
 //trace(`${mod_current}.${mod_current_type}::CustomOptions_open`);
 
 #define CustomOptions_save
 // a script that runs when Custom Options detects the menu closing
 // you can save your options file here or in `#define cleanup`
-/*if (global.options.seed != "") {
-	opt.seed = real(global.options.seed);
-	trace(`Seed changed to ${opt.seed}.`);
-} else {
-	opt.seed = null;
-	trace("seed reset.");
-}*/
-string_save(json_encode(global.options, "  "), global.OPTIONS_FILE);
+
+string_save(json_encode(global.options, chr(9)), CONFIG_FILE);
+
+ExternalOptions_load();
+//string_save(json_encode(global.options, "  "), global.OPTIONS_FILE);
 //trace(`${mod_current}.${mod_current_type}::CustomOptions_save`);
+	#macro call                             script_ref_call
+	#macro CONFIG_FILE                      mod_current + " config.json"
 	#macro screen_center_x					(game_width / 2)
 	#macro screen_center_y 					(game_height / 2)
 	#macro screen_x 						view_xview_nonsync + (game_width / 2)

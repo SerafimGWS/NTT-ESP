@@ -2,8 +2,6 @@
 
 global.MUT_OPTIONS_FILE = "mut_options.json";
 
-global.MUT_PRESET_FILE = "mut_presets.json";
-
 mod_current_type = script_ref_create(0)[0];
 
 // values for your options should go in a global lightweight object
@@ -389,6 +387,8 @@ if fork() {
 	exit;
 }
 
+CustomOptions_load();
+
 #define game_start
 
 if (!skill_get(1)){
@@ -772,24 +772,40 @@ if (!skill_get(29)){
 
 //options preset
 if(global.options.mut_reset){
-	if (fork()) {
-	wait(file_load(global.MUT_PRESET_FILE) + 1);
-
-	if (file_exists(global.MUT_PRESET_FILE)) {
-		var _options = json_decode(string_load(global.MUT_PRESET_FILE));
-        var option_count = lq_size(global.options);
-    
-        for (var i = 0; option_count > i; i++) {
-            if (!lq_exists(_options, lq_get_key(global.options, i))) {
-                lq_set(_options, lq_get_key(global.options, i), lq_get_value(global.options, i));
-            }
-        }
-
-        global.options = _options;
-		global.options.reset = false;
-		call(scr.options_refresh)
-		}
-	}
+	global.options = {
+		"rhino_skin": true,
+    	"extra_feet": true,
+    	"plutonium_hunger": true,
+    	"rabbit_paw": true,
+    	"throne_butt": true,
+    	"lucky_shot": true,
+    	"bloodlust": true,
+    	"gamma_guts": true,
+    	"second_stomach": true,
+    	"back_muscle": true,
+    	"scarier_face": true,
+    	"euphoria": true,
+    	"long_arms": true,
+    	"boiling_veins": true,
+    	"shotgun_shoulders": true,
+    	"recycle_gland": true,
+    	"laser_brain": true,
+		"last_wish": true,
+		"eagle_eyes": true,
+		"impact_wrists": true,
+		"bolt_marrow": true,
+		"stress": true,
+		"trigger_fingers": true,
+		"sharp_teeth": true,
+		"patience": true,
+		"hammerhead": true,
+		"strong_spirit": true,
+		"open_mind": true,
+		"heavy_heart": true,
+		"mut_reset": false
+	};
+	global.options.reset = false;
+	call(scr.options_refresh)
 }
 //options preset
 
@@ -807,36 +823,98 @@ CustomOptions_save();
 
 #macro mod_current_type global.mod_current_type
 
+#define ExternalOptions_load
+	var _options = global.options;
+    	
+	mod_variable_set("mod", "mutpoolcontrol", "rhino_skin", 						_options.rhino_skin);
+	mod_variable_set("mod", "mutpoolcontrol", "extra_feet", 						_options.extra_feet);
+	mod_variable_set("mod", "mutpoolcontrol", "plutonium_hunger", 					_options.plutonium_hunger);
+	mod_variable_set("mod", "mutpoolcontrol", "rabbit_paw", 						_options.rabbit_paw);
+	mod_variable_set("mod", "mutpoolcontrol", "throne_butt", 						_options.throne_butt);
+	mod_variable_set("mod", "mutpoolcontrol", "lucky_shot", 						_options.lucky_shot);
+	mod_variable_set("mod", "mutpoolcontrol", "bloodlust", 							_options.bloodlust);
+	mod_variable_set("mod", "mutpoolcontrol", "gamma_guts", 						_options.gamma_guts);
+	mod_variable_set("mod", "mutpoolcontrol", "second_stomach", 					_options.second_stomach);
+	mod_variable_set("mod", "mutpoolcontrol", "back_muscle", 						_options.back_muscle);
+	mod_variable_set("mod", "mutpoolcontrol", "scarier_face", 						_options.scarier_face);
+	mod_variable_set("mod", "mutpoolcontrol", "euphoria", 							_options.euphoria);
+	mod_variable_set("mod", "mutpoolcontrol", "long_arms", 							_options.long_arms);
+	mod_variable_set("mod", "mutpoolcontrol", "boiling_veins", 						_options.boiling_veins);
+	mod_variable_set("mod", "mutpoolcontrol", "shotgun_shoulders", 					_options.shotgun_shoulders);
+	mod_variable_set("mod", "mutpoolcontrol", "recycle_gland", 						_options.recycle_gland);
+	mod_variable_set("mod", "mutpoolcontrol", "laser_brain", 						_options.laser_brain);
+	mod_variable_set("mod", "mutpoolcontrol", "last_wish", 							_options.last_wish);
+	mod_variable_set("mod", "mutpoolcontrol", "eagle_eyes", 						_options.eagle_eyes);
+	mod_variable_set("mod", "mutpoolcontrol", "impact_wrists", 						_options.impact_wrists);
+	mod_variable_set("mod", "mutpoolcontrol", "bolt_marrow", 						_options.bolt_marrow);
+	mod_variable_set("mod", "mutpoolcontrol", "stress", 							_options.stress);
+	mod_variable_set("mod", "mutpoolcontrol", "trigger_fingers", 					_options.trigger_fingers);
+	mod_variable_set("mod", "mutpoolcontrol", "sharp_teeth", 						_options.sharp_teeth);
+	mod_variable_set("mod", "mutpoolcontrol", "patience", 							_options.patience);
+	mod_variable_set("mod", "mutpoolcontrol", "hammerhead", 						_options.hammerhead);
+	mod_variable_set("mod", "mutpoolcontrol", "strong_spirit", 						_options.strong_spirit);
+	mod_variable_set("mod", "mutpoolcontrol", "open_mind", 							_options.open_mind);
+	mod_variable_set("mod", "mutpoolcontrol", "heavy_heart", 						_options.heavy_heart);
+
 #define CustomOptions_init
 // a script that runs when Custom Options loads, if this mod exists first
 //trace(`${mod_current}.${mod_current_type}::CustomOptions_init`);
+#define CustomOptions_load
+
+	if (fork()){
+    	var _path = CONFIG_FILE;
+    	
+    	file_load(_path);
+    	
+    	while (!file_loaded(_path)){
+    		wait(0);
+    	}
+    	
+    	if (file_exists(_path)){
+    		var _options = json_decode(string_load(_path));
+    		
+    		if (_options == json_error){
+    			trace(json_error_text);
+    			exit;
+    		}
+    		
+    		var option_count = lq_size(global.options);
+    		
+    		var _obj = {};
+    		
+    		for (var i = 0; option_count > i; i ++){
+    			var _key = lq_get_key(global.options, i);
+    			lq_set(_obj, _key, lq_defget(_options, _key, lq_get(global.options, _key)));
+    		}
+    		
+    		global.options = _obj;
+    	}
+    	
+    	else{
+    		CustomOptions_save();
+    	}
+    	
+    	file_unload(_path);
+    	
+    	global.loaded = true;
+    	
+    	exit;
+    }
+
+	ExternalOptions_load();
 
 #define CustomOptions_open
 // a script that runs when a user selects your mod through Custom Options' GUI
 // you can load your options file here or in `#define init`
 //trace(`${mod_current}.${mod_current_type}::CustomOptions_open`);
-if (fork()) {
-	wait(file_load(global.MUT_OPTIONS_FILE) + 1);
-
-	if (file_exists(global.MUT_OPTIONS_FILE)) {
-		var _options = json_decode(string_load(global.MUT_OPTIONS_FILE));
-        var option_count = lq_size(global.options);
-    
-        for (var i = 0; option_count > i; i++) {
-            if (!lq_exists(_options, lq_get_key(global.options, i))) {
-                lq_set(_options, lq_get_key(global.options, i), lq_get_value(global.options, i));
-            }
-        }
-
-        global.options = _options;
-	} else {
-		string_save(json_encode(global.options, "   "), global.MUT_OPTIONS_FILE);
-		string_save(json_encode(global.options, "   "), global.MUT_PRESET_FILE);
-	}
-}
 
 #define CustomOptions_save
 // a script that runs when Custom Options detects the menu closing
 // you can save your options file here or in `#define cleanup`
 //trace(`${mod_current}.${mod_current_type}::CustomOptions_save`);
-string_save(json_encode(global.options, "  "), global.MUT_OPTIONS_FILE);
+string_save(json_encode(global.options, chr(9)), CONFIG_FILE);
+
+ExternalOptions_load();
+
+	#macro call                             script_ref_call
+	#macro CONFIG_FILE                      mod_current + " config.json"

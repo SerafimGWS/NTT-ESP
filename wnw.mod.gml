@@ -102,7 +102,7 @@ global.enemy_factor = 1;
 global.attmpts_to_add_enemies = 15;
 
 // -----Commands zone------- //
-trace("Thanks for installing the Whole New World 1.0 Beta mod! Build 101225");
+trace("Thanks for installing the Whole New World 1.0 Beta mod! Pre-release Build 131225");
 trace("Also look in the options and make your game as comfortable as possible!");
 
 // -----Important----- //
@@ -4230,15 +4230,16 @@ with(Player){
 
 	draw_text_nt(spec_x + 3, cred_y + 60,		"  WIGGLERCOLA");
 	draw_set_font(fntChat)
-	draw_text_nt(spec_x + 2, cred_y + 71,		"       @yGATOR TP CODE,
+	draw_text_nt(spec_x + 2, cred_y + 71,		"       @(color:4929511)GATOR TP CODE,
 												#   SAVE SYSTEM FOR OPTIONS
 												# AND CREDITS PAGE REFERENCE");
 	draw_set_font(fntM);
 
-	/*draw_text_nt(spec_x + 3, cred_y + 60,		" YELLOWAFTERLIFE");
+	draw_text_nt(spec_x + 83, cred_y + 107,		" YELLOWAFTERLIFE");
 	draw_set_font(fntChat)
-	draw_text_nt(spec_x - 5, cred_y + 71,		"@y        SPECIAL THANKS FOR#CREATING NUCLEAR THRONE TOGETHER");
-	draw_set_font(fntM);*/
+	draw_text_nt(spec_x + 75, cred_y + 118,		"@y        SPECIAL THANKS FOR
+												#CREATING NUCLEAR THRONE TOGETHER");
+	draw_set_font(fntM);
 
 	draw_text_nt(cred_x, cred_y,		"   VLAMBEER");
 	draw_set_font(fntChat)
@@ -4418,7 +4419,7 @@ ExternalOptions_load();
 	#macro screen_x 						view_xview_nonsync + (game_width / 2)
 	#macro screen_y 						view_yview_nonsync + (game_height / 2)
 
-#define gator_tp()
+#define gator_tp
   if("tele_health" not in self){
     tele_health = my_health
   }

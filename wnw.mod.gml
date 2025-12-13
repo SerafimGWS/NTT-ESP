@@ -2166,12 +2166,10 @@ if(skill_get(12)){
 
 //healthdown for new enemies health of which were reweritten by this mod
 if(skill_get(11)){
-	with instances_matching(Inspector,"IDPDTurret",1){
-		if("scared" not in self){
-			scared = true;
-			my_health -= my_health * 0.2;
-			maxhealth -= maxhealth * 0.2;
-		}
+	with instances_matching(enemy,"scared ",false){
+		scared = true;
+		my_health -= my_health * 0.2;
+		maxhealth -= maxhealth * 0.2;
 	}
 }
 //healthdown for new enemies health of which were reweritten by this mod
@@ -3440,13 +3438,13 @@ with instances_matching_le(instances_matching(OasisBoss,"death_effect",true), "m
 
 //shoots bullet in direction of player
 with instances_matching_le(instances_matching(Grunt,"death_effect",true), "my_health", 0) {
-			grunt_death();
+			grunt_death(spr_idle);
 			sound_play(sndRogueRifle)
 		}
 
 //shoots slug in direction of player
 with instances_matching_le(instances_matching(Inspector,"death_effect",true), "my_health", 0) {
-			inspector_death();
+			inspector_death(spr_idle);
 			sound_play(sndRogueRifle);
 		}
 
@@ -3489,7 +3487,7 @@ with instances_matching_le(instances_matching(JungleAssassin,"death_effect",true
 
 //spawns idpd grenade
 with instances_matching_le(instances_matching(EliteGrunt,"death_effect",true), "my_health", 0) {
-			elite_grunt_death();
+			elite_grunt_death(spr_idle);
 		}
 
 //lightning cannon ball explosion
@@ -4706,11 +4704,17 @@ for(var spread = -17; spread <= 17; spread += 17) with (instance_create(x,y,Enem
 		}
 	}
 	
-#define grunt_death
+#define grunt_death(spr_idle)
 with (instance_create(x,y,IDPDBullet)){
 		newprojectile = true;
-		team = 1;
-		hitid = [sprGruntDead, "Grunt"];
+		if(spr_idle != global.sprGruntRadIdle){
+			hitid = [sprGruntDead, "Grunt"];
+			team = 3;
+		}
+		else{
+			hitid = [global.sprGruntRadDead, "Wild Grunt"];
+			team = 1;
+		}
 //Homing bullets
 	if(instance_exists(Player)){
 		target = instance_nearest(x,y,Player);
@@ -4730,11 +4734,17 @@ with (instance_create(x,y,IDPDBullet)){
 		
 	}
 	
-#define inspector_death
+#define inspector_death(spr_idle)
 with (instance_create(x,y,PopoSlug)){
 		newprojectile = true;
-		team = 3;
-		hitid = [sprInspectorDead, "Inspector"];
+		if(spr_idle != global.sprInspectorRadIdle){
+			hitid = [sprInspectorDead, "Inspector"];
+			team = 3;
+		}
+		else{
+			hitid = [global.sprInspectorRadDead, "Wild Inspector"];
+			team = 1;
+		}
 //Homing bullets
 	if(instance_exists(Player)){
 		target = instance_nearest(x,y,Player);
@@ -4787,10 +4797,17 @@ with instance_create(x,y,FastRat){
 				walk = 25
 			}
 
-#define elite_grunt_death
+#define elite_grunt_death(spr_idle)
 with(instance_create(x,y,PopoNade)){
-	team = 3;
-	hitid = [sprEliteGruntDead, "Elite Grunt"];
+	if(spr_idle != global.sprEliteGruntRadIdle){
+		team = 3;
+		hitid = [sprEliteGruntDead, "Elite Grunt"];
+	}
+	else{
+		team = 1;
+		hitid = [global.sprEliteGruntRadDead, "Wild Elite Grunt"];
+	}
+
 }
 //death effects
 
